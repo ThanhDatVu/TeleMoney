@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import View.LoginView;
+import View.MasterView;
 import View.ViewThem;
 import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
@@ -69,7 +70,8 @@ public class LoginController {
                             return;
 
                         }else{
-                            NhanvienController nvController = new NhanvienController();
+                            MasterView master = new MasterView();
+                            master.setVisible(true);
                             loginView.dispose();
                         }
                         

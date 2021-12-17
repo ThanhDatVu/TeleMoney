@@ -109,6 +109,7 @@ public class LoginView extends javax.swing.JFrame {
             }
         });
 
+        textDefault.setFont(new java.awt.Font("Segoe UI", 0, 11)); // NOI18N
         textDefault.setForeground(new java.awt.Color(51, 51, 51));
         textDefault.setText("Dùng tài khoản Demo");
         textDefault.addMouseListener(new java.awt.event.MouseAdapter() {
