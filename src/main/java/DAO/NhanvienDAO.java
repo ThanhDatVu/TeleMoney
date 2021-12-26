@@ -23,7 +23,7 @@ public class NhanvienDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             con = DriverManager.getConnection(
-                    "jdbc:mysql://localhost:3306/test", "root", "");
+                    "jdbc:mysql://localhost:3306/telemoney", "root", "");
 //here sonoo is database name, root is username and password  
 
         } catch (Exception e) {
