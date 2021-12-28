@@ -11,6 +11,7 @@ import Model.UserModel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -527,13 +528,15 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
     private void labelRefreshMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelRefreshMousePressed
         // TODO add your handling code here:
-        try{
-        stockController.setDataTable();
-        }catch(IOException e){
-            
-        }
+//        try{
+//        stockController.setDataTable();
+//        }catch(IOException e){
+//            
+//        }
     }//GEN-LAST:event_labelRefreshMousePressed
-   
+    public void addRefreshListener(ActionListener log) { 
+        labelRefresh.addMouseListener(log);
+    }
     public void setTiGia(){
         try {
             Stock stock = YahooFinance.get("USDVND=X");
@@ -615,7 +618,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JLabel labelMenuTaiKhoan;
     private javax.swing.JLabel labelMenuThongKe;
     private javax.swing.JLabel labelMenuVayNo;
-    private javax.swing.JLabel labelRefresh;
+    public javax.swing.JLabel labelRefresh;
     public javax.swing.JLabel labelUSD;
     public javax.swing.JLabel labelVND;
     private javax.swing.JPanel pnlCards;

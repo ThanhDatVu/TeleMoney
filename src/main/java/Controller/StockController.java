@@ -24,6 +24,8 @@ import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JTable;
@@ -44,7 +46,7 @@ public class StockController {
         this.master = master;
         this.acc = acc;
 
-        //setEventNhanvien();
+        setEventStock();
         setTableButton();
         master.setVisible(true);
         stockDAO = new StockDAO();
@@ -94,17 +96,17 @@ public class StockController {
 //    
 //    }
 
-//    public void setEventNhanvien() {
-//
+    public void setEventStock() {
+
 //        master.addThemListener(new ActionListener() {
 //
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
-//                try {
-//                    ThemNhanvienController add = new ThemNhanvienController(master);
-//
-//                } catch (Exception ex) {
-//                }
+////                try {
+////                    ThemNhanvienController add = new ThemNhanvienController(master);
+////
+////                } catch (Exception ex) {
+////                }
 //            }
 //        });
 //        master.addRefreshListener(new ActionListener() {
@@ -112,21 +114,26 @@ public class StockController {
 //            @Override
 //            public void actionPerformed(ActionEvent e) {
 //                try {
-//                    // TODO add your handling code here:
-//
-//                    nhanvienDAO.refresh(master.nvmodel);
-//                    master.invalidate();
-//                    master.validate();
-//                    master.repaint();
-//                    // NhanvienView clone = new NhanvienView();
-//                    //clone.setVisible(true);
-//                    System.out.println("refresh");
+//                    setDataTable();
 //
 //                } catch (Exception ex) {
 //                }
 //            }
 //        });
-//    }
+        master.labelRefresh.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(final MouseEvent e) {
+                if (e.getClickCount() == 1) {
+                    try {
+                        setDataTable();
+                        System.out.println("alo");
+                    } catch (IOException ex) {
+                        Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        });
+    }
     public void setTableButton() throws NumberFormatException {
         master.tableDanhMuc.addMouseListener(new MouseAdapter() {
             @Override
