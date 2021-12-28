@@ -6,8 +6,13 @@ package Main;
 
 import Controller.LoginController;
 import Controller.NhanvienController;
-
-
+import DAO.StockDAO;
+import Model.MyStockBuyModel;
+import java.time.LocalDateTime;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -19,9 +24,26 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
+        try {
+            // TODO code application logic here
+            javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (UnsupportedLookAndFeelException ex) {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
         LoginController loginController = new LoginController();
-       // new DangNhapController(viewlogin).setEventLogin();
+         //NhanvienController nvController = new NhanvienController();
+        LocalDateTime time;
+        time = LocalDateTime.now();
+        MyStockBuyModel mystock = new MyStockBuyModel("abc", "abc company", 7 , (float) 8.9,time );
+        StockDAO stockDAO = new StockDAO();
+        stockDAO.add(mystock);
+        // new DangNhapController(viewlogin).setEventLogin();
     }
-    
+
 }

@@ -9,6 +9,8 @@ import Controller.SuaNhanvienController;
 import DAO.NhanvienDAO;
 import Model.NhanvienModel;
 import Model.NhanvienTableModel;
+import java.awt.Color;
+import java.awt.Component;
 import static java.awt.SystemColor.info;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,7 +22,9 @@ import javax.swing.Action;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
 import javax.swing.UnsupportedLookAndFeelException;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import lib.ButtonColumn;
 
 /**
@@ -32,21 +36,51 @@ public class NhanvienView extends javax.swing.JFrame {
     /**
      * Creates new form NhanVienView
      */
+    TableColumn col;
     String text;
     public NhanvienTableModel nvmodel = new NhanvienTableModel();
+    
     NhanvienDAO nvDAO = new NhanvienDAO();
 
     public NhanvienView() {
         initComponents();
         init2();
         tableNhanvien.setModel(nvmodel);
+        col = tableNhanvien.getColumnModel().getColumn(2);
+        //define the renderer
+        col.setCellRenderer(new MyRenderer(Color.red, Color.green));
+    }
 
+    class MyRenderer extends DefaultTableCellRenderer {
+
+        Color red, green;
+
+        public MyRenderer(Color bg, Color fg) {
+            super();
+            this.red = bg;
+            this.green = fg;
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            Component cell = super.getTableCellRendererComponent(table, value,
+                    isSelected, hasFocus, row, column);
+            System.out.println(value);
+            Float check = Float.parseFloat((String) value);
+            if (check >= 0) {
+                
+                cell.setForeground(green);
+            } else {
+                cell.setForeground(red);
+            }
+
+            return cell;
+        }
     }
 
     public void init2() {
         nvDAO.refresh(nvmodel);
         setTitle("Quản lý nhân viên");
-        
+
         setLocationRelativeTo(null);
         try {
             javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
@@ -159,8 +193,6 @@ public class NhanvienView extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnExitActionPerformed
-
-    
 
 //Thêm các nút vào bảng
     public void refresh() {

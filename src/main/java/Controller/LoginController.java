@@ -11,7 +11,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import View.LoginView;
-import View.MasterView;
+import View.MasterViewTest;
+import View.MasterTeleMoneyView;
 import View.ViewThem;
 import java.awt.event.KeyEvent;
 import javax.swing.AbstractAction;
@@ -70,7 +71,7 @@ public class LoginController {
                             return;
 
                         }else{
-                            MasterView master = new MasterView();
+                            MasterTeleMoneyView master = new MasterTeleMoneyView(user);
                             master.setVisible(true);
                             loginView.dispose();
                         }

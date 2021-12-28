@@ -9,7 +9,10 @@ import Model.UserModel;
 import java.awt.Frame;
 import java.awt.event.ActionListener;
 import java.util.TimerTask;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.Timer;
+import javax.swing.UnsupportedLookAndFeelException;
 
 /**
  *
@@ -20,10 +23,13 @@ public class LoginView extends javax.swing.JFrame {
     /**
      * Creates new form Home17
      */
-    public LoginView() {
+    public LoginView(){
 
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        
+        
     }
 
     /**

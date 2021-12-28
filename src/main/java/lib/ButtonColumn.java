@@ -42,14 +42,33 @@ public class ButtonColumn extends AbstractCellEditor
     private boolean isButtonColumnEditor;
 
     /**
-     *  Create the ButtonColumn to be used as a renderer and editor. The
-     *  renderer and editor will automatically be installed on the TableColumn
-     *  of the specified column.
+     *  Create the ButtonColumn to be used as a renderer and editor.The
+  renderer and editor will automatically be installed on the TableColumn
+  of the specified column.
      *
      *  @param table the table containing the button renderer/editor
      *  @param action the Action to be invoked when the button is invoked
      *  @param column the column to which the button renderer/editor is added
+     * @param color 
      */
+    public ButtonColumn(JTable table, Action action, int column, Color color) {
+        this.table = table;
+        this.action = action;
+
+        renderButton = new JButton();
+        editButton = new JButton();
+        editButton.setFocusPainted(false);
+        editButton.addActionListener(this);
+        editButton.setBackground(color);
+        renderButton.setBackground(color);
+        originalBorder = editButton.getBorder();
+        setFocusBorder(new LineBorder(Color.BLUE));
+
+        TableColumnModel columnModel = table.getColumnModel();
+        columnModel.getColumn(column).setCellRenderer(this);
+        columnModel.getColumn(column).setCellEditor(this);
+        table.addMouseListener(this);
+    }
     public ButtonColumn(JTable table, Action action, int column) {
         this.table = table;
         this.action = action;
@@ -58,6 +77,7 @@ public class ButtonColumn extends AbstractCellEditor
         editButton = new JButton();
         editButton.setFocusPainted(false);
         editButton.addActionListener(this);
+        
         originalBorder = editButton.getBorder();
         setFocusBorder(new LineBorder(Color.BLUE));
 
