@@ -4,8 +4,20 @@
  */
 package Model;
 
+import java.io.IOException;
+import static java.lang.ProcessBuilder.Redirect.to;
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import static java.time.LocalDateTime.from;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import yahoofinance.Stock;
+import yahoofinance.YahooFinance;
+import yahoofinance.histquotes.Interval;
+import java.sql.Timestamp;
+
 
 /**
  *
@@ -18,10 +30,9 @@ public class MyStockBuyModel {
     private int soLuong;
     private float tongBanDau;
     private float giaBanDau;
-    LocalDateTime time;
-    
+    Timestamp time;
 
-    public MyStockBuyModel(String symbol, String name, int soLuong, float giaBanDau, LocalDateTime time) {
+    public MyStockBuyModel(String symbol, String name, int soLuong, float giaBanDau, Timestamp time) {
         this.symbol = symbol;
         this.name = name;
         this.soLuong = soLuong;
@@ -30,11 +41,38 @@ public class MyStockBuyModel {
         this.tongBanDau = soLuong * giaBanDau;
     }
 
-    public LocalDateTime getTime() {
+    public MyStockBuyModel() {
+
+    }
+
+    public Float get24hchange() {
+        Float rounded = null;
+        try {
+            Calendar from = Calendar.getInstance();
+            Calendar to = Calendar.getInstance();
+            from.add(Calendar.DAY_OF_WEEK, -1);
+            Stock google = YahooFinance.get(symbol, from, to, Interval.DAILY);
+            BigDecimal price = google.getQuote().getPrice();
+//            System.out.println(google.getHistory().get(0));
+//            System.out.println(google.getHistory().get(0).getAdjClose());
+//            System.out.println(google.getHistory().get(1));
+//            System.out.println(google.getHistory().get(1).getAdjClose());
+
+            Float change24h = 10000 * ((google.getHistory().get(1).getAdjClose().floatValue() / google.getHistory().get(0).getAdjClose().floatValue())-1);
+//            System.out.println(change24h);
+            rounded = (float) Math.round(change24h);
+//            System.out.println(rounded / 100 + "%");
+        } catch (IOException ex) {
+            Logger.getLogger(MyStockBuyModel.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return rounded/100;
+    }
+
+    public Timestamp getTime() {
         return time;
     }
 
-    public void setTime(LocalDateTime time) {
+    public void setTime(Timestamp time) {
         this.time = time;
     }
 

@@ -5,10 +5,13 @@
 package View;
 
 import Controller.LoginController;
+import Controller.StockController;
+import Model.MyStockBuyTableModel;
 import Model.UserModel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -27,36 +30,66 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     /**
      * Creates new form TabbedPane
      */
+    
+    MyStockBuyTableModel stockModel = new MyStockBuyTableModel();
     UserModel user;
     CardLayout cardLayout;
     TableColumn col;
-    public MasterTeleMoneyView() {
+    StockController stockController;
+    Float Usd;; 
+    public MasterTeleMoneyView() throws IOException {
+        this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
+        tableDanhMuc = new JTable(){
+
+            //Implement table cell tool tips.           
+            public String getToolTipText(MouseEvent e) {
+                String tip = null;
+                java.awt.Point p = e.getPoint();
+                int rowIndex = rowAtPoint(p);
+                int colIndex = columnAtPoint(p);
+
+                try {
+                    Float value = ((int) getValueAt(rowIndex, colIndex))*Usd;
+                    tip = value.toString();
+                } catch (RuntimeException e1) {
+                    //catch null pointer exception if mouse is over an empty line
+                }
+
+                return tip;
+            }
+        };
         initComponents();
         setTiGia();
         cardLayout = (CardLayout) (pnlCards.getLayout());
         setLocationRelativeTo(null);
+        tableDanhMuc.setModel(stockModel);
         col = tableDanhMuc.getColumnModel().getColumn(2);
         //define the renderer
         col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
         
     }
 
-    public MasterTeleMoneyView(UserModel user) {
+    public MasterTeleMoneyView(UserModel user) throws IOException {
+        this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
         this.user = user;
         initComponents();
         setUsername();
         setTiGia();
         cardLayout = (CardLayout) (pnlCards.getLayout());
         setLocationRelativeTo(null);
-        col = tableDanhMuc.getColumnModel().getColumn(2);
+        tableDanhMuc.setModel(stockModel);
+        col = tableDanhMuc.getColumnModel().getColumn(4);
         //define the renderer
         col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
+        stockController = new StockController(this, user);
+        stockController.enable();
+        
     }
 
     private void setUsername() {
         txtUsername.setText(user.getUsername());
     }
-    
+     
     class MyRenderer extends DefaultTableCellRenderer {
 
         Color red, green;
@@ -70,11 +103,11 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
             Component cell = super.getTableCellRendererComponent(table, value,
                     isSelected, hasFocus, row, column);
-            System.out.println(value);
+            //System.out.println(value);
             if(value == null){
             return cell;
             }
-            Float check = Float.parseFloat((String) value);
+            Float check = Float.parseFloat(value.toString());
             if (check >= 0) {
                 
                 cell.setForeground(green);
@@ -105,9 +138,13 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        labelTiGiaUSDVND = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDanhMuc = new javax.swing.JTable();
+        labelUSD = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        labelVND = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        labelRefresh = new javax.swing.JLabel();
         pnlThongKe = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         pnlTaiKhoan = new javax.swing.JPanel();
@@ -189,53 +226,75 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
         jLabel13.setText("350.000.000VND");
 
-        labelTiGiaUSDVND.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
-        labelTiGiaUSDVND.setText("1 USD = 21867VND");
-
         jScrollPane1.setBackground(new java.awt.Color(255, 204, 204));
 
-        tableDanhMuc.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, "-5", null},
-                {null, null, "9", null},
-                {null, null, "-6", null},
-                {null, null, "-6", null}
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
-            }
-        ));
+        tableDanhMuc.setToolTipText("");
         jScrollPane1.setViewportView(tableDanhMuc);
+
+        labelUSD.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        labelUSD.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelUSD.setText("1");
+
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel4.setText("USD=");
+
+        labelVND.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        labelVND.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        labelVND.setText("xxx");
+
+        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel6.setText("VND");
+
+        labelRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh_30px.png"))); // NOI18N
+        labelRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                labelRefreshMousePressed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDauTuLayout = new javax.swing.GroupLayout(pnlDauTu);
         pnlDauTu.setLayout(pnlDauTuLayout);
         pnlDauTuLayout.setHorizontalGroup(
             pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlDauTuLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel10)
-                .addGap(355, 355, 355))
+            .addComponent(jScrollPane1)
             .addGroup(pnlDauTuLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(jLabel12)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel13)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 319, Short.MAX_VALUE)
-                .addComponent(labelTiGiaUSDVND)
-                .addGap(194, 194, 194))
-            .addComponent(jScrollPane1)
+                .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlDauTuLayout.createSequentialGroup()
+                        .addComponent(labelRefresh)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 310, Short.MAX_VALUE)
+                        .addComponent(jLabel10)
+                        .addGap(355, 355, 355))
+                    .addGroup(pnlDauTuLayout.createSequentialGroup()
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel13)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelUSD, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelVND, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6)
+                        .addGap(22, 22, 22))))
         );
         pnlDauTuLayout.setVerticalGroup(
             pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDauTuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel10)
+                .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel10)
+                    .addComponent(labelRefresh))
                 .addGap(18, 18, 18)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(jLabel13)
-                    .addComponent(labelTiGiaUSDVND))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                    .addComponent(labelUSD)
+                    .addComponent(jLabel4)
+                    .addComponent(labelVND)
+                    .addComponent(jLabel6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(119, 119, 119))
         );
@@ -465,12 +524,22 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         this.dispose();
         LoginController loginController = new LoginController();
     }//GEN-LAST:event_btnDangXuatActionPerformed
+
+    private void labelRefreshMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelRefreshMousePressed
+        // TODO add your handling code here:
+        try{
+        stockController.setDataTable();
+        }catch(IOException e){
+            
+        }
+    }//GEN-LAST:event_labelRefreshMousePressed
    
     public void setTiGia(){
         try {
             Stock stock = YahooFinance.get("USDVND=X");
-            labelTiGiaUSDVND.setText("1 USD = " +stock.getQuote().getPrice()+" VND");
+            labelVND.setText(String.valueOf(stock.getQuote().getPrice().floatValue()));
         } catch (IOException ex) {
+            labelVND.setText("1 USD = 22835 VND");
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
@@ -515,7 +584,11 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new MasterTeleMoneyView().setVisible(true);
+                try {
+                    new MasterTeleMoneyView().setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }
@@ -529,6 +602,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -540,7 +615,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JLabel labelMenuTaiKhoan;
     private javax.swing.JLabel labelMenuThongKe;
     private javax.swing.JLabel labelMenuVayNo;
-    private javax.swing.JLabel labelTiGiaUSDVND;
+    private javax.swing.JLabel labelRefresh;
+    public javax.swing.JLabel labelUSD;
+    public javax.swing.JLabel labelVND;
     private javax.swing.JPanel pnlCards;
     private javax.swing.JPanel pnlChiTieu;
     private javax.swing.JPanel pnlDauTu;
@@ -548,7 +625,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTaiKhoan;
     private javax.swing.JPanel pnlThongKe;
     private javax.swing.JPanel pnlVayNo;
-    private javax.swing.JTable tableDanhMuc;
+    public javax.swing.JTable tableDanhMuc;
     private javax.swing.JTextPane txtUsername;
     // End of variables declaration//GEN-END:variables
 }

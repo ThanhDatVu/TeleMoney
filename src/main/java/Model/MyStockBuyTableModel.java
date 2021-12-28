@@ -18,11 +18,15 @@ public class MyStockBuyTableModel extends DefaultTableModel {
     public static final Object[] TABLE_HEADER = {"Tên", "Số lượng", "Giá mua TB","Giá hiện tại","Biến động 24h", "Giá trị hiện tại","",""};
 
     public static final Object[][] DATA = {
-        {"APPL (Apple)", "100", "24000", "26000","+5","26000000","Mua thêm", "Bán"},};
+       // {"APPL (Apple)", 100, 24000, 26000,+5,26000000,"Mua thêm", "Bán"},
+    };
 
     public MyStockBuyTableModel() {
         super(DATA, TABLE_HEADER);
         
     }
+    
+    
+    
     
 }

@@ -18,7 +18,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author dat26
  */
-public class Main {
+public class Test {
 
     /**
      * @param args the command line arguments
@@ -28,17 +28,19 @@ public class Main {
             // TODO code application logic here
             javax.swing.UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         } catch (UnsupportedLookAndFeelException ex) {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
-        LoginController loginController = new LoginController();
+       // LoginController loginController = new LoginController();
          //NhanvienController nvController = new NhanvienController();
-        
+        MyStockBuyModel myStock = new MyStockBuyModel();
+        myStock.setSymbol("AAPL");
+        System.out.println(myStock.get24hchange());
         // new DangNhapController(viewlogin).setEventLogin();
     }
 

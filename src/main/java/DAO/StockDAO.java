@@ -8,10 +8,18 @@ import Model.MyStockBuyModel;
 import Model.NhanvienModel;
 import Model.NhanvienTableModel;
 import Model.UserModel;
+import com.mysql.cj.result.LocalDateTimeValueFactory;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Vector;
+import java.sql.Timestamp;
+
 
 /**
  *
@@ -32,7 +40,28 @@ public class StockDAO {
             System.out.println(e);
         }
     }
-
+    public ArrayList<MyStockBuyModel> getAll() {
+        String sql ="select * from MYSTOCK";
+        ResultSet rs;
+        ArrayList<MyStockBuyModel> myStockList = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+                MyStockBuyModel myStock = new MyStockBuyModel();
+                myStock.setSymbol(rs.getString("SYMBOL"));
+                myStock.setName(rs.getString("NAME"));
+                myStock.setSoLuong(rs.getInt("SOLUONG"));
+                myStock.setGiaBanDau(rs.getFloat("GIABANDAU"));
+                
+                myStock.setTime(rs.getTimestamp("TIME"));
+                myStock.setSymbol(rs.getString("SYMBOL"));
+                myStockList.add(myStock);
+            }
+        } catch (Exception e) {
+        }
+        return myStockList;
+    }
     public void add(MyStockBuyModel myStock) {
         String sql = "INSERT INTO `mystock` (`symbol`, `name`, `soluong`, `tongbandau`, `giabandau`, `time`) VALUES (?, ?, ?, ?, ?, ?)";;
 
