@@ -25,11 +25,7 @@ public class MyStockBuyTableModel extends DefaultTableModel {
         super(DATA, TABLE_HEADER);
         
     }
-    @Override
-    public boolean isCellEditable(int row, int column) {
-       //all cells false
-       return false;
-    }
+    
     
     
     

@@ -62,6 +62,32 @@ public class StockDAO {
         }
         return myStockList;
     }
+    public MyStockBuyModel getStockBySymbol(String s) {
+        String sql = "select * from mystock where SYMBOL LIKE ? ";
+                        
+        MyStockBuyModel myStock = null;
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setString(1, s );
+            
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                myStock = new MyStockBuyModel();
+                myStock.setSymbol(rs.getString("SYMBOL"));
+                myStock.setName(rs.getString("NAME"));
+                myStock.setSoLuong(rs.getInt("SOLUONG"));
+                myStock.setGiaBanDau(rs.getFloat("GIABANDAU"));
+                
+                myStock.setTime(rs.getTimestamp("TIME"));
+                myStock.setSymbol(rs.getString("SYMBOL"));
+                
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return myStock;
+    }
+    
     public void add(MyStockBuyModel myStock) {
         String sql = "INSERT INTO `mystock` (`symbol`, `name`, `soluong`, `tongbandau`, `giabandau`, `time`) VALUES (?, ?, ?, ?, ?, ?)";;
 

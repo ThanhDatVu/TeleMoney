@@ -7,19 +7,26 @@ package View;
 import javax.swing.table.DefaultTableModel;
 import Controller.LoginController;
 import Controller.StockController;
+import Model.MyStockBuyModel;
 import Model.MyStockBuyTableModel;
 import Model.UserModel;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
+import lib.ButtonColumn;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -42,7 +49,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     ; 
     public MasterTeleMoneyView() throws IOException {
         this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
-        
+
         initComponents();
         setTiGia();
         cardLayout = (CardLayout) (pnlCards.getLayout());
@@ -58,11 +65,13 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
         this.user = user;
         initComponents();
+        this.setTitle("TELEMONEY");
         setUsername();
         setTiGia();
         cardLayout = (CardLayout) (pnlCards.getLayout());
         setLocationRelativeTo(null);
         tableDanhMuc.setModel(stockModel);
+        //setTableButton();
         col = tableDanhMuc.getColumnModel().getColumn(4);
         //define the renderer
         col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
@@ -222,7 +231,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 204, 204));
 
-        tableDanhMuc.setAutoCreateRowSorter(true);
         tableDanhMuc.setToolTipText("");
         jScrollPane1.setViewportView(tableDanhMuc);
 
@@ -665,6 +673,57 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         });
     }
 
+//    public void setTableButton() {
+//        System.out.println("Tao nut jtable");
+//        //Action muaStock
+//        MasterTeleMoneyView thisview = this;
+//        System.out.println(thisview.getTitle());
+//        Action muaThem = new AbstractAction() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                int opt = JOptionPane.showConfirmDialog(thisview, "Bạn có muốn xoá nhân viên này không", "Delete", JOptionPane.YES_NO_CANCEL_OPTION);
+//                if (opt == 0) {
+//                }
+//                JTable table = (JTable) e.getSource();
+//                int modelRow = Integer.valueOf(e.getActionCommand());
+//                System.out.println(modelRow);
+//                MyStockBuyModel stockBuy = new MyStockBuyModel();
+//                stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
+//                stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
+//                stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
+//                MuaStockView muaStockView = new MuaStockView(thisview, stockBuy);
+//                muaStockView.setVisible(true);
+//                //stockDAO.delete(stockBuy);
+//                //((DefaultTableModel) table.getModel()).removeRow(modelRow);
+//
+//            }
+//        };
+//        //Action banStock
+//        Action banStock;
+//        banStock = new AbstractAction() {
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                JTable table = (JTable) e.getSource();
+//                int modelRow = Integer.valueOf(e.getActionCommand());
+//                System.out.println(modelRow);
+//                MyStockBuyModel stockBuy = new MyStockBuyModel();
+//                stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
+//                stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
+//                stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
+//                MuaStockView muaStockView = new MuaStockView(thisview, stockBuy);
+//            }
+//        };
+//
+//        ButtonColumn btnMua = new ButtonColumn(tableDanhMuc, muaThem, 7);
+//
+//        btnMua.setMnemonic(KeyEvent.VK_F1);
+//
+//        btnMua.setToolTipText(
+//                "Mua thêm cổ phiếu");
+//        ButtonColumn btnBan = new ButtonColumn(tableDanhMuc, banStock, 8, Color.BLUE);
+//
+//        btnBan.setMnemonic(KeyEvent.VK_F1);
+//    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnThemStock;

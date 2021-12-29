@@ -43,7 +43,7 @@ public class Test {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
        // LoginController loginController = new LoginController();
-         //NhanvienController nvController = new NhanvienController();
+         NhanvienController nvController = new NhanvienController();
         MyStockBuyModel myStock = new MyStockBuyModel();
         myStock.setSymbol("AAPL");
         System.out.println(myStock.get24hchange());

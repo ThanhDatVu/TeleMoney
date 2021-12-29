@@ -16,6 +16,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 import View.NhanvienView;
 import View.ViewThem;
+import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -40,22 +41,31 @@ public class StockController {
     private UserModel acc;
     private StockDAO stockDAO = null;
     Stock stock;
-    BigDecimal usd = YahooFinance.get("USDVND=X").getQuote().getPrice();
+    BigDecimal usd;
 
-    public StockController(MasterTeleMoneyView master, UserModel acc) throws IOException {
-        this.master = master;
-        this.acc = acc;
-
-        setEventStock();
-        setTableButton();
-        master.setVisible(true);
-        stockDAO = new StockDAO();
-        MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();
-        setDataTable();
+    public StockController(MasterTeleMoneyView master, UserModel acc) {
+        try {
+            System.out.println("Tao controller stock");
+            this.master = master;
+            this.acc = acc;
+            usd = YahooFinance.get("USDVND=X").getQuote().getPrice();
+            setEventStock();
+            setTableButton();
+            master.setVisible(true);
+            stockDAO = new StockDAO();
+            MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();
+            setDataTable();
+            setEventStock();
+            //setTableButton();
+        } catch (IOException ex) {
+            Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void enable() {
+        setEventStock();
         setTableButton();
+        //setTableButton();
 
     }
 
@@ -66,15 +76,15 @@ public class StockController {
         tableModel.setRowCount(0);
         for (int i = 0; i < myStockList.size(); i++) {
             stock = YahooFinance.get(myStockList.get(i).getSymbol());
-            long giaTriHienTai = (long) ((Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong()*100.0))/100.0);
+            long giaTriHienTai = (long) ((Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0);
             tableModel.addRow(new Object[]{
                 myStockList.get(i).getSymbol(),
                 myStockList.get(i).getSoLuong(),
                 myStockList.get(i).getGiaBanDau(),
-                (Math.round(stock.getQuote().getPrice().floatValue()*100.0))/100.0,
+                (Math.round(stock.getQuote().getPrice().floatValue() * 100.0)) / 100.0,
                 myStockList.get(i).get24hchange(),
-                (Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong()*100.0))/100.0,
-                giaTriHienTai - (myStockList.get(i).getSoLuong()*myStockList.get(i).getGiaBanDau()),
+                (Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0,
+                giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau()),
                 "Mua thêm",
                 "Bán"
 
@@ -99,45 +109,8 @@ public class StockController {
 //    }
 
     public void setEventStock() {
+        System.out.println("Tao event");
 
-//        master.addThemListener(new ActionListener() {
-//
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-////                try {
-////                    ThemNhanvienController add = new ThemNhanvienController(master);
-////
-////                } catch (Exception ex) {
-////                }
-//            }
-//        });
-//        master.addRefreshListener(new ActionListener() {
-//
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                try {
-//                    setDataTable();
-//
-//                } catch (Exception ex) {
-//                }
-//            }
-//        });
-        master.labelRefresh.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(final MouseEvent e) {
-                if (e.getClickCount() == 1) {
-                    try {
-                        setDataTable();
-                        master.setSumText();
-                        System.out.println("alo");
-                    } catch (IOException ex) {
-                        Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        });
-    }
-    public void setTableButton() throws NumberFormatException {
         master.tableDanhMuc.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(final MouseEvent e) {
@@ -148,55 +121,86 @@ public class StockController {
                     // Cast to ur Object type
                     // final UrObjctInCell urObjctInCell = (UrObjctInCell) target.getValueAt(row, column);
                     // TODO WHAT U WANT!
-                    Float SoUSD = Float.valueOf(String.valueOf(target.getValueAt(row, column)));
-                    master.labelUSD.setText(SoUSD.toString());
-                    master.labelVND.setText(String.valueOf((usd.multiply(BigDecimal.valueOf(SoUSD)).setScale(0, RoundingMode.HALF_UP))));
+                    if (column < 7 && column > 0) {
+                        Float SoUSD = Float.valueOf(String.valueOf(target.getValueAt(row, column)));
+                        master.labelUSD.setText(SoUSD.toString());
+                        master.labelVND.setText(String.valueOf((usd.multiply(BigDecimal.valueOf(SoUSD)).setScale(0, RoundingMode.HALF_UP))));
+                    }
                 }
             }
         });
-        //Action delete 1 hang
-        MasterTeleMoneyView thisview = master;
-        Action muaThem = new AbstractAction() {
-            public void actionPerformed(ActionEvent e) {
-//                int opt = JOptionPane.showConfirmDialog(master, "Bạn có muốn xoá nhân viên này không", "Delete", JOptionPane.YES_NO_CANCEL_OPTION);
-//                if (opt == 0) {}
-                JTable table = (JTable) e.getSource();
-                int modelRow = Integer.valueOf(e.getActionCommand());
+        master.labelRefresh.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(final MouseEvent e) {
+                if (e.getClickCount() == 1) {
+                    try {
+                        setDataTable();
+                        master.setSumText();
+                        System.out.println("refresh clicked");
+                    } catch (IOException ex) {
+                        Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
+            }
+        });
+        System.out.println("Taoj xong event");
+    }
 
-                MyStockBuyModel stockBuy = new MyStockBuyModel();
-                stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
-                stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
-                stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
-                MuaStockView muaStockView = new MuaStockView(master, stockBuy);
-                muaStockView.setVisible(true);
-                //stockDAO.delete(stockBuy);
-                //((DefaultTableModel) table.getModel()).removeRow(modelRow);
+    public void setTableButton() {
+        System.out.println("Tao nut jtable");
+        //Action muaStock
+        MasterTeleMoneyView thisview = master;
+        System.out.println(thisview.getTitle());
+        Action muaThem = new AbstractAction() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    
+                    JTable table = (JTable) e.getSource();
+                    int modelRow = Integer.valueOf(e.getActionCommand());
+
+                    MyStockBuyModel stockBuy = new MyStockBuyModel();
+                    stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
+                    stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
+                    stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
+                    //System.out.println("alo" + table.getValueAt(modelRow, 3));
+                    MuaStockView muaStockView = new MuaStockView(master, stockBuy);
+                    muaStockView.setVisible(true);
+                    //stockDAO.delete(stockBuy);
+                    //((DefaultTableModel) table.getModel()).removeRow(modelRow);
+                } catch (IOException ex) {
+                    Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
+                }
 
             }
         };
-        //Action sua 1 hang
+        //Action banStock
         Action banStock;
         banStock = new AbstractAction() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                JTable table = (JTable) e.getSource();
-                int modelRow = Integer.valueOf(e.getActionCommand());
-                //((DefaultTableModel) table.getModel()).removeRow(modelRow);
-                MyStockBuyModel stockBuy = new MyStockBuyModel();
-                stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
-                stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
-                stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
-                MuaStockView muaStockView = new MuaStockView(master, stockBuy);
+                try {
+                    JTable table = (JTable) e.getSource();
+                    int modelRow = Integer.valueOf(e.getActionCommand());
+
+                    MyStockBuyModel stockBuy = new MyStockBuyModel();
+                    stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
+                    stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
+                    stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
+                    MuaStockView muaStockView = new MuaStockView(master, stockBuy);
+                } catch (IOException ex) {
+                    Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         };
 
-        ButtonColumn btnMua = new ButtonColumn(thisview.tableDanhMuc, muaThem, 7);
+        ButtonColumn btnMua = new ButtonColumn(master.tableDanhMuc, muaThem, 7);
 
         btnMua.setMnemonic(KeyEvent.VK_D);
 
         btnMua.setToolTipText(
                 "Mua thêm cổ phiếu");
-        ButtonColumn btnBan = new ButtonColumn(thisview.tableDanhMuc, banStock, 8);
+        ButtonColumn btnBan = new ButtonColumn(master.tableDanhMuc, banStock, 8, Color.BLUE);
 
         btnBan.setMnemonic(KeyEvent.VK_D);
     }

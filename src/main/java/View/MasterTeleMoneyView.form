@@ -280,7 +280,6 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tableDanhMuc">
                       <Properties>
-                        <Property name="autoCreateRowSorter" type="boolean" value="true"/>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                       <AuxValues>
