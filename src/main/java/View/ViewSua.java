@@ -109,6 +109,8 @@ public class ViewSua extends javax.swing.JFrame {
 
         noti.setText("alo");
 
+        jSpinner1.setModel(new javax.swing.SpinnerNumberModel(1, 0, 100, 1));
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(

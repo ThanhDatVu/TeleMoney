@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 26, 2021 at 02:32 PM
+-- Generation Time: Dec 29, 2021 at 05:41 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -20,6 +20,64 @@ SET time_zone = "+00:00";
 --
 -- Database: `telemoney`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chi`
+--
+
+CREATE TABLE `chi` (
+  `idchi` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `namechi` varchar(100) NOT NULL,
+  `amountchi` double NOT NULL,
+  `deschi` varchar(100) NOT NULL,
+  `datechi` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chovay`
+--
+
+CREATE TABLE `chovay` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `ten` varchar(100) NOT NULL,
+  `bank` varchar(100) NOT NULL,
+  `tiengoc` double NOT NULL,
+  `laisuat` double NOT NULL,
+  `kyhan` int(11) NOT NULL,
+  `ngaychovay` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='chovay';
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mystock`
+--
+
+CREATE TABLE `mystock` (
+  `symbol` text NOT NULL,
+  `name` text NOT NULL,
+  `soluong` int(65) NOT NULL,
+  `tongbandau` float NOT NULL,
+  `giabandau` float NOT NULL,
+  `time` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mystock`
+--
+
+INSERT INTO `mystock` (`symbol`, `name`, `soluong`, `tongbandau`, `giabandau`, `time`) VALUES
+('AAPL', 'Apple', 100, 20000, 200, '2021-12-28 22:01:30'),
+('BTC-USD', 'Bitcoin', 1, 35000, 35000, '2021-12-28 21:55:16'),
+('COIN', 'Coinbase', 10, 1250, 125, '2021-12-28 22:01:30'),
+('MSFT', 'Microsoft Corporation', 34, 8500, 250, '2021-12-28 22:29:06'),
+('TSLA', 'TESLA', 100, 34000000, 867, '2021-12-28 20:28:01');
 
 -- --------------------------------------------------------
 
@@ -42,7 +100,7 @@ INSERT INTO `nhanvien` (`MANV`, `HOTEN`, `LUONG`) VALUES
 ('AT981723', 'Hutao', '87000132'),
 ('YU987123', 'okokokok', '78000000'),
 ('KJ90879', 'Baka Mitai', '2300000'),
-('TY6', 'HAHA', '80000000');
+('123', 'ajhsg', '-878234');
 
 -- --------------------------------------------------------
 
@@ -565,7 +623,76 @@ INSERT INTO `stock` (`Company`, `Symbol`, `Price`) VALUES
 ('Under Armour Inc. Class A', 'UAA', '20.62'),
 ('Gap Inc.', 'GPS', '17.28'),
 ('Under Armour Inc. Class C', 'UA', '17.61'),
-('News Corporation Class B', 'NWS', '22.75');
+('News Corporation Class B', 'NWS', '22.75'),
+('GOLD (Giá vàng)', 'XAUUS', '1.00'),
+('GOLD (Gia vang)', 'XAUUS', '1293.50');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `stocktrans`
+--
+
+CREATE TABLE `stocktrans` (
+  `id` int(5) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `symbol` varchar(100) NOT NULL,
+  `giamua` double NOT NULL,
+  `soluong` int(11) NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `type` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `thu`
+--
+
+CREATE TABLE `thu` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `namethu` varchar(100) NOT NULL,
+  `amountthu` double NOT NULL,
+  `desthu` varchar(100) NOT NULL,
+  `datethu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tong`
+--
+
+CREATE TABLE `tong` (
+  `uid` int(5) NOT NULL,
+  `sodu` double NOT NULL,
+  `tongtaisan` double NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='tong';
+
+--
+-- Dumping data for table `tong`
+--
+
+INSERT INTO `tong` (`uid`, `sodu`, `tongtaisan`) VALUES
+(1, 600000000, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tragop`
+--
+
+CREATE TABLE `tragop` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `namecongty` varchar(100) NOT NULL,
+  `tongtien` double NOT NULL,
+  `sothang` int(11) NOT NULL,
+  `tienhangthang` double NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -587,15 +714,126 @@ INSERT INTO `user` (`ID`, `USERNAME`, `PASSWORD`) VALUES
 ('1', 'Admin', 'Vuthanhdat'),
 ('2', 'Baka', 'Mitai');
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vay`
+--
+
+CREATE TABLE `vay` (
+  `id` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
+  `ten` varchar(100) NOT NULL,
+  `bank` varchar(100) NOT NULL,
+  `tiengoc` double NOT NULL,
+  `laisuat` double NOT NULL,
+  `kyhan` int(11) NOT NULL,
+  `ngayvay` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='chovay';
+
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `chi`
+--
+ALTER TABLE `chi`
+  ADD PRIMARY KEY (`idchi`);
+
+--
+-- Indexes for table `chovay`
+--
+ALTER TABLE `chovay`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mystock`
+--
+ALTER TABLE `mystock`
+  ADD PRIMARY KEY (`symbol`(65));
+
+--
+-- Indexes for table `stocktrans`
+--
+ALTER TABLE `stocktrans`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `thu`
+--
+ALTER TABLE `thu`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tong`
+--
+ALTER TABLE `tong`
+  ADD PRIMARY KEY (`uid`);
+
+--
+-- Indexes for table `tragop`
+--
+ALTER TABLE `tragop`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- Indexes for table `vay`
+--
+ALTER TABLE `vay`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `chi`
+--
+ALTER TABLE `chi`
+  MODIFY `idchi` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `chovay`
+--
+ALTER TABLE `chovay`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `stocktrans`
+--
+ALTER TABLE `stocktrans`
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `thu`
+--
+ALTER TABLE `thu`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `tong`
+--
+ALTER TABLE `tong`
+  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tragop`
+--
+ALTER TABLE `tragop`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `vay`
+--
+ALTER TABLE `vay`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

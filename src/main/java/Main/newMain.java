@@ -5,7 +5,7 @@
 package Main;
 
 import Controller.LoginController;
-import Controller.NhanvienController;
+import Controller.ThuController;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
 import java.time.LocalDateTime;
@@ -18,7 +18,7 @@ import javax.swing.UnsupportedLookAndFeelException;
  *
  * @author dat26
  */
-public class Main {
+public class newMain {
 
     /**
      * @param args the command line arguments
@@ -36,9 +36,13 @@ public class Main {
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //LoginController loginController = new LoginController();
-         NhanvienController nvController = new NhanvienController();
-        
+//        LoginController loginController = new LoginController();
+         ThuController nvController = new ThuController();
+//        LocalDateTime time;
+//        time = LocalDateTime.now();
+//       // MyStockBuyModel mystock = new MyStockBuyModel("abc", "abc company", 7 , (float) 8.9,time );
+//        StockDAO stockDAO = new StockDAO();
+//        stockDAO.add(mystock);
         // new DangNhapController(viewlogin).setEventLogin();
     }
 

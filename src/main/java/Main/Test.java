@@ -6,10 +6,12 @@ package Main;
 
 import Controller.LoginController;
 import Controller.NhanvienController;
+import Controller.ThuController;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
 import java.io.IOException;
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.Calendar;
 import java.util.logging.Level;
@@ -42,14 +44,21 @@ public class Test {
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(Test.class.getName()).log(Level.SEVERE, null, ex);
         }
-       // LoginController loginController = new LoginController();
-         NhanvienController nvController = new NhanvienController();
-        MyStockBuyModel myStock = new MyStockBuyModel();
-        myStock.setSymbol("AAPL");
-        System.out.println(myStock.get24hchange());
-        System.out.println(get24hchange("AAPL"));
+        // LoginController loginController = new LoginController();
+//        ThuController nvController = new ThuController();
+//        MyStockBuyModel myStock = new MyStockBuyModel();
+//        myStock.setSymbol("AAPL");
+        Timestamp t = new Timestamp(2021, 12, 29, 6, 6, 6, 6);
+        Timestamp t1 = new Timestamp(2021, 11, 25, 6, 6, 6, 6);
+        
+//        myStock.setTime();
+//        System.out.println(myStock.get24hchange());
+//        System.out.println(get24hchange("AAPL"));
+        
+
         // new DangNhapController(viewlogin).setEventLogin();
     }
+
     public static Float get24hchange(String symbol) {
         Float rounded = null;
         try {
@@ -63,13 +72,13 @@ public class Test {
             System.out.println(google.getHistory().get(1));
             System.out.println(google.getHistory().get(1).getAdjClose());
 
-            Float change24h = 10000 * ((google.getHistory().get(1).getAdjClose().floatValue() / google.getHistory().get(0).getAdjClose().floatValue())-1);
+            Float change24h = 10000 * ((google.getHistory().get(1).getAdjClose().floatValue() / google.getHistory().get(0).getAdjClose().floatValue()) - 1);
 //            System.out.println(change24h);
             rounded = (float) Math.round(change24h);
 //            System.out.println(rounded / 100 + "%");
         } catch (IOException ex) {
             Logger.getLogger(MyStockBuyModel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return rounded/100;
+        return rounded / 100;
     }
 }

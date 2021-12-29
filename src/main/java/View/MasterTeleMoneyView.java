@@ -10,6 +10,7 @@ import Controller.StockController;
 import Model.MyStockBuyModel;
 import Model.MyStockBuyTableModel;
 import Model.UserModel;
+import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
@@ -27,6 +28,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import lib.ButtonColumn;
+import org.jfree.chart.ChartPanel;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -44,11 +46,12 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     CardLayout cardLayout;
     TableColumn col;
     StockController stockController;
+    
     Float Usd;
-
-    ; 
+    Float soDuKhaDung,tongTaiSan;
+     
     public MasterTeleMoneyView() throws IOException {
-        this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
+    //    this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
 
         initComponents();
         setTiGia();
@@ -64,6 +67,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public MasterTeleMoneyView(UserModel user) throws IOException {
         this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
         this.user = user;
+        
         initComponents();
         this.setTitle("TELEMONEY");
         setUsername();
@@ -78,7 +82,11 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         stockController = new StockController(this, user);
         stockController.enable();
         setSumText();
+        //add chart
+       
 
+//        pnlThongKe.add(CP, BorderLayout.CENTER);
+//        pnlThongKe.validate();
     }
 
     private void setUsername() {
@@ -128,8 +136,10 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         pnlCards = new javax.swing.JPanel();
         pnlChiTieu = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
+        jButton2 = new javax.swing.JButton();
         pnlVayNo = new javax.swing.JPanel();
         jLabel9 = new javax.swing.JLabel();
+        jButton3 = new javax.swing.JButton();
         pnlDauTu = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -176,13 +186,22 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         jLabel8.setText("QUẢN lý chi tiêu");
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout pnlChiTieuLayout = new javax.swing.GroupLayout(pnlChiTieu);
         pnlChiTieu.setLayout(pnlChiTieuLayout);
         pnlChiTieuLayout.setHorizontalGroup(
             pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlChiTieuLayout.createSequentialGroup()
                 .addGap(268, 268, 268)
-                .addComponent(jLabel8)
+                .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel8))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlChiTieuLayout.setVerticalGroup(
@@ -190,7 +209,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             .addGroup(pnlChiTieuLayout.createSequentialGroup()
                 .addGap(56, 56, 56)
                 .addComponent(jLabel8)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(193, 193, 193)
+                .addComponent(jButton2)
+                .addContainerGap(524, Short.MAX_VALUE))
         );
 
         pnlCards.add(pnlChiTieu, "cardChiTieu");
@@ -199,21 +220,27 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         jLabel9.setText("QUẢN lý vay nợ");
 
+        jButton3.setText("jButton3");
+
         javax.swing.GroupLayout pnlVayNoLayout = new javax.swing.GroupLayout(pnlVayNo);
         pnlVayNo.setLayout(pnlVayNoLayout);
         pnlVayNoLayout.setHorizontalGroup(
             pnlVayNoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlVayNoLayout.createSequentialGroup()
-                .addGap(268, 268, 268)
+                .addGap(85, 85, 85)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(190, 190, 190)
                 .addComponent(jLabel9)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(587, Short.MAX_VALUE))
         );
         pnlVayNoLayout.setVerticalGroup(
             pnlVayNoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlVayNoLayout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addComponent(jLabel9)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(581, Short.MAX_VALUE)
+                .addGroup(pnlVayNoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton3)
+                    .addComponent(jLabel9))
+                .addGap(206, 206, 206))
         );
 
         pnlCards.add(pnlVayNo, "cardVayNo");
@@ -561,7 +588,11 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
     private void labelMenuThongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuThongKeMousePressed
         // TODO add your handling code here:
-        cardLayout.show(pnlCards, "cardThongKe");
+       // cardLayout.show(pnlCards, "cardThongKe");
+       JFreeChartExample chart = new JFreeChartExample("Thống kê", "Chia các danh mục đầu tư");
+        chart.pack();
+        chart.setLocationRelativeTo(null);
+        chart.setVisible(true);
     }//GEN-LAST:event_labelMenuThongKeMousePressed
 
     private void labelMenuTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuTaiKhoanMousePressed
@@ -591,7 +622,13 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
     private void btnThemStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemStockActionPerformed
         // TODO add your handling code here:
+        MuaStockView muaStock = new MuaStockView();
+        muaStock.setVisible(true);
     }//GEN-LAST:event_btnThemStockActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     public void setTiGia() {
         try {
@@ -728,6 +765,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnThemStock;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

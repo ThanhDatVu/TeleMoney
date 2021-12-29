@@ -63,7 +63,7 @@ public class StockDAO {
         return myStockList;
     }
     public MyStockBuyModel getStockBySymbol(String s) {
-        String sql = "select * from mystock where SYMBOL LIKE ? ";
+        String sql = "select * from mystock where SYMBOL LIKE ?";
                         
         MyStockBuyModel myStock = null;
         try {

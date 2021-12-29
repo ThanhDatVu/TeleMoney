@@ -28,7 +28,7 @@ public class MuaStockView extends javax.swing.JFrame {
     float giaNow;
     public MuaStockView() {
         initComponents();
-        
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 

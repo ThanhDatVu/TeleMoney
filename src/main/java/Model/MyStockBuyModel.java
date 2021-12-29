@@ -17,7 +17,7 @@ import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 import yahoofinance.histquotes.Interval;
 import java.sql.Timestamp;
-
+import java.time.Instant;
 
 /**
  *
@@ -39,6 +39,7 @@ public class MyStockBuyModel {
         this.giaBanDau = giaBanDau;
         this.time = time;
         this.tongBanDau = soLuong * giaBanDau;
+
     }
 
     public MyStockBuyModel() {
@@ -58,17 +59,18 @@ public class MyStockBuyModel {
 //            System.out.println(google.getHistory().get(1));
 //            System.out.println(google.getHistory().get(1).getAdjClose());
 
-            Float change24h = 10000 * ((google.getHistory().get(1).getAdjClose().floatValue() / google.getHistory().get(0).getAdjClose().floatValue())-1);
+            Float change24h = 10000 * ((google.getHistory().get(1).getAdjClose().floatValue() / google.getHistory().get(0).getAdjClose().floatValue()) - 1);
 //            System.out.println(change24h);
             rounded = (float) Math.round(change24h);
 //            System.out.println(rounded / 100 + "%");
         } catch (IOException ex) {
             Logger.getLogger(MyStockBuyModel.class.getName()).log(Level.SEVERE, null, ex);
         }
-        return rounded/100;
+        return rounded / 100;
     }
 
     public Timestamp getTime() {
+
         return time;
     }
 
@@ -116,4 +118,10 @@ public class MyStockBuyModel {
         return giaBanDau;
     }
 
+    public int getSoNgay() {
+        int diff = 0;
+        System.out.println(this.time.toInstant());
+        Timestamp now = new Timestamp(System.currentTimeMillis());
+        return diff;
+    }
 }
