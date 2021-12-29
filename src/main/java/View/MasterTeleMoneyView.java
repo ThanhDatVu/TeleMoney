@@ -4,6 +4,7 @@
  */
 package View;
 
+import javax.swing.table.DefaultTableModel;
 import Controller.LoginController;
 import Controller.StockController;
 import Model.MyStockBuyTableModel;
@@ -31,34 +32,17 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     /**
      * Creates new form TabbedPane
      */
-    
     MyStockBuyTableModel stockModel = new MyStockBuyTableModel();
     UserModel user;
     CardLayout cardLayout;
     TableColumn col;
     StockController stockController;
-    Float Usd;; 
+    Float Usd;
+
+    ; 
     public MasterTeleMoneyView() throws IOException {
         this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
-        tableDanhMuc = new JTable(){
-
-            //Implement table cell tool tips.           
-            public String getToolTipText(MouseEvent e) {
-                String tip = null;
-                java.awt.Point p = e.getPoint();
-                int rowIndex = rowAtPoint(p);
-                int colIndex = columnAtPoint(p);
-
-                try {
-                    Float value = ((int) getValueAt(rowIndex, colIndex))*Usd;
-                    tip = value.toString();
-                } catch (RuntimeException e1) {
-                    //catch null pointer exception if mouse is over an empty line
-                }
-
-                return tip;
-            }
-        };
+        
         initComponents();
         setTiGia();
         cardLayout = (CardLayout) (pnlCards.getLayout());
@@ -67,7 +51,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         col = tableDanhMuc.getColumnModel().getColumn(2);
         //define the renderer
         col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
-        
+
     }
 
     public MasterTeleMoneyView(UserModel user) throws IOException {
@@ -84,13 +68,14 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
         stockController = new StockController(this, user);
         stockController.enable();
-        
+        setSumText();
+
     }
 
     private void setUsername() {
         txtUsername.setText(user.getUsername());
     }
-     
+
     class MyRenderer extends DefaultTableCellRenderer {
 
         Color red, green;
@@ -105,12 +90,12 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             Component cell = super.getTableCellRendererComponent(table, value,
                     isSelected, hasFocus, row, column);
             //System.out.println(value);
-            if(value == null){
-            return cell;
+            if (value == null) {
+                return cell;
             }
             Float check = Float.parseFloat(value.toString());
             if (check >= 0) {
-                
+
                 cell.setForeground(green);
             } else {
                 cell.setForeground(red);
@@ -119,6 +104,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             return cell;
         }
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -146,6 +132,13 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelVND = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         labelRefresh = new javax.swing.JLabel();
+        btnThemStock = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        labelTotalStock = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        labelTotalReturn = new javax.swing.JLabel();
+        labelTotalStockVND = new javax.swing.JLabel();
+        labelTotalReturnVND = new javax.swing.JLabel();
         pnlThongKe = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         pnlTaiKhoan = new javax.swing.JPanel();
@@ -229,6 +222,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 204, 204));
 
+        tableDanhMuc.setAutoCreateRowSorter(true);
         tableDanhMuc.setToolTipText("");
         jScrollPane1.setViewportView(tableDanhMuc);
 
@@ -252,6 +246,31 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 labelRefreshMousePressed(evt);
             }
         });
+
+        btnThemStock.setText("Thêm danh mục đầu tư");
+        btnThemStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemStockActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel5.setText("Tổng giá trị các danh mục : ");
+
+        labelTotalStock.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        labelTotalStock.setText("xUSD");
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel14.setText("Tổng lợi nhuận                  :");
+
+        labelTotalReturn.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        labelTotalReturn.setText("xUSD");
+
+        labelTotalStockVND.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        labelTotalStockVND.setText("xVND");
+
+        labelTotalReturnVND.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        labelTotalReturnVND.setText("xVND");
 
         javax.swing.GroupLayout pnlDauTuLayout = new javax.swing.GroupLayout(pnlDauTu);
         pnlDauTu.setLayout(pnlDauTuLayout);
@@ -279,6 +298,22 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel6)
                         .addGap(22, 22, 22))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDauTuLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(btnThemStock, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(33, 33, 33)
+                .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(labelTotalStock)
+                    .addComponent(labelTotalReturn))
+                .addGap(87, 87, 87)
+                .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(labelTotalStockVND)
+                    .addComponent(labelTotalReturnVND))
+                .addGap(90, 90, 90))
         );
         pnlDauTuLayout.setVerticalGroup(
             pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -295,9 +330,20 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(labelVND)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(119, 119, 119))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnThemStock)
+                    .addComponent(jLabel5)
+                    .addComponent(labelTotalStock)
+                    .addComponent(labelTotalStockVND))
+                .addGap(18, 18, 18)
+                .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelTotalReturnVND)
+                    .addComponent(labelTotalReturn)
+                    .addComponent(jLabel14))
+                .addGap(230, 230, 230))
         );
 
         pnlCards.add(pnlDauTu, "cardDauTu");
@@ -534,10 +580,12 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 //            
 //        }
     }//GEN-LAST:event_labelRefreshMousePressed
-    public void addRefreshListener(ActionListener log) { 
-        labelRefresh.addMouseListener(log);
-    }
-    public void setTiGia(){
+
+    private void btnThemStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemStockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemStockActionPerformed
+
+    public void setTiGia() {
         try {
             Stock stock = YahooFinance.get("USDVND=X");
             labelVND.setText(String.valueOf(stock.getQuote().getPrice().floatValue()));
@@ -546,16 +594,37 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-        
-    
     }
-    
 
-   
+    public void setSumText() {
+//        double  total = 0, totalReturn = 0;
+//        int i = 0;
+//        int j = tableDanhMuc.getRowCount();
+//        for (i; i < j; i++) {
+//
+//            double Amount =  tableDanhMuc.getValueAt(i, 5);
+//            total= Amount + total;
+//            double returnAmount =  tableDanhMuc.getValueAt(i, 6);
+//            totalReturn = returnAmount + totalReturn;
+//
+//        }
+        double total = 0, totalReturn = 0;
+        int prow = 5;
 
-   
+        System.out.println(tableDanhMuc.getValueAt(0, prow).toString());
+        for (int i = 0; i <= tableDanhMuc.getRowCount() - 1; i++) {
+            total = total + Double.parseDouble(tableDanhMuc.getValueAt(i, 5).toString());
+            totalReturn = totalReturn + Double.parseDouble(tableDanhMuc.getValueAt(i, 6).toString());
 
-    
+        }
+        System.out.println(total);
+        System.out.println(totalReturn);
+        labelTotalStock.setText(String.valueOf(Math.round(total)) + " USD");
+        labelTotalReturn.setText(String.valueOf(Math.round(totalReturn)) + " USD");
+        labelTotalStockVND.setText("( " + String.valueOf(Math.round(total * Usd)) + " VND)");
+        labelTotalReturnVND.setText("( " + String.valueOf(Math.round(totalReturn * Usd)) + " VND)");
+    }
+
     /**
      * @param args the command line arguments
      */
@@ -598,14 +667,17 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangXuat;
+    private javax.swing.JButton btnThemStock;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -619,6 +691,10 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JLabel labelMenuThongKe;
     private javax.swing.JLabel labelMenuVayNo;
     public javax.swing.JLabel labelRefresh;
+    private javax.swing.JLabel labelTotalReturn;
+    private javax.swing.JLabel labelTotalReturnVND;
+    private javax.swing.JLabel labelTotalStock;
+    private javax.swing.JLabel labelTotalStockVND;
     public javax.swing.JLabel labelUSD;
     public javax.swing.JLabel labelVND;
     private javax.swing.JPanel pnlCards;

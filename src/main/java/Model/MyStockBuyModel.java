@@ -50,7 +50,7 @@ public class MyStockBuyModel {
         try {
             Calendar from = Calendar.getInstance();
             Calendar to = Calendar.getInstance();
-            from.add(Calendar.DAY_OF_WEEK, -1);
+            from.add(Calendar.DAY_OF_WEEK, -2);
             Stock google = YahooFinance.get(symbol, from, to, Interval.DAILY);
             BigDecimal price = google.getQuote().getPrice();
 //            System.out.println(google.getHistory().get(0));

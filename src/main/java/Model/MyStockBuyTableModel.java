@@ -15,7 +15,7 @@ import lib.ButtonColumn;
 @SuppressWarnings("serial")
 public class MyStockBuyTableModel extends DefaultTableModel {
 
-    public static final Object[] TABLE_HEADER = {"Tên", "Số lượng", "Giá mua TB","Giá hiện tại","Biến động 24h", "Giá trị hiện tại","",""};
+    public static final Object[] TABLE_HEADER = {"Tên", "Số lượng", "Giá mua TB ($)","Giá hiện tại ($)","Biến động 24h", "Giá trị hiện tại ($)","Lợi nhuận ($)","",""};
 
     public static final Object[][] DATA = {
        // {"APPL (Apple)", 100, 24000, 26000,+5,26000000,"Mua thêm", "Bán"},
@@ -24,6 +24,11 @@ public class MyStockBuyTableModel extends DefaultTableModel {
     public MyStockBuyTableModel() {
         super(DATA, TABLE_HEADER);
         
+    }
+    @Override
+    public boolean isCellEditable(int row, int column) {
+       //all cells false
+       return false;
     }
     
     

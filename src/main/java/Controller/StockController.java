@@ -66,6 +66,7 @@ public class StockController {
         tableModel.setRowCount(0);
         for (int i = 0; i < myStockList.size(); i++) {
             stock = YahooFinance.get(myStockList.get(i).getSymbol());
+            long giaTriHienTai = (long) ((Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong()*100.0))/100.0);
             tableModel.addRow(new Object[]{
                 myStockList.get(i).getSymbol(),
                 myStockList.get(i).getSoLuong(),
@@ -73,6 +74,7 @@ public class StockController {
                 (Math.round(stock.getQuote().getPrice().floatValue()*100.0))/100.0,
                 myStockList.get(i).get24hchange(),
                 (Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong()*100.0))/100.0,
+                giaTriHienTai - (myStockList.get(i).getSoLuong()*myStockList.get(i).getGiaBanDau()),
                 "Mua thêm",
                 "Bán"
 
@@ -126,6 +128,7 @@ public class StockController {
                 if (e.getClickCount() == 1) {
                     try {
                         setDataTable();
+                        master.setSumText();
                         System.out.println("alo");
                     } catch (IOException ex) {
                         Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
@@ -187,13 +190,13 @@ public class StockController {
             }
         };
 
-        ButtonColumn btnMua = new ButtonColumn(thisview.tableDanhMuc, muaThem, 6);
+        ButtonColumn btnMua = new ButtonColumn(thisview.tableDanhMuc, muaThem, 7);
 
         btnMua.setMnemonic(KeyEvent.VK_D);
 
         btnMua.setToolTipText(
                 "Mua thêm cổ phiếu");
-        ButtonColumn btnBan = new ButtonColumn(thisview.tableDanhMuc, banStock, 7);
+        ButtonColumn btnBan = new ButtonColumn(thisview.tableDanhMuc, banStock, 8);
 
         btnBan.setMnemonic(KeyEvent.VK_D);
     }
