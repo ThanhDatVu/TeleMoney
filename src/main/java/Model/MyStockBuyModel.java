@@ -124,4 +124,10 @@ public class MyStockBuyModel {
         Timestamp now = new Timestamp(System.currentTimeMillis());
         return diff;
     }
+
+    @Override
+    public String toString() {
+        return "MyStockBuyModel{" + "symbol=" + symbol + ", name=" + name + ", soLuong=" + soLuong + ", tongBanDau=" + tongBanDau + ", giaBanDau=" + giaBanDau + ", time=" + time + '}';
+    }
+    
 }

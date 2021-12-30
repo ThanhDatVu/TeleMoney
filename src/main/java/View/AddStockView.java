@@ -26,7 +26,7 @@ public class AddStockView extends javax.swing.JFrame {
     /**
      * Creates new form ViewSua
      */
-    MasterTeleMoneyView owner;
+    public MasterTeleMoneyView owner;
     MyStockBuyModel myStock;
     StockDAO stockDAO;
     float giaNow;
@@ -196,7 +196,7 @@ public class AddStockView extends javax.swing.JFrame {
                         .addGap(46, 46, 46)
                         .addComponent(txtVND, javax.swing.GroupLayout.DEFAULT_SIZE, 153, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(51, 51, 51)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)
@@ -204,7 +204,7 @@ public class AddStockView extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jLabel8))
                         .addGap(56, 56, 56)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textGiaNow, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                             .addComponent(textGiaMuaTB, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                             .addComponent(textSoLuong, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
@@ -394,9 +394,5 @@ public class AddStockView extends javax.swing.JFrame {
 
     }
 
-    public void setSoDu(String usd, String vnd) {
-        txtUSD.setText(usd + "USD");
-        txtVND.setText(vnd + "VND");
-        
-    }
+   
 }

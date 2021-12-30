@@ -93,6 +93,15 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         txtUsername.setText(user.getUsername());
     }
 
+    public void refreshTabDauTu() {
+        try {
+            setSumText();
+            stockController.setDataTable();
+        } catch (IOException ex) {
+            Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
     class MyRenderer extends DefaultTableCellRenderer {
 
         Color red, green;
@@ -714,7 +723,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             }
         });
     }
-
+    
 //    public void setTableButton() {
 //        System.out.println("Tao nut jtable");
 //        //Action muaStock

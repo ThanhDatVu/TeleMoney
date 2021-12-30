@@ -8,6 +8,7 @@ package Controller;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
 import Model.MyStockBuyTableModel;
+import Model.NhanvienModel;
 import Model.UserModel;
 import View.AddStockView;
 import View.MasterTeleMoneyView;
@@ -25,6 +26,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.sql.Timestamp;
+import java.time.Instant;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -96,16 +99,16 @@ public class AddStockController {
     public void setData() {
         BigDecimal bigVND, bigUSD;
         bigVND = new BigDecimal(String.valueOf(soDu)).setScale(1);
-        master.txtTongMuaVND.setText((bigVND.toString()));
+        master.txtVND.setText((bigVND.toString()) + " VND");
         bigUSD = new BigDecimal(String.valueOf(soDu / usd.doubleValue())).setScale(2, BigDecimal.ROUND_HALF_UP);
-        master.txtTongMuaUSD.setText(bigUSD.toString());
-        master.setSoDu(bigVND.toString(), bigUSD.toString());
+        master.txtUSD.setText(bigUSD.toString() + " USD");
+      
 
         for (int i = 0; i < stockList.size(); i++) {
 //            stock = YahooFinance.get(stockList.get(i).getSymbol());
 //            long giaTriHienTai = (long) ((Math.round(stock.getQuote().getPrice().floatValue() * stockList.get(i).getSoLuong() * 100.0)) / 100.0);
             master.comboStock.addItem(stockList.get(i).getSymbol() + " - " + stockList.get(i).getName());
-
+            
         }
 
     }
@@ -169,7 +172,7 @@ public class AddStockController {
             public void warn() {
                 double giaMuaTB;
                 double soLuong;
-                if (master.textSoLuong.getText() == null && master.textGiaMuaTB.getText() == null) {
+                if (master.textSoLuong.getText() == null || master.textGiaMuaTB.getText() == null) {
                     giaMuaTB = 0;
                     soLuong = 0;
                 } else {
@@ -237,12 +240,25 @@ public class AddStockController {
                 new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 double tongMuaVND = Double.parseDouble(master.txtTongMuaVND.getText());
                 if (tongMuaVND > soDu) {
                     JOptionPane.showMessageDialog(null, "Vượt quá số dư khả dụng");
                 } else {
-                    
+                    int opt = JOptionPane.showConfirmDialog(master, "Xác nhận mua " + master.textSoLuong.getText() + " "
+                            + master.comboStock.getSelectedItem().toString() + " với tổng giá trị "
+                            + master.txtTongMuaVND.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_CANCEL_OPTION);
+                    if (opt == 0) {
+                        System.out.println(myStock.toString());
+                        myStock.setSoLuong(Integer.parseInt(master.textSoLuong.getText()));
+                        myStock.setGiaBanDau(Float.parseFloat(master.textGiaMuaTB.getText()));
+                        myStock.setTongBanDau(Float.parseFloat(master.txtTongMuaUSD.getText()));
+                        Timestamp time = new Timestamp(System.currentTimeMillis());
+                        myStock.setTime(time);
+                        stockDAO.add(myStock);
+                        master.owner.refreshTabDauTu();
+                        master.dispose();
+                    }
                 }
             }
         }
