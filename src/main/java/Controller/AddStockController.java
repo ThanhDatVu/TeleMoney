@@ -146,7 +146,7 @@ public class AddStockController {
                     master.textGiaMuaTB.setText(giaTriHienTai.toString());
                     master.textGiaNow.setEditable(false);
 
-                } catch (IOException ex) {
+                }  catch (IOException ex) {
                     Logger.getLogger(AddStockController.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
@@ -169,7 +169,7 @@ public class AddStockController {
                 warn();
             }
 
-            public void warn() {
+            public void warn() throws NumberFormatException {
                 double giaMuaTB;
                 double soLuong;
                 if (master.textSoLuong.getText() == null || master.textGiaMuaTB.getText() == null) {
@@ -209,7 +209,7 @@ public class AddStockController {
                 warn();
             }
 
-            public void warn() {
+            public void warn() throws NumberFormatException {
                 double giaMuaTB;
                 double soLuong;
                 if (master.textSoLuong.getText() == null && master.textGiaMuaTB.getText() == null) {
@@ -219,7 +219,7 @@ public class AddStockController {
 
                     soLuong = Double.parseDouble(master.textSoLuong.getText());
                     giaMuaTB = Double.parseDouble(master.textGiaMuaTB.getText());
-                }
+                
                 if (soLuong > -1 && giaMuaTB > -1) {
                     master.txtTongMuaUSD.setEditable(true);
                     master.txtTongMuaVND.setEditable(true);
@@ -230,6 +230,8 @@ public class AddStockController {
 
                     master.txtTongMuaUSD.setEditable(false);
                     master.txtTongMuaVND.setEditable(false);
+                }
+                
                 }
 
             }
