@@ -10,15 +10,25 @@ package Model;
  */
 public class UserModel {
 
+    int id;
     String username;
     String password;
 
     public UserModel() {
     }
 
-    public UserModel(String username, String password) {
+    public UserModel(int id, String username, String password) {
+        this.id = id;
         this.username = username;
         this.password = password;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public void setUsername(String username) {
@@ -32,7 +42,7 @@ public class UserModel {
     public String getUsername() {
         return username;
     }
-    
+
     public String getPassword() {
         return password;
     }

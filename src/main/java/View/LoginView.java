@@ -23,13 +23,11 @@ public class LoginView extends javax.swing.JFrame {
     /**
      * Creates new form Home17
      */
-    public LoginView(){
+    public LoginView() {
 
         initComponents();
         this.setLocationRelativeTo(null);
-        
-        
-        
+
     }
 
     /**
@@ -277,12 +275,8 @@ public class LoginView extends javax.swing.JFrame {
         //put your sql/your statements here to check for password and email if correct
         //then
         //also validate -
-        
-        
-        // lets add timeout
-        
-        
 
+        // lets add timeout
 
     }//GEN-LAST:event_btn_loginActionPerformed
 
@@ -377,13 +371,15 @@ public class LoginView extends javax.swing.JFrame {
     private javax.swing.JPasswordField txt_pwd;
     // End of variables declaration//GEN-END:variables
 
-    
-
     public void addLoginListener(ActionListener actionListener) {
         btn_login.addActionListener(actionListener);
     }
-    public UserModel getUser(){
-        return new UserModel(txt_email.getText(),String.copyValueOf(txt_pwd.getPassword()));
-    
+
+    public UserModel getUser() {
+        UserModel user = new UserModel();
+
+        user.setUsername(txt_email.getText());
+        user.setPassword(String.copyValueOf(txt_pwd.getPassword()));
+        return user;
     }
 }

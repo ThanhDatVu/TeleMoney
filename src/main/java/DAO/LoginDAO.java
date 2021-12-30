@@ -44,6 +44,7 @@ public class LoginDAO {
                 user = new UserModel();
                 user.setUsername(rs.getString("USERNAME"));
                 user.setPassword(rs.getString("PASSWORD"));
+                user.setId(rs.getInt("ID"));
                 
             }
         } catch (Exception e) {

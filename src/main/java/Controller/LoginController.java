@@ -71,7 +71,7 @@ public class LoginController {
                             return;
 
                         }else{
-                            MasterTeleMoneyView master = new MasterTeleMoneyView(user);
+                            MasterTeleMoneyView master = new MasterTeleMoneyView(check);
                             master.setVisible(true);
                             loginView.dispose();
                         }

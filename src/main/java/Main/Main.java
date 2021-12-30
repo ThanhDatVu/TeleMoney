@@ -36,8 +36,8 @@ public class Main {
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-        //LoginController loginController = new LoginController();
-         NhanvienController nvController = new NhanvienController();
+        LoginController loginController = new LoginController();
+//         NhanvienController nvController = new NhanvienController();
         
         // new DangNhapController(viewlogin).setEventLogin();
     }

@@ -83,7 +83,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         stockController.enable();
         setSumText();
         //add chart
-       
+        System.out.println("user ID "+user.getId());
 
 //        pnlThongKe.add(CP, BorderLayout.CENTER);
 //        pnlThongKe.validate();
@@ -535,10 +535,10 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                                 .addGap(32, 32, 32))
                             .addComponent(labelMenuTaiKhoan, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)))))
             .addComponent(labelMenuVayNo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(labelMenuChiTieu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(pnlLeftNavLayout.createSequentialGroup()
                 .addComponent(labelMenuThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addComponent(labelMenuChiTieu, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlLeftNavLayout.setVerticalGroup(
             pnlLeftNavLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -555,7 +555,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addComponent(labelMenuDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelMenuThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 152, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 314, Short.MAX_VALUE)
                 .addComponent(labelMenuTaiKhoan)
                 .addGap(43, 43, 43))
         );
@@ -621,9 +621,14 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     }//GEN-LAST:event_labelRefreshMousePressed
 
     private void btnThemStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemStockActionPerformed
-        // TODO add your handling code here:
-        MuaStockView muaStock = new MuaStockView();
-        muaStock.setVisible(true);
+        try {
+            // TODO add your handling code here:
+            AddStockView addStock = new AddStockView(this, user);
+            addStock.setVisible(true);
+        } catch (IOException ex) {
+            Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_btnThemStockActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
