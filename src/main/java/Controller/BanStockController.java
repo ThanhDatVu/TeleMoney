@@ -8,7 +8,8 @@ package Controller;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
 import Model.UserModel;
-import View.MuaStockView;
+import View.MasterTeleMoneyView;
+import View.BanStockView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -25,7 +26,7 @@ import yahoofinance.YahooFinance;
 
 public class BanStockController {
 
-    MuaStockView muaStockView;
+    BanStockView banStockView;
     UserModel acc;
     StockDAO stockDAO = null;
     MyStockBuyModel myStock;
@@ -34,16 +35,16 @@ public class BanStockController {
     ArrayList<MyStockBuyModel> stockList = new ArrayList<>();
     double soDu;
 
-    public BanStockController(MuaStockView master, UserModel acc) {
+    public BanStockController(BanStockView master, UserModel acc) {
         stockDAO = new StockDAO();
-        this.muaStockView = master;
+        this.banStockView = master;
         this.acc = acc;
         soDu = stockDAO.getSoDu(acc);
         stockList = stockDAO.getAllStockSymbol();
         try {
             System.out.println("Tao controller stock");
             usd = YahooFinance.get("USDVND=X").getQuote().getPrice();
-            setEventMuaStock();
+            setEventBanStock();
             master.setVisible(true);
             setData();
             //setTableButton();
@@ -53,27 +54,31 @@ public class BanStockController {
 
     }
 
-    public BanStockController(MuaStockView master, MyStockBuyModel myStock, UserModel acc) {
+    public BanStockController(BanStockView master, MyStockBuyModel myStock, UserModel acc) {
         stockDAO = new StockDAO();
         this.myStock = myStock;
-        this.muaStockView = master;
+        this.banStockView = master;
         this.acc = acc;
         soDu = stockDAO.getSoDu(acc);
         stockList = stockDAO.getAllStockSymbol();
         try {
             System.out.println("Tao controller stock");
             usd = YahooFinance.get("USDVND=X").getQuote().getPrice();
-            setEventMuaStock();
+            setEventBanStock();
             master.setVisible(true);
             setData();
             //setTableButton();
         } catch (IOException ex) {
             Logger.getLogger(BanStockController.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    public BanStockController(MasterTeleMoneyView master, MyStockBuyModel myStock, UserModel acc) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     public void enable() {
-        setEventMuaStock();
+        setEventBanStock();
 
         //setTableButton();
     }
@@ -82,17 +87,19 @@ public class BanStockController {
         try {
             BigDecimal bigVND, bigUSD;
             bigVND = new BigDecimal(String.valueOf(soDu)).setScale(1);
-            muaStockView.txtVND.setText((bigVND.toString()) + " VND");
+            banStockView.txtVND.setText((bigVND.toString()) + " VND");
             bigUSD = new BigDecimal(String.valueOf(soDu / usd.doubleValue())).setScale(2, BigDecimal.ROUND_HALF_UP);
-            muaStockView.txtUSD.setText(bigUSD.toString() + " USD");
-            muaStockView.txtSymbol.setText(myStock.getSymbol());
+            banStockView.txtUSD.setText(bigUSD.toString() + " USD");
+            banStockView.txtSymbol.setText(myStock.getSymbol());
+            banStockView.textSoLuongBanDau.setText(String.valueOf(myStock.getSoLuong()));
             stock = YahooFinance.get(myStock.getSymbol());
             BigDecimal giaTriHienTai = stock.getQuote().getPrice();
-            muaStockView.textGiaNow.setText(giaTriHienTai.toString());
-            muaStockView.textGiaNow.setEditable(false);
-            muaStockView.txtSymbol.setEditable(false);
+            banStockView.textGiaNow.setText(giaTriHienTai.toString());
             
-            muaStockView.textGiaMuaTB.setText(giaTriHienTai.toString());
+            banStockView.textGiaNow.setEditable(false);
+            banStockView.txtSymbol.setEditable(false);
+            
+            banStockView.textGiaBanTB.setText(giaTriHienTai.toString());
         } catch (IOException ex) {
             Logger.getLogger(BanStockController.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -113,8 +120,8 @@ public class BanStockController {
 //    
 //    }
 
-    public void setEventMuaStock() {
-        muaStockView.textGiaMuaTB.getDocument().addDocumentListener(new DocumentListener() {
+    public void setEventBanStock() {
+        banStockView.textGiaBanTB.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void changedUpdate(DocumentEvent e) {
                 warn();
@@ -131,30 +138,30 @@ public class BanStockController {
             }
 
             public void warn() throws NumberFormatException {
-                double giaMuaTB;
+                double giaBanTB;
                 double soLuong;
-                if (muaStockView.textSoLuong.getText() == null || muaStockView.textGiaMuaTB.getText() == null) {
-                    giaMuaTB = 0;
+                if (banStockView.textSoLuongBanRa.getText() == null || banStockView.textGiaBanTB.getText() == null) {
+                    giaBanTB = 0;
                     soLuong = 0;
                 } else {
 
-                    soLuong = Double.parseDouble(muaStockView.textSoLuong.getText());
-                    giaMuaTB = Double.parseDouble(muaStockView.textGiaMuaTB.getText());
+                    soLuong = Double.parseDouble(banStockView.textSoLuongBanRa.getText());
+                    giaBanTB = Double.parseDouble(banStockView.textGiaBanTB.getText());
                 }
-                if (soLuong > -1 && giaMuaTB > -1) {
-                    muaStockView.txtTongMuaUSD.setEditable(true);
-                    muaStockView.txtTongMuaVND.setEditable(true);
-                    BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong)).setScale(2);
-                    muaStockView.txtTongMuaUSD.setText(String.valueOf(bigDecimal.toString()));
-                    bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong * usd.doubleValue())).setScale(2);
-                    muaStockView.txtTongMuaVND.setText(bigDecimal.toString());
+                if (soLuong > -1 && giaBanTB > -1) {
+                    banStockView.txtTongBanUSD.setEditable(true);
+                    banStockView.txtTongBanVND.setEditable(true);
+                    BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaBanTB * soLuong)).setScale(2);
+                    banStockView.txtTongBanUSD.setText(String.valueOf(bigDecimal.toString()));
+                    bigDecimal = new BigDecimal(String.valueOf(giaBanTB * soLuong * usd.doubleValue())).setScale(2);
+                    banStockView.txtTongBanVND.setText(bigDecimal.toString());
 
-                    muaStockView.txtTongMuaUSD.setEditable(false);
-                    muaStockView.txtTongMuaVND.setEditable(false);
+                    banStockView.txtTongBanUSD.setEditable(false);
+                    banStockView.txtTongBanVND.setEditable(false);
                 }
             }
         });
-        muaStockView.textSoLuong.getDocument().addDocumentListener(new DocumentListener() {
+        banStockView.textSoLuongBanRa.getDocument().addDocumentListener(new DocumentListener() {
             @Override
             public void changedUpdate(DocumentEvent e) {
                 warn();
@@ -171,26 +178,26 @@ public class BanStockController {
             }
 
             public void warn() throws NumberFormatException {
-                double giaMuaTB;
+                double giaBanTB;
                 double soLuong;
-                if (muaStockView.textSoLuong.getText() == null && muaStockView.textGiaMuaTB.getText() == null) {
-                    giaMuaTB = 0;
+                if (banStockView.textSoLuongBanRa.getText() == null && banStockView.textGiaBanTB.getText() == null) {
+                    giaBanTB = 0;
                     soLuong = 0;
                 } else {
 
-                    soLuong = Double.parseDouble(muaStockView.textSoLuong.getText());
-                    giaMuaTB = Double.parseDouble(muaStockView.textGiaMuaTB.getText());
+                    soLuong = Double.parseDouble(banStockView.textSoLuongBanRa.getText());
+                    giaBanTB = Double.parseDouble(banStockView.textGiaBanTB.getText());
 
-                    if (soLuong > -1 && giaMuaTB > -1) {
-                        muaStockView.txtTongMuaUSD.setEditable(true);
-                        muaStockView.txtTongMuaVND.setEditable(true);
-                        BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong)).setScale(2);
-                        muaStockView.txtTongMuaUSD.setText(String.valueOf(bigDecimal.toString()));
-                        bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong * usd.doubleValue())).setScale(2);
-                        muaStockView.txtTongMuaVND.setText(bigDecimal.toString());
+                    if (soLuong > -1 && giaBanTB > -1) {
+                        banStockView.txtTongBanUSD.setEditable(true);
+                        banStockView.txtTongBanVND.setEditable(true);
+                        BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaBanTB * soLuong)).setScale(2);
+                        banStockView.txtTongBanUSD.setText(String.valueOf(bigDecimal.toString()));
+                        bigDecimal = new BigDecimal(String.valueOf(giaBanTB * soLuong * usd.doubleValue())).setScale(2);
+                        banStockView.txtTongBanVND.setText(bigDecimal.toString());
 
-                        muaStockView.txtTongMuaUSD.setEditable(false);
-                        muaStockView.txtTongMuaVND.setEditable(false);
+                        banStockView.txtTongBanUSD.setEditable(false);
+                        banStockView.txtTongBanVND.setEditable(false);
                     }
 
                 }
@@ -199,17 +206,17 @@ public class BanStockController {
         }
         );
 
-        muaStockView.btnThemStock.addActionListener(new ActionListener() {
+        banStockView.btnThemStock.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                double tongMuaVND = Double.parseDouble(muaStockView.txtTongMuaVND.getText());
-                if (tongMuaVND > soDu) {
-                    JOptionPane.showMessageDialog(null, "Vượt quá số dư khả dụng");
+                
+                double tongBanVND = Double.parseDouble(banStockView.txtTongBanVND.getText());
+                if (Integer.parseInt(banStockView.textSoLuongBanRa.getText()) > myStock.getSoLuong()) {
+                    JOptionPane.showMessageDialog(null, "Vượt quá số lượng hiện có");
                 } else {
-                    int opt = JOptionPane.showConfirmDialog(muaStockView, "Xác nhận mua " + muaStockView.textSoLuong.getText() + " "
-                            + muaStockView.txtSymbol.getText() + " với tổng giá trị "
-                            + muaStockView.txtTongMuaVND.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_CANCEL_OPTION);
+                    int opt = JOptionPane.showConfirmDialog(banStockView, "Xác nhận ban " + banStockView.textSoLuongBanRa.getText() + " "
+                            + banStockView.txtSymbol.getText() + " với tổng giá trị "
+                            + banStockView.txtTongBanVND.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_CANCEL_OPTION);
                     if (opt == 0) {
                         float giaCuoi=0;
                         float giaMoi, giaCu;
@@ -218,23 +225,23 @@ public class BanStockController {
                         soCu = myStock.getSoLuong();
                         System.out.println("myStock cu:  " + myStock.toString());
                         MyStockBuyModel myTrans = myStock;
-                        myTrans.setSoLuong(Integer.parseInt(muaStockView.textSoLuong.getText()));
-                        myTrans.setGiaBanDau(Float.parseFloat(muaStockView.textGiaMuaTB.getText()));
-                        myTrans.setTongBanDau(Float.parseFloat(muaStockView.txtTongMuaUSD.getText()));
+                        myTrans.setSoLuong(Integer.parseInt(banStockView.textSoLuongBanRa.getText()));
+                        myTrans.setGiaBanDau(Float.parseFloat(banStockView.textGiaBanTB.getText()));
+                        myTrans.setTongBanDau(Float.parseFloat(banStockView.txtTongBanUSD.getText()));
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         myTrans.setTime(time);
                         System.out.println("trans "+ myTrans.toString());
-                        stockDAO.addTrans(myTrans, acc, "mua");
+                        stockDAO.addTrans(myTrans, acc, "ban");
                         giaMoi = myTrans.getGiaBanDau();
                         soMoi = myTrans.getSoLuong();
-                        giaCuoi = (soCu*giaCu+soMoi*giaMoi)/(soCu+soMoi);
+                        giaCuoi = giaCu;
                         myStock.setGiaBanDau(giaCuoi);
                         System.out.println("gia moi la: " + giaCuoi);
-                        myStock.setSoLuong(soCu+soMoi);
+                        myStock.setSoLuong(soCu-soMoi);
                         stockDAO.updateMyStock(myStock.getSymbol(), myStock);
                         System.out.println("mýTOCK moi " + myStock.toString());
-                        muaStockView.owner.refreshTabDauTu();
-                        muaStockView.dispose();
+                        banStockView.owner.refreshTabDauTu();
+                        banStockView.dispose();
                     }
                 }
             }

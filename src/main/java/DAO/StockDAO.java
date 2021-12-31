@@ -206,4 +206,22 @@ public class StockDAO {
             e.printStackTrace();
         }
     }
+
+    public double getTongTaiSan(UserModel user) {
+        int id = user.getId();
+        String sql = "select * from tong where UID LIKE ?";
+        double tongTaiSan = 0;
+        MyStockBuyModel myStock = null;
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                tongTaiSan = (rs.getDouble("TONGTAISAN"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return tongTaiSan;
+    }
 }

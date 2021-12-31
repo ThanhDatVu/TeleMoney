@@ -5,7 +5,7 @@
 package View;
 
 import Controller.AddStockController;
-import Controller.MuaStockController;
+import Controller.BanStockController;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
 import Model.UserModel;
@@ -33,7 +33,7 @@ public class BanStockView extends javax.swing.JFrame {
     float giaNow;
     UserModel acc;
     
-    MuaStockController muaStockController;
+    BanStockController banStockController;
     
     public BanStockView() {
         stockDAO = new StockDAO();
@@ -55,9 +55,9 @@ public class BanStockView extends javax.swing.JFrame {
         this.owner = master;
         initComponents();               
         setLocationRelativeTo(null);
-        muaStockController = new MuaStockController(this , myStock ,acc);
+        banStockController = new BanStockController(this , myStock ,acc);
         stockDAO = new StockDAO();                       
-        this.setTitle("Mua thêm " + stockBuy.getSymbol());                
+        this.setTitle("Ban thêm " + stockBuy.getSymbol());                
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
@@ -79,18 +79,20 @@ public class BanStockView extends javax.swing.JFrame {
         textGiaNow = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        textGiaMuaTB = new javax.swing.JTextField();
-        textSoLuong = new javax.swing.JTextField();
+        textGiaBanTB = new javax.swing.JTextField();
+        textSoLuongBanRa = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        txtTongMuaUSD = new javax.swing.JTextField();
+        txtTongBanUSD = new javax.swing.JTextField();
         txtUSD = new javax.swing.JLabel();
         txtVND = new javax.swing.JLabel();
-        txtTongMuaVND = new javax.swing.JTextField();
+        txtTongBanVND = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         txtSymbol = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        textSoLuongBanDau = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -125,27 +127,27 @@ public class BanStockView extends javax.swing.JFrame {
 
         jLabel4.setText("Mua thêm tài sản đầu tư");
 
-        jLabel5.setText("Giá mua TB ($):");
+        jLabel5.setText("Giá bán TB ($):");
 
-        textGiaMuaTB.setText("0");
+        textGiaBanTB.setText("0");
 
-        textSoLuong.setText("1");
-        textSoLuong.addActionListener(new java.awt.event.ActionListener() {
+        textSoLuongBanRa.setText("1");
+        textSoLuongBanRa.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                textSoLuongActionPerformed(evt);
+                textSoLuongBanRaActionPerformed(evt);
             }
         });
 
-        jLabel6.setText("Số lượng :");
+        jLabel6.setText("Số lượng bán ra :");
 
         jLabel7.setText("Số dư khả dụng: ");
 
         jLabel8.setText("Tổng giá trị mua thêm:");
 
-        txtTongMuaUSD.setText("0");
-        txtTongMuaUSD.addActionListener(new java.awt.event.ActionListener() {
+        txtTongBanUSD.setText("0");
+        txtTongBanUSD.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTongMuaUSDActionPerformed(evt);
+                txtTongBanUSDActionPerformed(evt);
             }
         });
 
@@ -153,16 +155,25 @@ public class BanStockView extends javax.swing.JFrame {
 
         txtVND.setText("VND");
 
-        txtTongMuaVND.setText("0");
-        txtTongMuaVND.addActionListener(new java.awt.event.ActionListener() {
+        txtTongBanVND.setText("0");
+        txtTongBanVND.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTongMuaVNDActionPerformed(evt);
+                txtTongBanVNDActionPerformed(evt);
             }
         });
 
         jLabel9.setText("USD");
 
         jLabel10.setText("VND");
+
+        jLabel11.setText("Số lượng hiên có:");
+
+        textSoLuongBanDau.setText("1");
+        textSoLuongBanDau.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                textSoLuongBanDauActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -188,15 +199,17 @@ public class BanStockView extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
-                            .addComponent(jLabel8))
+                            .addComponent(jLabel8)
+                            .addComponent(jLabel11))
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(textGiaNow, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                            .addComponent(textGiaMuaTB, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                            .addComponent(textSoLuong, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                            .addComponent(txtTongMuaUSD)
-                            .addComponent(txtTongMuaVND)
-                            .addComponent(txtSymbol)))
+                            .addComponent(textGiaBanTB, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                            .addComponent(textSoLuongBanRa, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                            .addComponent(txtTongBanUSD)
+                            .addComponent(txtTongBanVND)
+                            .addComponent(txtSymbol)
+                            .addComponent(textSoLuongBanDau, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(99, 99, 99)
                         .addComponent(btnThemStock, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -222,29 +235,34 @@ public class BanStockView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(3, 3, 3)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(19, 19, 19)
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 28, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(textGiaNow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(textGiaMuaTB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(textSoLuongBanDau, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(textGiaNow, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(50, 50, 50)))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(textGiaBanTB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(textSoLuong, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(56, 56, 56)
+                    .addComponent(textSoLuongBanRa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txtTongMuaUSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTongBanUSD, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTongMuaVND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTongBanVND, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10))
                 .addGap(44, 44, 44)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -265,27 +283,31 @@ public class BanStockView extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnCancelActionPerformed
 
-    private void textSoLuongActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSoLuongActionPerformed
+    private void textSoLuongBanRaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSoLuongBanRaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_textSoLuongActionPerformed
+    }//GEN-LAST:event_textSoLuongBanRaActionPerformed
 
-    private void txtTongMuaUSDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongMuaUSDActionPerformed
+    private void txtTongBanUSDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongBanUSDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTongMuaUSDActionPerformed
+    }//GEN-LAST:event_txtTongBanUSDActionPerformed
 
-    private void txtTongMuaVNDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongMuaVNDActionPerformed
+    private void txtTongBanVNDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTongBanVNDActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtTongMuaVNDActionPerformed
+    }//GEN-LAST:event_txtTongBanVNDActionPerformed
+
+    private void textSoLuongBanDauActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textSoLuongBanDauActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_textSoLuongBanDauActionPerformed
 
 //    public void setText() throws IOException{
 //        textSymbol.setText(myStock.getSymbol());
 //        textName.setText(myStock.getName());
-//        //textGiaMuaTB.setText(String.valueOf(myStock.getGiaBanDau()));
+//        //textGiaBanTB.setText(String.valueOf(myStock.getGiaBanDau()));
 //        
 //        Stock st = YahooFinance.get(myStock.getSymbol());
 //        BigDecimal price = st.getQuote().getPrice();
 //        textGiaNow.setText(String.valueOf(price));
-//        textGiaMuaTB.setText(String.valueOf(price));
+//        textGiaBanTB.setText(String.valueOf(price));
 //        textName.setEditable(false);
 //        textSymbol.setEditable(false);
 //        textGiaNow.setEditable(false);
@@ -342,6 +364,7 @@ public class BanStockView extends javax.swing.JFrame {
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -349,12 +372,13 @@ public class BanStockView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    public javax.swing.JTextField textGiaMuaTB;
+    public javax.swing.JTextField textGiaBanTB;
     public javax.swing.JTextField textGiaNow;
-    public javax.swing.JTextField textSoLuong;
+    public javax.swing.JTextField textSoLuongBanDau;
+    public javax.swing.JTextField textSoLuongBanRa;
     public javax.swing.JTextField txtSymbol;
-    public javax.swing.JTextField txtTongMuaUSD;
-    public javax.swing.JTextField txtTongMuaVND;
+    public javax.swing.JTextField txtTongBanUSD;
+    public javax.swing.JTextField txtTongBanVND;
     public javax.swing.JLabel txtUSD;
     public javax.swing.JLabel txtVND;
     // End of variables declaration//GEN-END:variables

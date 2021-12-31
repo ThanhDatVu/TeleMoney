@@ -44,7 +44,7 @@ public class ThuChiController {
             this.acc = acc;
             usd = YahooFinance.get("USDVND=X").getQuote().getPrice();
             setEventStock();
-            setTableButton();
+            
             master.setVisible(true);
             stockDAO = new StockDAO();
             MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();
@@ -58,7 +58,7 @@ public class ThuChiController {
 
     public void enable() {
         setEventStock();
-        setTableButton();
+       
         //setTableButton();
 
     }
@@ -79,9 +79,8 @@ public class ThuChiController {
                 myStockList.get(i).get24hchange(),
                 (Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0,
                 ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) > -1)
-                    && ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) < 1) 
-                       ? 0 : ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau()))),
-                    
+                && ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) < 1)
+                ? 0 : ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau()))),
                 "Mua thêm",
                 "Bán"
 
@@ -143,62 +142,4 @@ public class ThuChiController {
         System.out.println("Taoj xong event");
     }
 
-    public void setTableButton() {
-        System.out.println("Tao nut jtable");
-        //Action muaStock
-        MasterTeleMoneyView thisview = master;
-        System.out.println(thisview.getTitle());
-        Action muaThem = new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    
-                    JTable table = (JTable) e.getSource();
-                    int modelRow = Integer.valueOf(e.getActionCommand());
-
-                    MyStockBuyModel stockBuy = new MyStockBuyModel();
-                    stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
-                    stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
-                    stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
-                    //System.out.println("alo" + table.getValueAt(modelRow, 3));
-                    MuaStockView muaStockView = new MuaStockView(master, stockBuy);
-                    muaStockView.setVisible(true);
-                    //stockDAO.delete(stockBuy);
-                    //((DefaultTableModel) table.getModel()).removeRow(modelRow);
-                } catch (IOException ex) {
-                    Logger.getLogger(ThuChiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
-            }
-        };
-        //Action banStock
-        Action banStock;
-        banStock = new AbstractAction() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                try {
-                    JTable table = (JTable) e.getSource();
-                    int modelRow = Integer.valueOf(e.getActionCommand());
-
-                    MyStockBuyModel stockBuy = new MyStockBuyModel();
-                    stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
-                    stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
-                    stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
-                    MuaStockView muaStockView = new MuaStockView(master, stockBuy);
-                } catch (IOException ex) {
-                    Logger.getLogger(ThuChiController.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        };
-
-        ButtonColumn btnMua = new ButtonColumn(master.tableDanhMuc, muaThem, 7);
-
-        btnMua.setMnemonic(KeyEvent.VK_D);
-
-        btnMua.setToolTipText(
-                "Mua thêm cổ phiếu");
-        ButtonColumn btnBan = new ButtonColumn(master.tableDanhMuc, banStock, 8, Color.BLUE);
-
-        btnBan.setMnemonic(KeyEvent.VK_D);
-    }
 }

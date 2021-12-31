@@ -43,8 +43,8 @@ import javax.swing.JTable;
 import lib.ButtonColumn;
 import yahoofinance.YahooFinance;
 
-
 public class VayNoController {
+
     private GuiTienDAO guiTienDAO = null;
     private VayTienDAO vayTienDAO = null;
     private TraGopDAO traGopDAO = null;
@@ -53,7 +53,7 @@ public class VayNoController {
     GuiTienTableModel guiTienTableModel = new GuiTienTableModel();
     VayTienTableModel vayTienTableModel = new VayTienTableModel();
     TraGopTableModel traGopTableModel = new TraGopTableModel();
-    
+
     public VayNoController(MasterTeleMoneyView master, UserModel acc) throws IOException {
         this.master = master;
         this.acc = acc;
@@ -68,6 +68,7 @@ public class VayNoController {
         setEventGuiTien();
         //setTableButton();
     }
+
     public void enable() {
         setEventGuiTien();
         //setTableButton();
@@ -80,7 +81,7 @@ public class VayNoController {
         ArrayList<GuiTienModel> guiTienModels = new ArrayList<>();
         guiTienModels = guiTienDAO.getAll(acc);
         tableModel.setRowCount(0);
-        for (int i = 0; i < guiTienModels.size(); i++){
+        for (int i = 0; i < guiTienModels.size(); i++) {
             tableModel.addRow(new Object[]{
                 guiTienModels.get(i).getTen(),
                 guiTienModels.get(i).getBank(),
@@ -88,13 +89,13 @@ public class VayNoController {
                 guiTienModels.get(i).getLaisuat(),
                 guiTienModels.get(i).getKyhan(),
                 guiTienModels.get(i).getNgaygui()
-        });
+            });
         }
         VayTienTableModel tableModel1 = (VayTienTableModel) master.tableVayTien.getModel();
         ArrayList<VayTienModel> vayTienModels = new ArrayList<>();
         vayTienModels = vayTienDAO.getAll(acc);
         tableModel1.setRowCount(0);
-        for (int i = 0; i < vayTienModels.size(); i++){
+        for (int i = 0; i < vayTienModels.size(); i++) {
             tableModel1.addRow(new Object[]{
                 vayTienModels.get(i).getTen(),
                 vayTienModels.get(i).getBank(),
@@ -102,13 +103,17 @@ public class VayNoController {
                 vayTienModels.get(i).getLaisuat(),
                 vayTienModels.get(i).getKyhan(),
                 vayTienModels.get(i).getNgayvay()
-        });
+            });
         }
+        
+        
         TraGopTableModel tableModel2 = (TraGopTableModel) master.tableTraGop.getModel();
         ArrayList<TraGopModel> traGopModels = new ArrayList<>();
         traGopModels = traGopDAO.getAll(acc);
         tableModel2.setRowCount(0);
-        for (int i = 0; i < traGopModels.size(); i++){
+        Object[] TABLE_HEADER = {"Tên", "Công ty", "Trả trước", "Tổng tiền (VNĐ)","Số tháng", "Tiền hàng tháng", "Ngày"};
+        
+        for (int i = 0; i < traGopModels.size(); i++) {
             tableModel2.addRow(new Object[]{
                 traGopModels.get(i).getTen(),
                 traGopModels.get(i).getBank(),
@@ -116,8 +121,8 @@ public class VayNoController {
                 traGopModels.get(i).getTongtien(),
                 traGopModels.get(i).getSothang(),
                 traGopModels.get(i).getTienhangthang(),
-                traGopModels.get(i).getTime()            
-        });
+                traGopModels.get(i).getTime()
+            });
             //"Tên", "Công ty", "Trả trước", "Tổng tiền (VNĐ)","Số tháng", "Tiền hàng tháng", "Ngày"
         }
     }
@@ -138,8 +143,8 @@ public class VayNoController {
 
     public void setEventGuiTien() {
         System.out.println("Tao event");
-            master.btnThemTK.addActionListener(
-            new ActionListener() {
+        master.btnThemTK.addActionListener(
+                new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 GuiTienView guiTienView = new GuiTienView(master, acc);
@@ -147,8 +152,8 @@ public class VayNoController {
             }
         }
         );
-            master.btnThemVay.addActionListener(
-            new ActionListener() {
+        master.btnThemVay.addActionListener(
+                new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 VayTienView vayTienView = new VayTienView(master, acc);
@@ -156,8 +161,8 @@ public class VayNoController {
             }
         }
         );
-            master.btnThemTG.addActionListener(
-            new ActionListener() {
+        master.btnThemTG.addActionListener(
+                new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 TraGopView traGopView = new TraGopView(master, acc);
@@ -165,5 +170,5 @@ public class VayNoController {
             }
         }
         );
-    }            
+    }
 }

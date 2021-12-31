@@ -9,12 +9,13 @@ import DAO.StockDAO;
 import Model.MyStockBuyModel;
 import Model.MyStockBuyTableModel;
 import Model.UserModel;
+import View.BanStockView;
 import View.MasterTeleMoneyView;
 import View.MuaStockView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import View.NhanvienView;
+
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
@@ -186,7 +187,7 @@ public class StockController {
                 stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
                 stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
                 stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
-                MuaStockView muaStockView = new MuaStockView(master, stockBuy,acc);
+                BanStockView banStockView = new BanStockView(master, stockBuy,acc);
             }
         };
 
