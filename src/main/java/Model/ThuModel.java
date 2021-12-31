@@ -4,7 +4,7 @@
  */
 package Model;
 
-import java.sql.Date;
+import java.sql.Time;
 
 /**
  *
@@ -12,24 +12,24 @@ import java.sql.Date;
  */
 public class ThuModel {
     String nameThu;
+    String mucThu;
     Double amountThu;
-    String descriptionThu;
-    Date dateThu;
+    Time timeThu;
 
     public ThuModel() {
     }
 
     @Override
     public String toString() {
-        return "NhanvienModel{" + "Khoan thu=" + nameThu + ", So tien=" + amountThu + ", Mo ta=" + descriptionThu + ","
-                + " Ngay=" + dateThu + "}";
+        return "NhanvienModel{" + "Ten khoan thu=" + nameThu + ", Danh muc=" + mucThu + ", So tien=" + amountThu + ","
+                + " Ngay=" + timeThu + "}";
     }
 
-    public ThuModel(String nameThu, Double amountThu, String descriptionThu, Date dateThu) {
+    public ThuModel(String nameThu, String mucThu, Double amountThu, Time timeThu) {
         this.nameThu = nameThu;
+        this.mucThu = mucThu;
         this.amountThu = amountThu;
-        this.descriptionThu = descriptionThu;
-        this.dateThu = dateThu;
+        this.timeThu = timeThu;
     }
 
     public String getNameThu() {
@@ -40,6 +40,14 @@ public class ThuModel {
         this.nameThu = nameThu;
     }
 
+    public String getMucThu() {
+        return mucThu;
+    }
+
+    public void setMucThu(String mucThu) {
+        this.mucThu = mucThu;
+    }
+
     public Double getAmountThu() {
         return amountThu;
     }
@@ -48,21 +56,15 @@ public class ThuModel {
         this.amountThu = amountThu;
     }
 
-    public String getDescriptionThu() {
-        return descriptionThu;
+    public Time getTimeThu() {
+        return timeThu;
     }
 
-    public void setDescriptionThu(String descriptionThu) {
-        this.descriptionThu = descriptionThu;
+    public void setTimeThu(Time timeThu) {
+        this.timeThu = timeThu;
     }
 
-    public Date getDateThu() {
-        return dateThu;
-    }
-
-    public void setDateThu(Date dateThu) {
-        this.dateThu = dateThu;
-    }
+    
 
    
     

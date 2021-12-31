@@ -31,26 +31,26 @@ public class ThuDAO {
         }
     }
 
-    public void refresh(ThuTableModel nvmodel) {
-        nvmodel.setRowCount(0);
-        addall(nvmodel);
+    public void refresh(ThuTableModel thumodel) {
+        thumodel.setRowCount(0);
+        addall(thumodel);
     }
 
-    public void addall(ThuTableModel nvmodel) {
-        String sql = "select * from NHANVIEN";
+    public void addall(ThuTableModel thumodel) {
+        String sql = "select * from thu";
 
-        ThuModel nv = null;
+        ThuModel thu = null;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                nv = new ThuModel();
-                nv.setNameThu(rs.getString("Tên khoản thu"));
-                nv.setAmountThu(rs.getDouble("Số tiền"));
-                nv.setDescriptionThu(rs.getString("Mô tả"));
-                nv.setDateThu(rs.getDate("Ngày"));
-                nvmodel.addRow(new Object[]{nv.getNameThu(), nv.getAmountThu(), nv.getDescriptionThu(), nv.getDateThu()});
+                thu = new ThuModel();
+                thu.setNameThu(rs.getString("Tên khoản thu"));
+                thu.setMucThu(rs.getString("Danh mục"));
+                thu.setAmountThu(rs.getDouble("Số tiền"));
+                thu.setTimeThu(rs.getTime("Ngày"));
+                thumodel.addRow(new Object[]{thu.getNameThu(), thu.getMucThu(), thu.getAmountThu(), thu.getTimeThu()});
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -58,57 +58,57 @@ public class ThuDAO {
     }
 
     public void printall(ThuTableModel nvmodel) {
-        String sql = "select * from NHANVIEN";
+        String sql = "select * from thu";
 
-        ThuModel nv = null;
+        ThuModel thu = null;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()) {
-                nv = new ThuModel();
-                nv.setNameThu(rs.getString("Tên khoản thu"));
-                nv.setAmountThu(rs.getDouble("Số tiền"));
-                nv.setDescriptionThu(rs.getString("Mô tả"));
-                nv.setDateThu(rs.getDate("Ngày"));
-                System.out.println(nv.toString());
+                thu = new ThuModel();
+                thu.setNameThu(rs.getString("Tên khoản thu"));
+                thu.setMucThu(rs.getString("Danh mục"));
+                thu.setAmountThu(rs.getDouble("Số tiền"));
+                thu.setTimeThu(rs.getTime("Ngày"));
+                System.out.println(thu.toString());
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void add(ThuModel nv) {
-        String sql = "INSERT INTO NHANVIEN (MANV, HOTEN, LUONG) VALUES (?,?,?)";;
+    public void add(ThuModel thu) {
+        String sql = "INSERT INTO thu (namethu, mucthu, amountthu, timethu) VALUES (?,?,?,?)";
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            ps.setString(1, nv.getNameThu());
-            ps.setDouble(2, nv.getAmountThu());
-            ps.setString(3, nv.getDescriptionThu());
-            ps.setDate(4, nv.getDateThu());
+            ps.setString(1, thu.getNameThu());
+            ps.setString(2, thu.getMucThu());
+            ps.setDouble(3, thu.getAmountThu());
+            ps.setTime(4, thu.getTimeThu());
 
             int executeUpdate = ps.executeUpdate();
-            System.out.println(nv.toString());
+            System.out.println(thu.toString());
             System.out.println("Thêm thành công");
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void update(ThuModel nv, ThuModel nv2) {
+    public void update(ThuModel thu, ThuModel thu2) {
         //To change body of generated methods, choose Tools | Templates.
-        String sql = "UPDATE NHANVIEN SET MANV = ?, HOTEN = ?, LUONG = ? WHERE MANV = ?;";;
+        String sql = "UPDATE thu SET namethu = ?, mucthu = ?, amoutthu = ?, timethu = ?  WHERE ID = ?;";
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            ps.setString(1, nv.getNameThu());
-            ps.setDouble(2, nv.getAmountThu());
-            ps.setString(3, nv.getDescriptionThu());
-            ps.setDate(4, nv.getDateThu());
+            ps.setString(1, thu.getNameThu());
+            ps.setString(2, thu.getMucThu());
+            ps.setDouble(3, thu.getAmountThu());
+            ps.setTime(4, thu.getTimeThu());
 
             int executeUpdate = ps.executeUpdate();
-            System.out.println(nv2.toString());
+            System.out.println(thu2.toString());
             System.out.println("Sửa thành công");
         } catch (Exception e) {
             e.printStackTrace();
@@ -118,15 +118,15 @@ public class ThuDAO {
 
     
 
-    public void delete(ThuModel nv) {
-       String sql = "DELETE FROM NHANVIEN WHERE MANV = ? and HOTEN = ? and LUONG = ?";;
+    public void delete(ThuModel thu) {
+       String sql = "DELETE FROM thu WHERE namethu = ? and mucthu = ? and amountthu = ? and timethu = ?";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-             ps.setString(1, nv.getNameThu());
-            ps.setDouble(2, nv.getAmountThu());
-            ps.setString(3, nv.getDescriptionThu());
-            ps.setDate(4, nv.getDateThu());
+            ps.setString(1, thu.getNameThu());
+            ps.setString(2, thu.getMucThu());
+            ps.setDouble(3, thu.getAmountThu());
+            ps.setTime(4, thu.getTimeThu());
             
 
             int executeUpdate = ps.executeUpdate();
