@@ -243,7 +243,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         pnlChiTieu.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel16.setText("QUẢN lý chi tiêu");
+        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel16.setText("QUẢN LÝ CHI TIÊU");
 
         jTable3.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -253,7 +254,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Tên khoản thu", "Danh mục", "Số tiền", "Ngày"
             }
         ));
         jScrollPane5.setViewportView(jTable3);
@@ -266,41 +267,39 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Tên khoản chi", "Title 2", "Title 3", "Title 4"
             }
         ));
         jScrollPane6.setViewportView(jTable4);
 
-        jButton14.setText("jButton4");
+        jButton14.setText("Thêm");
 
-        jButton15.setText("jButton5");
+        jButton15.setText("Sửa");
 
-        jButton16.setText("jButton6");
+        jButton16.setText("Xóa");
 
-        jButton17.setText("jButton7");
+        jButton17.setText("Thêm");
 
-        jButton18.setText("jButton8");
+        jButton18.setText("Sửa");
 
-        jButton19.setText("jButton9");
+        jButton19.setText("Xóa");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI Black", 0, 11)); // NOI18N
-        jLabel17.setText("jLabel3");
+        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel17.setText("CHI");
 
         jButton20.setText("jButton10");
 
         jButton21.setText("jButton11");
 
-        jButton22.setText("jButton12");
+        jButton22.setText("Tìm kiếm");
 
-        jButton23.setText("jButton13");
+        jButton23.setText("Tìm kiếm");
 
-        jTextField3.setText("jTextField1");
+        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        jLabel18.setText("Số dư khả dụng");
 
-        jTextField4.setText("jTextField2");
-
-        jLabel18.setText("jLabel7");
-
-        jLabel19.setText("jLabel15");
+        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel19.setText("THU");
 
         javax.swing.GroupLayout pnlChiTieuLayout = new javax.swing.GroupLayout(pnlChiTieu);
         pnlChiTieu.setLayout(pnlChiTieuLayout);
@@ -328,8 +327,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton16, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton22, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
+                        .addComponent(jButton22)
+                        .addGap(40, 40, 40)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(56, 56, 56))
                     .addGroup(pnlChiTieuLayout.createSequentialGroup()
@@ -339,27 +338,27 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton19, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton23, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(41, 41, 41)
+                        .addComponent(jButton23)
+                        .addGap(39, 39, 39)
                         .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlChiTieuLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1043, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1043, javax.swing.GroupLayout.PREFERRED_SIZE)))
             .addGroup(pnlChiTieuLayout.createSequentialGroup()
                 .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlChiTieuLayout.createSequentialGroup()
                         .addGap(463, 463, 463)
                         .addComponent(jLabel16))
                     .addGroup(pnlChiTieuLayout.createSequentialGroup()
-                        .addGap(479, 479, 479)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(484, 484, 484)
+                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
+                        .addGap(488, 488, 488)
+                        .addComponent(jLabel17)))
                 .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlChiTieuLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1043, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 1043, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlChiTieuLayout.createSequentialGroup()
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(295, 295, 295))))
         );
         pnlChiTieuLayout.setVerticalGroup(
             pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -368,9 +367,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addComponent(jLabel16)
                 .addGap(13, 13, 13)
                 .addComponent(jLabel18)
-                .addGap(20, 20, 20)
+                .addGap(15, 15, 15)
                 .addComponent(jLabel19)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton14)
                     .addComponent(jButton15)
@@ -381,9 +380,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton20)
-                .addGap(18, 18, 18)
+                .addGap(12, 12, 12)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton17)
                     .addComponent(jButton18)
@@ -394,7 +393,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton21)
-                .addContainerGap(270, Short.MAX_VALUE))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
 
         pnlCards.add(pnlChiTieu, "cardChiTieu");
