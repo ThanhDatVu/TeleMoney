@@ -28,6 +28,7 @@ public class TraGopView extends javax.swing.JFrame {
 
     public TraGopView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
+        setLocationRelativeTo(null);
         this.master = master;
         this.acc = acc;
     }

@@ -34,9 +34,9 @@ public class MuaStockController {
     ArrayList<MyStockBuyModel> stockList = new ArrayList<>();
     double soDu;
 
-    public MuaStockController(MuaStockView master, UserModel acc) {
+    public MuaStockController(MuaStockView muaStockView, UserModel acc) {
         stockDAO = new StockDAO();
-        this.muaStockView = master;
+        this.muaStockView = muaStockView;
         this.acc = acc;
         soDu = stockDAO.getSoDu(acc);
         stockList = stockDAO.getAllStockSymbol();
@@ -44,7 +44,7 @@ public class MuaStockController {
             System.out.println("Tao controller stock");
             usd = YahooFinance.get("USDVND=X").getQuote().getPrice();
             setEventMuaStock();
-            master.setVisible(true);
+            muaStockView.setVisible(true);
             setData();
             //setTableButton();
         } catch (IOException ex) {
@@ -53,10 +53,10 @@ public class MuaStockController {
 
     }
 
-    public MuaStockController(MuaStockView master, MyStockBuyModel myStock, UserModel acc) {
+    public MuaStockController(MuaStockView muaStockView, MyStockBuyModel myStock, UserModel acc) {
         stockDAO = new StockDAO();
         this.myStock = myStock;
-        this.muaStockView = master;
+        this.muaStockView = muaStockView;
         this.acc = acc;
         soDu = stockDAO.getSoDu(acc);
         stockList = stockDAO.getAllStockSymbol();
@@ -64,7 +64,7 @@ public class MuaStockController {
             System.out.println("Tao controller stock");
             usd = YahooFinance.get("USDVND=X").getQuote().getPrice();
             setEventMuaStock();
-            master.setVisible(true);
+            muaStockView.setVisible(true);
             setData();
             //setTableButton();
         } catch (IOException ex) {
@@ -233,6 +233,8 @@ public class MuaStockController {
                         myStock.setSoLuong(soCu+soMoi);
                         stockDAO.updateMyStock(myStock.getSymbol(), myStock);
                         System.out.println("mýTOCK moi " + myStock.toString());
+                        muaStockView.owner.soDuKhaDung = muaStockView.owner.soDuKhaDung - Float.parseFloat(muaStockView.txtTongMuaVND.getText());
+                        muaStockView.owner.refreshTabDauTu();
                         muaStockView.owner.refreshTabDauTu();
                         muaStockView.dispose();
                     }

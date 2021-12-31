@@ -6,13 +6,22 @@
 package Controller;
 
 import DAO.StockDAO;
+import Model.ChiTableModel;
+import Model.GuiTienTableModel;
 import Model.MyStockBuyModel;
 import Model.MyStockBuyTableModel;
+import Model.ThuTableModel;
 import Model.UserModel;
+import Model.VayTienTableModel;
+import View.ThemChiView;
 import View.MasterTeleMoneyView;
 import View.MuaStockView;
+import View.SuaChiView;
+import View.SuaThuView;
+import View.ThemThuView;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -36,28 +45,22 @@ public class ThuChiController {
     private StockDAO stockDAO = null;
     Stock stock;
     BigDecimal usd;
-
+    ThuTableModel chiTableModel = new ThuTableModel();
+    ChiTableModel thuTableModel = new ChiTableModel();
     public ThuChiController(MasterTeleMoneyView master, UserModel acc) {
-        try {
-            System.out.println("Tao controller stock");
-            this.master = master;
-            this.acc = acc;
-            usd = YahooFinance.get("USDVND=X").getQuote().getPrice();
-            setEventStock();
-            
-            master.setVisible(true);
-            stockDAO = new StockDAO();
-            MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();
-            setDataTable();
-            setEventStock();
-            //setTableButton();
-        } catch (IOException ex) {
-            Logger.getLogger(ThuChiController.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        this.master = master;
+        this.acc = acc;
+        setEventThuChi();
+        master.setVisible(true);
+        this.master.tbChi.setModel(chiTableModel);
+        this.master.tbThu.setModel(thuTableModel);
+        //setDataTable();
+        setEventThuChi();
+        //setTableButton();
     }
 
     public void enable() {
-        setEventStock();
+        setEventThuChi();
        
         //setTableButton();
 
@@ -104,41 +107,48 @@ public class ThuChiController {
 //    
 //    }
 
-    public void setEventStock() {
+    public void setEventThuChi() {
         System.out.println("Tao event");
 
-        master.tableDanhMuc.addMouseListener(new MouseAdapter() {
+        
+       
+        
+        master.btnThemChi.addActionListener(
+                new ActionListener() {
             @Override
-            public void mouseClicked(final MouseEvent e) {
-                if (e.getClickCount() == 1) {
-                    final JTable target = (JTable) e.getSource();
-                    final int row = target.getSelectedRow();
-                    final int column = target.getSelectedColumn();
-                    // Cast to ur Object type
-                    // final UrObjctInCell urObjctInCell = (UrObjctInCell) target.getValueAt(row, column);
-                    // TODO WHAT U WANT!
-                    if (column < 7 && column > 0) {
-                        Float SoUSD = Float.valueOf(String.valueOf(target.getValueAt(row, column)));
-                        master.labelUSD.setText(SoUSD.toString());
-                        master.labelVND.setText(String.valueOf((usd.multiply(BigDecimal.valueOf(SoUSD)).setScale(0, RoundingMode.HALF_UP))));
-                    }
-                }
+            public void actionPerformed(ActionEvent e) {
+                ThemChiView themChiView = new ThemChiView(master, acc);
+                themChiView.setVisible(true);
             }
-        });
-        master.labelRefresh.addMouseListener(new MouseAdapter() {
+        }
+        );
+        master.btnThemThu.addActionListener(
+                new ActionListener() {
             @Override
-            public void mouseClicked(final MouseEvent e) {
-                if (e.getClickCount() == 1) {
-                    try {
-                        setDataTable();
-                        master.setSumText();
-                        System.out.println("refresh clicked");
-                    } catch (IOException ex) {
-                        Logger.getLogger(ThuChiController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
+            public void actionPerformed(ActionEvent e) {
+                ThemThuView themThuView = new ThemThuView(master, acc);
+                themThuView.setVisible(true);
             }
-        });
+        }
+        );
+        master.btnSuaThu.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SuaThuView suaThuView = new SuaThuView();
+                suaThuView.setVisible(true);
+            }
+        }
+        );
+        master.btnSuaChi.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                SuaChiView suaChiView = new SuaChiView();
+                suaChiView.setVisible(true);
+            }
+        }
+        );
         System.out.println("Taoj xong event");
     }
 

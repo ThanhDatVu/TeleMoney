@@ -242,6 +242,7 @@ public class AddStockController {
                         myStock.setTime(time);
                         stockDAO.add(myStock);
                         System.out.println("mới" +myStock.toString());
+                        master.owner.soDuKhaDung = master.owner.soDuKhaDung - Float.parseFloat(master.txtTongMuaVND.getText());
                         master.owner.refreshTabDauTu();
                         master.dispose();
                     }

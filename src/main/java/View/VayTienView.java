@@ -28,6 +28,7 @@ public class VayTienView extends javax.swing.JFrame {
 
     public VayTienView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
+        setLocationRelativeTo(null);
         this.master = master;
         this.acc = acc;
     }

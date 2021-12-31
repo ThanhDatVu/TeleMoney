@@ -35,9 +35,9 @@ public class BanStockController {
     ArrayList<MyStockBuyModel> stockList = new ArrayList<>();
     double soDu;
 
-    public BanStockController(BanStockView master, UserModel acc) {
+    public BanStockController(BanStockView banStockView, UserModel acc) {
         stockDAO = new StockDAO();
-        this.banStockView = master;
+        this.banStockView = banStockView;
         this.acc = acc;
         soDu = stockDAO.getSoDu(acc);
         stockList = stockDAO.getAllStockSymbol();
@@ -45,7 +45,7 @@ public class BanStockController {
             System.out.println("Tao controller stock");
             usd = YahooFinance.get("USDVND=X").getQuote().getPrice();
             setEventBanStock();
-            master.setVisible(true);
+            banStockView.setVisible(true);
             setData();
             //setTableButton();
         } catch (IOException ex) {
@@ -54,10 +54,10 @@ public class BanStockController {
 
     }
 
-    public BanStockController(BanStockView master, MyStockBuyModel myStock, UserModel acc) {
+    public BanStockController(BanStockView banStockView, MyStockBuyModel myStock, UserModel acc) {
         stockDAO = new StockDAO();
         this.myStock = myStock;
-        this.banStockView = master;
+        this.banStockView = banStockView;
         this.acc = acc;
         soDu = stockDAO.getSoDu(acc);
         stockList = stockDAO.getAllStockSymbol();
@@ -65,7 +65,7 @@ public class BanStockController {
             System.out.println("Tao controller stock");
             usd = YahooFinance.get("USDVND=X").getQuote().getPrice();
             setEventBanStock();
-            master.setVisible(true);
+            banStockView.setVisible(true);
             setData();
             //setTableButton();
         } catch (IOException ex) {
@@ -73,7 +73,7 @@ public class BanStockController {
         }
     }
 
-    public BanStockController(MasterTeleMoneyView master, MyStockBuyModel myStock, UserModel acc) {
+    public BanStockController(MasterTeleMoneyView banStockView, MyStockBuyModel myStock, UserModel acc) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -240,6 +240,8 @@ public class BanStockController {
                         myStock.setSoLuong(soCu-soMoi);
                         stockDAO.updateMyStock(myStock.getSymbol(), myStock);
                         System.out.println("mýTOCK moi " + myStock.toString());
+                        banStockView.owner.soDuKhaDung = banStockView.owner.soDuKhaDung + Float.parseFloat(banStockView.txtTongBanVND.getText());
+                        banStockView.owner.refreshTabDauTu();
                         banStockView.owner.refreshTabDauTu();
                         banStockView.dispose();
                     }

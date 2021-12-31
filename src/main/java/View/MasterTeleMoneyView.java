@@ -54,12 +54,12 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     StockController stockController;
     ThuChiController thuChiController;
     VayNoController vayNoController;
-    
+
     Float Usd;
-    double soDuKhaDung,tongTaiSan;
-     
+    public double soDuKhaDung, tongTaiSan;
+
     public MasterTeleMoneyView() throws IOException {
-    //    this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
+        //    this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
 
         initComponents();
         setTiGiaSoDu();
@@ -75,24 +75,26 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public MasterTeleMoneyView(UserModel user) throws IOException {
         this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
         this.user = user;
-        
+
         initComponents();
         this.setTitle("TELEMONEY");
         setUsername();
+        soDuKhaDung = stockDAO.getSoDu(user);
+        tongTaiSan = stockDAO.getTongTaiSan(user);
         setTiGiaSoDu();
         cardLayout = (CardLayout) (pnlCards.getLayout());
         setLocationRelativeTo(null);
         tableDanhMuc.setModel(stockModel);
-        //setTableButton();
-        col = tableDanhMuc.getColumnModel().getColumn(4);
-        //define the renderer
-        col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
+        {   // set đổi màu cột lãi lỗ
+            col = tableDanhMuc.getColumnModel().getColumn(4);
+            col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
+        }
         stockController = new StockController(this, user);
-        stockController.enable();
         vayNoController = new VayNoController(this, user);
+        thuChiController = new ThuChiController(this, user);
         setSumText();
         //add chart
-        System.out.println("user ID "+user.getId());
+        System.out.println("user ID " + user.getId());
 
 //        pnlThongKe.add(CP, BorderLayout.CENTER);
 //        pnlThongKe.validate();
@@ -104,6 +106,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
     public void refreshTabDauTu() {
         try {
+            setTiGiaSoDu();
             setSumText();
             stockController.setDataTable();
         } catch (IOException ex) {
@@ -952,8 +955,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
     private void labelMenuThongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuThongKeMousePressed
         // TODO add your handling code here:
-       // cardLayout.show(pnlCards, "cardThongKe");
-       JFreeChartExample chart = new JFreeChartExample("Thống kê", "Chia các danh mục đầu tư");
+        // cardLayout.show(pnlCards, "cardThongKe");
+        JFreeChartExample chart = new JFreeChartExample("Thống kê", "Chia các danh mục đầu tư");
         chart.pack();
         chart.setLocationRelativeTo(null);
         chart.setVisible(true);
@@ -992,7 +995,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }//GEN-LAST:event_btnThemStockActionPerformed
 
     private void btnThemTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemTKMouseClicked
@@ -1011,9 +1014,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             labelVND.setText("1 USD = 22835 VND");
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        soDuKhaDung = stockDAO.getSoDu(user);
-        tongTaiSan = stockDAO.getTongTaiSan(user);
-        labelSoDauTu.setText(String.valueOf(df.format(soDuKhaDung))+" VND");
+        
+        labelSoDauTu.setText(String.valueOf(df.format(soDuKhaDung)) + " VND");
         labelSoDuChiTieu.setText("Số dư khả dựng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
         labelSoDuVayNo.setText("Số dư khả dựng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
     }
@@ -1086,7 +1088,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             }
         });
     }
-    
+
 //    public void setTableButton() {
 //        System.out.println("Tao nut jtable");
 //        //Action muaStock
