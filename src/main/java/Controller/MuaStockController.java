@@ -206,7 +206,8 @@ public class MuaStockController {
                 double tongMuaVND = Double.parseDouble(muaStockView.txtTongMuaVND.getText());
                 if (tongMuaVND > soDu) {
                     JOptionPane.showMessageDialog(null, "Vượt quá số dư khả dụng");
-                } else if (tongMuaVND < 0) {
+                } else if (tongMuaVND <= 0) {
+                    JOptionPane.showMessageDialog(null, "Nhập sai");
                 } else {
                     int opt = JOptionPane.showConfirmDialog(muaStockView, "Xác nhận mua " + muaStockView.textSoLuong.getText() + " "
                             + muaStockView.txtSymbol.getText() + " với tổng giá trị "

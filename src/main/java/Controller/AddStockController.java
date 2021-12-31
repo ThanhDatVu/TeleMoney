@@ -85,13 +85,12 @@ public class AddStockController {
         master.txtVND.setText((bigVND.toString()) + " VND");
         bigUSD = new BigDecimal(String.valueOf(soDu / usd.doubleValue())).setScale(2, BigDecimal.ROUND_HALF_UP);
         master.txtUSD.setText(bigUSD.toString() + " USD");
-      
 
         for (int i = 0; i < stockList.size(); i++) {
 //            stock = YahooFinance.get(stockList.get(i).getSymbol());
 //            long giaTriHienTai = (long) ((Math.round(stock.getQuote().getPrice().floatValue() * stockList.get(i).getSoLuong() * 100.0)) / 100.0);
             master.comboStock.addItem(stockList.get(i).getSymbol() + " - " + stockList.get(i).getName());
-            
+
         }
 
     }
@@ -129,7 +128,7 @@ public class AddStockController {
                     master.textGiaMuaTB.setText(giaTriHienTai.toString());
                     master.textGiaNow.setEditable(false);
 
-                }  catch (IOException ex) {
+                } catch (IOException ex) {
                     Logger.getLogger(AddStockController.class.getName()).log(Level.SEVERE, null, ex);
                 }
 
@@ -202,19 +201,19 @@ public class AddStockController {
 
                     soLuong = Double.parseDouble(master.textSoLuong.getText());
                     giaMuaTB = Double.parseDouble(master.textGiaMuaTB.getText());
-                
-                if (soLuong > -1 && giaMuaTB > -1) {
-                    master.txtTongMuaUSD.setEditable(true);
-                    master.txtTongMuaVND.setEditable(true);
-                    BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong)).setScale(2);
-                    master.txtTongMuaUSD.setText(String.valueOf(bigDecimal.toString()));
-                    bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong * usd.doubleValue())).setScale(2);
-                    master.txtTongMuaVND.setText(bigDecimal.toString());
 
-                    master.txtTongMuaUSD.setEditable(false);
-                    master.txtTongMuaVND.setEditable(false);
-                }
-                
+                    if (soLuong > -1 && giaMuaTB > -1) {
+                        master.txtTongMuaUSD.setEditable(true);
+                        master.txtTongMuaVND.setEditable(true);
+                        BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong)).setScale(2);
+                        master.txtTongMuaUSD.setText(String.valueOf(bigDecimal.toString()));
+                        bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong * usd.doubleValue())).setScale(2);
+                        master.txtTongMuaVND.setText(bigDecimal.toString());
+
+                        master.txtTongMuaUSD.setEditable(false);
+                        master.txtTongMuaVND.setEditable(false);
+                    }
+
                 }
 
             }
@@ -229,19 +228,21 @@ public class AddStockController {
                 double tongMuaVND = Double.parseDouble(master.txtTongMuaVND.getText());
                 if (tongMuaVND > soDu) {
                     JOptionPane.showMessageDialog(null, "Vượt quá số dư khả dụng");
+                } else if (tongMuaVND <= 0) {
+                    JOptionPane.showMessageDialog(null, "Nhập sai");
                 } else {
                     int opt = JOptionPane.showConfirmDialog(master, "Xác nhận mua " + master.textSoLuong.getText() + " "
                             + master.comboStock.getSelectedItem().toString() + " với tổng giá trị "
                             + master.txtTongMuaVND.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_CANCEL_OPTION);
                     if (opt == 0) {
-                        System.out.println("cũ"+myStock.toString());
+                        System.out.println("cũ" + myStock.toString());
                         myStock.setSoLuong(Integer.parseInt(master.textSoLuong.getText()));
                         myStock.setGiaBanDau(Float.parseFloat(master.textGiaMuaTB.getText()));
                         myStock.setTongBanDau(Float.parseFloat(master.txtTongMuaUSD.getText()));
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         myStock.setTime(time);
                         stockDAO.add(myStock);
-                        System.out.println("mới" +myStock.toString());
+                        System.out.println("mới" + myStock.toString());
                         master.owner.soDuKhaDung = master.owner.soDuKhaDung - Float.parseFloat(master.txtTongMuaVND.getText());
                         master.owner.refreshTabDauTu();
                         master.dispose();
