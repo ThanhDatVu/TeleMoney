@@ -23,7 +23,7 @@ import javax.swing.event.DocumentListener;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
-public class MuaStockController {
+public class BanStockController {
 
     MuaStockView muaStockView;
     UserModel acc;
@@ -34,7 +34,7 @@ public class MuaStockController {
     ArrayList<MyStockBuyModel> stockList = new ArrayList<>();
     double soDu;
 
-    public MuaStockController(MuaStockView master, UserModel acc) {
+    public BanStockController(MuaStockView master, UserModel acc) {
         stockDAO = new StockDAO();
         this.muaStockView = master;
         this.acc = acc;
@@ -48,12 +48,12 @@ public class MuaStockController {
             setData();
             //setTableButton();
         } catch (IOException ex) {
-            Logger.getLogger(MuaStockController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BanStockController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
 
-    public MuaStockController(MuaStockView master, MyStockBuyModel myStock, UserModel acc) {
+    public BanStockController(MuaStockView master, MyStockBuyModel myStock, UserModel acc) {
         stockDAO = new StockDAO();
         this.myStock = myStock;
         this.muaStockView = master;
@@ -68,7 +68,7 @@ public class MuaStockController {
             setData();
             //setTableButton();
         } catch (IOException ex) {
-            Logger.getLogger(MuaStockController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BanStockController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -94,7 +94,7 @@ public class MuaStockController {
             
             muaStockView.textGiaMuaTB.setText(giaTriHienTai.toString());
         } catch (IOException ex) {
-            Logger.getLogger(MuaStockController.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(BanStockController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
     }
