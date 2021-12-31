@@ -62,7 +62,26 @@ public class StockDAO {
         }
         return myStockList;
     }
+    public void updateMyStock(String symbol, MyStockBuyModel myNewStock) {
+        //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE MYSTOCK SET  SOLUONG = ?,GIABANDAU = ?, TONGBANDAU = ? WHERE SYMBOL = ?;";;
 
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1,myNewStock.getSoLuong() );
+
+            ps.setFloat(2, myNewStock.getGiaBanDau() );
+            ps.setFloat(3, myNewStock.getSoLuong()*myNewStock.getGiaBanDau());
+            ps.setString(4,symbol );
+
+            int executeUpdate = ps.executeUpdate();
+            System.out.println("mơi" + myNewStock.toString());
+            System.out.println("thêm giao dịch, update tổng");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
     public MyStockBuyModel getStockBySymbol(String s) {
         String sql = "select * from mystock where SYMBOL LIKE ?";
 
@@ -126,7 +145,23 @@ public class StockDAO {
             e.printStackTrace();
         }
     }
+    public void delete(MyStockBuyModel myStock) {
+       String sql = "DELETE FROM MYSTOCK WHERE SYMBOL = ?";;
 
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setString(1, myStock.getSymbol());
+
+            
+            
+
+            int executeUpdate = ps.executeUpdate();
+            
+            System.out.println("Xoá");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    }
     public ArrayList<MyStockBuyModel> getAllStockSymbol() {
         String sql = "select * from STOCK";
         ResultSet rs;
@@ -146,5 +181,29 @@ public class StockDAO {
         }
         return myStockList;
 
+    }
+
+    @SuppressWarnings("empty-statement")
+    public void addTrans(MyStockBuyModel myStock, UserModel user, String type) {
+        String sql = "INSERT INTO `stocktrans` (`id`, `uid`, `symbol`, `giamua`, `soluong`, `time`, `type`)"
+                + " VALUES (NULL,?,?,?,?,?,?);";;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, user.getId());
+            ps.setString(2, myStock.getSymbol());
+            ps.setFloat(3, myStock.getGiaBanDau());
+            ps.setInt(4, myStock.getSoLuong());
+            ps.setTimestamp(5, myStock.getTime());
+            ps.setString(6, type);
+            
+            
+
+            int executeUpdate = ps.executeUpdate();
+            //System.out.println(myStock.toString());
+            System.out.println("thêm thành công");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

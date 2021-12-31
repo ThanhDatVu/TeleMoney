@@ -24,6 +24,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.MathContext;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -36,7 +37,7 @@ import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
 public class StockController {
-
+    DecimalFormat df = new DecimalFormat("0.00");
     private MasterTeleMoneyView master;
     private UserModel acc;
     private StockDAO stockDAO = null;
@@ -74,7 +75,8 @@ public class StockController {
         ArrayList<MyStockBuyModel> myStockList = new ArrayList<>();
         myStockList = stockDAO.getAll();
         tableModel.setRowCount(0);
-        for (int i = 0; i < myStockList.size(); i++) {
+        for (int i = 0; i < myStockList.size(); i++)
+        if(myStockList.get(i).getSoLuong()>0 ){
             stock = YahooFinance.get(myStockList.get(i).getSymbol());
             long giaTriHienTai = (long) ((Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0);
             tableModel.addRow(new Object[]{
@@ -84,15 +86,18 @@ public class StockController {
                 (Math.round(stock.getQuote().getPrice().floatValue() * 100.0)) / 100.0,
                 myStockList.get(i).get24hchange(),
                 (Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0,
-                ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) > -1)
+                df.format(((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) > -1)
                     && ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) < 1) 
-                       ? 0 : ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau()))),
+                       ? 0 : ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())))),
                     
                 "Mua thêm",
                 "Bán"
 
             });
 
+        }else{
+            //TO DO xoas
+            stockDAO.delete(myStockList.get(i));
         }
 
     }

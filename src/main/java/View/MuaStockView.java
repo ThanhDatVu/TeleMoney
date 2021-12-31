@@ -5,6 +5,7 @@
 package View;
 
 import Controller.AddStockController;
+import Controller.MuaStockController;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
 import Model.UserModel;
@@ -31,12 +32,12 @@ public class MuaStockView extends javax.swing.JFrame {
     StockDAO stockDAO;
     float giaNow;
     UserModel acc;
-    ArrayList<MyStockBuyModel> stList;
+    
     MuaStockController muaStockController;
     
     public MuaStockView() {
         stockDAO = new StockDAO();
-        this.stList = stockDAO.getAllStockSymbol();
+        
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -44,29 +45,20 @@ public class MuaStockView extends javax.swing.JFrame {
 
    
 
-    public MuaStockView(MasterTeleMoneyView main, UserModel acc) throws IOException {
-        
-        initComponents();
-       // AutoCompletion.enable(comboStock);
-        
-        setLocationRelativeTo(null);
-        stockDAO = new StockDAO();
-        this.stList = stockDAO.getAllStockSymbol();
-        owner = main;
-        
-       
-        this.setTitle("Thêm danh mục đầu tư ");
-        this.acc = acc;
-        muaStockController = new StockController(this, acc);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    }
+    
 
-    public MuaStockView(MasterTeleMoneyView master, MyStockBuyModel stockBuy) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+   
 
     public MuaStockView(MasterTeleMoneyView master, MyStockBuyModel stockBuy, UserModel acc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        this.acc = acc;
+        this.myStock = stockBuy;
+        this.owner = master;
+        initComponents();               
+        setLocationRelativeTo(null);
+        muaStockController = new MuaStockController(this , myStock ,acc);
+        stockDAO = new StockDAO();                       
+        this.setTitle("Mua thêm " + stockBuy.getSymbol());                
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -335,38 +327,7 @@ public class MuaStockView extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MuaStockView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+        
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -392,7 +353,7 @@ public class MuaStockView extends javax.swing.JFrame {
     public javax.swing.JTextField textGiaMuaTB;
     public javax.swing.JTextField textGiaNow;
     public javax.swing.JTextField textSoLuong;
-    private javax.swing.JTextField txtSymbol;
+    public javax.swing.JTextField txtSymbol;
     public javax.swing.JTextField txtTongMuaUSD;
     public javax.swing.JTextField txtTongMuaVND;
     public javax.swing.JLabel txtUSD;
@@ -402,6 +363,8 @@ public class MuaStockView extends javax.swing.JFrame {
     public void addSuaListiner(ActionListener actionListener) {
 
     }
+
+   
 
    
 }

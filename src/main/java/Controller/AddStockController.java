@@ -7,37 +7,19 @@ package Controller;
 
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
-import Model.MyStockBuyTableModel;
-import Model.NhanvienModel;
 import Model.UserModel;
 import View.AddStockView;
-import View.MasterTeleMoneyView;
-import View.MuaStockView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import View.NhanvienView;
-import View.ViewThem;
-import java.awt.Color;
-import java.awt.event.KeyEvent;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.io.IOException;
 import java.math.BigDecimal;
-import java.math.MathContext;
-import java.math.RoundingMode;
 import java.sql.Timestamp;
-import java.time.Instant;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JTable;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
-import javax.swing.table.DefaultTableModel;
-import lib.ButtonColumn;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -56,6 +38,7 @@ public class AddStockController {
         stockDAO = new StockDAO();
         this.master = master;
         this.acc = acc;
+        master.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         soDu = stockDAO.getSoDu(acc);
         stockList = stockDAO.getAllStockSymbol();
         try {
@@ -251,13 +234,14 @@ public class AddStockController {
                             + master.comboStock.getSelectedItem().toString() + " với tổng giá trị "
                             + master.txtTongMuaVND.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_CANCEL_OPTION);
                     if (opt == 0) {
-                        System.out.println(myStock.toString());
+                        System.out.println("cũ"+myStock.toString());
                         myStock.setSoLuong(Integer.parseInt(master.textSoLuong.getText()));
                         myStock.setGiaBanDau(Float.parseFloat(master.textGiaMuaTB.getText()));
                         myStock.setTongBanDau(Float.parseFloat(master.txtTongMuaUSD.getText()));
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         myStock.setTime(time);
                         stockDAO.add(myStock);
+                        System.out.println("mới" +myStock.toString());
                         master.owner.refreshTabDauTu();
                         master.dispose();
                     }
