@@ -71,7 +71,7 @@
                           <Component id="textSoLuong" alignment="0" pref="253" max="32767" attributes="0"/>
                           <Component id="txtTongMuaUSD" alignment="0" max="32767" attributes="0"/>
                           <Component id="txtTongMuaVND" alignment="0" max="32767" attributes="0"/>
-                          <Component id="comboStock" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txtSymbol" alignment="0" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <Group type="102" alignment="1" attributes="0">
@@ -101,14 +101,12 @@
                   <Component id="txtUSD" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtVND" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                  </Group>
-                  <Component id="comboStock" alignment="1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="35" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="txtSymbol" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
+              <EmptySpace min="-2" pref="3" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Group type="102" alignment="1" attributes="0">
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
@@ -279,18 +277,7 @@
         <Property name="text" type="java.lang.String" value="VND"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JComboBox" name="comboStock">
-      <Properties>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="1">
-            <StringItem index="0" value=""/>
-          </StringArray>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-      </AuxValues>
+    <Component class="javax.swing.JTextField" name="txtSymbol">
     </Component>
   </SubComponents>
 </Form>

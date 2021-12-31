@@ -32,7 +32,7 @@ public class MuaStockView extends javax.swing.JFrame {
     float giaNow;
     UserModel acc;
     ArrayList<MyStockBuyModel> stList;
-    AddStockController addStockController;
+    MuaStockController muaStockController;
     
     public MuaStockView() {
         stockDAO = new StockDAO();
@@ -42,19 +42,7 @@ public class MuaStockView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
-    public MuaStockView(MasterTeleMoneyView main) throws IOException {
-        
-        initComponents();
-        
-        setLocationRelativeTo(null);
-        stockDAO = new StockDAO();
-        owner = main;
-        this.stList = stockDAO.getAllStockSymbol();
-        System.out.print(this.myStock);
-        this.setTitle("Mua thêm ");
-        addStockController = new AddStockController(this);
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    }
+   
 
     public MuaStockView(MasterTeleMoneyView main, UserModel acc) throws IOException {
         
@@ -69,11 +57,15 @@ public class MuaStockView extends javax.swing.JFrame {
        
         this.setTitle("Thêm danh mục đầu tư ");
         this.acc = acc;
-        addStockController = new AddStockController(this, acc);
+        muaStockController = new StockController(this, acc);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     public MuaStockView(MasterTeleMoneyView master, MyStockBuyModel stockBuy) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public MuaStockView(MasterTeleMoneyView master, MyStockBuyModel stockBuy, UserModel acc) {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
@@ -106,7 +98,7 @@ public class MuaStockView extends javax.swing.JFrame {
         txtTongMuaVND = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        comboStock = new javax.swing.JComboBox<>();
+        txtSymbol = new javax.swing.JTextField();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -180,8 +172,6 @@ public class MuaStockView extends javax.swing.JFrame {
 
         jLabel10.setText("VND");
 
-        comboStock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -214,7 +204,7 @@ public class MuaStockView extends javax.swing.JFrame {
                             .addComponent(textSoLuong, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                             .addComponent(txtTongMuaUSD)
                             .addComponent(txtTongMuaVND)
-                            .addComponent(comboStock, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(txtSymbol)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(99, 99, 99)
                         .addComponent(btnThemStock, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -236,12 +226,11 @@ public class MuaStockView extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(txtUSD)
                     .addComponent(txtVND))
-                .addGap(38, 38, 38)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(6, 6, 6))
-                    .addComponent(comboStock, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(txtSymbol, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(19, 19, 19)
@@ -390,7 +379,6 @@ public class MuaStockView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnCancel;
     public javax.swing.JButton btnThemStock;
-    public javax.swing.JComboBox<String> comboStock;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -404,6 +392,7 @@ public class MuaStockView extends javax.swing.JFrame {
     public javax.swing.JTextField textGiaMuaTB;
     public javax.swing.JTextField textGiaNow;
     public javax.swing.JTextField textSoLuong;
+    private javax.swing.JTextField txtSymbol;
     public javax.swing.JTextField txtTongMuaUSD;
     public javax.swing.JTextField txtTongMuaVND;
     public javax.swing.JLabel txtUSD;
