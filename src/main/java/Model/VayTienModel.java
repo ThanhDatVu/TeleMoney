@@ -28,7 +28,6 @@ public class VayTienModel {
     }
 
     public VayTienModel() {
-        throw new UnsupportedOperationException("Not supported yet.");
     }
     
     
