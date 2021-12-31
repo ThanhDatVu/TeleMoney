@@ -8,22 +8,12 @@ package Controller;
 import DAO.ThuDAO;
 import Model.ThuModel;
 import View.MasterTeleMoneyView;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import javax.swing.JOptionPane;
-import View.ThemThuView;
-import java.awt.HeadlessException;
-import java.awt.event.KeyEvent;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
-import lib.ButtonColumn;
+import View.ThemChiView;
 
 public class ThemChiController {
 
-    private ThemThuView viewThem;
-    private ThuModel nv;
+    private ThemChiView viewThemChi;
+    private ThuModel chi;
     private ThuDAO thuDAO = null;
     MasterTeleMoneyView owner;
     public ThemChiController() {
@@ -31,17 +21,17 @@ public class ThemChiController {
     }
 //    
 
-    public ThemChiController(ThemThuView ThemThuView) {
+    public ThemChiController(ThemChiView ThemChiView) {
         
          //To change body of generated methods, choose Tools | Templates.
-        viewThem = ThemThuView;
-        setEventThem();
-        viewThem.setVisible(true);
+        viewThemChi = ThemChiView;
+        setEventThemChi();
+        viewThemChi.setVisible(true);
         thuDAO = new ThuDAO();
          
     }
 
-    public void setEventThem() {
+    public void setEventThemChi() {
         
     
 }
