@@ -85,6 +85,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
         stockController = new StockController(this, user);
         stockController.enable();
+        vayNoController = new VayNoController(this, user);
         setSumText();
         //add chart
         System.out.println("user ID "+user.getId());
@@ -196,7 +197,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jScrollPane9 = new javax.swing.JScrollPane();
         pnlVayNo = new javax.swing.JPanel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableGuiTien = new javax.swing.JTable();
         jScrollPane4 = new javax.swing.JScrollPane();
         jTable2 = new javax.swing.JTable();
         jButton4 = new javax.swing.JButton();
@@ -607,7 +608,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         pnlVayNo.setBackground(new java.awt.Color(255, 255, 255));
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableGuiTien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -618,7 +619,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(tableGuiTien);
 
         jTable2.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -633,7 +634,12 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(jTable2);
 
-        jButton4.setText("jButton4");
+        jButton4.setText("Gửi tiền");
+        jButton4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton4MouseClicked(evt);
+            }
+        });
 
         jButton5.setText("jButton5");
 
@@ -650,7 +656,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         jButton10.setText("jButton10");
 
-        jButton12.setText("jButton12");
+        jButton12.setText("Lọc");
 
         jButton13.setText("jButton13");
 
@@ -660,7 +666,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         jLabel7.setText("jLabel7");
 
-        jLabel15.setText("jLabel15");
+        jLabel15.setText("GỬI TIẾT KIỆM");
 
         jLabel9.setText("QUẢN LÝ VAY NỢ");
 
@@ -755,14 +761,15 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             .addGroup(pnlVayNoLayout.createSequentialGroup()
                 .addGroup(pnlVayNoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlVayNoLayout.createSequentialGroup()
-                        .addGap(479, 479, 479)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlVayNoLayout.createSequentialGroup()
                         .addGap(463, 463, 463)
                         .addComponent(jLabel9))
                     .addGroup(pnlVayNoLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlVayNoLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel15)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlVayNoLayout.setVerticalGroup(
@@ -995,6 +1002,10 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnThemStockActionPerformed
 
+    private void jButton4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton4MouseClicked
+
     public void setTiGia() {
         try {
             Stock stock = YahooFinance.get("USDVND=X");
@@ -1182,7 +1193,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JSplitPane jSplitPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JTable jTable2;
     private javax.swing.JTable jTable3;
     private javax.swing.JTable jTable4;
@@ -1213,6 +1223,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JPanel pnlThongKe;
     private javax.swing.JPanel pnlVayNo;
     public javax.swing.JTable tableDanhMuc;
+    public javax.swing.JTable tableGuiTien;
     private javax.swing.JTextPane txtUsername;
     // End of variables declaration//GEN-END:variables
 }

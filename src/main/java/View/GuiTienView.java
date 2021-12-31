@@ -6,6 +6,7 @@ package View;
  */
 
 
+import DAO.GuiTienDAO;
 import javax.swing.JLabel;
 
 /**
@@ -17,6 +18,7 @@ public class GuiTienView extends javax.swing.JFrame {
     /**
      * Creates new form GuiTienView
      */
+    GuiTienDAO guiTienDAO;
     public GuiTienView() {
         initComponents();
     }
@@ -82,6 +84,16 @@ public class GuiTienView extends javax.swing.JFrame {
         });
 
         jButton1.setText("Xác nhận");
+        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton1MouseClicked(evt);
+            }
+        });
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -486,6 +498,15 @@ public class GuiTienView extends javax.swing.JFrame {
             else jLabel6.setText("5,1");
         }
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1MouseClicked
 
     /**
      * @param args the command line arguments
