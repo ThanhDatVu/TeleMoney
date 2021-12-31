@@ -15,10 +15,9 @@ import lib.ButtonColumn;
 @SuppressWarnings("serial")
 public class VayTienTableModel extends DefaultTableModel {
 
-    public static final Object[] TABLE_HEADER = {"Tên", "Ngân hàng", "Số tiền","Lãi suất", "Kỳ hạn","Ngày gửi"};
+    public static final Object[] TABLE_HEADER = {"Tên", "Ngân hàng", "Số tiền (VNĐ)","Lãi suất (%)", "Kỳ hạn (tháng)","Ngày vay"};
 
     public static final Object[][] DATA = {
-       // {"APPL (Apple)", 100, 24000, 26000,+5,26000000,"Mua thêm", "Bán"},
     };
 
     public VayTienTableModel() {
