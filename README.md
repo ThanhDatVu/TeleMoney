@@ -1,2 +1,3 @@
 # TeleMoney
-netbean project
+Maven project (all dependency + demo sql included)
+
