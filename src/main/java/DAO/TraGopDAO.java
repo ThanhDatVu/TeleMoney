@@ -37,7 +37,7 @@ public class TraGopDAO {
     }
     
     public void add(TraGopModel traGop){
-        String sql = "INSERT INTO 'chovay' ('uid', 'name', 'namecongty', 'tongtien', 'sothang', 'time', 'tratruoc') VALUES (?, ?, ?, ?, ?, ?, ?)";;
+        String sql = "INSERT INTO 'tragop' ('uid', 'name', 'namecongty', 'tongtien', 'sothang', 'time', 'tratruoc') VALUES (?, ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, userModel.getId());
@@ -57,7 +57,7 @@ public class TraGopDAO {
     }
     
     public ArrayList<TraGopModel> getAll(UserModel user) {
-        String sql = "select * from vay where uid=?";
+        String sql = "select * from tragop where uid=?";
         int x = user.getId();
         ResultSet rs;
         ArrayList<TraGopModel> traGopModels = new ArrayList<>();

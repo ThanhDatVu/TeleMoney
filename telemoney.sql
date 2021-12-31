@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 29, 2021 at 05:41 PM
--- Server version: 10.4.21-MariaDB
--- PHP Version: 8.0.10
+-- Generation Time: Dec 31, 2021 at 06:12 PM
+-- Server version: 10.4.22-MariaDB
+-- PHP Version: 8.0.13
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -52,6 +52,15 @@ CREATE TABLE `chovay` (
   `kyhan` int(11) NOT NULL,
   `ngaychovay` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='chovay';
+
+--
+-- Dumping data for table `chovay`
+--
+
+INSERT INTO `chovay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngaychovay`) VALUES
+(1, 1, 'duan', 'MBBank', 1000000, 5, 12, '2021-12-31 08:22:09'),
+(2, 1, 'ban duan', 'ACB', 2000000, 4, 24, '2021-12-31 10:16:53'),
+(3, 1, 'ngu', 'FFF', 12222222, 21, 12, '2021-12-31 10:16:59');
 
 -- --------------------------------------------------------
 
@@ -691,8 +700,16 @@ CREATE TABLE `tragop` (
   `tongtien` double NOT NULL,
   `sothang` int(11) NOT NULL,
   `tienhangthang` double NOT NULL,
-  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
+  `tratruoc` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `tragop`
+--
+
+INSERT INTO `tragop` (`id`, `uid`, `name`, `namecongty`, `tongtien`, `sothang`, `tienhangthang`, `time`, `tratruoc`) VALUES
+(1, 1, 'duan', 'cong ty quai vat', 10000000, 8, 1000000, '2022-01-09 17:07:20', 2000000);
 
 -- --------------------------------------------------------
 
@@ -730,6 +747,13 @@ CREATE TABLE `vay` (
   `kyhan` int(11) NOT NULL,
   `ngayvay` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='chovay';
+
+--
+-- Dumping data for table `vay`
+--
+
+INSERT INTO `vay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngayvay`) VALUES
+(1, 1, 'duan', 'DBBANK', 1000000, 5, 24, '2021-12-29 16:46:00');
 
 --
 -- Indexes for dumped tables
@@ -803,7 +827,7 @@ ALTER TABLE `chi`
 -- AUTO_INCREMENT for table `chovay`
 --
 ALTER TABLE `chovay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `stocktrans`
@@ -827,13 +851,13 @@ ALTER TABLE `tong`
 -- AUTO_INCREMENT for table `tragop`
 --
 ALTER TABLE `tragop`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `vay`
 --
 ALTER TABLE `vay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
