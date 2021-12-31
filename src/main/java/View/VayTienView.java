@@ -14,7 +14,7 @@ import javax.swing.JLabel;
  *
  * @author xiaomi
  */
-public class GuiTienView extends javax.swing.JFrame {
+public class VayTienView extends javax.swing.JFrame {
 
     /**
      * Creates new form GuiTienView
@@ -22,11 +22,11 @@ public class GuiTienView extends javax.swing.JFrame {
     MasterTeleMoneyView master;
     UserModel acc;
     GuiTienDAO guiTienDAO;
-    public GuiTienView() {
+    public VayTienView() {
         initComponents();
     }
 
-    public GuiTienView(MasterTeleMoneyView master, UserModel acc) {
+    public VayTienView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         this.master = master;
         this.acc = acc;
@@ -81,11 +81,11 @@ public class GuiTienView extends javax.swing.JFrame {
         jLabel5.setText("%");
 
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("3");
+        jLabel6.setText("0");
 
         jLabel7.setText("KỲ HẠN");
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 tháng", "2 tháng", "3 tháng", "6 tháng", "9 tháng", "12 tháng", "24 tháng", "36 tháng", "48 tháng", "60 tháng" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "6 tháng", "12 tháng", "24 tháng", "36 tháng", "48 tháng", "60 tháng" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -534,21 +534,23 @@ public class GuiTienView extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(GuiTienView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VayTienView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(GuiTienView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VayTienView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(GuiTienView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VayTienView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(GuiTienView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(VayTienView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new GuiTienView().setVisible(true);
+                new VayTienView().setVisible(true);
             }
         });
     }
