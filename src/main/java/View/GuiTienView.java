@@ -472,30 +472,30 @@ public class GuiTienView extends javax.swing.JFrame {
         }
         if (("Ngân Hàng Việt Nam Thịnh Vượng (VPBank)").equals(jComboBox1.getSelectedItem())){
             if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,2");
+                jLabel6.setText("3,45");
             }
             else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,75");
+                jLabel6.setText("3,45");
             }
             else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,8");
+                jLabel6.setText("3,5");
             }
             else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4,7");
+                jLabel6.setText("4,8");
             }
             else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5");
+                jLabel6.setText("5,1");
             }
             else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,1");
+                jLabel6.setText("5,2");
             }
             else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,1");
+                jLabel6.setText("5,2");
             }
             else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,1");
+                jLabel6.setText("5,2");
             }
-            else jLabel6.setText("5,1");
+            else jLabel6.setText("5,2");
         }
     }//GEN-LAST:event_jComboBox2ActionPerformed
 

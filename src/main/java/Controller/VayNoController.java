@@ -39,13 +39,13 @@ public class VayNoController {
     private UserModel acc;
     GuiTienTableModel tableGuiTien = new GuiTienTableModel();
     
-    public VayNoController(MasterTeleMoneyView master, UserModel acc) {
+    public VayNoController(MasterTeleMoneyView master, UserModel acc) throws IOException {
         this.master = master;
         this.acc = acc;
         master.setVisible(true);
         guiTienDAO = new GuiTienDAO();
         this.master.tableGuiTien.setModel(tableGuiTien);
-        //setDataTable();
+        setDataTable();
         //setTableButton();
     }
     public void enable() {
@@ -69,6 +69,7 @@ public class VayNoController {
                 guiTienModels.get(i).getKyhan(),
                 guiTienModels.get(i).getNgaygui()
         });
+    }
     }
 //    public void setButton(){
 //    Action delete = new AbstractAction() {

@@ -10,24 +10,25 @@ import java.sql.Timestamp;
  *
  * @author xiaomi
  */
-public class GuiTienModel {
+public class VayTienModel {
     private String ten;
     private String bank;
     private double tiengoc;
     private double laisuat;
     private int kyhan;
-    private Timestamp ngaygui;
+    private Timestamp ngayvay;
 
-    public GuiTienModel(String ten, String bank, double tiengoc, double laisuat, int kyhan, Timestamp ngaygui) {
+    public VayTienModel(String ten, String bank, double tiengoc, double laisuat, int kyhan, Timestamp ngayvay) {
         this.ten = ten;
         this.bank = bank;
         this.tiengoc = tiengoc;
         this.laisuat = laisuat;
         this.kyhan = kyhan;
-        this.ngaygui = ngaygui;
+        this.ngayvay = ngayvay;
     }
 
-    public GuiTienModel() {
+    public VayTienModel() {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
     
     
@@ -72,12 +73,12 @@ public class GuiTienModel {
         this.kyhan = kyhan;
     }
 
-    public Timestamp getNgaygui() {
-        return ngaygui;
+    public Timestamp getNgayvay() {
+        return ngayvay;
     }
 
-    public void setNgaygui(Timestamp ngaygui) {
-        this.ngaygui = ngaygui;
+    public void setNgayvay(Timestamp ngayvay) {
+        this.ngayvay = ngayvay;
     }
     
     
