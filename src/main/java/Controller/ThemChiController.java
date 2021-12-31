@@ -26,7 +26,7 @@ public class ThemChiController {
          //To change body of generated methods, choose Tools | Templates.
         viewThemChi = ThemChiView;
         setEventThemChi();
-        viewThemChi.setVisible(true);
+        
         thuDAO = new ThuDAO();
          
     }

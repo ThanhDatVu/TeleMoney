@@ -55,8 +55,6 @@ public class ThuChiController {
         this.master.tbChi.setModel(chiTableModel);
         this.master.tbThu.setModel(thuTableModel);
         //setDataTable();
-        setEventThuChi();
-        //setTableButton();
     }
 
     public void enable() {

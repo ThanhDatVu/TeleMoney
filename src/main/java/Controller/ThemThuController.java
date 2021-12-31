@@ -26,7 +26,7 @@ public class ThemThuController {
          //To change body of generated methods, choose Tools | Templates.
         viewThemThu = ThemThuView;
         setEventThemThu();
-        viewThemThu.setVisible(true);
+        
         thuDAO = new ThuDAO();
          
     }
