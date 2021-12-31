@@ -57,27 +57,6 @@ public class ChiDAO {
         }
     }
 
-    public void printall(ChiTableModel chimodel) {
-        String sql = "select * from chi";
-
-        ChiModel chi = null;
-        try {
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                chi = new ChiModel();
-                chi.setNameChi(rs.getString("Tên khoản thu"));
-                chi.setMucChi(rs.getString("Danh mục"));
-                chi.setAmountChi(rs.getDouble("Số tiền"));
-                chi.setTimeChi(rs.getTime("Ngày"));
-                System.out.println(chi.toString());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void add(ChiModel chi) {
         String sql = "INSERT INTO chi (namechi, mucchi, amountchi, timechi) VALUES (?,?,?,?)";
 

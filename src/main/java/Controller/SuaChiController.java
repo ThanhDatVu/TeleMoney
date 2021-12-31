@@ -6,32 +6,33 @@
 package Controller;
 
 import DAO.ThuDAO;
-import Model.ThuModel;
+import Model.ChiModel;
 import View.MasterTeleMoneyView;
+import View.SuaChiView;
 import View.ThemThuView;
 
-public class ThemThuController {
+public class SuaChiController {
 
-    private ThemThuView viewThemThu;
-    private ThuModel thu;
+    private SuaChiView viewSuaChi;
+    private ChiModel nv;
     private ThuDAO thuDAO = null;
     MasterTeleMoneyView owner;
-    public ThemThuController() {
+    public SuaChiController() {
     
     }
 //    
 
-    public ThemThuController(ThemThuView ThemThuView) {
+    public SuaChiController(SuaChiView SuaChiView) {
         
          //To change body of generated methods, choose Tools | Templates.
-        viewThemThu = ThemThuView;
-        setEventThemThu();
-        viewThemThu.setVisible(true);
+        viewSuaChi = SuaChiView;
+        setEventSuaChi();
+        viewSuaChi.setVisible(true);
         thuDAO = new ThuDAO();
          
     }
 
-    public void setEventThemThu() {
+    public void setEventSuaChi() {
         
     
 }

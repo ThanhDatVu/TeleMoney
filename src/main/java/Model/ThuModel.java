@@ -21,7 +21,7 @@ public class ThuModel {
 
     @Override
     public String toString() {
-        return "NhanvienModel{" + "Ten khoan thu=" + nameThu + ", Danh muc=" + mucThu + ", So tien=" + amountThu + ","
+        return "ThuModel{" + "Ten khoan thu=" + nameThu + ", Danh muc=" + mucThu + ", So tien=" + amountThu + ","
                 + " Ngay=" + timeThu + "}";
     }
 

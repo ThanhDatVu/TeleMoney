@@ -20,23 +20,23 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import lib.ButtonColumn;
 
-public class SuaThuController {
+public class ThemChiController {
 
-    private ThemThuView viewSua;
+    private ThemThuView viewThem;
     private ThuModel nv;
     private ThuDAO thuDAO = null;
     MasterTeleMoneyView owner;
-    public SuaThuController() {
+    public ThemChiController() {
     
     }
 //    
 
-    public SuaThuController(ThemThuView ThemThuView) {
+    public ThemChiController(ThemThuView ThemThuView) {
         
          //To change body of generated methods, choose Tools | Templates.
-        viewSua = ThemThuView;
+        viewThem = ThemThuView;
         setEventThem();
-        viewSua.setVisible(true);
+        viewThem.setVisible(true);
         thuDAO = new ThuDAO();
          
     }

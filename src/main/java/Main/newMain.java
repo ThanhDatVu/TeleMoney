@@ -5,7 +5,6 @@
 package Main;
 
 import Controller.LoginController;
-import Controller.ThuController;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
 import java.time.LocalDateTime;
@@ -37,7 +36,6 @@ public class newMain {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
 //        LoginController loginController = new LoginController();
-         ThuController nvController = new ThuController();
 //        LocalDateTime time;
 //        time = LocalDateTime.now();
 //       // MyStockBuyModel mystock = new MyStockBuyModel("abc", "abc company", 7 , (float) 8.9,time );

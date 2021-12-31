@@ -5,8 +5,6 @@
 package Main;
 
 import Controller.LoginController;
-import Controller.NhanvienController;
-import Controller.ThuController;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
 import java.io.IOException;

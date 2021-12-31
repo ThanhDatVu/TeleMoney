@@ -57,27 +57,6 @@ public class ThuDAO {
         }
     }
 
-    public void printall(ThuTableModel nvmodel) {
-        String sql = "select * from thu";
-
-        ThuModel thu = null;
-        try {
-            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()) {
-                thu = new ThuModel();
-                thu.setNameThu(rs.getString("Tên khoản thu"));
-                thu.setMucThu(rs.getString("Danh mục"));
-                thu.setAmountThu(rs.getDouble("Số tiền"));
-                thu.setTimeThu(rs.getTime("Ngày"));
-                System.out.println(thu.toString());
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
-
     public void add(ThuModel thu) {
         String sql = "INSERT INTO thu (namethu, mucthu, amountthu, timethu) VALUES (?,?,?,?)";
 
