@@ -49,10 +49,14 @@ public class GuiTienView extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jComboBox2 = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -80,9 +84,6 @@ public class GuiTienView extends javax.swing.JFrame {
 
         jLabel5.setText("%");
 
-        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel6.setText("3");
-
         jLabel7.setText("KỲ HẠN");
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 tháng", "2 tháng", "3 tháng", "6 tháng", "9 tháng", "12 tháng", "24 tháng", "36 tháng", "48 tháng", "60 tháng" }));
@@ -104,6 +105,35 @@ public class GuiTienView extends javax.swing.JFrame {
             }
         });
 
+        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel8.setText("THÊM KHOẢN GỬI");
+
+        jLabel9.setText("LÃI HÀNG THÁNG");
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Huỷ");
+        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButton2MouseClicked(evt);
+            }
+        });
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -111,41 +141,45 @@ public class GuiTienView extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel5)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel9))
+                .addGap(15, 15, 15)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(15, 15, 15)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(43, 43, 43)
-                                        .addComponent(jLabel7)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addGap(39, 39, 39))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(183, 183, 183))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(jTextField4, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 175, Short.MAX_VALUE))
+                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel4)
+                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel5))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(51, 51, 51)
+                        .addComponent(jLabel7)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(35, 35, 35))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(148, 148, 148)
+                .addComponent(jLabel8)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel8)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -158,14 +192,18 @@ public class GuiTienView extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5)
+                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(21, 21, 21)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel9)
+                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -174,168 +212,6 @@ public class GuiTienView extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
-        if (("Ngân Hàng Quân đội (MBBank)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("2,7");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("2,8");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,4");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,92");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4,85");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,03");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("6,4");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("6,4");
-            }
-            else jLabel6.setText("6,4");
-        }
-        if (("Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,3");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,5");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,3");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,3");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,3");
-            }
-            else jLabel6.setText("5,3");
-        }
-        if (("Ngân Hàng Công Thương Việt Nam (Vietinbank)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,1");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,1");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,4");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,6");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,6");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,6");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,6");
-            }
-            else jLabel6.setText("5,6");
-        }
-        if (("Ngân Hàng Kĩ Thương Việt Nam (Techcombank)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,3");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4,6");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,3");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,2");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,4");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,4");
-            }
-            else jLabel6.setText("5,4");
-        }
-        if (("Ngân Hàng Đầu tư và Phát triển Việt Nam (BIDV)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,1");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,1");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,4");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,5");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,5");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,5");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,5");
-            }
-            else jLabel6.setText("5,5");
-        }
-        if (("Ngân Hàng Việt Nam Thịnh Vượng (VPBank)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,2");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,75");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,8");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4,7");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,1");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,1");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,1");
-            }
-            else jLabel6.setText("5,1");
-        }
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -344,168 +220,6 @@ public class GuiTienView extends javax.swing.JFrame {
 
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
-        if (("Ngân Hàng Quân đội (MBBank)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("2,7");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("2,8");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,4");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,92");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4,85");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,03");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("6,4");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("6,4");
-            }
-            else jLabel6.setText("6,4");
-        }
-        if (("Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,3");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,5");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,3");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,3");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,3");
-            }
-            else jLabel6.setText("5,3");
-        }
-        if (("Ngân Hàng Công Thương Việt Nam (Vietinbank)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,1");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,1");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,4");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,6");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,6");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,6");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,6");
-            }
-            else jLabel6.setText("5,6");
-        }
-        if (("Ngân Hàng Kĩ Thương Việt Nam (Techcombank)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,3");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4,6");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,3");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,2");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,4");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,4");
-            }
-            else jLabel6.setText("5,4");
-        }
-        if (("Ngân Hàng Đầu tư và Phát triển Việt Nam (BIDV)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,1");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,1");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,4");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,5");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,5");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,5");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,5");
-            }
-            else jLabel6.setText("5,5");
-        }
-        if (("Ngân Hàng Việt Nam Thịnh Vượng (VPBank)").equals(jComboBox1.getSelectedItem())){
-            if (("1 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,45");
-            }
-            else if (("2 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,45");
-            }
-            else if (("3 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("3,5");
-            }
-            else if (("6 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("4,8");
-            }
-            else if (("12 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,1");
-            }
-            else if (("24 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,2");
-            }
-            else if (("36 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,2");
-            }
-            else if (("48 tháng").equals(jComboBox2.getSelectedItem())){
-                jLabel6.setText("5,2");
-            }
-            else jLabel6.setText("5,2");
-        }
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -516,6 +230,22 @@ public class GuiTienView extends javax.swing.JFrame {
     private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1MouseClicked
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
+
+    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2MouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -555,6 +285,7 @@ public class GuiTienView extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
@@ -562,9 +293,12 @@ public class GuiTienView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }

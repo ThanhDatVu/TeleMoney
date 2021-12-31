@@ -15,7 +15,7 @@ import lib.ButtonColumn;
 @SuppressWarnings("serial")
 public class TraGopTableModel extends DefaultTableModel {
 
-    public static final Object[] TABLE_HEADER = {"Tên", "Công ty", "Số tiền (VNĐ)","Số tháng", "Tiền hàng tháng","Ngày"};
+    public static final Object[] TABLE_HEADER = {"Tên", "Công ty", "Trả trước", "Tổng tiền (VNĐ)","Số tháng", "Tiền hàng tháng", "Ngày"};
 
     public static final Object[][] DATA = {
     };

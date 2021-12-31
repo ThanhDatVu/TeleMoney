@@ -17,14 +17,16 @@ public class TraGopModel {
     private double tienhangthang;
     private int sothang;
     private Timestamp time;
+    private double tratruoc;
 
-    public TraGopModel(String ten, String bank, double tiengoc, double laisuat, int kyhan, Timestamp ngaygui) {
+    public TraGopModel(String ten, String bank, double tiengoc, double laisuat, int kyhan, Timestamp ngaygui, double tratruoc) {
         this.ten = ten;
         this.bank = bank;
         this.tongtien = tongtien;
         this.tienhangthang = tienhangthang;
         this.sothang = sothang;
         this.time = time;
+        this.tratruoc = tratruoc;
     }
 
     public TraGopModel() {
@@ -76,6 +78,14 @@ public class TraGopModel {
 
     public void setTime(Timestamp time) {
         this.time = time;
+    }
+
+    public double getTratruoc() {
+        return tratruoc;
+    }
+
+    public void setTratruoc(double tratruoc) {
+        this.tratruoc = tratruoc;
     }
     
     
