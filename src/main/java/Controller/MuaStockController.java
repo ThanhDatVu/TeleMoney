@@ -91,7 +91,7 @@ public class MuaStockController {
             muaStockView.textGiaNow.setText(giaTriHienTai.toString());
             muaStockView.textGiaNow.setEditable(false);
             muaStockView.txtSymbol.setEditable(false);
-            
+
             muaStockView.textGiaMuaTB.setText(giaTriHienTai.toString());
         } catch (IOException ex) {
             Logger.getLogger(MuaStockController.class.getName()).log(Level.SEVERE, null, ex);
@@ -206,12 +206,13 @@ public class MuaStockController {
                 double tongMuaVND = Double.parseDouble(muaStockView.txtTongMuaVND.getText());
                 if (tongMuaVND > soDu) {
                     JOptionPane.showMessageDialog(null, "Vượt quá số dư khả dụng");
+                } else if (tongMuaVND < 0) {
                 } else {
                     int opt = JOptionPane.showConfirmDialog(muaStockView, "Xác nhận mua " + muaStockView.textSoLuong.getText() + " "
                             + muaStockView.txtSymbol.getText() + " với tổng giá trị "
                             + muaStockView.txtTongMuaVND.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_CANCEL_OPTION);
                     if (opt == 0) {
-                        float giaCuoi=0;
+                        float giaCuoi = 0;
                         float giaMoi, giaCu;
                         int soMoi, soCu;
                         giaCu = myStock.getGiaBanDau();
@@ -223,14 +224,14 @@ public class MuaStockController {
                         myTrans.setTongBanDau(Float.parseFloat(muaStockView.txtTongMuaUSD.getText()));
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         myTrans.setTime(time);
-                        System.out.println("trans "+ myTrans.toString());
+                        System.out.println("trans " + myTrans.toString());
                         stockDAO.addTrans(myTrans, acc, "mua");
                         giaMoi = myTrans.getGiaBanDau();
                         soMoi = myTrans.getSoLuong();
-                        giaCuoi = (soCu*giaCu+soMoi*giaMoi)/(soCu+soMoi);
+                        giaCuoi = (soCu * giaCu + soMoi * giaMoi) / (soCu + soMoi);
                         myStock.setGiaBanDau(giaCuoi);
                         System.out.println("gia moi la: " + giaCuoi);
-                        myStock.setSoLuong(soCu+soMoi);
+                        myStock.setSoLuong(soCu + soMoi);
                         stockDAO.updateMyStock(myStock.getSymbol(), myStock);
                         System.out.println("mýTOCK moi " + myStock.toString());
                         muaStockView.owner.soDuKhaDung = muaStockView.owner.soDuKhaDung - Float.parseFloat(muaStockView.txtTongMuaVND.getText());
