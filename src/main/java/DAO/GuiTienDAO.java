@@ -36,7 +36,7 @@ public class GuiTienDAO {
     }
     
     public void add(GuiTienModel guiTien, UserModel userModel){
-        String sql = "INSERT INTO 'chovay' ('uid', 'ten', 'bank', 'tiengoc', 'laisuat', 'kyhan', 'ngaychovay') VALUES (?, ?, ?, ?, ?, ?, ?)";;
+        String sql = "INSERT INTO `chovay` (`uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngaychovay`) VALUES (?, ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, userModel.getId());

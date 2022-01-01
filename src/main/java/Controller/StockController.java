@@ -36,6 +36,11 @@ import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import lib.ButtonColumn;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PiePlot;
+import org.jfree.data.general.DefaultPieDataset;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -76,6 +81,24 @@ public class StockController {
     }
 
     public void setDataTable() throws IOException {
+        DefaultPieDataset dataSet = new DefaultPieDataset();
+        dataSet.setValue("BITCOIN 29%", 29);
+        dataSet.setValue("APPLE 36%", 36);
+        dataSet.setValue("Tesla 25%", 25);
+        dataSet.setValue("DOGECOIN 15%",15 );
+       
+        // based on the dataset we create the chart
+        JFreeChart pieChart = ChartFactory.createPieChart3D("chart", dataSet, true, true, false);
+        PiePlot plot = (PiePlot) pieChart.getPlot();
+        plot.setStartAngle(290);
+        plot.setForegroundAlpha(0.5f);
+
+        // Adding chart into a chart panel
+        ChartPanel chartPanel = new ChartPanel(pieChart);
+        chartPanel.setVisible(true);
+        this.master.pnlThongKe.add(chartPanel);
+        this.master.pack();
+        
         TableColumn col = master.tableDanhMuc.getColumnModel().getColumn(4);
             col.setCellRenderer(new MyRenderer(Color.red, Color.green));
         MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();

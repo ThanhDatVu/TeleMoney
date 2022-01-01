@@ -17,6 +17,7 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -29,10 +30,17 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableColumn;
 import lib.ButtonColumn;
+import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -63,6 +71,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         initComponents();
         setTiGiaSoDu();
+        ChartTest();
         cardLayout = (CardLayout) (pnlCards.getLayout());
         setLocationRelativeTo(null);
         
@@ -98,7 +107,29 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         setSumText();
         System.out.println("user ID " + user.getId());
     }
+    public void ChartTest() {
+        XYSeries Goals = new XYSeries("Goals Scored");
+        Goals.add(1, 1.0);
+        Goals.add(2, 3.0);
+        Goals.add(3, 2.0);
+        Goals.add(4, 0.0);
+        Goals.add(5, 3.0);
+        XYDataset xyDataset = new XYSeriesCollection(Goals);
+        JFreeChart chart = ChartFactory.createXYLineChart(
+            "Goals Scored Over Time", "Fixture Number", "Goals",
+            xyDataset, PlotOrientation.VERTICAL, true, true, false);
+        ChartPanel cp = new ChartPanel(chart) {
 
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(320, 240);
+            }
+        };
+        cp.setMouseWheelEnabled(true);
+        pnlThongKeChung.add(cp);
+        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        pack();
+    }
     private void setUsername() {
         txtUsername.setText(user.getUsername());
     }
@@ -112,35 +143,25 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    class MyRenderer extends DefaultTableCellRenderer {
-
-        Color red, green;
-
-        public MyRenderer(Color bg, Color fg) {
-            super();
-            this.red = bg;
-            this.green = fg;
+    public void refreshTabThuChi() {
+        try {
+            setTiGiaSoDu();
+            
+            thuChiController.setDataTable();
+        } catch (IOException ex) {
+            Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
-
-        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
-            Component cell = super.getTableCellRendererComponent(table, value,
-                    isSelected, hasFocus, row, column);
-            //System.out.println(value);
-            if (value == null) {
-                return cell;
-            }
-            Float check = Float.parseFloat(value.toString());
-            if (check >= 0) {
-
-                cell.setForeground(green);
-            } else {
-                cell.setForeground(red);
-            }
-
-            return cell;
+    }public void refreshTabVayNo() {
+        try {
+            setTiGiaSoDu();
+            
+            vayNoController.setDataTable();
+        } catch (IOException ex) {
+            Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -194,8 +215,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelTotalStockVND = new javax.swing.JLabel();
         labelTotalReturnVND = new javax.swing.JLabel();
         btnThemStock1 = new javax.swing.JButton();
-        pnlThongKe = new javax.swing.JPanel();
-        jLabel11 = new javax.swing.JLabel();
         pnlTaiKhoan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -229,6 +248,14 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         btnShowVay = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
+        jScrollPaneThongKe = new javax.swing.JScrollPane();
+        pnlThongKe = new javax.swing.JPanel();
+        pnlThongKeChung = new javax.swing.JPanel();
+        pnlThongKeChiTieu = new javax.swing.JPanel();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        pnlThongKeVayNo = new javax.swing.JPanel();
+        pnlThongKeDauTu = new javax.swing.JPanel();
         pnlLeftNav = new javax.swing.JPanel();
         labelMenuVayNo = new javax.swing.JLabel();
         labelMenuDauTu = new javax.swing.JLabel();
@@ -414,7 +441,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnShowChi)
-                .addContainerGap(332, Short.MAX_VALUE))
+                .addContainerGap(334, Short.MAX_VALUE))
         );
 
         pnlCards.add(pnlChiTieu, "cardChiTieu");
@@ -551,7 +578,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(labelVND)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -569,29 +596,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         );
 
         pnlCards.add(pnlDauTu, "cardDauTu");
-
-        pnlThongKe.setBackground(new java.awt.Color(255, 255, 255));
-
-        jLabel11.setText("thống kê");
-
-        javax.swing.GroupLayout pnlThongKeLayout = new javax.swing.GroupLayout(pnlThongKe);
-        pnlThongKe.setLayout(pnlThongKeLayout);
-        pnlThongKeLayout.setHorizontalGroup(
-            pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlThongKeLayout.createSequentialGroup()
-                .addGap(470, 470, 470)
-                .addComponent(jLabel11)
-                .addContainerGap(499, Short.MAX_VALUE))
-        );
-        pnlThongKeLayout.setVerticalGroup(
-            pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(pnlThongKeLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel11)
-                .addContainerGap(838, Short.MAX_VALUE))
-        );
-
-        pnlCards.add(pnlThongKe, "cardThongKe");
 
         pnlTaiKhoan.setBackground(new java.awt.Color(255, 255, 255));
 
@@ -634,7 +638,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
                 .addComponent(btnDangXuat)
-                .addContainerGap(557, Short.MAX_VALUE))
+                .addContainerGap(650, Short.MAX_VALUE))
         );
 
         pnlCards.add(pnlTaiKhoan, "cardTaiKhoan");
@@ -868,6 +872,56 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         pnlCards.add(jScrollPaneVayNo, "cardVayNo");
 
+        pnlThongKe.setBackground(new java.awt.Color(255, 255, 255));
+
+        pnlThongKeChung.setBackground(new java.awt.Color(51, 255, 51));
+        pnlThongKeChung.setLayout(new java.awt.BorderLayout());
+
+        pnlThongKeChiTieu.setBackground(new java.awt.Color(255, 102, 102));
+        pnlThongKeChiTieu.setLayout(new java.awt.BorderLayout());
+
+        jButton2.setText("jButton2");
+        pnlThongKeChiTieu.add(jButton2, java.awt.BorderLayout.PAGE_END);
+
+        jButton3.setText("jButton3");
+        pnlThongKeChiTieu.add(jButton3, java.awt.BorderLayout.PAGE_START);
+
+        pnlThongKeDauTu.setBackground(new java.awt.Color(255, 255, 102));
+
+        javax.swing.GroupLayout pnlThongKeLayout = new javax.swing.GroupLayout(pnlThongKe);
+        pnlThongKe.setLayout(pnlThongKeLayout);
+        pnlThongKeLayout.setHorizontalGroup(
+            pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThongKeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlThongKeChung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(pnlThongKeLayout.createSequentialGroup()
+                        .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlThongKeVayNo, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlThongKeChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 9, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        pnlThongKeLayout.setVerticalGroup(
+            pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThongKeLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(pnlThongKeChung, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addComponent(pnlThongKeChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlThongKeVayNo, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(236, Short.MAX_VALUE))
+        );
+
+        jScrollPaneThongKe.setViewportView(pnlThongKe);
+
+        pnlCards.add(jScrollPaneThongKe, "cardThongKe");
+
         jSplitPane1.setBottomComponent(pnlCards);
 
         pnlLeftNav.setBackground(new java.awt.Color(178, 118, 216));
@@ -971,7 +1025,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addComponent(labelMenuDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelMenuThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 392, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 485, Short.MAX_VALUE)
                 .addComponent(labelMenuTaiKhoan)
                 .addGap(43, 43, 43))
         );
@@ -986,7 +1040,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 983, Short.MAX_VALUE)
         );
 
         pack();
@@ -1005,10 +1059,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private void labelMenuThongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuThongKeMousePressed
         // TODO add your handling code here:
         // cardLayout.show(pnlCards, "cardThongKe");
-        JFreeChartExample chart = new JFreeChartExample("Thống kê", "Chia các danh mục đầu tư");
-        chart.pack();
-        chart.setLocationRelativeTo(null);
-        chart.setVisible(true);
+        cardLayout.show(pnlCards, "cardThongKe");
     }//GEN-LAST:event_labelMenuThongKeMousePressed
 
     private void labelMenuTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuTaiKhoanMousePressed
@@ -1220,9 +1271,10 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public javax.swing.JButton btnXoaThu;
     public javax.swing.JButton btnXoaVay;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
-    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel14;
     public javax.swing.JLabel jLabel16;
@@ -1243,6 +1295,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
+    private javax.swing.JScrollPane jScrollPaneThongKe;
     private javax.swing.JScrollPane jScrollPaneVayNo;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel labelLogo;
@@ -1266,7 +1319,11 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JPanel pnlDauTu;
     private javax.swing.JPanel pnlLeftNav;
     private javax.swing.JPanel pnlTaiKhoan;
-    private javax.swing.JPanel pnlThongKe;
+    public javax.swing.JPanel pnlThongKe;
+    private javax.swing.JPanel pnlThongKeChiTieu;
+    private javax.swing.JPanel pnlThongKeChung;
+    private javax.swing.JPanel pnlThongKeDauTu;
+    private javax.swing.JPanel pnlThongKeVayNo;
     private javax.swing.JPanel pnlVayNo;
     public javax.swing.JTable tableDanhMuc;
     public javax.swing.JTable tableGuiTien;

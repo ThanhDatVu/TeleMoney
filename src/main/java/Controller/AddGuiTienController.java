@@ -89,7 +89,7 @@ public class AddGuiTienController {
                         guiTienModel.setNgaygui(time);
                         guiTienDAO.add(guiTienModel, acc);
                         guiTienView.master.soDuKhaDung = guiTienView.master.soDuKhaDung - Float.parseFloat(guiTienView.txtTien.getText());
-                        guiTienView.master.refreshTabDauTu();
+                        guiTienView.master.refreshTabVayNo();
                         guiTienView.dispose();
                     }
                 }
