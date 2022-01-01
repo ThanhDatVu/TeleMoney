@@ -215,6 +215,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelTotalStockVND = new javax.swing.JLabel();
         labelTotalReturnVND = new javax.swing.JLabel();
         btnThemStock1 = new javax.swing.JButton();
+        txtLocDauTu = new javax.swing.JTextField();
+        btnLoc = new javax.swing.JButton();
         pnlTaiKhoan = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -518,6 +520,14 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             }
         });
 
+        txtLocDauTu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtLocDauTuActionPerformed(evt);
+            }
+        });
+
+        btnLoc.setText("Lọc");
+
         javax.swing.GroupLayout pnlDauTuLayout = new javax.swing.GroupLayout(pnlDauTu);
         pnlDauTu.setLayout(pnlDauTuLayout);
         pnlDauTuLayout.setHorizontalGroup(
@@ -531,18 +541,27 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 310, Short.MAX_VALUE)
                         .addComponent(jLabel10)
                         .addGap(355, 355, 355))
-                    .addGroup(pnlDauTuLayout.createSequentialGroup()
-                        .addComponent(jLabel12)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelSoDauTu)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(labelUSD, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel4)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(labelVND, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel6)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDauTuLayout.createSequentialGroup()
+                        .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlDauTuLayout.createSequentialGroup()
+                                .addComponent(jLabel12)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(labelSoDauTu)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelUSD, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel4)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDauTuLayout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(btnLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(38, 38, 38)))
+                        .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(txtLocDauTu)
+                            .addGroup(pnlDauTuLayout.createSequentialGroup()
+                                .addComponent(labelVND, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel6)))
                         .addGap(22, 22, 22))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDauTuLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
@@ -578,7 +597,11 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(labelVND)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 183, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 142, Short.MAX_VALUE)
+                .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtLocDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnLoc))
+                .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1110,6 +1133,10 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemStock1ActionPerformed
 
+    private void txtLocDauTuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocDauTuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtLocDauTuActionPerformed
+
     public void setTiGiaSoDu() {
         try {
             Stock stock = YahooFinance.get("USDVND=X");
@@ -1246,6 +1273,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 //    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnDangXuat;
+    private javax.swing.JButton btnLoc;
     public javax.swing.JButton btnLocTG;
     public javax.swing.JButton btnLocTK;
     public javax.swing.JButton btnLocVay;
@@ -1333,6 +1361,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public javax.swing.JTable tbThu;
     public javax.swing.JTextField textChi;
     public javax.swing.JTextField textThu;
+    public javax.swing.JTextField txtLocDauTu;
     public javax.swing.JTextField txtLocTG;
     public javax.swing.JTextField txtLocTK;
     public javax.swing.JTextField txtLocVay;

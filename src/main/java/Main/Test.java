@@ -48,7 +48,8 @@ public class Test {
 //        MyStockBuyModel myStock = new MyStockBuyModel();
 //        myStock.setSymbol("AAPL");
         new TableSearch().setVisible(true);
-        
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+        System.out.println(time.getDate());
 //        myStock.setTime();
 //        System.out.println(myStock.get24hchange());
 //        System.out.println(get24hchange("AAPL"));

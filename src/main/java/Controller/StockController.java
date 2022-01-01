@@ -27,11 +27,14 @@ import java.math.MathContext;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JTable;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -52,6 +55,7 @@ public class StockController {
     Stock stock;
     BigDecimal usd;
     MyStockBuyTableModel stockModel = new MyStockBuyTableModel();
+    Vector stockTableData;
     public StockController(MasterTeleMoneyView master, UserModel acc) {
         try {
             System.out.println("Tao controller stock");
@@ -124,6 +128,7 @@ public class StockController {
                 "Bán"
 
             });
+            stockTableData = (Vector) ((DefaultTableModel) master.tableDanhMuc.getModel()).getDataVector().clone();
 
         }else{
             //TO DO xoas
@@ -182,6 +187,23 @@ public class StockController {
             }
         });
         System.out.println("Tao xong event tab dautu");
+        master.txtLocTG.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            public void insertUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            public void removeUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            private void search() {
+                searchTableContents(master.txtLocDauTu.getText(), master.tableDanhMuc ,stockTableData );
+            }
+        });
     }
 
     public void setTableButton() {
@@ -260,4 +282,22 @@ public class StockController {
             return cell;
         }
     }
+    public void searchTableContents(String searchString, JTable table, Vector OGVector) {
+        DefaultTableModel currtableModel = (DefaultTableModel) table.getModel();
+        //To empty the table before search
+        currtableModel.setRowCount(0);
+        //To search for contents from original table content
+        for (Object rows : OGVector) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().contains(searchString)) {
+                    //content found so adding to table
+                    currtableModel.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
+    }
+    
 }
