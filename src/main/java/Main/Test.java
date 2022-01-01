@@ -7,6 +7,7 @@ package Main;
 import Controller.LoginController;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
+import View.TableSearch;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -46,8 +47,7 @@ public class Test {
 //        ThuController nvController = new ThuController();
 //        MyStockBuyModel myStock = new MyStockBuyModel();
 //        myStock.setSymbol("AAPL");
-        Timestamp t = new Timestamp(2021, 12, 29, 6, 6, 6, 6);
-        Timestamp t1 = new Timestamp(2021, 11, 25, 6, 6, 6, 6);
+        new TableSearch().setVisible(true);
         
 //        myStock.setTime();
 //        System.out.println(myStock.get24hchange());

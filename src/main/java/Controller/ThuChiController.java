@@ -50,7 +50,7 @@ public class ThuChiController {
     BigDecimal usd;
     ThuTableModel chiTableModel = new ThuTableModel();
     ChiTableModel thuTableModel = new ChiTableModel();
-
+    Object[][] chiTableData,thuTableData ;
     public ThuChiController(MasterTeleMoneyView master, UserModel acc) {
         this.master = master;
         this.acc = acc;

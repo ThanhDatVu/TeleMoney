@@ -34,12 +34,14 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import lib.ButtonColumn;
 import yahoofinance.YahooFinance;
 
@@ -53,6 +55,7 @@ public class VayNoController {
     GuiTienTableModel guiTienTableModel = new GuiTienTableModel();
     VayTienTableModel vayTienTableModel = new VayTienTableModel();
     TraGopTableModel traGopTableModel = new TraGopTableModel();
+    Vector guiTienTableData, vayTienTableData, traGopTableData;
 
     public VayNoController(MasterTeleMoneyView master, UserModel acc) throws IOException {
         this.master = master;
@@ -91,6 +94,7 @@ public class VayNoController {
                 guiTienModels.get(i).getNgaygui()
             });
         }
+        guiTienTableData = (Vector) ((DefaultTableModel) master.tableGuiTien.getModel()).getDataVector().clone();
         VayTienTableModel tableModel1 = (VayTienTableModel) master.tableVayTien.getModel();
         ArrayList<VayTienModel> vayTienModels = new ArrayList<>();
         vayTienModels = vayTienDAO.getAll(acc);
@@ -105,14 +109,14 @@ public class VayNoController {
                 vayTienModels.get(i).getNgayvay()
             });
         }
-        
-        
+        vayTienTableData = (Vector) ((DefaultTableModel) master.tableVayTien.getModel()).getDataVector().clone();
+
         TraGopTableModel tableModel2 = (TraGopTableModel) master.tableTraGop.getModel();
         ArrayList<TraGopModel> traGopModels = new ArrayList<>();
         traGopModels = traGopDAO.getAll(acc);
         tableModel2.setRowCount(0);
-        Object[] TABLE_HEADER = {"Tên", "Công ty", "Trả trước", "Tổng tiền (VNĐ)","Số tháng", "Tiền hàng tháng", "Ngày"};
         
+
         for (int i = 0; i < traGopModels.size(); i++) {
             tableModel2.addRow(new Object[]{
                 traGopModels.get(i).getTen(),
@@ -125,6 +129,7 @@ public class VayNoController {
             });
             //"Tên", "Công ty", "Trả trước", "Tổng tiền (VNĐ)","Số tháng", "Tiền hàng tháng", "Ngày"
         }
+        traGopTableData = (Vector) ((DefaultTableModel) master.tableTraGop.getModel()).getDataVector().clone();
     }
 //    public void setButton(){
 //    Action delete = new AbstractAction() {
