@@ -209,6 +209,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tbThu">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="4">
                             <Column editable="true" title="T&#xea;n kho&#x1ea3;n thu" type="java.lang.Object"/>
@@ -260,6 +263,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tbChi">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                           <Table columnCount="4" rowCount="4">
                             <Column editable="true" title="T&#xea;n kho&#x1ea3;n chi" type="java.lang.Object"/>
@@ -304,6 +310,9 @@
                 </Container>
                 <Component class="javax.swing.JButton" name="btnThemThu">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                   </Properties>
                   <AuxValues>
@@ -312,6 +321,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSuaThu">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                   </Properties>
                   <AuxValues>
@@ -320,6 +332,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnXoaThu">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                   </Properties>
                   <AuxValues>
@@ -328,6 +343,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnThemChi">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                   </Properties>
                   <AuxValues>
@@ -336,6 +354,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnSuaChi">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="S&#x1eed;a"/>
                   </Properties>
                   <AuxValues>
@@ -344,6 +365,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnXoaChi">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="X&#xf3;a"/>
                   </Properties>
                   <AuxValues>
@@ -363,6 +387,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnShowThu">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Show"/>
                   </Properties>
                   <AuxValues>
@@ -371,6 +398,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnShowChi">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Show"/>
                   </Properties>
                   <AuxValues>
@@ -379,6 +409,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnTimKiemThu">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
                   </Properties>
                   <AuxValues>
@@ -387,6 +420,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnTimKiemChi">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
                   </Properties>
                   <AuxValues>
@@ -394,11 +430,21 @@
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textThu">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semilight" size="11" style="0"/>
+                    </Property>
+                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="textChi">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semilight" size="11" style="0"/>
+                    </Property>
+                  </Properties>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -471,6 +517,8 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="btnThemStock" min="-2" pref="221" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <Component id="btnThemStock1" min="-2" pref="221" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel5" max="32767" attributes="0"/>
@@ -507,7 +555,7 @@
                               <Component id="labelVND" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="181" max="32767" attributes="0"/>
                           <Component id="jScrollPane1" min="-2" pref="410" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -515,6 +563,7 @@
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="labelTotalStock" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="labelTotalStockVND" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnThemStock1" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -569,6 +618,9 @@
                   <SubComponents>
                     <Component class="javax.swing.JTable" name="tableDanhMuc">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semilight" size="11" style="0"/>
+                        </Property>
                         <Property name="toolTipText" type="java.lang.String" value=""/>
                       </Properties>
                       <AuxValues>
@@ -633,6 +685,9 @@
                 </Component>
                 <Component class="javax.swing.JButton" name="btnThemStock">
                   <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
                     <Property name="text" type="java.lang.String" value="Th&#xea;m danh m&#x1ee5;c &#x111;&#x1ea7;u t&#x1b0;"/>
                   </Properties>
                   <Events>
@@ -686,6 +741,17 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="xVND"/>
                   </Properties>
+                </Component>
+                <Component class="javax.swing.JButton" name="btnThemStock1">
+                  <Properties>
+                    <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                      <Font name="Segoe UI Semibold" size="11" style="0"/>
+                    </Property>
+                    <Property name="text" type="java.lang.String" value="Xem l&#x1ecb;ch s&#x1eed; giao d&#x1ecb;ch"/>
+                  </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemStock1ActionPerformed"/>
+                  </Events>
                 </Component>
               </SubComponents>
             </Container>
@@ -976,6 +1042,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="tableGuiTien">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI Semibold" size="11" style="0"/>
+                            </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
                                 <Column editable="true" title="Title 1" type="java.lang.Object"/>
@@ -1000,6 +1069,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="tableVayTien">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI Semibold" size="11" style="0"/>
+                            </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
                                 <Column editable="true" title="Title 1" type="java.lang.Object"/>
@@ -1017,6 +1089,9 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btnThemTK">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
                       <Events>
@@ -1028,6 +1103,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnXoaTK">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Xo&#xe1;"/>
                       </Properties>
                       <AuxValues>
@@ -1036,6 +1114,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnThemVay">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
                       <AuxValues>
@@ -1044,6 +1125,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnXoaVay">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Xo&#xe1;"/>
                       </Properties>
                       <AuxValues>
@@ -1060,6 +1144,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnShowTK">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Show giao d&#x1ecb;ch"/>
                       </Properties>
                       <AuxValues>
@@ -1068,6 +1155,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnLocTK">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="L&#x1ecd;c"/>
                       </Properties>
                       <AuxValues>
@@ -1076,6 +1166,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnLocVay">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="L&#x1ecd;c"/>
                       </Properties>
                       <AuxValues>
@@ -1083,8 +1176,18 @@
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtLocTK">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semilight" size="11" style="0"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtLocVay">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semilight" size="11" style="0"/>
+                        </Property>
+                      </Properties>
                       <Events>
                         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLocVayActionPerformed"/>
                       </Events>
@@ -1114,6 +1217,9 @@
                       <SubComponents>
                         <Component class="javax.swing.JTable" name="tableTraGop">
                           <Properties>
+                            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                              <Font name="Segoe UI Semibold" size="11" style="0"/>
+                            </Property>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                               <Table columnCount="4" rowCount="4">
                                 <Column editable="true" title="Title 1" type="java.lang.Object"/>
@@ -1131,6 +1237,9 @@
                     </Container>
                     <Component class="javax.swing.JButton" name="btnXoaTG">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Xo&#xe1;"/>
                       </Properties>
                       <AuxValues>
@@ -1139,6 +1248,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnThemTG">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
                       <AuxValues>
@@ -1147,6 +1259,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnLocTG">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="L&#x1ecd;c"/>
                       </Properties>
                       <AuxValues>
@@ -1154,9 +1269,17 @@
                       </AuxValues>
                     </Component>
                     <Component class="javax.swing.JTextField" name="txtLocTG">
+                      <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semilight" size="11" style="0"/>
+                        </Property>
+                      </Properties>
                     </Component>
                     <Component class="javax.swing.JButton" name="btnShowTG">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Show giao d&#x1ecb;ch"/>
                       </Properties>
                       <AuxValues>
@@ -1165,6 +1288,9 @@
                     </Component>
                     <Component class="javax.swing.JButton" name="btnShowVay">
                       <Properties>
+                        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                          <Font name="Segoe UI Semibold" size="11" style="0"/>
+                        </Property>
                         <Property name="text" type="java.lang.String" value="Show giao d&#x1ecb;ch"/>
                       </Properties>
                       <AuxValues>

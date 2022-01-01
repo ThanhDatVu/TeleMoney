@@ -47,7 +47,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
      */
     DecimalFormat df = new DecimalFormat("0");
     StockDAO stockDAO = new StockDAO();
-    MyStockBuyTableModel stockModel = new MyStockBuyTableModel();
+    
     UserModel user;
     CardLayout cardLayout;
     TableColumn col;
@@ -65,39 +65,38 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         setTiGiaSoDu();
         cardLayout = (CardLayout) (pnlCards.getLayout());
         setLocationRelativeTo(null);
-        tableDanhMuc.setModel(stockModel);
-        col = tableDanhMuc.getColumnModel().getColumn(2);
-        //define the renderer
-        col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
+        
+//        col = tableDanhMuc.getColumnModel().getColumn(2);
+//        //define the renderer
+//        col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
 
     }
 
     public MasterTeleMoneyView(UserModel user) throws IOException {
         this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
         this.user = user;
-
         initComponents();
+        stockController = new StockController(this, user);
+        vayNoController = new VayNoController(this, user);
+        thuChiController = new ThuChiController(this, user);
         this.setTitle("TELEMONEY");
+        myInitComponent();
+    }
+
+    private void myInitComponent() {
         setUsername();
         soDuKhaDung = stockDAO.getSoDu(user);
         tongTaiSan = stockDAO.getTongTaiSan(user);
         setTiGiaSoDu();
         cardLayout = (CardLayout) (pnlCards.getLayout());
         setLocationRelativeTo(null);
-        tableDanhMuc.setModel(stockModel);
+        
         {   // set đổi màu cột lãi lỗ
-            col = tableDanhMuc.getColumnModel().getColumn(4);
-            col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
+//            col = tableDanhMuc.getColumnModel().getColumn(4);
+//            col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
         }
-        stockController = new StockController(this, user);
-        vayNoController = new VayNoController(this, user);
-        thuChiController = new ThuChiController(this, user);
         setSumText();
-        //add chart
         System.out.println("user ID " + user.getId());
-
-//        pnlThongKe.add(CP, BorderLayout.CENTER);
-//        pnlThongKe.validate();
     }
 
     private void setUsername() {
@@ -194,6 +193,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelTotalReturn = new javax.swing.JLabel();
         labelTotalStockVND = new javax.swing.JLabel();
         labelTotalReturnVND = new javax.swing.JLabel();
+        btnThemStock1 = new javax.swing.JButton();
         pnlThongKe = new javax.swing.JPanel();
         jLabel11 = new javax.swing.JLabel();
         pnlTaiKhoan = new javax.swing.JPanel();
@@ -251,6 +251,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel16.setText("QUẢN LÝ CHI TIÊU");
 
+        tbThu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         tbThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -264,6 +265,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(tbThu);
 
+        tbChi.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         tbChi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -277,28 +279,42 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         ));
         jScrollPane6.setViewportView(tbChi);
 
+        btnThemThu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnThemThu.setText("Thêm");
 
+        btnSuaThu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnSuaThu.setText("Sửa");
 
+        btnXoaThu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnXoaThu.setText("Xóa");
 
+        btnThemChi.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnThemChi.setText("Thêm");
 
+        btnSuaChi.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnSuaChi.setText("Sửa");
 
+        btnXoaChi.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnXoaChi.setText("Xóa");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel17.setText("CHI");
 
+        btnShowThu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnShowThu.setText("Show");
 
+        btnShowChi.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnShowChi.setText("Show");
 
+        btnTimKiemThu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnTimKiemThu.setText("Tìm kiếm");
 
+        btnTimKiemChi.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnTimKiemChi.setText("Tìm kiếm");
+
+        textThu.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
+
+        textChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
 
         labelSoDuChiTieu.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         labelSoDuChiTieu.setText("Số dư khả dụng");
@@ -416,6 +432,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 204, 204));
 
+        tableDanhMuc.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         tableDanhMuc.setToolTipText("");
         jScrollPane1.setViewportView(tableDanhMuc);
 
@@ -440,6 +457,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             }
         });
 
+        btnThemStock.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnThemStock.setText("Thêm danh mục đầu tư");
         btnThemStock.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -464,6 +482,14 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         labelTotalReturnVND.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         labelTotalReturnVND.setText("xVND");
+
+        btnThemStock1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
+        btnThemStock1.setText("Xem lịch sử giao dịch");
+        btnThemStock1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnThemStock1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDauTuLayout = new javax.swing.GroupLayout(pnlDauTu);
         pnlDauTu.setLayout(pnlDauTuLayout);
@@ -494,6 +520,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDauTuLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(btnThemStock, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(32, 32, 32)
+                .addComponent(btnThemStock1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -523,14 +551,15 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(labelVND)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 181, Short.MAX_VALUE)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThemStock)
                     .addComponent(jLabel5)
                     .addComponent(labelTotalStock)
-                    .addComponent(labelTotalStockVND))
+                    .addComponent(labelTotalStockVND)
+                    .addComponent(btnThemStock1))
                 .addGap(18, 18, 18)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelTotalReturnVND)
@@ -612,6 +641,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         pnlVayNo.setBackground(new java.awt.Color(255, 255, 255));
 
+        tableGuiTien.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         tableGuiTien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -625,6 +655,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tableGuiTien);
 
+        tableVayTien.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         tableVayTien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -638,6 +669,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         ));
         jScrollPane4.setViewportView(tableVayTien);
 
+        btnThemTK.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnThemTK.setText("Thêm");
         btnThemTK.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -645,21 +677,30 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             }
         });
 
+        btnXoaTK.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnXoaTK.setText("Xoá");
 
+        btnThemVay.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnThemVay.setText("Thêm");
 
+        btnXoaVay.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnXoaVay.setText("Xoá");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         jLabel3.setText("VAY TIỀN");
 
+        btnShowTK.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnShowTK.setText("Show giao dịch");
 
+        btnLocTK.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnLocTK.setText("Lọc");
 
+        btnLocVay.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnLocVay.setText("Lọc");
 
+        txtLocTK.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
+
+        txtLocVay.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         txtLocVay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLocVayActionPerformed(evt);
@@ -672,6 +713,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel9.setText("QUẢN LÝ VAY NỢ");
 
+        tableTraGop.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         tableTraGop.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -685,14 +727,21 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         ));
         jScrollPane7.setViewportView(tableTraGop);
 
+        btnXoaTG.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnXoaTG.setText("Xoá");
 
+        btnThemTG.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnThemTG.setText("Thêm");
 
+        btnLocTG.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnLocTG.setText("Lọc");
 
+        txtLocTG.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
+
+        btnShowTG.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnShowTG.setText("Show giao dịch");
 
+        btnShowVay.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnShowVay.setText("Show giao dịch");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
@@ -1006,6 +1055,10 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLocVayActionPerformed
 
+    private void btnThemStock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemStock1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnThemStock1ActionPerformed
+
     public void setTiGiaSoDu() {
         try {
             Stock stock = YahooFinance.get("USDVND=X");
@@ -1014,7 +1067,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             labelVND.setText("1 USD = 22835 VND");
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         labelSoDauTu.setText(String.valueOf(df.format(soDuKhaDung)) + " VND");
         labelSoDuChiTieu.setText("Số dư khả dựng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
         labelSoDuVayNo.setText("Số dư khả dựng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
@@ -1154,6 +1207,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public javax.swing.JButton btnSuaThu;
     public javax.swing.JButton btnThemChi;
     private javax.swing.JButton btnThemStock;
+    private javax.swing.JButton btnThemStock1;
     public javax.swing.JButton btnThemTG;
     public javax.swing.JButton btnThemTK;
     public javax.swing.JButton btnThemThu;

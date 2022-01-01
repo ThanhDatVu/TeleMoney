@@ -142,7 +142,7 @@ public class VayNoController {
 //    }
 
     public void setEventGuiTien() {
-        System.out.println("Tao event");
+        System.out.println("Tao event tab vayno");
         master.btnThemTK.addActionListener(
                 new ActionListener() {
             @Override
@@ -170,5 +170,6 @@ public class VayNoController {
             }
         }
         );
+        System.out.println("tao xong event vayno");
     }
 }

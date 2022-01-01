@@ -17,6 +17,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -31,7 +32,9 @@ import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
 import lib.ButtonColumn;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
@@ -43,17 +46,19 @@ public class StockController {
     private StockDAO stockDAO = null;
     Stock stock;
     BigDecimal usd;
-
+    MyStockBuyTableModel stockModel = new MyStockBuyTableModel();
     public StockController(MasterTeleMoneyView master, UserModel acc) {
         try {
             System.out.println("Tao controller stock");
             this.master = master;
             this.acc = acc;
+            this.master.tableDanhMuc.setModel(stockModel);
             usd = YahooFinance.get("USDVND=X").getQuote().getPrice();
             setEventStock();
             setTableButton();
             master.setVisible(true);
             stockDAO = new StockDAO();
+            
             MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();
             setDataTable();
             setEventStock();
@@ -71,6 +76,8 @@ public class StockController {
     }
 
     public void setDataTable() throws IOException {
+        TableColumn col = master.tableDanhMuc.getColumnModel().getColumn(4);
+            col.setCellRenderer(new MyRenderer(Color.red, Color.green));
         MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();
         ArrayList<MyStockBuyModel> myStockList = new ArrayList<>();
         myStockList = stockDAO.getAll();
@@ -117,7 +124,7 @@ public class StockController {
 //    }
 
     public void setEventStock() {
-        System.out.println("Tao event");
+        System.out.println("Tao event tab dautu");
 
         master.tableDanhMuc.addMouseListener(new MouseAdapter() {
             @Override
@@ -151,7 +158,7 @@ public class StockController {
                 }
             }
         });
-        System.out.println("Taoj xong event");
+        System.out.println("Tao xong event tab dautu");
     }
 
     public void setTableButton() {
@@ -200,5 +207,34 @@ public class StockController {
         ButtonColumn btnBan = new ButtonColumn(master.tableDanhMuc, banStock, 8, Color.BLUE);
 
         btnBan.setMnemonic(KeyEvent.VK_D);
+        System.out.println("Tao xong nut jtable");
+    }
+    class MyRenderer extends DefaultTableCellRenderer {
+
+        Color red, green;
+
+        public MyRenderer(Color bg, Color fg) {
+            super();
+            this.red = bg;
+            this.green = fg;
+        }
+
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            Component cell = super.getTableCellRendererComponent(table, value,
+                    isSelected, hasFocus, row, column);
+            //System.out.println(value);
+            if (value == null) {
+                return cell;
+            }
+            Float check = Float.parseFloat(value.toString());
+            if (check >= 0) {
+
+                cell.setForeground(green);
+            } else {
+                cell.setForeground(red);
+            }
+
+            return cell;
+        }
     }
 }

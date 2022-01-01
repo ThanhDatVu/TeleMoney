@@ -23,8 +23,10 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -43,10 +45,12 @@ public class ThuChiController {
     private MasterTeleMoneyView master;
     private UserModel acc;
     private StockDAO stockDAO = null;
+    private Integer tableSelect;
     Stock stock;
     BigDecimal usd;
     ThuTableModel chiTableModel = new ThuTableModel();
     ChiTableModel thuTableModel = new ChiTableModel();
+
     public ThuChiController(MasterTeleMoneyView master, UserModel acc) {
         this.master = master;
         this.acc = acc;
@@ -59,9 +63,8 @@ public class ThuChiController {
 
     public void enable() {
         setEventThuChi();
-       
-        //setTableButton();
 
+        //setTableButton();
     }
 
     public void setDataTable() throws IOException {
@@ -106,11 +109,8 @@ public class ThuChiController {
 //    }
 
     public void setEventThuChi() {
-        System.out.println("Tao event");
+        System.out.println("Tao event tab thuchi");
 
-        
-       
-        
         master.btnThemChi.addActionListener(
                 new ActionListener() {
             @Override
@@ -147,7 +147,132 @@ public class ThuChiController {
             }
         }
         );
-        System.out.println("Taoj xong event");
+
+        master.tbChi.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                switch (keyCode) {
+                    case KeyEvent.VK_UP:
+                        tableSelect = master.tbChi.getSelectedRow();
+                        if (tableSelect != -1) {
+                            master.btnXoaChi.setEnabled(true);
+                            master.btnSuaChi.setEnabled(true);
+
+                        }
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        tableSelect = master.tbChi.getSelectedRow();
+                        if (tableSelect != -1) {
+                            master.btnXoaChi.setEnabled(true);
+                            master.btnSuaChi.setEnabled(true);
+
+                        }
+                        break;
+
+                }
+            }
+        });
+        master.tbThu.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                switch (keyCode) {
+                    case KeyEvent.VK_UP:
+                        tableSelect = master.tbThu.getSelectedRow();
+                        if (tableSelect != -1) {
+                            master.btnXoaThu.setEnabled(true);
+                            master.btnSuaThu.setEnabled(true);
+
+                        }
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        tableSelect = master.tbThu.getSelectedRow();
+                        if (tableSelect != -1) {
+                            master.btnXoaThu.setEnabled(true);
+                            master.btnSuaThu.setEnabled(true);
+
+                        }
+                        break;
+
+                }
+            }
+        });
+
+        master.tbChi.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                tableSelect = master.tbChi.getSelectedRow();
+                System.out.println("dang chon dong chi " + tableSelect);
+                if (tableSelect != -1) {
+                    master.btnXoaChi.setEnabled(true);
+                    master.btnSuaChi.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+        master.tbThu.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                tableSelect = master.tbThu.getSelectedRow();
+                System.out.println("dang chon dong thu " + tableSelect);
+                if (tableSelect != -1) {
+                    master.btnXoaThu.setEnabled(true);
+                    master.btnSuaThu.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+
+        System.out.println("Tao xong event tab thuchi");
     }
 
 }
