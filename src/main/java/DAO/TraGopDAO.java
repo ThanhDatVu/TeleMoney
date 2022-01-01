@@ -37,7 +37,7 @@ public class TraGopDAO {
     }
     
     public void add(TraGopModel traGop, UserModel acc){
-        String sql = "INSERT INTO 'tragop' ('uid', 'name', 'namecongty', 'tongtien', 'sothang', 'time', 'tratruoc') VALUES (?, ?, ?, ?, ?, ?, ?)";;
+        String sql = "INSERT INTO `tragop` (`uid`, `name`, `namecongty`, `tongtien`, `sothang`, `tienhangthang`, `time`, `tratruoc`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, acc.getId());
@@ -46,7 +46,8 @@ public class TraGopDAO {
             ps.setDouble(4, traGop.getTongtien());
             ps.setInt(5, traGop.getSothang());
             ps.setDouble(6, traGop.getTienhangthang());
-            ps.setDouble(7, traGop.getTratruoc());
+            ps.setTimestamp(7, traGop.getTime());
+            ps.setDouble(8, traGop.getTratruoc());
             
             int executeUpdate = ps.executeUpdate();
             System.out.println(traGop.toString());
