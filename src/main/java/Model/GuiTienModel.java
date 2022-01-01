@@ -17,20 +17,28 @@ public class GuiTienModel {
     private double laisuat;
     private int kyhan;
     private Timestamp ngaygui;
+    private int ngaythulai;
 
-    public GuiTienModel(String ten, String bank, double tiengoc, double laisuat, int kyhan, Timestamp ngaygui) {
+    public GuiTienModel(String ten, String bank, double tiengoc, double laisuat, int kyhan, Timestamp ngaygui, int ngaythulai) {
         this.ten = ten;
         this.bank = bank;
         this.tiengoc = tiengoc;
         this.laisuat = laisuat;
         this.kyhan = kyhan;
         this.ngaygui = ngaygui;
+        this.ngaythulai = ngaythulai;
     }
 
     public GuiTienModel() {
     }
-    
-    
+
+    public int getNgaythulai() {
+        return ngaythulai;
+    }
+
+    public void setNgaythulai(int ngaythulai) {
+        this.ngaythulai = ngaythulai;
+    }
 
     public String getTen() {
         return ten;
