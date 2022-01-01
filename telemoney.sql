@@ -28,11 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `chi` (
-  `idchi` int(11) NOT NULL,
+  `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL,
   `namechi` varchar(100) NOT NULL,
   `amountchi` double NOT NULL,
-  `deschi` varchar(100) NOT NULL,
+  `mucchi` varchar(100) NOT NULL,
   `datechi` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -670,7 +670,9 @@ CREATE TABLE `thu` (
   `datethu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- --------------------------------------------------------
+-- -----------------------------------------------
+--
+-- ---------
 
 --
 -- Table structure for table `tong`

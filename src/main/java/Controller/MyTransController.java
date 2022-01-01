@@ -70,7 +70,7 @@ public class MyTransController {
         //setTableButton();
     }
 
-    public void setData() {
+    public void setData() {//thêm dũ liệu vào bảng
         MyStockTransTableModel tableModel = (MyStockTransTableModel) myTransView.tableTrans.getModel();
         ArrayList<MyTransModel> myTransList = new ArrayList<>();
         myTransList = stockDAO.getAllTrans();
@@ -93,20 +93,7 @@ public class MyTransController {
         }
 
     }
-//    public void setButton(){
-//    Action delete = new AbstractAction() {
-//        public void actionPerformed(ActionEvent e) {
-//            JTable table = (JTable) e.getSource();
-//            int modelRow = Integer.valueOf(e.getActionCommand());
-//            ((DefaultTableModel) table.getModel()).removeRow(modelRow);
-//        }
-//    };
-//    ButtonColumn buttonColumn = new ButtonColumn(nhanvienView, delete, 2);
-//
-//    buttonColumn.setMnemonic (KeyEvent.VK_D);
-//    
-//    
-//    }
+
 
     public void setEventTrans() {
         System.out.println("Tao event");
@@ -117,10 +104,10 @@ public class MyTransController {
                 try {
                     String stringPath = "D:\\Project\\document\\MyTrans.xlsx";
                     Path path = Paths.get(stringPath);
-                    writeToExcell(myTransView.tableTrans, path);
+                    writeToExcell(myTransView.tableTrans, path);//viết vào file
 
                     File file = new File("D:\\Project\\document\\");
-                    Desktop desktop = Desktop.getDesktop();
+                    Desktop desktop = Desktop.getDesktop();// mở thư mục 
                     desktop.open(file);
                 } catch (IOException ex) {
                     Logger.getLogger(MyTransController.class.getName()).log(Level.SEVERE, null, ex);
