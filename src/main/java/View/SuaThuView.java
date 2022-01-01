@@ -82,8 +82,10 @@ public class SuaThuView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel1.setText("Danh mục");
 
+        btlDongY.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         btlDongY.setText("Đồng ý");
         btlDongY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -91,6 +93,7 @@ public class SuaThuView extends javax.swing.JFrame {
             }
         });
 
+        btnThoat.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         btnThoat.setText("Thoát");
         btnThoat.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -98,21 +101,28 @@ public class SuaThuView extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel2.setText("Số tiền");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel3.setText("Tên khoản thu");
 
+        tenThu.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         tenThu.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tenThuActionPerformed(evt);
             }
         });
 
+        soTien.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
+
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Sửa khoản thu");
 
+        tenDanhMuc.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         tenDanhMuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel5.setText("Ngày");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,7 +157,7 @@ public class SuaThuView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tenThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))

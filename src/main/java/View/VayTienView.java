@@ -61,18 +61,25 @@ public class VayTienView extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel1.setText("TÊN");
 
+        jTextField1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel2.setText("BANK");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel3.setText("SỐ TIỀN (VNĐ)");
 
+        jTextField3.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField3ActionPerformed(evt);
             }
         });
 
+        jComboBox1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)", "Ngân Hàng Công Thương Việt Nam (Vietinbank)", "Ngân Hàng Kĩ Thương Việt Nam (Techcombank)", "Ngân Hàng Đầu tư và Phát triển Việt Nam (BIDV)", "Ngân Hàng Quân đội (MBBank)", "Ngân Hàng Việt Nam Thịnh Vượng (VPBank)" }));
         jComboBox1.setSelectedItem("");
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
@@ -81,12 +88,15 @@ public class VayTienView extends javax.swing.JFrame {
             }
         });
 
+        jLabel4.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel4.setText("LÃI SUẤT (%/NĂM):");
 
         jLabel5.setText("%");
 
+        jLabel7.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel7.setText("KỲ HẠN");
 
+        jComboBox2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1 tháng", "2 tháng", "3 tháng", "6 tháng", "9 tháng", "12 tháng", "24 tháng", "36 tháng", "48 tháng", "60 tháng" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -94,6 +104,7 @@ public class VayTienView extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jButton1.setText("Xác nhận");
         jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -109,20 +120,24 @@ public class VayTienView extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel8.setText("THÊM KHOẢN VAY");
 
+        jLabel9.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel9.setText("LÃI HÀNG THÁNG");
 
+        jTextField4.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField4ActionPerformed(evt);
             }
         });
 
+        jTextField2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jTextField2ActionPerformed(evt);
             }
         });
 
+        jButton2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jButton2.setText("Huỷ");
         jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {

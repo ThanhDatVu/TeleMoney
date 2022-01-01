@@ -59,22 +59,31 @@ public class ThemChiView extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel4.setText("Thêm khoản chi");
 
+        jLabel3.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel3.setText("Tên khoản thu");
 
+        tenChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         tenChi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tenChiActionPerformed(evt);
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel1.setText("Danh mục");
 
+        danhMucChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         danhMucChi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        soTienChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel2.setText("Số tiền");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel5.setText("Ngày");
 
+        btnDongYChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         btnDongYChi.setText("OK");
         btnDongYChi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -82,6 +91,7 @@ public class ThemChiView extends javax.swing.JFrame {
             }
         });
 
+        btnHuyChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         btnHuyChi.setText("Cancel");
         btnHuyChi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -126,7 +136,7 @@ public class ThemChiView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(tenChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
