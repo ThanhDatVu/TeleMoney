@@ -8,6 +8,7 @@ import Model.ChiModel;
 import Model.ThuModel;
 import Model.UserModel;
 import java.sql.Time;
+import java.sql.Timestamp;
 
 /**
  *
@@ -18,21 +19,23 @@ public class ThemChiView extends javax.swing.JFrame {
     /**
      * Creates new form ThemChiView
      */
-    MasterTeleMoneyView owner;
+    public MasterTeleMoneyView master;
     UserModel acc;
+
     public ThemChiView() {
         initComponents();
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
-     public ThemChiView(MasterTeleMoneyView main, UserModel acc) {
+    public ThemChiView(MasterTeleMoneyView main, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
-        this.acc=acc;
-        owner = main;
+        this.acc = acc;
+        master = main;
         this.setTitle("Thêm");
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -49,8 +52,6 @@ public class ThemChiView extends javax.swing.JFrame {
         danhMucChi = new javax.swing.JComboBox<>();
         soTienChi = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        ngayChi = new com.toedter.calendar.JCalendar();
         btnDongYChi = new javax.swing.JButton();
         btnHuyChi = new javax.swing.JButton();
 
@@ -79,9 +80,6 @@ public class ThemChiView extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel2.setText("Số tiền");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        jLabel5.setText("Ngày");
 
         btnDongYChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         btnDongYChi.setText("OK");
@@ -113,23 +111,23 @@ public class ThemChiView extends javax.swing.JFrame {
                                 .addGap(66, 66, 66))
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnDongYChi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnHuyChi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(soTienChi, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                             .addComponent(tenChi, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
-                            .addComponent(danhMucChi, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(ngayChi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(danhMucChi, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(78, 78, 78))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(168, 168, 168))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(btnDongYChi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
+                .addComponent(btnHuyChi, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(112, 112, 112))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,17 +146,13 @@ public class ThemChiView extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(soTienChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(27, 27, 27)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(ngayChi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGap(57, 57, 57)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                                     .addComponent(btnDongYChi)
                                     .addComponent(btnHuyChi)))
                             .addComponent(jLabel2)))
                     .addComponent(jLabel1))
-                .addGap(27, 27, 27))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -177,14 +171,16 @@ public class ThemChiView extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_btnHuyChiActionPerformed
 
-    public ChiModel getchi(){
-       ChiModel chi = new ChiModel();
-       chi.setNameChi(tenChi.getText());
-       chi.setMucChi(danhMucChi.getSelectedItem().toString());
-       chi.setAmountChi(Double.valueOf(soTienChi.getText()));
-       chi.setTimeChi((Time) ngayChi.getDate());
-       return chi; 
+    public ChiModel getchi() {
+        ChiModel chi = new ChiModel();
+        chi.setNameChi(tenChi.getText());
+        chi.setMucChi(danhMucChi.getSelectedItem().toString());
+        chi.setAmountChi(Double.valueOf(soTienChi.getText()));
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+        chi.setTimestampChi(time);
+        return chi;
     }
+
     /**
      * @param args the command line arguments
      */
@@ -222,16 +218,14 @@ public class ThemChiView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDongYChi;
-    private javax.swing.JButton btnHuyChi;
-    private javax.swing.JComboBox<String> danhMucChi;
+    public javax.swing.JButton btnDongYChi;
+    public javax.swing.JButton btnHuyChi;
+    public javax.swing.JComboBox<String> danhMucChi;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private com.toedter.calendar.JCalendar ngayChi;
-    private javax.swing.JTextField soTienChi;
-    private javax.swing.JTextField tenChi;
+    public javax.swing.JTextField soTienChi;
+    public javax.swing.JTextField tenChi;
     // End of variables declaration//GEN-END:variables
 }

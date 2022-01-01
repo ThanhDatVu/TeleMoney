@@ -82,6 +82,23 @@ public class StockDAO {
         }
 
     }
+    public void updateSoDu(float soDuMoi, UserModel user) {
+        //To change body of generated methods, choose Tools | Templates.
+        String sql = "UPDATE TONG SET  SODU =  ? WHERE UID = ?;";;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setFloat(1, soDuMoi );
+            ps.setInt(2, user.getId() );
+
+            int executeUpdate = ps.executeUpdate();
+            System.out.println("mơi" + user.toString());
+            System.out.println("thêm giao dịch, update tổng");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
     public MyStockBuyModel getStockBySymbol(String s) {
         String sql = "select * from mystock where SYMBOL LIKE ?";
 

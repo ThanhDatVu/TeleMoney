@@ -73,7 +73,8 @@ public class ThemThuController {
                         thuModel.setNameThu(themThuView.tenThu.getText());
                         thuModel.setMucThu(themThuView.tenDanhMuc.getSelectedItem().toString());
                         thuModel.setAmountThu(Double.parseDouble(themThuView.soTien.getText()));
-                        thuModel.setDateThu((Date) themThuView.ngayThu.getDate());
+                        Timestamp time = new Timestamp(System.currentTimeMillis());
+                        thuModel.setTimestampThu(time);
                         thuDAO.add(thuModel, acc);
                         themThuView.master.soDuKhaDung = themThuView.master.soDuKhaDung - Double.parseDouble(themThuView.soTien.getText());
                         themThuView.master.refreshTabVayNo();

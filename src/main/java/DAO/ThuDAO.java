@@ -50,8 +50,8 @@ public class ThuDAO {
                 thu.setNameThu(rs.getString("Tên khoản thu"));
                 thu.setMucThu(rs.getString("Danh mục"));
                 thu.setAmountThu(rs.getDouble("Số tiền"));
-                thu.setDateThu(rs.getDate("Ngày"));
-                thumodel.addRow(new Object[]{thu.getNameThu(), thu.getMucThu(), thu.getAmountThu(), thu.getDateThu()});
+                thu.setTimestampThu(rs.getTimestamp("Ngày"));
+                thumodel.addRow(new Object[]{thu.getNameThu(), thu.getMucThu(), thu.getAmountThu(), thu.getTimestampThu()});
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -66,7 +66,7 @@ public class ThuDAO {
             ps.setString(1, thu.getNameThu());
             ps.setString(2, thu.getMucThu());
             ps.setDouble(3, thu.getAmountThu());
-            ps.setDate(4, thu.getDateThu());
+            ps.setTimestamp(4, thu.getTimestampThu());
 
             int executeUpdate = ps.executeUpdate();
             System.out.println(thu.toString());
@@ -85,7 +85,7 @@ public class ThuDAO {
             ps.setString(1, thu.getNameThu());
             ps.setString(2, thu.getMucThu());
             ps.setDouble(3, thu.getAmountThu());
-            ps.setDate(4, thu.getDateThu());
+            ps.setTimestamp(4, thu.getTimestampThu());
 
             int executeUpdate = ps.executeUpdate();
             System.out.println(thu2.toString());
@@ -106,7 +106,7 @@ public class ThuDAO {
             ps.setString(1, thu.getNameThu());
             ps.setString(2, thu.getMucThu());
             ps.setDouble(3, thu.getAmountThu());
-            ps.setDate(4, thu.getDateThu());
+            ps.setTimestamp(4, thu.getTimestampThu());
             
 
             int executeUpdate = ps.executeUpdate();

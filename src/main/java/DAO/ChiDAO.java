@@ -6,6 +6,7 @@ package DAO;
 
 import Model.ChiTableModel;
 import Model.ChiModel;
+import Model.UserModel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -49,24 +50,24 @@ public class ChiDAO {
                 chi.setNameChi(rs.getString("Tên khoản thu"));
                 chi.setMucChi(rs.getString("Danh mục"));
                 chi.setAmountChi(rs.getDouble("Số tiền"));
-                chi.setTimeChi(rs.getTime("Ngày"));
-                chimodel.addRow(new Object[]{chi.getNameChi(), chi.getMucChi(), chi.getAmountChi(), chi.getTimeChi()});
+                chi.setTimestampChi(rs.getTimestamp("Ngày"));
+                chimodel.addRow(new Object[]{chi.getNameChi(), chi.getMucChi(), chi.getAmountChi(), chi.getTimestampChi()});
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void add(ChiModel chi) {
-        String sql = "INSERT INTO chi (namechi, mucchi, amountchi, timechi) VALUES (?,?,?,?)";
+    public void add(ChiModel chi, UserModel user) {
+        String sql = "INSERT INTO chi (namechi, mucchi, amountchi, timechi, uid) VALUES (?,?,?,?,?)";
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setString(1, chi.getNameChi());
             ps.setString(2, chi.getMucChi());
             ps.setDouble(3, chi.getAmountChi());
-            ps.setTime(4, chi.getTimeChi());
-
+            ps.setTimestamp(4, chi.getTimestampChi());
+            ps.setInt(5, user.getId());
             int executeUpdate = ps.executeUpdate();
             System.out.println(chi.toString());
             System.out.println("Thêm thành công");
@@ -84,7 +85,7 @@ public class ChiDAO {
             ps.setString(1, chi.getNameChi());
             ps.setString(2, chi.getMucChi());
             ps.setDouble(3, chi.getAmountChi());
-            ps.setTime(4, chi.getTimeChi());
+            ps.setTimestamp(4, chi.getTimestampChi());
 
             int executeUpdate = ps.executeUpdate();
             System.out.println(chi2.toString());
@@ -105,7 +106,7 @@ public class ChiDAO {
             ps.setString(1, chi.getNameChi());
             ps.setString(2, chi.getMucChi());
             ps.setDouble(3, chi.getAmountChi());
-            ps.setTime(4, chi.getTimeChi());
+            ps.setTimestamp(4, chi.getTimestampChi());
             
 
             int executeUpdate = ps.executeUpdate();

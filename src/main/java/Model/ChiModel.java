@@ -4,17 +4,18 @@
  */
 package Model;
 
-import java.sql.Time;
+import java.sql.Timestamp;
 
 /**
  *
  * @author dat26
  */
 public class ChiModel {
+    int idChi;
     String nameChi;
     String mucChi;
     Double amountChi;
-    Time timeChi;
+    Timestamp timeChi;
 
     public ChiModel() {
     }
@@ -25,10 +26,26 @@ public class ChiModel {
                 + " Ngay=" + timeChi + "}";
     }
 
-    public ChiModel(String nameChi, String mucChi, Double amountChi, Time timeChi) {
+    public ChiModel(String nameChi, String mucChi, Double amountChi, Timestamp timeChi) {
         this.nameChi = nameChi;
         this.mucChi = mucChi;
         this.amountChi = amountChi;
+        this.timeChi = timeChi;
+    }
+
+    public int getChiid() {
+        return idChi;
+    }
+
+    public void setChiid(int chiid) {
+        this.idChi = chiid;
+    }
+
+    public Timestamp getTimeChi() {
+        return timeChi;
+    }
+
+    public void setTimeChi(Timestamp timeChi) {
         this.timeChi = timeChi;
     }
 
@@ -56,11 +73,11 @@ public class ChiModel {
         this.amountChi = amountChi;
     }
 
-    public Time getTimeChi() {
+    public Timestamp getTimestampChi() {
         return timeChi;
     }
 
-    public void setTimeChi(Time timeChi) {
+    public void setTimestampChi(Timestamp timeChi) {
         this.timeChi = timeChi;
     }
 

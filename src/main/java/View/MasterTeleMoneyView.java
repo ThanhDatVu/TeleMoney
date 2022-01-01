@@ -1149,6 +1149,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelSoDauTu.setText(String.valueOf(df.format(soDuKhaDung)) + " VND");
         labelSoDuChiTieu.setText("Số dư khả dựng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
         labelSoDuVayNo.setText("Số dư khả dựng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
+        stockDAO.updateSoDu((float)soDuKhaDung, user);
     }
 
     public void setSumText() {

@@ -8,7 +8,7 @@ import Model.NhanvienModel;
 import Model.ThuModel;
 import Model.UserModel;
 import java.awt.event.ActionListener;
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.sql.Time;
 
 /**
@@ -66,8 +66,6 @@ public class SuaThuView extends javax.swing.JFrame {
         soTien = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         tenDanhMuc = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
-        ngaythu = new com.toedter.calendar.JCalendar();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -122,9 +120,6 @@ public class SuaThuView extends javax.swing.JFrame {
         tenDanhMuc.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         tenDanhMuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jLabel5.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        jLabel5.setText("Ngày");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -134,30 +129,30 @@ public class SuaThuView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel2))
                 .addGap(15, 15, 15)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(btlDongY, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 144, Short.MAX_VALUE)
-                        .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(soTien, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(soTien, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE)
                     .addComponent(tenDanhMuc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(tenThu, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ngaythu, javax.swing.GroupLayout.DEFAULT_SIZE, 290, Short.MAX_VALUE))
+                    .addComponent(tenThu, javax.swing.GroupLayout.Alignment.LEADING))
                 .addGap(0, 34, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(153, 153, 153))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(71, 71, 71)
+                .addComponent(btlDongY, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(97, 97, 97))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tenThu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
@@ -169,15 +164,11 @@ public class SuaThuView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(soTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(ngaythu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
-                .addGap(39, 39, 39)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btlDongY)
                     .addComponent(btnThoat))
-                .addGap(21, 21, 21))
+                .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
@@ -186,7 +177,7 @@ public class SuaThuView extends javax.swing.JFrame {
         tenThu.setText(thu.getNameThu());
         tenDanhMuc.setSelectedItem(thu.getMucThu());
         soTien.setText(String.valueOf(thu.getAmountThu()));
-        ngaythu.setDate(thu.getDateThu());
+        
     
     }
     private void tenThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenThuActionPerformed
@@ -207,7 +198,8 @@ public class SuaThuView extends javax.swing.JFrame {
         thu2.setNameThu(tenThu.getText());
         thu2.setMucThu(tenDanhMuc.getSelectedItem().toString());
         thu2.setAmountThu(Double.valueOf(soTien.getText()));
-        thu2.setDateThu((Date) ngaythu.getDate());
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+        thu2.setTimestampThu(time);
         
     }
     /**
@@ -309,18 +301,16 @@ public class SuaThuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btlDongY;
-    private javax.swing.JButton btnThoat;
+    public javax.swing.JButton btlDongY;
+    public javax.swing.JButton btnThoat;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private com.toedter.calendar.JCalendar ngaythu;
-    private javax.swing.JTextField soTien;
-    private javax.swing.JComboBox<String> tenDanhMuc;
-    private javax.swing.JTextField tenThu;
+    public javax.swing.JTextField soTien;
+    public javax.swing.JComboBox<String> tenDanhMuc;
+    public javax.swing.JTextField tenThu;
     // End of variables declaration//GEN-END:variables
 
     public void refresh() {

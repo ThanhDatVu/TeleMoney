@@ -4,7 +4,7 @@
  */
 package Model;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 import java.sql.Time;
 
 /**
@@ -12,10 +12,13 @@ import java.sql.Time;
  * @author dat26
  */
 public class ThuModel {
+    int idThu;
+
+    
     String nameThu;
     String mucThu;
     Double amountThu;
-    Date dateThu;
+    Timestamp timeThu;
 
     public ThuModel() {
     }
@@ -23,14 +26,28 @@ public class ThuModel {
     @Override
     public String toString() {
         return "ThuModel{" + "Ten khoan thu=" + nameThu + ", Danh muc=" + mucThu + ", So tien=" + amountThu + ","
-                + " Ngay=" + dateThu + "}";
+                + " Ngay=" + timeThu + "}";
+    }
+    public int getIdThu() {
+        return idThu;
     }
 
-    public ThuModel(String nameThu, String mucThu, Double amountThu, Date dateThu) {
+    public void setIdThu(int idThu) {
+        this.idThu = idThu;
+    }
+
+    public Timestamp getTimeThu() {
+        return timeThu;
+    }
+
+    public void setTimeThu(Timestamp timeThu) {
+        this.timeThu = timeThu;
+    }
+    public ThuModel(String nameThu, String mucThu, Double amountThu, Timestamp timeThu) {
         this.nameThu = nameThu;
         this.mucThu = mucThu;
         this.amountThu = amountThu;
-        this.dateThu = dateThu;
+        this.timeThu = timeThu;
     }
 
     public String getNameThu() {
@@ -57,12 +74,12 @@ public class ThuModel {
         this.amountThu = amountThu;
     }
 
-    public Date getDateThu() {
-        return dateThu;
+    public Timestamp getTimestampThu() {
+        return timeThu;
     }
 
-    public void setDateThu(Date dateThu) {
-        this.dateThu = dateThu;
+    public void setTimestampThu(Timestamp timeThu) {
+        this.timeThu = timeThu;
     }
 
    
