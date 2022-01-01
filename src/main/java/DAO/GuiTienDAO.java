@@ -78,4 +78,18 @@ public class GuiTienDAO {
         }
         return guiTienModels;
     }
+    
+    public void delete(GuiTienModel guiTienModel, UserModel acc) {
+       String sql = "DELETE FROM chovay WHERE uid = ?, ten = ?, tiengoc=?";;
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, acc.getId());
+            ps.setString(2, guiTienModel.getTen());
+            ps.setDouble(3, guiTienModel.getTiengoc());
+            int executeUpdate = ps.executeUpdate();           
+            System.out.println("Xoá");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    }
 }

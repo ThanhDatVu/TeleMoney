@@ -77,7 +77,7 @@ public class AddGuiTienController {
                     JOptionPane.showMessageDialog(null, "Nhập sai");
                 } else {
                     int opt = JOptionPane.showConfirmDialog(guiTienView, "Xác nhận gửi " + guiTienView.cboBank.getSelectedItem().toString()+ " "
-                            + " số tiền " + guiTienView.txtTien.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_CANCEL_OPTION);
+                            + " số tiền " + guiTienView.txtTien.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
                     if (opt == 0) {
                         //String ten, String bank, double tiengoc, double laisuat, int kyhan, Timestamp ngaygui
                         guiTienModel.setTen(guiTienView.txtTen.getText());
@@ -88,7 +88,7 @@ public class AddGuiTienController {
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         guiTienModel.setNgaygui(time);
                         guiTienDAO.add(guiTienModel, acc);
-                        guiTienView.master.soDuKhaDung = guiTienView.master.soDuKhaDung - Float.parseFloat(guiTienView.txtTien.getText());
+                        guiTienView.master.soDuKhaDung = guiTienView.master.soDuKhaDung - Double.parseDouble(guiTienView.txtTien.getText());
                         guiTienView.master.refreshTabVayNo();
                         guiTienView.dispose();
                     }

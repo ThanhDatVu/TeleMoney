@@ -6,7 +6,9 @@ package View;
  */
 
 
+import Controller.AddVayTienController;
 import DAO.GuiTienDAO;
+import DAO.VayTienDAO;
 import Model.UserModel;
 import javax.swing.JLabel;
 
@@ -19,9 +21,10 @@ public class VayTienView extends javax.swing.JFrame {
     /**
      * Creates new form GuiTienView
      */
-    MasterTeleMoneyView master;
+    public MasterTeleMoneyView master;
     UserModel acc;
-    GuiTienDAO guiTienDAO;
+    VayTienDAO vayTienDAO;
+    AddVayTienController addVayTienController = null;
     public VayTienView() {
         initComponents();
     }
@@ -31,6 +34,7 @@ public class VayTienView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.master = master;
         this.acc = acc;
+        this.addVayTienController = new AddVayTienController(this, acc);
     }
 
     /**

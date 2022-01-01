@@ -36,11 +36,11 @@ public class VayTienDAO {
         }
     }
     
-    public void add(VayTienModel vayTien){
-        String sql = "INSERT INTO 'vay' ('uid', 'ten', 'bank', 'tiengoc', 'laisuat', 'kyhan', 'ngayvay') VALUES (?, ?, ?, ?, ?, ?, ?)";;
+    public void add(VayTienModel vayTien, UserModel acc){
+        String sql = "INSERT INTO `vay` (`uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngayvay`) VALUES (?, ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            ps.setInt(1, userModel.getId());
+            ps.setInt(1, acc.getId());
             ps.setString(2, vayTien.getTen());
             ps.setString(3, vayTien.getBank());
             ps.setDouble(4, vayTien.getTiengoc());
@@ -78,5 +78,19 @@ public class VayTienDAO {
         } catch (Exception e) {
         }
         return vayTienModels;
+    }
+    
+    public void delete(VayTienModel vayTienModel, UserModel acc) {
+       String sql = "DELETE FROM vay WHERE uid = ?, ten = ?, tiengoc=?";;
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, acc.getId());
+            ps.setString(2, vayTienModel.getTen());
+            ps.setDouble(3, vayTienModel.getTiengoc());
+            int executeUpdate = ps.executeUpdate();           
+            System.out.println("Xoá");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
     }
 }
