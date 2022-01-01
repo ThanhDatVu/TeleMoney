@@ -6,6 +6,7 @@ package View;
  */
 
 
+import Controller.AddTraGopController;
 import DAO.GuiTienDAO;
 import Model.UserModel;
 import javax.swing.JLabel;
@@ -19,9 +20,10 @@ public class TraGopView extends javax.swing.JFrame {
     /**
      * Creates new form GuiTienView
      */
-    MasterTeleMoneyView master;
+    public MasterTeleMoneyView master;
     UserModel acc;
     GuiTienDAO guiTienDAO;
+    AddTraGopController addTraGopController = null;
     public TraGopView() {
         initComponents();
     }
@@ -31,6 +33,7 @@ public class TraGopView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.master = master;
         this.acc = acc;
+        this.addTraGopController = new AddTraGopController(this, acc);
     }
 
     /**
@@ -48,7 +51,7 @@ public class TraGopView extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         txtBank = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        cboKyHan = new javax.swing.JComboBox<>();
+        cboThang = new javax.swing.JComboBox<>();
         btnThemTraGop = new javax.swing.JButton();
         txtTien = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -82,11 +85,11 @@ public class TraGopView extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel7.setText("THỜI HẠN");
 
-        cboKyHan.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        cboKyHan.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "6", "9", "12", "24", "36", "48", "60" }));
-        cboKyHan.addActionListener(new java.awt.event.ActionListener() {
+        cboThang.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
+        cboThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "6", "9", "12", "24", "36", "48", "60" }));
+        cboThang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cboKyHanActionPerformed(evt);
+                cboThangActionPerformed(evt);
             }
         });
 
@@ -165,7 +168,7 @@ public class TraGopView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addGap(18, 18, 18)
-                        .addComponent(cboKyHan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cboThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -202,7 +205,7 @@ public class TraGopView extends javax.swing.JFrame {
                     .addComponent(jLabel10)
                     .addComponent(txtTienThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
-                    .addComponent(cboKyHan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cboThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -227,9 +230,9 @@ public class TraGopView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnThemTraGopMouseClicked
 
-    private void cboKyHanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboKyHanActionPerformed
+    private void cboThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cboThangActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cboKyHanActionPerformed
+    }//GEN-LAST:event_cboThangActionPerformed
 
     private void btnHuyTraGopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnHuyTraGopMouseClicked
         // TODO add your handling code here:
@@ -280,7 +283,7 @@ public class TraGopView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btnHuyTraGop;
     public javax.swing.JButton btnThemTraGop;
-    public javax.swing.JComboBox<String> cboKyHan;
+    public javax.swing.JComboBox<String> cboThang;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;

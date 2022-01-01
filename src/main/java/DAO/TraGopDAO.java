@@ -36,11 +36,11 @@ public class TraGopDAO {
         }
     }
     
-    public void add(TraGopModel traGop){
+    public void add(TraGopModel traGop, UserModel acc){
         String sql = "INSERT INTO 'tragop' ('uid', 'name', 'namecongty', 'tongtien', 'sothang', 'time', 'tratruoc') VALUES (?, ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            ps.setInt(1, userModel.getId());
+            ps.setInt(1, acc.getId());
             ps.setString(2, traGop.getTen());
             ps.setString(3, traGop.getBank());
             ps.setDouble(4, traGop.getTongtien());
