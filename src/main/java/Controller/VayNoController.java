@@ -41,6 +41,8 @@ import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import lib.ButtonColumn;
 import yahoofinance.YahooFinance;
@@ -115,7 +117,6 @@ public class VayNoController {
         ArrayList<TraGopModel> traGopModels = new ArrayList<>();
         traGopModels = traGopDAO.getAll(acc);
         tableModel2.setRowCount(0);
-        
 
         for (int i = 0; i < traGopModels.size(); i++) {
             tableModel2.addRow(new Object[]{
@@ -132,19 +133,7 @@ public class VayNoController {
         traGopTableData = (Vector) ((DefaultTableModel) master.tableTraGop.getModel()).getDataVector().clone();
     }
 //    public void setButton(){
-//    Action delete = new AbstractAction() {
-//        public void actionPerformed(ActionEvent e) {
-//            JTable table = (JTable) e.getSource();
-//            int modelRow = Integer.valueOf(e.getActionCommand());
-//            ((DefaultTableModel) table.getModel()).removeRow(modelRow);
-//        }
-//    };
-//    ButtonColumn buttonColumn = new ButtonColumn(nhanvienView, delete, 2);
-//
-//    buttonColumn.setMnemonic (KeyEvent.VK_D);
-//    
-//    
-//    }
+//   
 
     public void setEventGuiTien() {
         System.out.println("Tao event tab vayno");
@@ -176,5 +165,74 @@ public class VayNoController {
         }
         );
         System.out.println("tao xong event vayno");
+        master.txtLocVay.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            public void insertUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            public void removeUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            private void search() {
+                searchTableContents(master.txtLocVay.getText(), master.tableVayTien ,vayTienTableData );
+            }
+        });
+        master.txtLocTK.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            public void insertUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            public void removeUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            private void search() {
+                searchTableContents(master.txtLocTK.getText(), master.tableGuiTien ,guiTienTableData );
+            }
+        });
+        master.txtLocTG.getDocument().addDocumentListener(new DocumentListener() {
+            public void changedUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            public void insertUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            public void removeUpdate(DocumentEvent documentEvent) {
+                search();
+            }
+
+            private void search() {
+                searchTableContents(master.txtLocTG.getText(), master.tableTraGop ,traGopTableData );
+            }
+        });
+    }
+
+    public void searchTableContents(String searchString, JTable table, Vector OGVector) {
+        DefaultTableModel currtableModel = (DefaultTableModel) table.getModel();
+        //To empty the table before search
+        currtableModel.setRowCount(0);
+        //To search for contents from original table content
+        for (Object rows : OGVector) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().contains(searchString)) {
+                    //content found so adding to table
+                    currtableModel.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
     }
 }

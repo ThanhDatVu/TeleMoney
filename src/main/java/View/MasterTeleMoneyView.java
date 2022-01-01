@@ -251,7 +251,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel16.setText("QUẢN LÝ CHI TIÊU");
 
-        tbThu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
+        tbThu.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         tbThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -265,7 +265,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         ));
         jScrollPane5.setViewportView(tbThu);
 
-        tbChi.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
+        tbChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         tbChi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -641,7 +641,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         pnlVayNo.setBackground(new java.awt.Color(255, 255, 255));
 
-        tableGuiTien.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
+        tableGuiTien.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         tableGuiTien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -655,7 +655,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         ));
         jScrollPane3.setViewportView(tableGuiTien);
 
-        tableVayTien.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
+        tableVayTien.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         tableVayTien.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -713,7 +713,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel9.setText("QUẢN LÝ VAY NỢ");
 
-        tableTraGop.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
+        tableTraGop.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         tableTraGop.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -1276,9 +1276,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public javax.swing.JTable tbThu;
     public javax.swing.JTextField textChi;
     public javax.swing.JTextField textThu;
-    private javax.swing.JTextField txtLocTG;
-    private javax.swing.JTextField txtLocTK;
-    private javax.swing.JTextField txtLocVay;
+    public javax.swing.JTextField txtLocTG;
+    public javax.swing.JTextField txtLocTK;
+    public javax.swing.JTextField txtLocVay;
     private javax.swing.JTextPane txtUsername;
     // End of variables declaration//GEN-END:variables
 }

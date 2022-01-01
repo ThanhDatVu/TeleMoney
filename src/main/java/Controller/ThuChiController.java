@@ -31,11 +31,13 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 import lib.ButtonColumn;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
@@ -50,7 +52,7 @@ public class ThuChiController {
     BigDecimal usd;
     ThuTableModel chiTableModel = new ThuTableModel();
     ChiTableModel thuTableModel = new ChiTableModel();
-    Object[][] chiTableData,thuTableData ;
+    Vector chiTableData,thuTableData ;
     public ThuChiController(MasterTeleMoneyView master, UserModel acc) {
         this.master = master;
         this.acc = acc;
@@ -273,6 +275,23 @@ public class ThuChiController {
         });
 
         System.out.println("Tao xong event tab thuchi");
+    }
+    public void searchTableContents(String searchString, JTable table, Vector OGVector) {
+        DefaultTableModel currtableModel = (DefaultTableModel) table.getModel();
+        //To empty the table before search
+        currtableModel.setRowCount(0);
+        //To search for contents from original table content
+        for (Object rows : OGVector) {
+            Vector rowVector = (Vector) rows;
+            for (Object column : rowVector) {
+                if (column.toString().contains(searchString)) {
+                    //content found so adding to table
+                    currtableModel.addRow(rowVector);
+                    break;
+                }
+            }
+
+        }
     }
 
 }
