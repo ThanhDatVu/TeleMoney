@@ -8,23 +8,12 @@ package Controller;
 import DAO.GuiTienDAO;
 import DAO.StockDAO;
 import Model.GuiTienModel;
-import Model.MyStockBuyModel;
 import Model.UserModel;
-import View.GuiTienView;
 import View.GuiTienView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
-import java.io.IOException;
-import java.math.BigDecimal;
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-import yahoofinance.Stock;
-import yahoofinance.YahooFinance;
 
 public class AddGuiTienController {
 

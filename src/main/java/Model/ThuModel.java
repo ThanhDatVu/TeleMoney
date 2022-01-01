@@ -4,6 +4,7 @@
  */
 package Model;
 
+import java.sql.Date;
 import java.sql.Time;
 
 /**
@@ -14,7 +15,7 @@ public class ThuModel {
     String nameThu;
     String mucThu;
     Double amountThu;
-    Time timeThu;
+    Date dateThu;
 
     public ThuModel() {
     }
@@ -22,14 +23,14 @@ public class ThuModel {
     @Override
     public String toString() {
         return "ThuModel{" + "Ten khoan thu=" + nameThu + ", Danh muc=" + mucThu + ", So tien=" + amountThu + ","
-                + " Ngay=" + timeThu + "}";
+                + " Ngay=" + dateThu + "}";
     }
 
-    public ThuModel(String nameThu, String mucThu, Double amountThu, Time timeThu) {
+    public ThuModel(String nameThu, String mucThu, Double amountThu, Date dateThu) {
         this.nameThu = nameThu;
         this.mucThu = mucThu;
         this.amountThu = amountThu;
-        this.timeThu = timeThu;
+        this.dateThu = dateThu;
     }
 
     public String getNameThu() {
@@ -56,14 +57,15 @@ public class ThuModel {
         this.amountThu = amountThu;
     }
 
-    public Time getTimeThu() {
-        return timeThu;
+    public Date getDateThu() {
+        return dateThu;
     }
 
-    public void setTimeThu(Time timeThu) {
-        this.timeThu = timeThu;
+    public void setDateThu(Date dateThu) {
+        this.dateThu = dateThu;
     }
 
+   
     
 
    

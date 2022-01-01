@@ -6,6 +6,7 @@ package DAO;
 
 import Model.ThuModel;
 import Model.ThuTableModel;
+import Model.UserModel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -49,15 +50,15 @@ public class ThuDAO {
                 thu.setNameThu(rs.getString("Tên khoản thu"));
                 thu.setMucThu(rs.getString("Danh mục"));
                 thu.setAmountThu(rs.getDouble("Số tiền"));
-                thu.setTimeThu(rs.getTime("Ngày"));
-                thumodel.addRow(new Object[]{thu.getNameThu(), thu.getMucThu(), thu.getAmountThu(), thu.getTimeThu()});
+                thu.setDateThu(rs.getDate("Ngày"));
+                thumodel.addRow(new Object[]{thu.getNameThu(), thu.getMucThu(), thu.getAmountThu(), thu.getDateThu()});
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void add(ThuModel thu) {
+    public void add(ThuModel thu, UserModel acc) {
         String sql = "INSERT INTO thu (namethu, mucthu, amountthu, timethu) VALUES (?,?,?,?)";
 
         try {
@@ -65,7 +66,7 @@ public class ThuDAO {
             ps.setString(1, thu.getNameThu());
             ps.setString(2, thu.getMucThu());
             ps.setDouble(3, thu.getAmountThu());
-            ps.setTime(4, thu.getTimeThu());
+            ps.setDate(4, thu.getDateThu());
 
             int executeUpdate = ps.executeUpdate();
             System.out.println(thu.toString());
@@ -84,7 +85,7 @@ public class ThuDAO {
             ps.setString(1, thu.getNameThu());
             ps.setString(2, thu.getMucThu());
             ps.setDouble(3, thu.getAmountThu());
-            ps.setTime(4, thu.getTimeThu());
+            ps.setDate(4, thu.getDateThu());
 
             int executeUpdate = ps.executeUpdate();
             System.out.println(thu2.toString());
@@ -105,7 +106,7 @@ public class ThuDAO {
             ps.setString(1, thu.getNameThu());
             ps.setString(2, thu.getMucThu());
             ps.setDouble(3, thu.getAmountThu());
-            ps.setTime(4, thu.getTimeThu());
+            ps.setDate(4, thu.getDateThu());
             
 
             int executeUpdate = ps.executeUpdate();

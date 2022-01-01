@@ -6,33 +6,83 @@
 package Controller;
 
 import DAO.ThuDAO;
+import DAO.StockDAO;
 import Model.ThuModel;
-import View.MasterTeleMoneyView;
+import Model.UserModel;
 import View.ThemThuView;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.sql.Time;
+import javax.swing.JOptionPane;
+import java.sql.Timestamp;
 
 public class ThemThuController {
 
-    private ThemThuView viewThemThu;
-    private ThuModel thu;
-    private ThuDAO thuDAO = null;
-    MasterTeleMoneyView owner;
-    public ThemThuController() {
-    
-    }
-//    
+    ThemThuView themThuView;
+    UserModel acc;
+    ThuDAO thuDAO = null;
+    ThuModel thuModel = new ThuModel();
+    StockDAO stockDAO;
+    double soDu;
 
-    public ThemThuController(ThemThuView ThemThuView) {
-        
-         //To change body of generated methods, choose Tools | Templates.
-        viewThemThu = ThemThuView;
-        setEventThemThu();
-        
+    public ThemThuController(ThemThuView themThuView, UserModel acc) {
         thuDAO = new ThuDAO();
-         
+        stockDAO = new StockDAO();
+        this.themThuView = themThuView;
+        this.acc = acc;
+        themThuView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        soDu = stockDAO.getSoDu(acc);     
+        setEventThemThu();
+        themThuView.setVisible(true);
+        //setData();
+        //setTableButton();
+
     }
+
+//    public void setButton(){
+//    Action delete = new AbstractAction() {
+//        public void actionPerformed(ActionEvent e) {
+//            JTable table = (JTable) e.getSource();
+//            int modelRow = Integer.valueOf(e.getActionCommand());
+//            ((DefaultTableModel) table.getModel()).removeRow(modelRow);
+//        }
+//    };
+//    ButtonColumn buttonColumn = new ButtonColumn(nhanvienView, delete, 2);
+//
+//    buttonColumn.setMnemonic (KeyEvent.VK_D);
+//    
+//    
+//    }
 
     public void setEventThemThu() {
-        
-    
-}
+        System.out.println("Tao event");
+        themThuView.btnDongY.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                double x = Double.parseDouble(themThuView.soTien.getText());
+                if (x > soDu) {
+                    JOptionPane.showMessageDialog(null, "Vượt quá số dư khả dụng");
+                } else if (x <= 0) {
+                    JOptionPane.showMessageDialog(null, "Nhập sai");
+                } else {
+                    int opt = JOptionPane.showConfirmDialog(themThuView, "Xác nhận thêm", "Xác nhận", JOptionPane.YES_NO_OPTION);
+                    if (opt == 0) {
+                        //String ten, String bank, double tiengoc, double laisuat, int kyhan, Timestamp ngaygui
+                        thuModel.setNameThu(themThuView.tenThu.getText());
+                        thuModel.setMucThu(themThuView.tenDanhMuc.getSelectedItem().toString());
+                        thuModel.setAmountThu(Double.parseDouble(themThuView.soTien.getText()));
+                        thuModel.setDateThu((Date) themThuView.ngayThu.getDate());
+                        thuDAO.add(thuModel, acc);
+                        themThuView.master.soDuKhaDung = themThuView.master.soDuKhaDung - Double.parseDouble(themThuView.soTien.getText());
+                        themThuView.master.refreshTabVayNo();
+                        themThuView.dispose();
+                    }
+                }
+            }
+        }
+        );
+
+    }
 }

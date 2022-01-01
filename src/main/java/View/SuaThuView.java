@@ -186,7 +186,7 @@ public class SuaThuView extends javax.swing.JFrame {
         tenThu.setText(thu.getNameThu());
         tenDanhMuc.setSelectedItem(thu.getMucThu());
         soTien.setText(String.valueOf(thu.getAmountThu()));
-        ngaythu.setDate(thu.getTimeThu());
+        ngaythu.setDate(thu.getDateThu());
     
     }
     private void tenThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenThuActionPerformed
@@ -207,7 +207,7 @@ public class SuaThuView extends javax.swing.JFrame {
         thu2.setNameThu(tenThu.getText());
         thu2.setMucThu(tenDanhMuc.getSelectedItem().toString());
         thu2.setAmountThu(Double.valueOf(soTien.getText()));
-        thu2.setTimeThu((Time) ngaythu.getDate());
+        thu2.setDateThu((Date) ngaythu.getDate());
         
     }
     /**

@@ -4,10 +4,12 @@
  */
 package View;
 
+import Controller.ThemThuController;
 import Model.ThuModel;
 import Model.UserModel;
 import java.awt.event.ActionListener;
 import static java.lang.System.exit;
+import java.sql.Date;
 import java.sql.Time;
 
 /**
@@ -19,8 +21,9 @@ public class ThemThuView extends javax.swing.JFrame {
     /**
      * Creates new form ViewSua
      */
-    MasterTeleMoneyView owner;
+    public MasterTeleMoneyView master;
     UserModel acc;
+    ThemThuController themThuController;
 
     public ThemThuView() {
         initComponents();
@@ -32,7 +35,8 @@ public class ThemThuView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         this.acc=acc;
-        owner = main;
+        master = main;
+        themThuController = new ThemThuController(this, acc);
         this.setTitle("Thêm");
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
@@ -197,7 +201,7 @@ public class ThemThuView extends javax.swing.JFrame {
        thu.setNameThu(tenThu.getText());
        thu.setMucThu(tenDanhMuc.getSelectedItem().toString());
        thu.setAmountThu(Double.valueOf(soTien.getText()));
-       thu.setTimeThu((Time) ngayThu.getDate());
+       thu.setDateThu((Date) ngayThu.getDate());
        return thu; 
     }
     /**
@@ -252,18 +256,18 @@ public class ThemThuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDongY;
-    private javax.swing.JButton btnThoat;
+    public javax.swing.JButton btnDongY;
+    public javax.swing.JButton btnThoat;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private com.toedter.calendar.JCalendar ngayThu;
-    private javax.swing.JTextField soTien;
-    private javax.swing.JComboBox<String> tenDanhMuc;
-    private javax.swing.JTextField tenThu;
+    public com.toedter.calendar.JCalendar ngayThu;
+    public javax.swing.JTextField soTien;
+    public javax.swing.JComboBox<String> tenDanhMuc;
+    public javax.swing.JTextField tenThu;
     // End of variables declaration//GEN-END:variables
 
     public void addSuaListiner(ActionListener actionListener) {
