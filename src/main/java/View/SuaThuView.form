@@ -189,11 +189,10 @@
           <Font name="Segoe UI Semilight" size="11" style="0"/>
         </Property>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
-            <StringItem index="0" value="Item 1"/>
-            <StringItem index="1" value="Item 2"/>
-            <StringItem index="2" value="Item 3"/>
-            <StringItem index="3" value="Item 4"/>
+          <StringArray count="3">
+            <StringItem index="0" value="L&#x1b0;&#x1a1;ng ch&#xed;nh"/>
+            <StringItem index="1" value="Th&#x1b0;&#x1edf;ng "/>
+            <StringItem index="2" value="Kho&#x1ea3;n thu kh&#xe1;c"/>
           </StringArray>
         </Property>
       </Properties>

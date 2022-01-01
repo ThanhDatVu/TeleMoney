@@ -38,6 +38,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jFileChooser1 = new javax.swing.JFileChooser();
         jInternalFrame1 = new javax.swing.JInternalFrame();
         jToolBar1 = new javax.swing.JToolBar();
+        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         canvas1 = new java.awt.Canvas();
         canvas2 = new java.awt.Canvas();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -66,10 +67,18 @@ public class NewJFrame extends javax.swing.JFrame {
         );
         jInternalFrame1Layout.setVerticalGroup(
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 272, Short.MAX_VALUE)
+            .addGap(0, 284, Short.MAX_VALUE)
         );
 
         jToolBar1.setRollover(true);
+
+        jFormattedTextField1.setText("jFormattedTextField1");
+        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextField1ActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(jFormattedTextField1);
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -93,9 +102,10 @@ public class NewJFrame extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(135, 135, 135)
                                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addContainerGap()
-                                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(33, 33, 33)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -126,9 +136,9 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addComponent(canvas2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(85, 85, 85))
             .addGroup(layout.createSequentialGroup()
-                .addGap(76, 76, 76)
+                .addGap(80, 80, 80)
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -137,6 +147,10 @@ public class NewJFrame extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -182,6 +196,7 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JEditorPane jEditorPane1;
     private javax.swing.JFileChooser jFileChooser1;
+    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;

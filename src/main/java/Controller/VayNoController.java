@@ -33,6 +33,7 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -48,7 +49,7 @@ import lib.ButtonColumn;
 import yahoofinance.YahooFinance;
 
 public class VayNoController {
-
+    DecimalFormat df = new DecimalFormat("0");
     private GuiTienDAO guiTienDAO = null;
     private VayTienDAO vayTienDAO = null;
     private TraGopDAO traGopDAO = null;
@@ -91,7 +92,7 @@ public class VayNoController {
                 guiTienModels.get(i).getId(),
                 guiTienModels.get(i).getTen(),
                 guiTienModels.get(i).getBank(),
-                guiTienModels.get(i).getTiengoc(),
+                df.format(guiTienModels.get(i).getTiengoc()),
                 guiTienModels.get(i).getLaisuat(),
                 guiTienModels.get(i).getKyhan(),
                 guiTienModels.get(i).getNgaygui()
@@ -107,7 +108,7 @@ public class VayNoController {
                 vayTienModels.get(i).getId(),
                 vayTienModels.get(i).getTen(),
                 vayTienModels.get(i).getBank(),
-                vayTienModels.get(i).getTiengoc(),
+                df.format(vayTienModels.get(i).getTiengoc()),
                 vayTienModels.get(i).getLaisuat(),
                 vayTienModels.get(i).getKyhan(),
                 vayTienModels.get(i).getNgayvay()
@@ -126,7 +127,7 @@ public class VayNoController {
                 traGopModels.get(i).getTen(),
                 traGopModels.get(i).getBank(),
                 traGopModels.get(i).getTratruoc(),
-                traGopModels.get(i).getTongtien(),
+                df.format(traGopModels.get(i).getTongtien()),
                 traGopModels.get(i).getSothang(),
                 traGopModels.get(i).getTienhangthang(),
                 traGopModels.get(i).getTime()

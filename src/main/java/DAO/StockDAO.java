@@ -5,6 +5,7 @@
 package DAO;
 
 import Model.MyStockBuyModel;
+import Model.MyTransModel;
 import Model.NhanvienModel;
 import Model.NhanvienTableModel;
 import Model.UserModel;
@@ -222,6 +223,26 @@ public class StockDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public ArrayList<MyTransModel> getAllTrans() {
+        String sql = "select * from STOCKTRANS";
+        ResultSet rs;
+        ArrayList<MyTransModel> myTransList = new ArrayList<>();
+        try {
+            Statement st = con.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                MyTransModel myTrans = new MyTransModel();
+                myTrans.setSymbol(rs.getString("SYMBOL"));
+                myTrans.setSoLuong(rs.getInt("SOLUONG"));
+                myTrans.setGiaGiaoDich(rs.getFloat("GIAMUA"));
+                myTrans.setTime(rs.getTimestamp("TIME"));
+                myTrans.setLoaiGiaoDich(rs.getString("LOAIGIAODICH"));
+                myTransList.add(myTrans);
+            }
+        } catch (Exception e) {
+        }
+        return myTransList;
     }
 
     public double getTongTaiSan(UserModel user) {

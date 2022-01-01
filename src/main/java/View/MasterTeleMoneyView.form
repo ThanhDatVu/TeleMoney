@@ -516,7 +516,7 @@
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="btnThemStock" min="-2" pref="221" max="-2" attributes="0"/>
                           <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-                          <Component id="btnThemStock1" min="-2" pref="221" max="-2" attributes="0"/>
+                          <Component id="btnShowTrans" min="-2" pref="221" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel5" max="32767" attributes="0"/>
@@ -566,7 +566,7 @@
                               <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="labelTotalStock" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="labelTotalStockVND" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="btnThemStock1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnShowTrans" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -745,7 +745,7 @@
                     <Property name="text" type="java.lang.String" value="xVND"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JButton" name="btnThemStock1">
+                <Component class="javax.swing.JButton" name="btnShowTrans">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI Semibold" size="11" style="0"/>
@@ -753,8 +753,11 @@
                     <Property name="text" type="java.lang.String" value="Xem l&#x1ecb;ch s&#x1eed; giao d&#x1ecb;ch"/>
                   </Properties>
                   <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemStock1ActionPerformed"/>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowTransActionPerformed"/>
                   </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtLocDauTu">
                   <Events>
@@ -1364,6 +1367,9 @@
                           <Color blue="33" green="ff" red="33" type="rgb"/>
                         </Property>
                       </Properties>
+                      <AuxValues>
+                        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                      </AuxValues>
 
                       <Layout class="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout"/>
                     </Container>

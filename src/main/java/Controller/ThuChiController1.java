@@ -35,6 +35,7 @@ import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -47,8 +48,9 @@ import lib.ButtonColumn;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
-public class ThuChiController {
+public class ThuChiController1 {
 
+    DecimalFormat df = new DecimalFormat("0");
     private MasterTeleMoneyView master;
     private UserModel acc;
     private StockDAO stockDAO;
@@ -61,7 +63,7 @@ public class ThuChiController {
     ChiTableModel thuTableModel = new ChiTableModel();
     Vector chiTableData, thuTableData;
 
-    public ThuChiController(MasterTeleMoneyView master, UserModel acc) throws IOException {
+    public ThuChiController1(MasterTeleMoneyView master, UserModel acc) throws IOException {
         this.master = master;
         this.acc = acc;
         master.setVisible(true);
@@ -74,7 +76,7 @@ public class ThuChiController {
         setEventThuChi();
         setDataTable();
         System.out.println("set xong table");
-        
+
     }
 
     public void enable() {
@@ -83,41 +85,41 @@ public class ThuChiController {
         //setTableButton();
     }
 
-    public void setDataTable() throws IOException{
+    public void setDataTable() throws IOException {
         System.out.println("1");
         //ChiTableModel chiTableModel1 = (ChiTableModel) master.tbChi.getModel();
         System.out.println("1.5");
         ArrayList<ChiModel> chiModels = new ArrayList<>();
         System.out.println("2");
         chiModels = chiDAO.getAll(acc);
-        
-        System.out.println("CHi size "+chiModels.size());
+
+        System.out.println("CHi size " + chiModels.size());
         chiTableModel.setRowCount(0);
         for (int i = 0; i < chiModels.size(); i++) {
             chiTableModel.addRow(new Object[]{//"ID","Tên khoản chi", "Danh mục", "Số tiền","Ngày"
                 chiModels.get(i).getIdChi(),
                 chiModels.get(i).getNameChi(),
                 chiModels.get(i).getMucChi(),
-                chiModels.get(i).getAmountChi(),
+                df.format(chiModels.get(i).getAmountChi()),
                 chiModels.get(i).getTimeChi()
-                
+
             });
         }
-        
+
         //chiTableData = (Vector) (chiTableModel).getDataVector().clone();
         //ThuTableModel thuTableModel1 = (ThuTableModel) master.tbThu.getModel();
         ArrayList<ThuModel> thuModels = new ArrayList<>();
         thuModels = thuDAO.getAll(acc);
-        System.out.println("Thu size "+thuModels.size());
+        System.out.println("Thu size " + thuModels.size());
         thuTableModel.setRowCount(0);
         for (int i = 0; i < chiModels.size(); i++) {
             thuTableModel.addRow(new Object[]{//"ID","Tên khoản chi", "Danh mục", "Số tiền","Ngày"
                 thuModels.get(i).getIdThu(),
                 thuModels.get(i).getNameThu(),
                 thuModels.get(i).getMucThu(),
-                thuModels.get(i).getAmountThu(),
+                df.format(thuModels.get(i).getAmountThu()),
                 thuModels.get(i).getTimeThu()
-                
+
             });
         }
 

@@ -55,6 +55,11 @@ public class AddGuiTienController {
 
     public void setEventGuiTien() {
         System.out.println("Tao event");
+        
+        
+        
+        
+        
         guiTienView.btnThemGuiTien.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

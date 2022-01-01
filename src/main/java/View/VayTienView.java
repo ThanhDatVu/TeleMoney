@@ -162,7 +162,7 @@ public class VayTienView extends javax.swing.JFrame {
         jLabel6.setText("THÁNG");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        jLabel10.setText("NGÀY TRẢ LÃI:");
+        jLabel10.setText("NGÀY TRẢ LÃI HÀNG THÁNG:");
 
         txtLaisuat1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         txtLaisuat1.addActionListener(new java.awt.event.ActionListener() {
@@ -218,7 +218,7 @@ public class VayTienView extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(148, 148, 148)
                         .addComponent(jLabel8)))
-                .addContainerGap(49, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

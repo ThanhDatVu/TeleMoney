@@ -70,18 +70,18 @@
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
                               <Component id="txtTen" min="-2" pref="175" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
+                              <EmptySpace pref="91" max="32767" attributes="0"/>
                               <Component id="jLabel7" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Component id="cboKyHan" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="-2" attributes="0"/>
                               <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <Component id="cboBank" alignment="1" min="-2" max="-2" attributes="0"/>
+                          <Component id="cboBank" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="48" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -340,7 +340,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI Semilight" size="11" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="NH&#x1eac;N L&#xc3;I NG&#xc0;Y:"/>
+        <Property name="text" type="java.lang.String" value="NH&#x1eac;N L&#xc3;I H&#xc0;NG TH&#xc1;NG NG&#xc0;Y:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLaisuat1">

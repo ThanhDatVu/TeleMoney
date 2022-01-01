@@ -8,7 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import Controller.LoginController;
 import Controller.StockController;
 import Controller.VayNoController;
-import Controller.ThuChiController;
+import Controller.ThuChiController1;
 import Controller.ThuChiController2;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
@@ -61,7 +61,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     CardLayout cardLayout;
     TableColumn col;
     StockController stockController;
-    ThuChiController thuChiController;
+    ThuChiController1 thuChiController;
     ThuChiController2 thuChiController2;
     VayNoController vayNoController;
 
@@ -99,7 +99,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setSumText();
         System.out.println("user ID " + user.getId());
-        this.thuChiController = new ThuChiController(this, user);
+        this.thuChiController = new ThuChiController1(this, user);
         this.thuChiController2 = new ThuChiController2(this, user);
     }
 
@@ -212,7 +212,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelTotalReturn = new javax.swing.JLabel();
         labelTotalStockVND = new javax.swing.JLabel();
         labelTotalReturnVND = new javax.swing.JLabel();
-        btnThemStock1 = new javax.swing.JButton();
+        btnShowTrans = new javax.swing.JButton();
         txtLocDauTu = new javax.swing.JTextField();
         btnLoc = new javax.swing.JButton();
         pnlTaiKhoan = new javax.swing.JPanel();
@@ -488,11 +488,11 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelTotalReturnVND.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         labelTotalReturnVND.setText("xVND");
 
-        btnThemStock1.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
-        btnThemStock1.setText("Xem lịch sử giao dịch");
-        btnThemStock1.addActionListener(new java.awt.event.ActionListener() {
+        btnShowTrans.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
+        btnShowTrans.setText("Xem lịch sử giao dịch");
+        btnShowTrans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemStock1ActionPerformed(evt);
+                btnShowTransActionPerformed(evt);
             }
         });
 
@@ -543,7 +543,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addGap(36, 36, 36)
                 .addComponent(btnThemStock, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(32, 32, 32)
-                .addComponent(btnThemStock1, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnShowTrans, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -585,7 +585,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(labelTotalStock)
                     .addComponent(labelTotalStockVND)
-                    .addComponent(btnThemStock1))
+                    .addComponent(btnShowTrans))
                 .addGap(18, 18, 18)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelTotalReturnVND)
@@ -1105,9 +1105,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLocVayActionPerformed
 
-    private void btnThemStock1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemStock1ActionPerformed
+    private void btnShowTransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTransActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_btnThemStock1ActionPerformed
+    }//GEN-LAST:event_btnShowTransActionPerformed
 
     private void txtLocDauTuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocDauTuActionPerformed
         // TODO add your handling code here:
@@ -1258,12 +1258,12 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public javax.swing.JButton btnShowTG;
     public javax.swing.JButton btnShowTK;
     public javax.swing.JButton btnShowThu;
+    public javax.swing.JButton btnShowTrans;
     public javax.swing.JButton btnShowVay;
     public javax.swing.JButton btnSuaChi;
     public javax.swing.JButton btnSuaThu;
     public javax.swing.JButton btnThemChi;
     private javax.swing.JButton btnThemStock;
-    private javax.swing.JButton btnThemStock1;
     public javax.swing.JButton btnThemTG;
     public javax.swing.JButton btnThemTK;
     public javax.swing.JButton btnThemThu;
@@ -1326,7 +1326,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JPanel pnlTaiKhoan;
     public javax.swing.JPanel pnlThongKe;
     private javax.swing.JPanel pnlThongKeChiTieu;
-    private javax.swing.JPanel pnlThongKeChung;
+    public javax.swing.JPanel pnlThongKeChung;
     private javax.swing.JPanel pnlThongKeDauTu;
     private javax.swing.JPanel pnlThongKeVayNo;
     private javax.swing.JPanel pnlVayNo;

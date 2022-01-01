@@ -31,29 +31,14 @@ public class ThemChiController {
         stockDAO = new StockDAO();
         this.themChiView = themChiView;
         this.acc = acc;
-        themChiView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         soDu = stockDAO.getSoDu(acc);     
         setEventThemChi();
-        themChiView.setVisible(true);
         //setData();
         //setTableButton();
 
     }
 
-//    public void setButton(){
-//    Action delete = new AbstractAction() {
-//        public void actionPerformed(ActionEvent e) {
-//            JTable table = (JTable) e.getSource();
-//            int modelRow = Integer.valueOf(e.getActionCommand());
-//            ((DefaultTableModel) table.getModel()).removeRow(modelRow);
-//        }
-//    };
-//    ButtonColumn buttonColumn = new ButtonColumn(nhanvienView, delete, 2);
-//
-//    buttonColumn.setMnemonic (KeyEvent.VK_D);
-//    
-//    
-//    }
+
 
     public void setEventThemChi() {
         System.out.println("Tao event");

@@ -12,6 +12,7 @@ import Model.UserModel;
 import View.BanStockView;
 import View.MasterTeleMoneyView;
 import View.MuaStockView;
+import View.MyTransView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -70,7 +71,7 @@ public class StockController {
             
             MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();
             setDataTable();
-            setEventStock();
+            
             //setTableButton();
         } catch (IOException ex) {
             Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
@@ -100,11 +101,11 @@ public class StockController {
         // Adding chart into a chart panel
         ChartPanel chartPanel = new ChartPanel(pieChart);
         chartPanel.setVisible(true);
-        this.master.pnlThongKe.add(chartPanel);
-        this.master.pack();
+        
+       
         
         TableColumn col = master.tableDanhMuc.getColumnModel().getColumn(4);
-            col.setCellRenderer(new MyRenderer(Color.red, Color.green));
+        col.setCellRenderer(new MyRenderer(Color.red, Color.green));
         MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();
         ArrayList<MyStockBuyModel> myStockList = new ArrayList<>();
         myStockList = stockDAO.getAll();
@@ -203,6 +204,14 @@ public class StockController {
             private void search() {
                 searchTableContents(master.txtLocDauTu.getText(), master.tableDanhMuc ,stockTableData );
             }
+        });
+        
+        
+        master.btnShowTrans.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+               MyTransView myTransView = new MyTransView(master, acc);
+               myTransView.setVisible(true);
+            } 
         });
     }
 

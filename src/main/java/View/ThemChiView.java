@@ -63,7 +63,7 @@ public class ThemChiView extends javax.swing.JFrame {
         jLabel4.setText("Thêm khoản chi");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        jLabel3.setText("Tên khoản thu");
+        jLabel3.setText("Tên khoản chi");
 
         tenChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         tenChi.addActionListener(new java.awt.event.ActionListener() {

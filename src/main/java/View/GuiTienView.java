@@ -162,7 +162,7 @@ public class GuiTienView extends javax.swing.JFrame {
         jLabel6.setText("THÁNG");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        jLabel10.setText("NHẬN LÃI NGÀY:");
+        jLabel10.setText("NHẬN LÃI HÀNG THÁNG NGÀY:");
 
         txtLaisuat1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         txtLaisuat1.addActionListener(new java.awt.event.ActionListener() {
@@ -212,14 +212,14 @@ public class GuiTienView extends javax.swing.JFrame {
                                         .addComponent(btnHuyGuiTien, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(txtTen, javax.swing.GroupLayout.PREFERRED_SIZE, 175, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 91, Short.MAX_VALUE)
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(cboKyHan, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel6))
-                            .addComponent(cboBank, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(48, Short.MAX_VALUE))
+                            .addComponent(cboBank, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
