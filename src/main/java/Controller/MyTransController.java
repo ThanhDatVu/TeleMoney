@@ -13,8 +13,10 @@ import Model.MyTransModel;
 import Model.UserModel;
 import View.MasterTeleMoneyView;
 import View.MyTransView;
+import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import javax.swing.JOptionPane;
@@ -116,6 +118,10 @@ public class MyTransController {
                     String stringPath = "D:\\Project\\document\\MyTrans.xlsx";
                     Path path = Paths.get(stringPath);
                     writeToExcell(myTransView.tableTrans, path);
+
+                    File file = new File("D:\\Project\\document\\");
+                    Desktop desktop = Desktop.getDesktop();
+                    desktop.open(file);
                 } catch (IOException ex) {
                     Logger.getLogger(MyTransController.class.getName()).log(Level.SEVERE, null, ex);
                 }
