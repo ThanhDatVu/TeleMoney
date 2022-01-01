@@ -7,10 +7,12 @@ package DAO;
 import Model.ThuModel;
 import Model.ThuTableModel;
 import Model.UserModel;
+import Model.ThuModel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,34 +34,34 @@ public class ThuDAO {
         }
     }
 
-    public void refresh(ThuTableModel thumodel) {
-        thumodel.setRowCount(0);
-        addall(thumodel);
-    }
+    
 
-    public void addall(ThuTableModel thumodel) {
-        String sql = "select * from thu";
-
-        ThuModel thu = null;
+    public ArrayList<ThuModel> getAll(UserModel user) {
+        String sql = "select * from thu where uid=?";
+        int x = user.getId();
+        ResultSet rs;
+        ArrayList<ThuModel> thuModels = new ArrayList<>();
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
+            ps.setInt(1, x);
+            rs = ps.executeQuery();
             while (rs.next()) {
-                thu = new ThuModel();
-                thu.setNameThu(rs.getString("Tên khoản thu"));
-                thu.setMucThu(rs.getString("Danh mục"));
-                thu.setAmountThu(rs.getDouble("Số tiền"));
-                thu.setTimestampThu(rs.getTimestamp("Ngày"));
-                thumodel.addRow(new Object[]{thu.getNameThu(), thu.getMucThu(), thu.getAmountThu(), thu.getTimestampThu()});
+                ThuModel thuModel = new ThuModel();
+                thuModel.setIdThu(rs.getInt("id"));
+                thuModel.setNameThu(rs.getString("namethu"));
+                thuModel.setAmountThu(rs.getDouble("amountthu"));
+                thuModel.setMucThu(rs.getString("mucthu"));
+                thuModel.setTimestampThu(rs.getTimestamp("datethu"));
+                
+                thuModels.add(thuModel);
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
+        return thuModels;
     }
 
     public void add(ThuModel thu, UserModel acc) {
-        String sql = "INSERT INTO thu (namethu, mucthu, amountthu, timethu) VALUES (?,?,?,?)";
+        String sql = "INSERT INTO thu (namethu, mucthu, amountthu, datethu,uid) VALUES (?,?,?,?,?)";
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -67,6 +69,7 @@ public class ThuDAO {
             ps.setString(2, thu.getMucThu());
             ps.setDouble(3, thu.getAmountThu());
             ps.setTimestamp(4, thu.getTimestampThu());
+            ps.setInt(5, acc.getId());
 
             int executeUpdate = ps.executeUpdate();
             System.out.println(thu.toString());

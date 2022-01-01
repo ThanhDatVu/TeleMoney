@@ -11,6 +11,7 @@ import java.sql.Timestamp;
  * @author xiaomi
  */
 public class VayTienModel {
+    int id;
     private String ten;
     private String bank;
     private double tiengoc;
@@ -27,6 +28,14 @@ public class VayTienModel {
         this.kyhan = kyhan;
         this.ngayvay = ngayvay;
         this.ngaytralai = ngaytralai;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public VayTienModel() {

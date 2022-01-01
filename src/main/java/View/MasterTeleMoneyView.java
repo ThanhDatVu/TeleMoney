@@ -9,6 +9,7 @@ import Controller.LoginController;
 import Controller.StockController;
 import Controller.VayNoController;
 import Controller.ThuChiController;
+import Controller.ThuChiController2;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
 import Model.MyStockBuyTableModel;
@@ -61,6 +62,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     TableColumn col;
     StockController stockController;
     ThuChiController thuChiController;
+    ThuChiController2 thuChiController2;
     VayNoController vayNoController;
 
     Float Usd;
@@ -85,27 +87,24 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         this.Usd = YahooFinance.get("USDVND=X").getQuote().getPrice().floatValue();
         this.user = user;
         initComponents();
-        stockController = new StockController(this, user);
-        vayNoController = new VayNoController(this, user);
-        thuChiController = new ThuChiController(this, user);
+        this.cardLayout = (CardLayout) (pnlCards.getLayout());
+        this.stockController = new StockController(this, user);
+        this.vayNoController = new VayNoController(this, user);
+        
         this.setTitle("TELEMONEY");
-        myInitComponent();
-    }
-
-    private void myInitComponent() {
         setUsername();
         soDuKhaDung = stockDAO.getSoDu(user);
         tongTaiSan = stockDAO.getTongTaiSan(user);
         setTiGiaSoDu();
-        cardLayout = (CardLayout) (pnlCards.getLayout());
         setLocationRelativeTo(null);
-        
-        {   // set đổi màu cột lãi lỗ
-//            col = tableDanhMuc.getColumnModel().getColumn(4);
-//            col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
-        }
         setSumText();
         System.out.println("user ID " + user.getId());
+        this.thuChiController = new ThuChiController(this, user);
+        this.thuChiController2 = new ThuChiController2(this, user);
+    }
+
+    private void myInitComponent() throws IOException {
+        
     }
     public void ChartTest() {
         XYSeries Goals = new XYSeries("Goals Scored");
@@ -146,7 +145,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public void refreshTabThuChi() {
         try {
             setTiGiaSoDu();
-            
             thuChiController.setDataTable();
         } catch (IOException ex) {
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
@@ -281,31 +279,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel16.setText("QUẢN LÝ CHI TIÊU");
 
         tbThu.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        tbThu.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Tên khoản thu", "Danh mục", "Số tiền", "Ngày"
-            }
-        ));
         jScrollPane5.setViewportView(tbThu);
 
         tbChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        tbChi.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "Tên khoản chi", "", "Title 3", "Title 4"
-            }
-        ));
         jScrollPane6.setViewportView(tbChi);
 
         btnThemThu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N

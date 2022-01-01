@@ -155,7 +155,7 @@ public class BanStockView extends javax.swing.JFrame {
         jLabel7.setText("Số dư khả dụng: ");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        jLabel8.setText("Tổng giá trị mua thêm:");
+        jLabel8.setText("Tổng giá trị bán ra");
 
         txtTongBanUSD.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         txtTongBanUSD.setText("0");
@@ -226,13 +226,13 @@ public class BanStockView extends javax.swing.JFrame {
                             .addComponent(jLabel11))
                         .addGap(56, 56, 56)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(textGiaNow, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                            .addComponent(textGiaBanTB, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
-                            .addComponent(textSoLuongBanRa, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)
+                            .addComponent(textGiaNow, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                            .addComponent(textGiaBanTB, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
+                            .addComponent(textSoLuongBanRa, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                             .addComponent(txtTongBanUSD)
                             .addComponent(txtTongBanVND)
                             .addComponent(txtSymbol)
-                            .addComponent(textSoLuongBanDau, javax.swing.GroupLayout.DEFAULT_SIZE, 256, Short.MAX_VALUE)))
+                            .addComponent(textSoLuongBanDau, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(99, 99, 99)
                         .addComponent(btnThemStock, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)

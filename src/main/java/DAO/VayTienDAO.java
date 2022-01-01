@@ -67,6 +67,7 @@ public class VayTienDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 VayTienModel vayTienModel = new VayTienModel();
+                vayTienModel.setId(rs.getInt("id"));
                 vayTienModel.setTen(rs.getString("ten"));
                 vayTienModel.setBank(rs.getString("bank"));
                 vayTienModel.setTiengoc(rs.getDouble("tiengoc"));

@@ -77,7 +77,7 @@ public class ThemChiController {
                         chiModel.setTimestampChi(time);
                         chiDAO.add(chiModel, acc);
                         themChiView.master.soDuKhaDung = themChiView.master.soDuKhaDung - Double.parseDouble(themChiView.soTienChi.getText());
-                        themChiView.master.refreshTabVayNo();
+                        themChiView.master.refreshTabThuChi();
                         themChiView.dispose();
                     }
                 }

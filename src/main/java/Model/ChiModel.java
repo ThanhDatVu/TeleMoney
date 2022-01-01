@@ -33,11 +33,11 @@ public class ChiModel {
         this.timeChi = timeChi;
     }
 
-    public int getChiid() {
+    public int getIdChi() {
         return idChi;
     }
 
-    public void setChiid(int chiid) {
+    public void setIdChi(int chiid) {
         this.idChi = chiid;
     }
 

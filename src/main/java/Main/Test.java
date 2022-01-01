@@ -5,13 +5,17 @@
 package Main;
 
 import Controller.LoginController;
+import DAO.ChiDAO;
 import DAO.StockDAO;
+import Model.ChiModel;
 import Model.MyStockBuyModel;
+import Model.UserModel;
 import View.TableSearch;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -47,9 +51,13 @@ public class Test {
 //        ThuController nvController = new ThuController();
 //        MyStockBuyModel myStock = new MyStockBuyModel();
 //        myStock.setSymbol("AAPL");
-        new TableSearch().setVisible(true);
-        Timestamp time = new Timestamp(System.currentTimeMillis());
-        System.out.println(time.getDate());
+
+        ChiDAO chiDAO = new ChiDAO();
+        UserModel acc = new UserModel();
+        acc.setId(1);
+        ArrayList<ChiModel> chiModels = new ArrayList<>();
+        chiModels = chiDAO.getAll(acc);
+        System.out.println(chiModels.size());
 //        myStock.setTime();
 //        System.out.println(myStock.get24hchange());
 //        System.out.println(get24hchange("AAPL"));

@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 
 /**
  *
@@ -32,32 +33,31 @@ public class ChiDAO {
         }
     }
 
-    public void refresh(ChiTableModel chimodel) {
-        chimodel.setRowCount(0);
-        addall(chimodel);
-    }
+    
 
-    public void addall(ChiTableModel chimodel) {
-        String sql = "select * from chi";
-
-        ChiModel chi = null;
+   public ArrayList<ChiModel> getAll(UserModel user) {
+        String sql = "select * from chi where uid=?";
+        int x = user.getId();
+        ResultSet rs;
+        ArrayList<ChiModel> chiModels = new ArrayList<>();
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-
-            ResultSet rs = ps.executeQuery();
+            ps.setInt(1, x);
+            rs = ps.executeQuery();
             while (rs.next()) {
-                chi = new ChiModel();
-                chi.setNameChi(rs.getString("Tên khoản thu"));
-                chi.setMucChi(rs.getString("Danh mục"));
-                chi.setAmountChi(rs.getDouble("Số tiền"));
-                chi.setTimestampChi(rs.getTimestamp("Ngày"));
-                chimodel.addRow(new Object[]{chi.getNameChi(), chi.getMucChi(), chi.getAmountChi(), chi.getTimestampChi()});
+                ChiModel chiModel = new ChiModel();
+                chiModel.setIdChi(rs.getInt("id"));
+                chiModel.setNameChi(rs.getString("namechi"));
+                chiModel.setAmountChi(rs.getDouble("amountchi"));
+                chiModel.setMucChi(rs.getString("mucchi"));
+                chiModel.setTimestampChi(rs.getTimestamp("datechi"));
+                
+                chiModels.add(chiModel);
             }
         } catch (Exception e) {
-            e.printStackTrace();
         }
+        return chiModels;
     }
-
     public void add(ChiModel chi, UserModel user) {
         String sql = "INSERT INTO chi (namechi, mucchi, amountchi, timechi, uid) VALUES (?,?,?,?,?)";
 

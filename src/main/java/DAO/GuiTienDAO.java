@@ -66,6 +66,7 @@ public class GuiTienDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 GuiTienModel guiTienModel = new GuiTienModel();
+                guiTienModel.setId(rs.getInt("id"));
                 guiTienModel.setTen(rs.getString("ten"));
                 guiTienModel.setBank(rs.getString("bank"));
                 guiTienModel.setTiengoc(rs.getDouble("tiengoc"));

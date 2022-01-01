@@ -68,6 +68,7 @@ public class TraGopDAO {
             rs = ps.executeQuery();
             while (rs.next()) {
                 TraGopModel traGopModel = new TraGopModel();
+                traGopModel.setId(rs.getInt("id"));
                 traGopModel.setTen(rs.getString("name"));
                 traGopModel.setBank(rs.getString("namecongty"));
                 traGopModel.setTratruoc(rs.getDouble("tratruoc"));

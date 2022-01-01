@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.ThemChiController;
 import Model.ChiModel;
 import Model.ThuModel;
 import Model.UserModel;
@@ -18,7 +19,7 @@ public class ThemChiView extends javax.swing.JFrame {
 
     /**
      * Creates new form ThemChiView
-     */
+     */ThemChiController themChiController;
     public MasterTeleMoneyView master;
     UserModel acc;
 
@@ -32,6 +33,7 @@ public class ThemChiView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.acc = acc;
         master = main;
+        themChiController = new ThemChiController(this, this.acc);
         this.setTitle("Thêm");
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
@@ -74,7 +76,7 @@ public class ThemChiView extends javax.swing.JFrame {
         jLabel1.setText("Danh mục");
 
         danhMucChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        danhMucChi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        danhMucChi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ăn uống", "Di chuyển", "Tiền nhà", "Tiền điện, nước", "Xã giao", "Quà cáp" }));
 
         soTienChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
 

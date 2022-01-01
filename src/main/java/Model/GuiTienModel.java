@@ -11,6 +11,7 @@ import java.sql.Timestamp;
  * @author xiaomi
  */
 public class GuiTienModel {
+    int id;
     private String ten;
     private String bank;
     private double tiengoc;
@@ -27,6 +28,14 @@ public class GuiTienModel {
         this.kyhan = kyhan;
         this.ngaygui = ngaygui;
         this.ngaythulai = ngaythulai;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public GuiTienModel() {

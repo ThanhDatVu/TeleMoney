@@ -112,7 +112,7 @@ public class ThemThuView extends javax.swing.JFrame {
         jLabel4.setText("Thêm khoản thu");
 
         tenDanhMuc.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        tenDanhMuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        tenDanhMuc.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lương chính", "Thưởng ", "Khoản thu khác" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

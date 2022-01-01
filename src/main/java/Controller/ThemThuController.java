@@ -62,9 +62,7 @@ public class ThemThuController {
             public void actionPerformed(ActionEvent e) {
 
                 double x = Double.parseDouble(themThuView.soTien.getText());
-                if (x > soDu) {
-                    JOptionPane.showMessageDialog(null, "Vượt quá số dư khả dụng");
-                } else if (x <= 0) {
+                if (x <= 0) {
                     JOptionPane.showMessageDialog(null, "Nhập sai");
                 } else {
                     int opt = JOptionPane.showConfirmDialog(themThuView, "Xác nhận thêm", "Xác nhận", JOptionPane.YES_NO_OPTION);
@@ -75,9 +73,10 @@ public class ThemThuController {
                         thuModel.setAmountThu(Double.parseDouble(themThuView.soTien.getText()));
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         thuModel.setTimestampThu(time);
+                        System.out.println(thuModel.toString());
                         thuDAO.add(thuModel, acc);
-                        themThuView.master.soDuKhaDung = themThuView.master.soDuKhaDung - Double.parseDouble(themThuView.soTien.getText());
-                        themThuView.master.refreshTabVayNo();
+                        themThuView.master.soDuKhaDung = themThuView.master.soDuKhaDung + Double.parseDouble(themThuView.soTien.getText());
+                        themThuView.master.refreshTabThuChi();
                         themThuView.dispose();
                     }
                 }

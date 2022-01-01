@@ -88,6 +88,7 @@ public class VayNoController {
         tableModel.setRowCount(0);
         for (int i = 0; i < guiTienModels.size(); i++) {
             tableModel.addRow(new Object[]{
+                guiTienModels.get(i).getId(),
                 guiTienModels.get(i).getTen(),
                 guiTienModels.get(i).getBank(),
                 guiTienModels.get(i).getTiengoc(),
@@ -103,6 +104,7 @@ public class VayNoController {
         tableModel1.setRowCount(0);
         for (int i = 0; i < vayTienModels.size(); i++) {
             tableModel1.addRow(new Object[]{
+                vayTienModels.get(i).getId(),
                 vayTienModels.get(i).getTen(),
                 vayTienModels.get(i).getBank(),
                 vayTienModels.get(i).getTiengoc(),
@@ -120,6 +122,7 @@ public class VayNoController {
 
         for (int i = 0; i < traGopModels.size(); i++) {
             tableModel2.addRow(new Object[]{
+                traGopModels.get(i).getId(),
                 traGopModels.get(i).getTen(),
                 traGopModels.get(i).getBank(),
                 traGopModels.get(i).getTratruoc(),

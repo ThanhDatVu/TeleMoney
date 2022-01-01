@@ -5,11 +5,16 @@
  */
 package Controller;
 
+import DAO.ChiDAO;
 import DAO.StockDAO;
+import DAO.ThuDAO;
+import Model.ChiModel;
 import Model.ChiTableModel;
+import Model.GuiTienModel;
 import Model.GuiTienTableModel;
 import Model.MyStockBuyModel;
 import Model.MyStockBuyTableModel;
+import Model.ThuModel;
 import Model.ThuTableModel;
 import Model.UserModel;
 import Model.VayTienTableModel;
@@ -46,69 +51,83 @@ public class ThuChiController {
 
     private MasterTeleMoneyView master;
     private UserModel acc;
-    private StockDAO stockDAO = null;
+    private StockDAO stockDAO;
+    private ThuDAO thuDAO;
+    private ChiDAO chiDAO;
     private Integer tableSelect;
     Stock stock;
     BigDecimal usd;
     ThuTableModel chiTableModel = new ThuTableModel();
     ChiTableModel thuTableModel = new ChiTableModel();
-    Vector chiTableData,thuTableData ;
-    public ThuChiController(MasterTeleMoneyView master, UserModel acc) {
+    Vector chiTableData, thuTableData;
+
+    public ThuChiController(MasterTeleMoneyView master, UserModel acc) throws IOException {
         this.master = master;
         this.acc = acc;
-        setEventThuChi();
         master.setVisible(true);
+        stockDAO = new StockDAO();
+        thuDAO = new ThuDAO();
+        chiDAO = new ChiDAO();
         this.master.tbChi.setModel(chiTableModel);
         this.master.tbThu.setModel(thuTableModel);
-        //setDataTable();
+        System.out.println("chuan bị set table");
+        setEventThuChi();
+        setDataTable();
+        System.out.println("set xong table");
+        
     }
 
     public void enable() {
-        setEventThuChi();
+        //setEventThuChi();
 
         //setTableButton();
     }
 
-    public void setDataTable() throws IOException {
-        MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();
-        ArrayList<MyStockBuyModel> myStockList = new ArrayList<>();
-        myStockList = stockDAO.getAll();
-        tableModel.setRowCount(0);
-        for (int i = 0; i < myStockList.size(); i++) {
-            stock = YahooFinance.get(myStockList.get(i).getSymbol());
-            long giaTriHienTai = (long) ((Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0);
-            tableModel.addRow(new Object[]{
-                myStockList.get(i).getSymbol(),
-                myStockList.get(i).getSoLuong(),
-                myStockList.get(i).getGiaBanDau(),
-                (Math.round(stock.getQuote().getPrice().floatValue() * 100.0)) / 100.0,
-                myStockList.get(i).get24hchange(),
-                (Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0,
-                ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) > -1)
-                && ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) < 1)
-                ? 0 : ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau()))),
-                "Mua thêm",
-                "Bán"
-
+    public void setDataTable() throws IOException{
+        System.out.println("1");
+        //ChiTableModel chiTableModel1 = (ChiTableModel) master.tbChi.getModel();
+        System.out.println("1.5");
+        ArrayList<ChiModel> chiModels = new ArrayList<>();
+        System.out.println("2");
+        chiModels = chiDAO.getAll(acc);
+        
+        System.out.println("CHi size "+chiModels.size());
+        chiTableModel.setRowCount(0);
+        for (int i = 0; i < chiModels.size(); i++) {
+            chiTableModel.addRow(new Object[]{//"ID","Tên khoản chi", "Danh mục", "Số tiền","Ngày"
+                chiModels.get(i).getIdChi(),
+                chiModels.get(i).getNameChi(),
+                chiModels.get(i).getMucChi(),
+                chiModels.get(i).getAmountChi(),
+                chiModels.get(i).getTimeChi()
+                
             });
-
+        }
+        
+        //chiTableData = (Vector) (chiTableModel).getDataVector().clone();
+        //ThuTableModel thuTableModel1 = (ThuTableModel) master.tbThu.getModel();
+        ArrayList<ThuModel> thuModels = new ArrayList<>();
+        thuModels = thuDAO.getAll(acc);
+        System.out.println("Thu size "+thuModels.size());
+        thuTableModel.setRowCount(0);
+        for (int i = 0; i < chiModels.size(); i++) {
+            thuTableModel.addRow(new Object[]{//"ID","Tên khoản chi", "Danh mục", "Số tiền","Ngày"
+                thuModels.get(i).getIdThu(),
+                thuModels.get(i).getNameThu(),
+                thuModels.get(i).getMucThu(),
+                thuModels.get(i).getAmountThu(),
+                thuModels.get(i).getTimeThu()
+                
+            });
         }
 
+        //thuTableData = (Vector) (thuTableModel).getDataVector().clone();
+        System.out.println("aloaloaloalaoaloalao");
     }
-//    public void setButton(){
-//    Action delete = new AbstractAction() {
-//        public void actionPerformed(ActionEvent e) {
-//            JTable table = (JTable) e.getSource();
-//            int modelRow = Integer.valueOf(e.getActionCommand());
-//            ((DefaultTableModel) table.getModel()).removeRow(modelRow);
-//        }
-//    };
-//    ButtonColumn buttonColumn = new ButtonColumn(nhanvienView, delete, 2);
-//
-//    buttonColumn.setMnemonic (KeyEvent.VK_D);
 //    
 //    
-//    }
+//    
+//    
 
     public void setEventThuChi() {
         System.out.println("Tao event tab thuchi");
@@ -276,6 +295,7 @@ public class ThuChiController {
 
         System.out.println("Tao xong event tab thuchi");
     }
+
     public void searchTableContents(String searchString, JTable table, Vector OGVector) {
         DefaultTableModel currtableModel = (DefaultTableModel) table.getModel();
         //To empty the table before search

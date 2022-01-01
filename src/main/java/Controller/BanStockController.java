@@ -98,6 +98,7 @@ public class BanStockController {
             
             banStockView.textGiaNow.setEditable(false);
             banStockView.txtSymbol.setEditable(false);
+            banStockView.textSoLuongBanDau.setEditable(false);
             
             banStockView.textGiaBanTB.setText(giaTriHienTai.toString());
         } catch (IOException ex) {

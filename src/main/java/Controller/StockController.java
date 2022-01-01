@@ -187,7 +187,7 @@ public class StockController {
             }
         });
         System.out.println("Tao xong event tab dautu");
-        master.txtLocTG.getDocument().addDocumentListener(new DocumentListener() {
+        master.txtLocDauTu.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent documentEvent) {
                 search();
             }
