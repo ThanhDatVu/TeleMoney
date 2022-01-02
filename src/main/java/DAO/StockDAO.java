@@ -203,7 +203,7 @@ public class StockDAO {
 
     @SuppressWarnings("empty-statement")
     public void addTrans(MyStockBuyModel myStock, UserModel user, String type) {
-        String sql = "INSERT INTO `stocktrans` (`id`, `uid`, `symbol`, `giamua`, `soluong`, `time`, `type`)"
+        String sql = "INSERT INTO `stocktrans` (`id`, `uid`, `symbol`, `giagiaodich`, `soluong`, `time`, `loaigiaodich`)"
                 + " VALUES (NULL,?,?,?,?,?,?);";;
 
         try {
@@ -235,7 +235,7 @@ public class StockDAO {
                 MyTransModel myTrans = new MyTransModel();
                 myTrans.setSymbol(rs.getString("SYMBOL"));
                 myTrans.setSoLuong(rs.getInt("SOLUONG"));
-                myTrans.setGiaGiaoDich(rs.getFloat("GIAMUA"));
+                myTrans.setGiaGiaoDich(rs.getFloat("GIAGIAODICH"));
                 myTrans.setTime(rs.getTimestamp("TIME"));
                 myTrans.setLoaiGiaoDich(rs.getString("LOAIGIAODICH"));
                 myTransList.add(myTrans);

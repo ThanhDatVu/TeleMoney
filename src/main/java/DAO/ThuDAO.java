@@ -81,7 +81,7 @@ public class ThuDAO {
 
     public void update(ThuModel thu, ThuModel thu2) {
         //To change body of generated methods, choose Tools | Templates.
-        String sql = "UPDATE thu SET namethu = ?, mucthu = ?, amoutthu = ?, timethu = ?  WHERE ID = ?;";
+        String sql = "UPDATE thu SET namethu = ?, mucthu = ?, amountthu = ?, timethu = ?  WHERE ID = ?;";
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
