@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 01, 2022 at 06:39 PM
--- Server version: 10.4.22-MariaDB
--- PHP Version: 8.0.13
+-- Generation Time: Jan 02, 2022 at 07:59 AM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 8.0.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -35,6 +35,14 @@ CREATE TABLE `chi` (
   `mucchi` varchar(100) NOT NULL,
   `datechi` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `chi`
+--
+
+INSERT INTO `chi` (`id`, `uid`, `namechi`, `amountchi`, `mucchi`, `datechi`) VALUES
+(1, 1, 'Mua đồ ăn tại Big C', 50000, 'Ăn uống', '2022-01-01 23:59:55'),
+(2, 1, 'yyy', 80000000, 'Ăn uống', '2022-01-02 01:29:51');
 
 -- --------------------------------------------------------
 
@@ -85,11 +93,13 @@ CREATE TABLE `mystock` (
 --
 
 INSERT INTO `mystock` (`symbol`, `name`, `soluong`, `tongbandau`, `giabandau`, `time`) VALUES
-('AAPL', 'Apple', 100, 20000, 200, '2021-12-28 22:01:30'),
+('AAPL', 'Apple', 101, 19882, 196.851, '2021-12-28 22:01:30'),
 ('BTC-USD', 'Bitcoin', 1, 35000, 35000, '2021-12-28 21:55:16'),
 ('COIN', 'Coinbase', 10, 1250, 125, '2021-12-28 22:01:30'),
 ('MSFT', 'Microsoft Corporation', 34, 8500, 250, '2021-12-28 22:29:06'),
-('TSLA', 'TESLA', 100, 34000000, 867, '2021-12-28 20:28:01');
+('TSLA', 'TESLA', 90, 78030, 867, '2021-12-28 20:28:01'),
+('GOOGL', 'Alphabet Inc. Class A', 2, 5755.02, 2877.51, '2022-01-02 07:00:50'),
+('MDT', 'Medtronic Plc', 5, 517.25, 103.45, '2022-01-02 07:47:44');
 
 -- --------------------------------------------------------
 
@@ -122,8 +132,8 @@ INSERT INTO `nhanvien` (`MANV`, `HOTEN`, `LUONG`) VALUES
 
 CREATE TABLE `stock` (
   `Company` varchar(50) CHARACTER SET utf8 DEFAULT NULL,
-  `Symbol` varchar(5) CHARACTER SET utf8 DEFAULT NULL,
-  `Price` decimal(6,2) DEFAULT NULL
+  `Symbol` varchar(10) CHARACTER SET utf8 DEFAULT NULL,
+  `Price` decimal(10,2) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -636,8 +646,8 @@ INSERT INTO `stock` (`Company`, `Symbol`, `Price`) VALUES
 ('Gap Inc.', 'GPS', '17.28'),
 ('Under Armour Inc. Class C', 'UA', '17.61'),
 ('News Corporation Class B', 'NWS', '22.75'),
-('GOLD (Giá vàng)', 'XAUUS', '1.00'),
-('GOLD (Gia vang)', 'XAUUS', '1293.50');
+('BITCOIN', 'BTC-USD', '9999.99'),
+('BITCOIN', 'BIT-USD', '45987.00');
 
 -- --------------------------------------------------------
 
@@ -649,11 +659,20 @@ CREATE TABLE `stocktrans` (
   `id` int(5) NOT NULL,
   `uid` int(11) NOT NULL,
   `symbol` varchar(100) NOT NULL,
-  `giamua` double NOT NULL,
+  `giagiaodich` double NOT NULL,
   `soluong` int(11) NOT NULL,
   `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp(),
-  `type` varchar(100) NOT NULL
+  `loaigiaodich` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `stocktrans`
+--
+
+INSERT INTO `stocktrans` (`id`, `uid`, `symbol`, `giagiaodich`, `soluong`, `time`, `loaigiaodich`) VALUES
+(1, 1, 'AAPL', 170, 10, '2022-01-02 00:11:52', 'mua'),
+(2, 1, 'MDT', 103.45, 10, '2022-01-02 00:47:44', 'mua'),
+(3, 1, 'MDT', 100, 5, '2022-01-02 00:48:13', 'ban');
 
 -- --------------------------------------------------------
 
@@ -666,13 +685,20 @@ CREATE TABLE `thu` (
   `uid` int(11) NOT NULL,
   `namethu` varchar(100) NOT NULL,
   `amountthu` double NOT NULL,
-  `desthu` varchar(100) NOT NULL,
+  `mucthu` varchar(100) NOT NULL,
   `datethu` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- -----------------------------------------------
 --
--- ---------
+-- Dumping data for table `thu`
+--
+
+INSERT INTO `thu` (`id`, `uid`, `namethu`, `amountthu`, `mucthu`, `datethu`) VALUES
+(3, 1, 'Lương tháng 10', 8000000, 'Lương chính', '2022-01-02 01:08:56'),
+(4, 1, 'Thưởng dự án', 5000000, 'Thưởng ', '2022-01-02 01:09:15'),
+(5, 1, 'Nhặt được tiền', 150000, 'Khoản thu khác', '2022-01-02 01:28:06');
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `tong`
@@ -689,7 +715,7 @@ CREATE TABLE `tong` (
 --
 
 INSERT INTO `tong` (`uid`, `sodu`, `tongtaisan`) VALUES
-(1, 600000000, 0);
+(1, 649930370, 0);
 
 -- --------------------------------------------------------
 
@@ -772,19 +798,7 @@ INSERT INTO `vay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `n
 -- Indexes for table `chi`
 --
 ALTER TABLE `chi`
-  ADD PRIMARY KEY (`idchi`);
-
---
--- Indexes for table `chovay`
---
-ALTER TABLE `chovay`
   ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `mystock`
---
-ALTER TABLE `mystock`
-  ADD PRIMARY KEY (`symbol`(65));
 
 --
 -- Indexes for table `stocktrans`
@@ -805,24 +819,6 @@ ALTER TABLE `tong`
   ADD PRIMARY KEY (`uid`);
 
 --
--- Indexes for table `tragop`
---
-ALTER TABLE `tragop`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`ID`);
-
---
--- Indexes for table `vay`
---
-ALTER TABLE `vay`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -830,43 +826,25 @@ ALTER TABLE `vay`
 -- AUTO_INCREMENT for table `chi`
 --
 ALTER TABLE `chi`
-  MODIFY `idchi` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `chovay`
---
-ALTER TABLE `chovay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `stocktrans`
 --
 ALTER TABLE `stocktrans`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `thu`
 --
 ALTER TABLE `thu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `tong`
 --
 ALTER TABLE `tong`
   MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `tragop`
---
-ALTER TABLE `tragop`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT for table `vay`
---
-ALTER TABLE `vay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
