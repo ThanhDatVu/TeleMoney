@@ -42,6 +42,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import lib.ButtonColumn;
@@ -294,7 +295,28 @@ public class ThuChiController1 {
             public void mouseExited(MouseEvent e) {
             }
         });
-
+        master.btnXoaThu.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+                int xoaThuID = (int) master.tbThu.getValueAt(tableSelect, 0);
+                int check = JOptionPane.showConfirmDialog(null, "Bạn muốn xóa khoản thu này ?", "Confirm", JOptionPane.YES_NO_OPTION);
+                if(check==0){
+                    thuDAO.delete(xoaThuID);
+                    master.refreshTabThuChi();
+                }
+           }
+        });
+        master.btnXoaChi.addActionListener(new ActionListener() {
+           @Override
+           public void actionPerformed(ActionEvent e) {
+                int xoaChiID = (int) master.tbThu.getValueAt(tableSelect, 0);
+                int check = JOptionPane.showConfirmDialog(null, "Bạn muốn xóa khoản chi này ?", "Confirm", JOptionPane.YES_NO_OPTION);
+                if(check==0){
+                    chiDAO.delete(xoaChiID);
+                    master.refreshTabThuChi();
+                }
+           }
+        });
         System.out.println("Tao xong event tab thuchi");
     }
 

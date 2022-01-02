@@ -59,7 +59,7 @@ public class ChiDAO {
         return chiModels;
     }
     public void add(ChiModel chi, UserModel user) {
-        String sql = "INSERT INTO chi (namechi, mucchi, amountchi, timechi, uid) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO chi (namechi, mucchi, amountchi, datechi, uid) VALUES (?,?,?,?,?)";
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -70,7 +70,7 @@ public class ChiDAO {
             ps.setInt(5, user.getId());
             int executeUpdate = ps.executeUpdate();
             System.out.println(chi.toString());
-            System.out.println("Thêm thành công");
+            System.out.println("Thêm thành công chi");
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -78,7 +78,7 @@ public class ChiDAO {
 
     public void update(ChiModel chi, ChiModel chi2) {
         //To change body of generated methods, choose Tools | Templates.
-        String sql = "UPDATE chi SET namechi = ?, mucchi = ?, amoutchi = ?, timechi = ?  WHERE ID = ?;";
+        String sql = "UPDATE chi SET namechi = ?, mucchi = ?, amountchi = ?, datechi = ?  WHERE ID = ?;";
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -99,7 +99,7 @@ public class ChiDAO {
     
 
     public void delete(ChiModel chi) {
-       String sql = "DELETE FROM chi WHERE namechi = ? and mucchi = ? and amountchi = ? and timechi = ?";;
+       String sql = "DELETE FROM chi WHERE namechi = ? and mucchi = ? and amountchi = ? and datechi = ?";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -107,6 +107,23 @@ public class ChiDAO {
             ps.setString(2, chi.getMucChi());
             ps.setDouble(3, chi.getAmountChi());
             ps.setTimestamp(4, chi.getTimestampChi());
+            
+
+            int executeUpdate = ps.executeUpdate();
+            
+            System.out.println("Xoá thành công");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    }
+
+    public void delete(int chiID) {
+       String sql = "DELETE FROM chi WHERE ID = ?";;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, chiID);
+            
             
 
             int executeUpdate = ps.executeUpdate();

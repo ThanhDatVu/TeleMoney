@@ -242,6 +242,7 @@ public class AddStockController {
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         myStock.setTime(time);
                         stockDAO.add(myStock);
+                        stockDAO.addTrans(myStock,acc,"mua");
                         System.out.println("mới" + myStock.toString());
                         master.owner.soDuKhaDung = master.owner.soDuKhaDung - Float.parseFloat(master.txtTongMuaVND.getText());
                         master.owner.refreshTabDauTu();

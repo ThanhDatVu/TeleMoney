@@ -81,7 +81,7 @@ public class ThuDAO {
 
     public void update(ThuModel thu, ThuModel thu2) {
         //To change body of generated methods, choose Tools | Templates.
-        String sql = "UPDATE thu SET namethu = ?, mucthu = ?, amountthu = ?, timethu = ?  WHERE ID = ?;";
+        String sql = "UPDATE thu SET namethu = ?, mucthu = ?, amountthu = ?, datethu = ?  WHERE ID = ?;";
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -110,6 +110,22 @@ public class ThuDAO {
             ps.setString(2, thu.getMucThu());
             ps.setDouble(3, thu.getAmountThu());
             ps.setTimestamp(4, thu.getTimestampThu());
+            
+
+            int executeUpdate = ps.executeUpdate();
+            
+            System.out.println("Xoá thành công");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    }
+    public void delete(int thuID) {
+       String sql = "DELETE FROM thu WHERE ID = ?";;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, thuID);
+            
             
 
             int executeUpdate = ps.executeUpdate();

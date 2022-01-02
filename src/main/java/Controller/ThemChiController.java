@@ -61,6 +61,7 @@ public class ThemChiController {
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         chiModel.setTimestampChi(time);
                         chiDAO.add(chiModel, acc);
+                        System.out.println(chiModel.toString());
                         themChiView.master.soDuKhaDung = themChiView.master.soDuKhaDung - Double.parseDouble(themChiView.soTienChi.getText());
                         themChiView.master.refreshTabThuChi();
                         themChiView.dispose();

@@ -107,27 +107,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         
     }
     public void ChartTest() {
-        XYSeries Goals = new XYSeries("Goals Scored");
-        Goals.add(1, 1.0);
-        Goals.add(2, 3.0);
-        Goals.add(3, 2.0);
-        Goals.add(4, 0.0);
-        Goals.add(5, 3.0);
-        XYDataset xyDataset = new XYSeriesCollection(Goals);
-        JFreeChart chart = ChartFactory.createXYLineChart(
-            "Goals Scored Over Time", "Fixture Number", "Goals",
-            xyDataset, PlotOrientation.VERTICAL, true, true, false);
-        ChartPanel cp = new ChartPanel(chart) {
-
-            @Override
-            public Dimension getPreferredSize() {
-                return new Dimension(320, 240);
-            }
-        };
-        cp.setMouseWheelEnabled(true);
-        pnlThongKeChung.add(cp);
-        setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        pack();
+        
     }
     private void setUsername() {
         txtUsername.setText(user.getUsername());
@@ -256,6 +236,20 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jButton3 = new javax.swing.JButton();
         pnlThongKeVayNo = new javax.swing.JPanel();
         pnlThongKeDauTu = new javax.swing.JPanel();
+        jButton4 = new javax.swing.JButton();
+        pnlThongKeText = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jLabel26 = new javax.swing.JLabel();
+        jLabel27 = new javax.swing.JLabel();
         pnlLeftNav = new javax.swing.JPanel();
         labelMenuVayNo = new javax.swing.JLabel();
         labelMenuDauTu = new javax.swing.JLabel();
@@ -886,20 +880,128 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         pnlThongKeChiTieu.add(jButton3, java.awt.BorderLayout.PAGE_START);
 
         pnlThongKeDauTu.setBackground(new java.awt.Color(255, 255, 102));
+        pnlThongKeDauTu.setLayout(new java.awt.BorderLayout());
+
+        jButton4.setText("jButton4");
+        pnlThongKeDauTu.add(jButton4, java.awt.BorderLayout.EAST);
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel7.setText("Số dư khả dụng: ");
+
+        jLabel11.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel11.setText("Tổng tài sản:");
+
+        jLabel13.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel13.setText("Tổng số nợ:");
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel15.setText("Tổng số cho vay: ");
+
+        jLabel20.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel20.setText("VND");
+
+        jLabel21.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel21.setText("VND");
+
+        jLabel22.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel22.setText("VND");
+
+        jLabel23.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel23.setText("VND");
+
+        jLabel24.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel24.setText("VND");
+
+        jLabel25.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel25.setText("Chi tiêu hàng ngày trong tháng: ");
+
+        jLabel26.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel26.setText("Thu nhập trong tháng: ");
+
+        jLabel27.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        jLabel27.setText("VND");
+
+        javax.swing.GroupLayout pnlThongKeTextLayout = new javax.swing.GroupLayout(pnlThongKeText);
+        pnlThongKeText.setLayout(pnlThongKeTextLayout);
+        pnlThongKeTextLayout.setHorizontalGroup(
+            pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThongKeTextLayout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlThongKeTextLayout.createSequentialGroup()
+                        .addComponent(jLabel13)
+                        .addGap(187, 187, 187))
+                    .addGroup(pnlThongKeTextLayout.createSequentialGroup()
+                        .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel7)
+                            .addComponent(jLabel15)
+                            .addComponent(jLabel11))
+                        .addGap(43, 43, 43)
+                        .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(144, 144, 144)
+                        .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(pnlThongKeTextLayout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(187, 187, 187))
+                            .addGroup(pnlThongKeTextLayout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addContainerGap())))))
+        );
+        pnlThongKeTextLayout.setVerticalGroup(
+            pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(pnlThongKeTextLayout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel25)
+                        .addComponent(jLabel24))
+                    .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel23)))
+                .addGap(28, 28, 28)
+                .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel26)
+                        .addComponent(jLabel27))
+                    .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel11)
+                        .addComponent(jLabel21)))
+                .addGap(28, 28, 28)
+                .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel13)
+                    .addComponent(jLabel20))
+                .addGap(28, 28, 28)
+                .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(jLabel22))
+                .addContainerGap(26, Short.MAX_VALUE))
+        );
 
         javax.swing.GroupLayout pnlThongKeLayout = new javax.swing.GroupLayout(pnlThongKe);
         pnlThongKe.setLayout(pnlThongKeLayout);
         pnlThongKeLayout.setHorizontalGroup(
             pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlThongKeLayout.createSequentialGroup()
+                .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(pnlThongKeVayNo, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(pnlThongKeLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(pnlThongKeChung, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(pnlThongKeLayout.createSequentialGroup()
                         .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlThongKeVayNo, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(pnlThongKeChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(pnlThongKeChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(pnlThongKeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 9, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -907,14 +1009,15 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlThongKeLayout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(pnlThongKeText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlThongKeChung, javax.swing.GroupLayout.PREFERRED_SIZE, 369, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(1, 1, 1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(pnlThongKeChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 209, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pnlThongKeVayNo, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(236, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         jScrollPaneThongKe.setViewportView(pnlThongKe);
@@ -1128,18 +1231,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         stockDAO.updateSoDu((float)soDuKhaDung, user);
     }
 
-    public void setSumText() {
-//        double  total = 0, totalReturn = 0;
-//        int i = 0;
-//        int j = tableDanhMuc.getRowCount();
-//        for (i; i < j; i++) {
-//
-//            double Amount =  tableDanhMuc.getValueAt(i, 5);
-//            total= Amount + total;
-//            double returnAmount =  tableDanhMuc.getValueAt(i, 6);
-//            totalReturn = returnAmount + totalReturn;
-//
-//        }
+    public void setSumText() {       
         double total = 0, totalReturn = 0;
         int prow = 5;
 
@@ -1278,19 +1370,32 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     public javax.swing.JLabel jLabel16;
     public javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     public javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
+    private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
@@ -1327,7 +1432,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public javax.swing.JPanel pnlThongKe;
     private javax.swing.JPanel pnlThongKeChiTieu;
     public javax.swing.JPanel pnlThongKeChung;
-    private javax.swing.JPanel pnlThongKeDauTu;
+    public javax.swing.JPanel pnlThongKeDauTu;
+    private javax.swing.JPanel pnlThongKeText;
     private javax.swing.JPanel pnlThongKeVayNo;
     private javax.swing.JPanel pnlVayNo;
     public javax.swing.JTable tableDanhMuc;

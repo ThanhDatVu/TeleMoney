@@ -26,6 +26,7 @@ import View.SuaThuView;
 import View.ThemThuView;
 import java.awt.event.ActionEvent;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -42,10 +43,19 @@ import java.util.logging.Logger;
 import javax.swing.AbstractAction;
 import javax.swing.Action;
 import javax.swing.JTable;
+import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import lib.ButtonColumn;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.chart.plot.PlotOrientation;
+import org.jfree.data.general.DefaultPieDataset;
+import org.jfree.data.xy.XYDataset;
+import org.jfree.data.xy.XYSeries;
+import org.jfree.data.xy.XYSeriesCollection;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -92,6 +102,38 @@ public class ThuChiController2 {
         
         
         System.out.println("setVector xong");
+        XYSeries Goals = new XYSeries("Goals Scored");
+        Goals.add(1, 1.0);
+        Goals.add(2, 3.0);
+        Goals.add(3, 2.0);
+        Goals.add(4, 0.0);
+        Goals.add(5, 3.0);
+        XYDataset xyDataset = new XYSeriesCollection(Goals);
+        JFreeChart chart = ChartFactory.createXYLineChart(
+            "Goals Scored Over Time", "Fixture Number", "Goals",
+            xyDataset, PlotOrientation.VERTICAL, true, true, false);
+        ChartPanel cp = new ChartPanel(chart) {
+
+            @Override
+            public Dimension getPreferredSize() {
+                return new Dimension(320, 240);
+            }
+        };
+        cp.setMouseWheelEnabled(true);
+        master.pnlThongKeChung.add(cp);
+        
+        DefaultPieDataset dataSet = new DefaultPieDataset();
+        dataSet.setValue("BITCOIN 29%", 29);
+        dataSet.setValue("APPLE 36%", 36);
+        dataSet.setValue("Tesla 25%", 25);
+        dataSet.setValue("DOGECOIN 15%",15 );
+       
+        // based on the dataset we create the chart
+        JFreeChart pieChart = ChartFactory.createPieChart3D("Phân bố tài sản theo danh mục đầu tư", dataSet, true, true, false);
+         ChartPanel chartPanel = new ChartPanel(pieChart);
+         master.pnlThongKeDauTu.add(chartPanel, java.awt.BorderLayout.WEST);
+        master.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        master.pack();
     }
 //    
 //    
