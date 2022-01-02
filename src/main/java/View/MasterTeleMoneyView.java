@@ -61,7 +61,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     CardLayout cardLayout;
     TableColumn col;
     StockController stockController;
-    ThuChiController1 thuChiController;
+    ThuChiController1 thuChiController1;
     ThuChiController2 thuChiController2;
     VayNoController vayNoController;
 
@@ -91,7 +91,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         this.stockController = new StockController(this, user);
         this.vayNoController = new VayNoController(this, user);
         this.thuChiController2 = new ThuChiController2(this, user);
-        this.thuChiController2 = new ThuChiController2(this, user);
+        this.thuChiController1 = new ThuChiController1(this, user);
         this.setTitle("TELEMONEY");
         setUsername();
         soDuKhaDung = stockDAO.getSoDu(user);
@@ -99,8 +99,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         setTiGiaSoDu();
         setLocationRelativeTo(null);
         setSumText();
+        pack();
         System.out.println("user ID " + user.getId());
-        this.thuChiController = new ThuChiController1(this, user);
+        
         
     }
 
@@ -126,7 +127,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public void refreshTabThuChi() {
         try {
             setTiGiaSoDu();
-            thuChiController.setDataTable();
+            thuChiController1.setDataTable();
         } catch (IOException ex) {
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -273,9 +274,11 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel16.setText("QUẢN LÝ CHI TIÊU");
 
+        tbThu.setAutoCreateRowSorter(true);
         tbThu.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jScrollPane5.setViewportView(tbThu);
 
+        tbChi.setAutoCreateRowSorter(true);
         tbChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jScrollPane6.setViewportView(tbChi);
 
@@ -896,7 +899,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel21.setText("890760000 VND");
 
         jLabel22.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
-        jLabel22.setText("27722222 VND");
+        jLabel22.setText("13722222 VND");
 
         labelSoDuThongKe.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
         labelSoDuThongKe.setText("VND");

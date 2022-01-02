@@ -126,7 +126,7 @@ public class VayNoController {
                 traGopModels.get(i).getId(),
                 traGopModels.get(i).getTen(),
                 traGopModels.get(i).getBank(),
-                traGopModels.get(i).getTratruoc(),
+                df.format(traGopModels.get(i).getTratruoc()),
                 df.format(traGopModels.get(i).getTongtien()),
                 traGopModels.get(i).getSothang(),
                 df.format(traGopModels.get(i).getTienhangthang()),

@@ -113,13 +113,13 @@ public class ThuChiController1 {
         thuModels = thuDAO.getAll(acc);
         System.out.println("Thu size " + thuModels.size());
         thuTableModel.setRowCount(0);
-        for (int i = 0; i < chiModels.size(); i++) {
+        for (int j = 0; j < thuModels.size(); j++) {
             thuTableModel.addRow(new Object[]{//"ID","Tên khoản chi", "Danh mục", "Số tiền","Ngày"
-                thuModels.get(i).getIdThu(),
-                thuModels.get(i).getNameThu(),
-                thuModels.get(i).getMucThu(),
-                df.format(thuModels.get(i).getAmountThu()),
-                thuModels.get(i).getTimeThu()
+                thuModels.get(j).getIdThu(),
+                thuModels.get(j).getNameThu(),
+                thuModels.get(j).getMucThu(),
+                df.format(thuModels.get(j).getAmountThu()),
+                thuModels.get(j).getTimeThu()
 
             });
         }

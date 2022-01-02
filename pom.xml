@@ -32,12 +32,6 @@
             <version>2.0.0-alpha5</version>
         </dependency>
         <dependency>
-            <groupId>jfree</groupId>
-            <artifactId>jfreechart</artifactId>
-            <version>1.0.13</version>
-            <type>jar</type>
-        </dependency>
-        <dependency>
             <groupId>com.jtattoo</groupId>
             <artifactId>JTattoo</artifactId>
             <version>1.6.13</version>
@@ -56,6 +50,11 @@
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
             <version>3.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.jfree</groupId>
+            <artifactId>jfreechart</artifactId>
+            <version>1.5.3</version>
         </dependency>
     </dependencies>
     <properties>

@@ -76,6 +76,7 @@ public class ThemThuController {
                         System.out.println(thuModel.toString());
                         thuDAO.add(thuModel, acc);
                         themThuView.master.soDuKhaDung = themThuView.master.soDuKhaDung + Double.parseDouble(themThuView.soTien.getText());
+                        System.out.println("so du kha dung sau khi them khoan thu la: " + themThuView.master.soDuKhaDung);
                         themThuView.master.refreshTabThuChi();
                         themThuView.dispose();
                     }
