@@ -51,7 +51,7 @@ public class MyStockBuyModel {
         try {
             Calendar from = Calendar.getInstance();
             Calendar to = Calendar.getInstance();
-            from.add(Calendar.DAY_OF_WEEK, -2);
+            from.add(Calendar.DAY_OF_WEEK, -5);
             Stock google = YahooFinance.get(symbol, from, to, Interval.DAILY);
             BigDecimal price = google.getQuote().getPrice();
 //            System.out.println(google.getHistory().get(0));
@@ -59,7 +59,7 @@ public class MyStockBuyModel {
 //            System.out.println(google.getHistory().get(1));
 //            System.out.println(google.getHistory().get(1).getAdjClose());
 
-            Float change24h = 10000 * ((google.getHistory().get(1).getAdjClose().floatValue() / google.getHistory().get(0).getAdjClose().floatValue()) - 1);
+            Float change24h = 10000 * ((google.getHistory().get(2).getAdjClose().floatValue() / google.getHistory().get(0).getAdjClose().floatValue()) - 1);
 //            System.out.println(change24h);
             rounded = (float) Math.round(change24h);
 //            System.out.println(rounded / 100 + "%");

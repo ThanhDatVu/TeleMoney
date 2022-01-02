@@ -129,7 +129,7 @@ public class VayNoController {
                 traGopModels.get(i).getTratruoc(),
                 df.format(traGopModels.get(i).getTongtien()),
                 traGopModels.get(i).getSothang(),
-                traGopModels.get(i).getTienhangthang(),
+                df.format(traGopModels.get(i).getTienhangthang()),
                 traGopModels.get(i).getTime()
             });
             //"Tên", "Công ty", "Trả trước", "Tổng tiền (VNĐ)","Số tháng", "Tiền hàng tháng", "Ngày"
