@@ -36,7 +36,7 @@ public class GuiTienDAO {
     }
     
     public void add(GuiTienModel guiTien, UserModel userModel){
-        String sql = "INSERT INTO `chovay` (`uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngaychovay`) VALUES (?, ?, ?, ?, ?, ?, ?)";;
+        String sql = "INSERT INTO `chovay` (`uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngaychovay`, `ngaythulai`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, userModel.getId());
@@ -46,6 +46,7 @@ public class GuiTienDAO {
             ps.setDouble(5, guiTien.getLaisuat());
             ps.setDouble(6, guiTien.getKyhan());
             ps.setTimestamp(7, guiTien.getNgaygui());
+            ps.setInt(8, guiTien.getNgaythulai());
             
             int executeUpdate = ps.executeUpdate();
             System.out.println(guiTien.toString());

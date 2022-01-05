@@ -27,8 +27,10 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -49,12 +51,14 @@ import lib.ButtonColumn;
 import yahoofinance.YahooFinance;
 
 public class VayNoController {
+
     DecimalFormat df = new DecimalFormat("0");
     private GuiTienDAO guiTienDAO = null;
     private VayTienDAO vayTienDAO = null;
     private TraGopDAO traGopDAO = null;
     private MasterTeleMoneyView master;
     private UserModel acc;
+    private Integer tableSelect;
     GuiTienTableModel guiTienTableModel = new GuiTienTableModel();
     VayTienTableModel vayTienTableModel = new VayTienTableModel();
     TraGopTableModel traGopTableModel = new TraGopTableModel();
@@ -183,7 +187,7 @@ public class VayNoController {
             }
 
             private void search() {
-                searchTableContents(master.txtLocVay.getText(), master.tableVayTien ,vayTienTableData );
+                searchTableContents(master.txtLocVay.getText(), master.tableVayTien, vayTienTableData);
             }
         });
         master.txtLocTK.getDocument().addDocumentListener(new DocumentListener() {
@@ -200,7 +204,7 @@ public class VayNoController {
             }
 
             private void search() {
-                searchTableContents(master.txtLocTK.getText(), master.tableGuiTien ,guiTienTableData );
+                searchTableContents(master.txtLocTK.getText(), master.tableGuiTien, guiTienTableData);
             }
         });
         master.txtLocTG.getDocument().addDocumentListener(new DocumentListener() {
@@ -217,9 +221,196 @@ public class VayNoController {
             }
 
             private void search() {
-                searchTableContents(master.txtLocTG.getText(), master.tableTraGop ,traGopTableData );
+                searchTableContents(master.txtLocTG.getText(), master.tableTraGop, traGopTableData);
             }
         });
+
+        master.tableGuiTien.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                switch (keyCode) {
+                    case KeyEvent.VK_UP:
+                        tableSelect = master.tableGuiTien.getSelectedRow();
+                        if (tableSelect != -1) {
+                            master.btnXoaChi.setEnabled(true);
+                            master.btnSuaChi.setEnabled(true);
+
+                        }
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        tableSelect = master.tableGuiTien.getSelectedRow();
+                        if (tableSelect != -1) {
+                            master.btnXoaChi.setEnabled(true);
+                            master.btnSuaChi.setEnabled(true);
+
+                        }
+                        break;
+
+                }
+            }
+        });
+        
+        master.tableVayTien.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                switch (keyCode) {
+                    case KeyEvent.VK_UP:
+                        tableSelect = master.tableVayTien.getSelectedRow();
+                        if (tableSelect != -1) {
+                            master.btnXoaChi.setEnabled(true);
+                            master.btnSuaChi.setEnabled(true);
+
+                        }
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        tableSelect = master.tableVayTien.getSelectedRow();
+                        if (tableSelect != -1) {
+                            master.btnXoaChi.setEnabled(true);
+                            master.btnSuaChi.setEnabled(true);
+
+                        }
+                        break;
+
+                }
+            }
+        });
+        master.tableTraGop.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                int keyCode = e.getKeyCode();
+                switch (keyCode) {
+                    case KeyEvent.VK_UP:
+                        tableSelect = master.tableTraGop.getSelectedRow();
+                        if (tableSelect != -1) {
+                            master.btnXoaChi.setEnabled(true);
+                            master.btnSuaChi.setEnabled(true);
+
+                        }
+                        break;
+                    case KeyEvent.VK_DOWN:
+                        tableSelect = master.tableTraGop.getSelectedRow();
+                        if (tableSelect != -1) {
+                            master.btnXoaChi.setEnabled(true);
+                            master.btnSuaChi.setEnabled(true);
+
+                        }
+                        break;
+
+                }
+            }
+        });
+        master.tableGuiTien.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                tableSelect = master.tableGuiTien.getSelectedRow();
+                System.out.println("dang chon dong  " + tableSelect);
+                if (tableSelect != -1) {
+                    master.btnXoaChi.setEnabled(true);
+                    master.btnSuaChi.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+        master.tableTraGop.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                tableSelect = master.tableTraGop.getSelectedRow();
+                System.out.println("dang chon dong tra gop " + tableSelect);
+                if (tableSelect != -1) {
+                    master.btnXoaChi.setEnabled(true);
+                    master.btnSuaChi.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+        
+        master.tableVayTien.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                tableSelect = master.tableVayTien.getSelectedRow();
+                System.out.println("dang chon dong vay tien " + tableSelect);
+                if (tableSelect != -1) {
+                    master.btnXoaChi.setEnabled(true);
+                    master.btnSuaChi.setEnabled(true);
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
+        
     }
 
     public void searchTableContents(String searchString, JTable table, Vector OGVector) {

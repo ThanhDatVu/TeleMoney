@@ -7,6 +7,7 @@ package View;
 import javax.swing.table.DefaultTableModel;
 import Controller.LoginController;
 import Controller.StockController;
+import Controller.ThongKeController;
 import Controller.VayNoController;
 import Controller.ThuChiController1;
 import Controller.ThuChiController2;
@@ -64,7 +65,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     ThuChiController1 thuChiController1;
     ThuChiController2 thuChiController2;
     VayNoController vayNoController;
-
+    ThongKeController thongKeController;
     Float Usd;
     public double soDuKhaDung, tongTaiSan;
 
@@ -90,8 +91,12 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         this.cardLayout = (CardLayout) (pnlCards.getLayout());
         this.stockController = new StockController(this, user);
         this.vayNoController = new VayNoController(this, user);
-        this.thuChiController2 = new ThuChiController2(this, user);
+        
+        
         this.thuChiController1 = new ThuChiController1(this, user);
+        this.thuChiController2 = new ThuChiController2(this, user);
+        this.thongKeController = new ThongKeController(this, user);
+        
         this.setTitle("TELEMONEY");
         setUsername();
         soDuKhaDung = stockDAO.getSoDu(user);
@@ -330,18 +335,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         pnlChiTieuLayout.setHorizontalGroup(
             pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlChiTieuLayout.createSequentialGroup()
-                .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnShowThu, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btnShowChi, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(labelSoDuChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(745, Short.MAX_VALUE))
-            .addGroup(pnlChiTieuLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlChiTieuLayout.createSequentialGroup()
@@ -366,11 +359,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(textChi, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlChiTieuLayout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 1043, Short.MAX_VALUE)
-                    .addComponent(jScrollPane5)))
             .addGroup(pnlChiTieuLayout.createSequentialGroup()
                 .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlChiTieuLayout.createSequentialGroup()
@@ -383,6 +371,20 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addGap(488, 488, 488)
                         .addComponent(jLabel17)))
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
+            .addGroup(pnlChiTieuLayout.createSequentialGroup()
+                .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnShowThu, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btnShowChi, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
+                        .addGap(37, 37, 37)
+                        .addComponent(labelSoDuChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(760, Short.MAX_VALUE))
+            .addComponent(jScrollPane6)
         );
         pnlChiTieuLayout.setVerticalGroup(
             pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -512,7 +514,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDauTuLayout.createSequentialGroup()
                         .addComponent(labelRefresh)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 373, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 388, Short.MAX_VALUE)
                         .addComponent(jLabel10)
                         .addGap(355, 355, 355))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDauTuLayout.createSequentialGroup()
@@ -624,7 +626,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(491, Short.MAX_VALUE))
+                .addContainerGap(506, Short.MAX_VALUE))
         );
         pnlTaiKhoanLayout.setVerticalGroup(
             pnlTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -812,7 +814,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addGroup(pnlVayNoLayout.createSequentialGroup()
                         .addGap(418, 418, 418)
                         .addComponent(jLabel9)))
-                .addGap(0, 489, Short.MAX_VALUE))
+                .addGap(0, 504, Short.MAX_VALUE))
             .addComponent(jScrollPane7)
         );
         pnlVayNoLayout.setVerticalGroup(
@@ -1017,7 +1019,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addComponent(pnlThongKeChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(pnlThongKeVayNo, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(82, Short.MAX_VALUE))
+                .addContainerGap(97, Short.MAX_VALUE))
         );
         pnlThongKeLayout.setVerticalGroup(
             pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1140,7 +1142,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addComponent(labelMenuDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelMenuThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 485, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1325, Short.MAX_VALUE)
                 .addComponent(labelMenuTaiKhoan)
                 .addGap(43, 43, 43))
         );
@@ -1151,7 +1153,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1200, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1238, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

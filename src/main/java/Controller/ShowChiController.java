@@ -5,15 +5,15 @@
  */
 package Controller;
 
-import DAO.ThuDAO;
+import DAO.ChiDAO;
 import DAO.StockDAO;
-import Model.ThuModel;
+import Model.ChiModel;
 import Model.MyStockBuyTableModel;
-import Model.ThuTableModel;
+import Model.ChiTableModel;
 import Model.MyTransModel;
 import Model.UserModel;
 import View.MasterTeleMoneyView;
-import View.ShowThuView;
+import View.ShowChiView;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -43,26 +43,26 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
-public class ShowThuController {
+public class ShowChiController {
     DecimalFormat df = new DecimalFormat("0");
-    ShowThuView showThuView;
+    ShowChiView showChiView;
     UserModel acc;
-    ThuDAO chiDAO = null;
-    ThuModel chiModel;
-    ThuTableModel thisModel = new ThuTableModel();
-    ArrayList<ThuModel> stockList = new ArrayList<>();
+    ChiDAO chiDAO = null;
+    ChiModel chiModel;
+    ChiTableModel thisModel = new ChiTableModel();
+    ArrayList<ChiModel> stockList = new ArrayList<>();
     double soDu;
 
-    public ShowThuController(ShowThuView showThuView, UserModel acc) {
+    public ShowChiController(ShowChiView showChiView, UserModel acc) {
         
-        chiDAO = new ThuDAO();
-        this.showThuView = showThuView;
+        chiDAO = new ChiDAO();
+        this.showChiView = showChiView;
         this.acc = acc;
-        this.showThuView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        this.showThuView.tableThu.setModel(thisModel);
+        this.showChiView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        this.showChiView.tableChi.setModel(thisModel);
 
         setEventTrans();
-        this.showThuView.setVisible(true);
+        this.showChiView.setVisible(true);
         setData();
         //setTableButton();
 
@@ -75,8 +75,8 @@ public class ShowThuController {
     }
 
     public void setData() {//thêm dũ liệu vào bảng
-        ThuTableModel chiTableModel = (ThuTableModel) showThuView.tableThu.getModel();
-        ArrayList<ThuModel> chiModels = new ArrayList<>();
+        ChiTableModel chiTableModel = (ChiTableModel) showChiView.tableChi.getModel();
+        ArrayList<ChiModel> chiModels = new ArrayList<>();
         System.out.println("2");
         chiModels = chiDAO.getAll(acc);
 
@@ -84,11 +84,11 @@ public class ShowThuController {
         chiTableModel.setRowCount(0);
         for (int i = 0; i < chiModels.size(); i++) {
             chiTableModel.addRow(new Object[]{//"ID","Tên khoản chi", "Danh mục", "Số tiền","Ngày"
-                chiModels.get(i).getIdThu(),
-                chiModels.get(i).getNameThu(),
-                chiModels.get(i).getMucThu(),
-                df.format(chiModels.get(i).getAmountThu()),
-                chiModels.get(i).getTimeThu()
+                chiModels.get(i).getIdChi(),
+                chiModels.get(i).getNameChi(),
+                chiModels.get(i).getMucChi(),
+                df.format(chiModels.get(i).getAmountChi()),
+                chiModels.get(i).getTimeChi()
 
             });
         }
@@ -99,20 +99,20 @@ public class ShowThuController {
     public void setEventTrans() {
         System.out.println("Tao event");
 
-        showThuView.btnSave.addActionListener(new ActionListener() {
+        showChiView.btnSave.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
                     LocalDateTime time =  LocalDateTime.now();
-                    File myNewFile = new File("D:\\Project\\document\\Thong ke cac khoan thu nhap_"+time.getDayOfMonth()+" "+time.getMonth()+".xlsx");
+                    File myNewFile = new File("D:\\Project\\document\\Thong ke cac khoan chi tieu_"+time.getDayOfMonth()+" "+time.getMonth()+".xlsx");
                     Path path = Paths.get(myNewFile.getAbsolutePath());
-                    writeToExcell(showThuView.tableThu, path);//viết vào file
+                    writeToExcell(showChiView.tableChi, path);//viết vào file
 
                     File file = new File("D:\\Project\\document\\");
                     Desktop desktop = Desktop.getDesktop();// mở thư mục 
                     desktop.open(file);
                 } catch (IOException ex) {
-                    Logger.getLogger(ShowThuController.class.getName()).log(Level.SEVERE, null, ex);
+                    Logger.getLogger(ShowChiController.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
         });

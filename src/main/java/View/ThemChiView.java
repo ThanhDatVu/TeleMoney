@@ -19,7 +19,8 @@ public class ThemChiView extends javax.swing.JFrame {
 
     /**
      * Creates new form ThemChiView
-     */ThemChiController themChiController;
+     */
+    ThemChiController themChiController;
     public MasterTeleMoneyView master;
     UserModel acc;
 
@@ -34,7 +35,8 @@ public class ThemChiView extends javax.swing.JFrame {
         this.acc = acc;
         master = main;
         themChiController = new ThemChiController(this, this.acc);
-        this.setTitle("Thêm");
+        this.setTitle("Thêm khoản chi");
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 

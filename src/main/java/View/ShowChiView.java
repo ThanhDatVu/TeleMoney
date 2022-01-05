@@ -4,6 +4,10 @@
  */
 package View;
 
+import Controller.MyTransController;
+import Controller.ShowChiController;
+import Model.UserModel;
+
 /**
  *
  * @author hieun
@@ -13,8 +17,19 @@ public class ShowChiView extends javax.swing.JFrame {
     /**
      * Creates new form ShowChi
      */
+    ShowChiController showChiController;
+    MasterTeleMoneyView master;
+    UserModel acc;
     public ShowChiView() {
         initComponents();
+    }
+    public ShowChiView(MasterTeleMoneyView master, UserModel acc) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.master = master;
+        this.acc = acc;
+        showChiController = new ShowChiController(this, acc);
+        
     }
 
     /**
@@ -27,13 +42,13 @@ public class ShowChiView extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        tableChi = new javax.swing.JTable();
+        btnSave = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableChi.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -44,9 +59,9 @@ public class ShowChiView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableChi);
 
-        jButton1.setText("jButton1");
+        btnSave.setText("Xuất ra Excel");
 
         jButton2.setText("Thoát");
 
@@ -57,7 +72,7 @@ public class ShowChiView extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
-                .addComponent(jButton1)
+                .addComponent(btnSave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton2)
                 .addGap(103, 103, 103))
@@ -68,7 +83,7 @@ public class ShowChiView extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
+                    .addComponent(btnSave)
                     .addComponent(jButton2))
                 .addGap(0, 48, Short.MAX_VALUE))
         );
@@ -113,9 +128,9 @@ public class ShowChiView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    public javax.swing.JButton btnSave;
     private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable tableChi;
     // End of variables declaration//GEN-END:variables
 }

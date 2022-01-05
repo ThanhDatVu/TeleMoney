@@ -82,11 +82,12 @@ public class ChiDAO {
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            ps.setString(1, chi.getNameChi());
-            ps.setString(2, chi.getMucChi());
-            ps.setDouble(3, chi.getAmountChi());
-            ps.setTimestamp(4, chi.getTimestampChi());
-
+            ps.setString(1, chi2.getNameChi());
+            ps.setString(2, chi2.getMucChi());
+            ps.setDouble(3, chi2.getAmountChi());
+            ps.setTimestamp(4, chi2.getTimestampChi());
+            ps.setInt(5, chi.getIdChi());
+            
             int executeUpdate = ps.executeUpdate();
             System.out.println(chi2.toString());
             System.out.println("Sửa thành công");
@@ -132,6 +133,28 @@ public class ChiDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } 
+    }
+
+    public ChiModel getByID(int id) {
+        String sql = "select * from chi where id=?";
+        ResultSet rs;
+        ChiModel chiModel = new ChiModel();
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                chiModel.setIdChi(rs.getInt("id"));
+                chiModel.setNameChi(rs.getString("namechi"));
+                chiModel.setAmountChi(rs.getDouble("amountchi"));
+                chiModel.setMucChi(rs.getString("mucchi"));
+                chiModel.setTimestampChi(rs.getTimestamp("datechi"));
+                
+                
+            }
+        } catch (Exception e) {
+        }
+        return chiModel;
     }
 
 }

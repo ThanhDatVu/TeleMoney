@@ -37,7 +37,7 @@ public class VayTienDAO {
     }
     
     public void add(VayTienModel vayTien, UserModel acc){
-        String sql = "INSERT INTO `vay` (`uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngayvay`) VALUES (?, ?, ?, ?, ?, ?, ?)";;
+        String sql = "INSERT INTO `vay` (`uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngayvay`, `ngaytralai`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, acc.getId());
@@ -47,6 +47,7 @@ public class VayTienDAO {
             ps.setDouble(5, vayTien.getLaisuat());
             ps.setDouble(6, vayTien.getKyhan());
             ps.setTimestamp(7, vayTien.getNgayvay());
+            ps.setInt(8, vayTien.getNgaytralai());
             
             int executeUpdate = ps.executeUpdate();
             System.out.println(vayTien.toString());

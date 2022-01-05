@@ -27,17 +27,18 @@ public class ThemThuView extends javax.swing.JFrame {
 
     public ThemThuView() {
         initComponents();
-        
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
     public ThemThuView(MasterTeleMoneyView main, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
-        this.acc=acc;
+        this.acc = acc;
         master = main;
         themThuController = new ThemThuController(this, acc);
-        this.setTitle("Thêm");
+        this.setTitle("Thêm khoản thu");
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
@@ -188,19 +189,20 @@ public class ThemThuView extends javax.swing.JFrame {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_btnThoatActionPerformed
-    public ThuModel getthu(){
-       ThuModel thu = new ThuModel();
-       thu.setNameThu(tenThu.getText());
-       thu.setMucThu(tenDanhMuc.getSelectedItem().toString());
-       thu.setAmountThu(Double.valueOf(soTien.getText()));
-       Timestamp time = new Timestamp(System.currentTimeMillis());
-       thu.setTimestampThu(time);
-       return thu; 
+    public ThuModel getthu() {
+        ThuModel thu = new ThuModel();
+        thu.setNameThu(tenThu.getText());
+        thu.setMucThu(tenDanhMuc.getSelectedItem().toString());
+        thu.setAmountThu(Double.valueOf(soTien.getText()));
+        Timestamp time = new Timestamp(System.currentTimeMillis());
+        thu.setTimestampThu(time);
+        return thu;
     }
+
     /**
      * @param args the command line arguments
      */
-    
+
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
@@ -262,6 +264,6 @@ public class ThemThuView extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     public void addSuaListiner(ActionListener actionListener) {
-       
+
     }
 }

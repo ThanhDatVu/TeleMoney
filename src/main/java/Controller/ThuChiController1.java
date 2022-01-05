@@ -21,6 +21,8 @@ import Model.VayTienTableModel;
 import View.ThemChiView;
 import View.MasterTeleMoneyView;
 import View.MuaStockView;
+import View.ShowChiView;
+import View.ShowThuView;
 import View.SuaChiView;
 import View.SuaThuView;
 import View.ThemThuView;
@@ -57,6 +59,8 @@ public class ThuChiController1 {
     private StockDAO stockDAO;
     private ThuDAO thuDAO;
     private ChiDAO chiDAO;
+    private ChiModel chiModel;
+    private ThuModel thuModel;
     private Integer tableSelect;
     Stock stock;
     BigDecimal usd;
@@ -150,24 +154,6 @@ public class ThuChiController1 {
             public void actionPerformed(ActionEvent e) {
                 ThemThuView themThuView = new ThemThuView(master, acc);
                 themThuView.setVisible(true);
-            }
-        }
-        );
-        master.btnSuaThu.addActionListener(
-                new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SuaThuView suaThuView = new SuaThuView();
-                suaThuView.setVisible(true);
-            }
-        }
-        );
-        master.btnSuaChi.addActionListener(
-                new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                SuaChiView suaChiView = new SuaChiView();
-                suaChiView.setVisible(true);
             }
         }
         );
@@ -296,27 +282,63 @@ public class ThuChiController1 {
             }
         });
         master.btnXoaThu.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
+            @Override
+            public void actionPerformed(ActionEvent e) {
                 int xoaThuID = (int) master.tbThu.getValueAt(tableSelect, 0);
                 int check = JOptionPane.showConfirmDialog(null, "Bạn muốn xóa khoản thu này ?", "Confirm", JOptionPane.YES_NO_OPTION);
-                if(check==0){
+                if (check == 0) {
                     thuDAO.delete(xoaThuID);
                     master.refreshTabThuChi();
                 }
-           }
+            }
         });
         master.btnXoaChi.addActionListener(new ActionListener() {
-           @Override
-           public void actionPerformed(ActionEvent e) {
-                int xoaChiID = (int) master.tbThu.getValueAt(tableSelect, 0);
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int xoaChiID = (int) master.tbChi.getValueAt(tableSelect, 0);
                 int check = JOptionPane.showConfirmDialog(null, "Bạn muốn xóa khoản chi này ?", "Confirm", JOptionPane.YES_NO_OPTION);
-                if(check==0){
+                if (check == 0) {
                     chiDAO.delete(xoaChiID);
                     master.refreshTabThuChi();
                 }
-           }
+            }
         });
+        master.btnSuaChi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int suaChiID = (int) master.tbChi.getValueAt(tableSelect, 0);
+                chiModel = chiDAO.getByID(suaChiID);
+                SuaChiView suaChiView = new SuaChiView(master, chiModel, acc);
+                suaChiView.setVisible(true);
+            }
+        });
+        master.btnSuaThu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int suaThuID = (int) master.tbThu.getValueAt(tableSelect, 0);
+                thuModel = thuDAO.getByID(suaThuID);
+                SuaThuView suaThuView = new SuaThuView(master, thuModel, acc);
+                suaThuView.setVisible(true);
+            }
+        });
+        
+        master.btnShowChi.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                ShowChiView suaChiView = new ShowChiView(master, acc);
+                suaChiView.setVisible(true);
+            }
+        });
+        master.btnShowThu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                ShowThuView suaThuView = new ShowThuView(master, acc);
+                suaThuView.setVisible(true);
+            }
+        });
+        
         System.out.println("Tao xong event tab thuchi");
     }
 

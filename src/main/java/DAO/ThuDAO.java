@@ -4,6 +4,7 @@
  */
 package DAO;
 
+import Model.ChiModel;
 import Model.ThuModel;
 import Model.ThuTableModel;
 import Model.UserModel;
@@ -85,10 +86,11 @@ public class ThuDAO {
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            ps.setString(1, thu.getNameThu());
-            ps.setString(2, thu.getMucThu());
-            ps.setDouble(3, thu.getAmountThu());
-            ps.setTimestamp(4, thu.getTimestampThu());
+            ps.setString(1, thu2.getNameThu());
+            ps.setString(2, thu2.getMucThu());
+            ps.setDouble(3, thu2.getAmountThu());
+            ps.setTimestamp(4, thu2.getTimestampThu());
+            ps.setInt(5, thu.getIdThu());
 
             int executeUpdate = ps.executeUpdate();
             System.out.println(thu2.toString());
@@ -134,6 +136,28 @@ public class ThuDAO {
         } catch (Exception e) {
             e.printStackTrace();
         } 
+    }
+
+    public ThuModel getByID(int id) {
+        String sql = "select * from thu where id=?";
+        ResultSet rs;
+        ThuModel thuModel = new ThuModel();
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, id);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                thuModel.setIdThu(rs.getInt("id"));
+                thuModel.setNameThu(rs.getString("namethu"));
+                thuModel.setAmountThu(rs.getDouble("amountthu"));
+                thuModel.setMucThu(rs.getString("mucthu"));
+                thuModel.setTimestampThu(rs.getTimestamp("datethu"));
+                
+                
+            }
+        } catch (Exception e) {
+        }
+        return thuModel;
     }
 
 }

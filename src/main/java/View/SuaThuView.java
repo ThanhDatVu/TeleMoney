@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.SuaThuController;
 import Model.NhanvienModel;
 import Model.ThuModel;
 import Model.UserModel;
@@ -20,13 +21,15 @@ public class SuaThuView extends javax.swing.JFrame {
     /**
      * Creates new form ViewSua
      */
-    UserModel acc ;
-    MasterTeleMoneyView owner;
+    UserModel acc;
+    public MasterTeleMoneyView owner;
+    SuaThuController suaThuController;
     public ThuModel thu;
     public ThuModel thu2;
+
     public SuaThuView() {
         initComponents();
-       
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
@@ -34,15 +37,13 @@ public class SuaThuView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setText(thu);
-        this.acc=acc;
+        this.acc = acc;
         this.thu = thu;
         owner = main;
-        this.setTitle("Sửa nhân viên");
+        suaThuController = new SuaThuController(this);
+        this.setTitle("Sửa khoản thu");
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-    }
-
-    public SuaThuView(MasterTeleMoneyView master, UserModel acc) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
     
@@ -58,7 +59,7 @@ public class SuaThuView extends javax.swing.JFrame {
 
         jDialog1 = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
-        btlDongY = new javax.swing.JButton();
+        btnDongY = new javax.swing.JButton();
         btnThoat = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -83,11 +84,11 @@ public class SuaThuView extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel1.setText("Danh mục");
 
-        btlDongY.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        btlDongY.setText("Đồng ý");
-        btlDongY.addActionListener(new java.awt.event.ActionListener() {
+        btnDongY.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
+        btnDongY.setText("Đồng ý");
+        btnDongY.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btlDongYActionPerformed(evt);
+                btnDongYActionPerformed(evt);
             }
         });
 
@@ -142,7 +143,7 @@ public class SuaThuView extends javax.swing.JFrame {
                 .addGap(153, 153, 153))
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
-                .addComponent(btlDongY, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(btnDongY, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btnThoat, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(97, 97, 97))
@@ -166,42 +167,42 @@ public class SuaThuView extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btlDongY)
+                    .addComponent(btnDongY)
                     .addComponent(btnThoat))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    private void setText(ThuModel thu){
+    private void setText(ThuModel thu) {
         tenThu.setText(thu.getNameThu());
         tenDanhMuc.setSelectedItem(thu.getMucThu());
         soTien.setText(String.valueOf(thu.getAmountThu()));
-        
-    
+
     }
     private void tenThuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tenThuActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tenThuActionPerformed
 
-    private void btlDongYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btlDongYActionPerformed
+    private void btnDongYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDongYActionPerformed
 
-    }//GEN-LAST:event_btlDongYActionPerformed
+    }//GEN-LAST:event_btnDongYActionPerformed
 
     private void btnThoatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThoatActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnThoatActionPerformed
-    
-    public void setthu(){
+
+    public void setthu() {
         thu2 = new ThuModel();
         thu2.setNameThu(tenThu.getText());
         thu2.setMucThu(tenDanhMuc.getSelectedItem().toString());
         thu2.setAmountThu(Double.valueOf(soTien.getText()));
         Timestamp time = new Timestamp(System.currentTimeMillis());
         thu2.setTimestampThu(time);
-        
+
     }
+
     /**
      * @param log
      */
@@ -301,7 +302,7 @@ public class SuaThuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton btlDongY;
+    public javax.swing.JButton btnDongY;
     public javax.swing.JButton btnThoat;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
@@ -317,5 +318,4 @@ public class SuaThuView extends javax.swing.JFrame {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-   
 }

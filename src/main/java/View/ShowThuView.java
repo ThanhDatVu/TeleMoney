@@ -4,6 +4,10 @@
  */
 package View;
 
+import Controller.ShowChiController;
+import Controller.ShowThuController;
+import Model.UserModel;
+
 /**
  *
  * @author hieun
@@ -13,8 +17,21 @@ public class ShowThuView extends javax.swing.JFrame {
     /**
      * Creates new form ShowThu
      */
+    ShowThuController showThuController;
+    MasterTeleMoneyView master;
+    UserModel acc;
+
     public ShowThuView() {
         initComponents();
+    }
+
+    public ShowThuView(MasterTeleMoneyView master, UserModel acc) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.master = master;
+        this.acc = acc;
+        showThuController = new ShowThuController(this, acc);
+
     }
 
     /**
@@ -27,13 +44,13 @@ public class ShowThuView extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tableThu = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btnSave = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tableThu.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -44,11 +61,11 @@ public class ShowThuView extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tableThu);
 
         jButton1.setText("Thoát");
 
-        jButton2.setText("jButton2");
+        btnSave.setText("Xuất ra Excel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -57,7 +74,7 @@ public class ShowThuView extends javax.swing.JFrame {
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 519, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(94, 94, 94)
-                .addComponent(jButton2)
+                .addComponent(btnSave)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(117, 117, 117))
@@ -69,7 +86,7 @@ public class ShowThuView extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
-                    .addComponent(jButton2))
+                    .addComponent(btnSave))
                 .addGap(56, 56, 56))
         );
 
@@ -113,9 +130,9 @@ public class ShowThuView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton btnSave;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable tableThu;
     // End of variables declaration//GEN-END:variables
 }

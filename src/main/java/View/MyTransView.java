@@ -19,6 +19,7 @@ public class MyTransView extends javax.swing.JFrame {
     MasterTeleMoneyView master;
     UserModel acc;
     MyTransController myTransController;
+
     public MyTransView() {
         initComponents();
     }
@@ -26,9 +27,9 @@ public class MyTransView extends javax.swing.JFrame {
     public MyTransView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
-       this.master = master;
-       this.acc = acc;
-       this.myTransController = new MyTransController(this, acc);
+        this.master = master;
+        this.acc = acc;
+        this.myTransController = new MyTransController(this, acc);
     }
 
     /**

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 02, 2022 at 07:59 AM
+-- Generation Time: Jan 05, 2022 at 10:48 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -41,8 +41,11 @@ CREATE TABLE `chi` (
 --
 
 INSERT INTO `chi` (`id`, `uid`, `namechi`, `amountchi`, `mucchi`, `datechi`) VALUES
-(1, 1, 'Mua đồ ăn tại Big C', 50000, 'Ăn uống', '2022-01-01 23:59:55'),
-(2, 1, 'yyy', 80000000, 'Ăn uống', '2022-01-02 01:29:51');
+(1, 1, 'Mua đồ ăn tại Big C', 50000, 'Ăn uống', '2022-01-05 21:41:51'),
+(2, 1, 'Đi ăn lẩu', 800000, 'Ăn uống', '2022-01-02 08:22:01'),
+(3, 1, 'TIền nhà tháng 12', 3500000, 'Tiền nhà', '2022-01-02 07:42:41'),
+(5, 1, 'Sửa xe', 2400000, 'Di chuyển', '2022-01-02 07:57:07'),
+(6, 1, 'Tiền điện tháng 12', 300000, 'Tiền điện, nước', '2022-01-02 07:57:45');
 
 -- --------------------------------------------------------
 
@@ -67,11 +70,12 @@ CREATE TABLE `chovay` (
 --
 
 INSERT INTO `chovay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngaychovay`, `ngaythulai`) VALUES
-(1, 1, 'duan', 'MBBank', 1000000, 5, 12, '2021-12-31 08:22:09', 0),
-(2, 1, 'ban duan', 'ACB', 2000000, 4, 24, '2021-12-31 10:16:53', 0),
-(3, 1, 'ngu', 'FFF', 12222222, 21, 12, '2021-12-31 10:16:59', 0),
-(4, 1, 'haha', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 20000000, 2, 1, '2022-01-01 14:51:10', 0),
-(5, 1, 'hix', 'Ngân Hàng Kĩ Thương Việt Nam (Techcombank)', 5000000, 3, 36, '2022-01-01 14:56:52', 0);
+(1, 1, 'Vay mua lap', 'MBBank', 1000000, 5, 12, '2022-01-02 08:23:44', 0),
+(2, 1, 'Vay mua xe', 'ACB', 2000000, 4, 24, '2022-01-02 08:22:31', 0),
+(4, 1, 'Vay sửa nhà', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 20000000, 2, 1, '2022-01-02 08:22:50', 0),
+(5, 1, 'Vay chữa bệnh', 'Ngân Hàng Kĩ Thương Việt Nam (Techcombank)', 5000000, 3, 36, '2022-01-02 08:23:33', 0),
+(6, 1, 'Vay mua điện thoại', 'MBBank', 1000000, 5, 12, '2021-12-31 08:22:09', 0),
+(7, 1, 'gửi tiết kiệm', 'Ngân Hàng Đầu tư và Phát triển Việt Nam (BIDV)', 100000000, 8, 12, '2022-01-05 21:45:13', 0);
 
 -- --------------------------------------------------------
 
@@ -93,13 +97,15 @@ CREATE TABLE `mystock` (
 --
 
 INSERT INTO `mystock` (`symbol`, `name`, `soluong`, `tongbandau`, `giabandau`, `time`) VALUES
-('AAPL', 'Apple', 101, 19882, 196.851, '2021-12-28 22:01:30'),
-('BTC-USD', 'Bitcoin', 1, 35000, 35000, '2021-12-28 21:55:16'),
+('AAPL', 'Apple', 51, 10039.4, 196.851, '2021-12-28 22:01:30'),
+('BTC-USD', 'Bitcoin', 2, 82000, 41000, '2021-12-28 21:55:16'),
 ('COIN', 'Coinbase', 10, 1250, 125, '2021-12-28 22:01:30'),
 ('MSFT', 'Microsoft Corporation', 34, 8500, 250, '2021-12-28 22:29:06'),
-('TSLA', 'TESLA', 90, 78030, 867, '2021-12-28 20:28:01'),
+('TSLA', 'TESLA', 35, 30345, 867, '2021-12-28 20:28:01'),
 ('GOOGL', 'Alphabet Inc. Class A', 2, 5755.02, 2877.51, '2022-01-02 07:00:50'),
-('MDT', 'Medtronic Plc', 5, 517.25, 103.45, '2022-01-02 07:47:44');
+('MDT', 'Medtronic Plc', 5, 517.25, 103.45, '2022-01-02 07:47:44'),
+('SLB', 'Schlumberger NV', 10, 299.5, 29.95, '2022-01-02 14:32:21'),
+('CL', 'Colgate-Palmolive Company', 205, 18960.1, 92.4884, '2022-01-02 15:30:19');
 
 -- --------------------------------------------------------
 
@@ -672,7 +678,19 @@ CREATE TABLE `stocktrans` (
 INSERT INTO `stocktrans` (`id`, `uid`, `symbol`, `giagiaodich`, `soluong`, `time`, `loaigiaodich`) VALUES
 (1, 1, 'AAPL', 170, 10, '2022-01-02 00:11:52', 'mua'),
 (2, 1, 'MDT', 103.45, 10, '2022-01-02 00:47:44', 'mua'),
-(3, 1, 'MDT', 100, 5, '2022-01-02 00:48:13', 'ban');
+(3, 1, 'MDT', 100, 5, '2022-01-02 00:48:13', 'ban'),
+(4, 1, 'SLB', 29.95, 10, '2022-01-02 07:32:21', 'mua'),
+(5, 1, 'TSLA', 1000, 40, '2022-01-02 08:11:14', 'ban'),
+(6, 1, 'BTC-USD', 47000, 1, '2022-01-02 08:11:53', 'mua'),
+(7, 1, 'AAPL', 178, 50, '2022-01-02 08:18:01', 'ban'),
+(8, 1, 'HES', 74.03, 10, '2022-01-02 08:19:08', 'mua'),
+(9, 1, 'HES', 75, 10, '2022-01-02 08:19:25', 'ban'),
+(10, 1, 'CL', 85.34, 10, '2022-01-02 08:30:19', 'mua'),
+(11, 1, 'CL', 85, 5, '2022-01-02 08:32:08', 'mua'),
+(12, 1, 'CL', 86, 10, '2022-01-02 08:33:11', 'ban'),
+(13, 1, 'TSLA', 2000, 15, '2022-01-02 13:10:13', 'ban'),
+(14, 1, 'CL', 85.34, 100, '2022-01-03 14:24:18', 'mua'),
+(15, 1, 'CL', 100, 100, '2022-01-03 14:24:47', 'mua');
 
 -- --------------------------------------------------------
 
@@ -694,9 +712,8 @@ CREATE TABLE `thu` (
 --
 
 INSERT INTO `thu` (`id`, `uid`, `namethu`, `amountthu`, `mucthu`, `datethu`) VALUES
-(3, 1, 'Lương tháng 10', 8000000, 'Lương chính', '2022-01-02 01:08:56'),
-(4, 1, 'Thưởng dự án', 5000000, 'Thưởng ', '2022-01-02 01:09:15'),
-(5, 1, 'Nhặt được tiền', 150000, 'Khoản thu khác', '2022-01-02 01:28:06');
+(3, 1, 'Lương tháng 10', 8000000, 'Lương chính', '2022-01-05 21:01:27'),
+(7, 1, 'Lương tháng 9', 15000000, 'Lương chính', '2022-01-02 12:45:31');
 
 -- --------------------------------------------------------
 
@@ -715,7 +732,7 @@ CREATE TABLE `tong` (
 --
 
 INSERT INTO `tong` (`uid`, `sodu`, `tongtaisan`) VALUES
-(1, 649930370, 0);
+(1, 181711488, 1300076832);
 
 -- --------------------------------------------------------
 
@@ -741,8 +758,8 @@ CREATE TABLE `tragop` (
 --
 
 INSERT INTO `tragop` (`id`, `uid`, `name`, `namecongty`, `tongtien`, `sothang`, `tienhangthang`, `time`, `tratruoc`, `ngaytragop`) VALUES
-(1, 1, 'duan', 'cong ty quai vat', 10000000, 8, 1000000, '2022-01-09 17:07:20', 2000000, 0),
-(2, 1, 'nguu ma zuong', 'quai vat', 200000000, 2, 50000000, '2022-01-01 16:08:08', 100000000, 0);
+(1, 1, 'Tra gop xe may', 'FE Credit', 10000000, 8, 1000000, '2022-01-02 08:24:49', 2000000, 0),
+(2, 1, 'Trả góp laptop', 'HD Saison', 200000000, 2, 50000000, '2022-01-02 08:25:27', 100000000, 0);
 
 -- --------------------------------------------------------
 
@@ -787,8 +804,8 @@ CREATE TABLE `vay` (
 --
 
 INSERT INTO `vay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngayvay`, `ngaytralai`) VALUES
-(1, 1, 'duan', 'DBBANK', 1000000, 5, 24, '2021-12-29 16:46:00', 0),
-(2, 1, 'satori', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 100000000, 3, 1, '2022-01-01 15:23:46', 0);
+(1, 1, 'Vay mua nhà', 'DBBANK', 1000000, 5, 24, '2022-01-02 08:28:26', 0),
+(2, 1, 'Vay mua xe\r\n', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 100000000, 3, 1, '2022-01-02 08:28:36', 0);
 
 --
 -- Indexes for dumped tables
@@ -798,6 +815,12 @@ INSERT INTO `vay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `n
 -- Indexes for table `chi`
 --
 ALTER TABLE `chi`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chovay`
+--
+ALTER TABLE `chovay`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -819,6 +842,18 @@ ALTER TABLE `tong`
   ADD PRIMARY KEY (`uid`);
 
 --
+-- Indexes for table `tragop`
+--
+ALTER TABLE `tragop`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vay`
+--
+ALTER TABLE `vay`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -826,25 +861,43 @@ ALTER TABLE `tong`
 -- AUTO_INCREMENT for table `chi`
 --
 ALTER TABLE `chi`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `chovay`
+--
+ALTER TABLE `chovay`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `stocktrans`
 --
 ALTER TABLE `stocktrans`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `thu`
 --
 ALTER TABLE `thu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `tong`
 --
 ALTER TABLE `tong`
   MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tragop`
+--
+ALTER TABLE `tragop`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `vay`
+--
+ALTER TABLE `vay`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

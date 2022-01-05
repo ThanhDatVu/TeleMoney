@@ -4,6 +4,7 @@
  */
 package View;
 
+import Controller.SuaChiController;
 import Model.ChiModel;
 import Model.ThuModel;
 import Model.UserModel;
@@ -19,10 +20,11 @@ public class SuaChiView extends javax.swing.JFrame {
     /**
      * Creates new form SuaChiView
      */
-    UserModel acc ;
-    MasterTeleMoneyView owner;
+    public UserModel acc ;
+    public MasterTeleMoneyView owner;
     public ChiModel chi;
     public ChiModel chi2;
+    SuaChiController suaChiController;
     public SuaChiView() {
         initComponents();
        
@@ -36,7 +38,9 @@ public class SuaChiView extends javax.swing.JFrame {
         this.acc=acc;
         this.chi = chi;
         owner = main;
-        this.setTitle("Sửa nhân viên");
+        this.setTitle("Sửa khoản chi" + chi.getIdChi());
+        suaChiController = new SuaChiController(this);
+        setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
@@ -184,7 +188,7 @@ public class SuaChiView extends javax.swing.JFrame {
         jLabel9.setText("Số tiền");
 
         danhMucSuaChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        danhMucSuaChi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        danhMucSuaChi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ăn uống", "Di chuyển", "Tiền nhà", "Tiền điện, nước", "Xã giao", "Quà cáp" }));
 
         tienSuaChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
 
