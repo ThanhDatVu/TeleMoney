@@ -78,7 +78,7 @@ public class ThemChiView extends javax.swing.JFrame {
         jLabel1.setText("Danh mục");
 
         danhMucChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        danhMucChi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ăn uống", "Di chuyển", "Tiền nhà", "Tiền điện, nước", "Xã giao", "Quà cáp" }));
+        danhMucChi.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ăn uống", "Di chuyển", "Tiền nhà", "Tiền điện, nước", "Dịch vụ", "Sức khoẻ", "Giải trí", "Xã giao", "Quà cáp", "Khác" }));
 
         soTienChi.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
 
