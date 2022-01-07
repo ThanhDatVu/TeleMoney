@@ -64,7 +64,7 @@ public class VayTienView extends javax.swing.JFrame {
         btnHuyVayTien = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txtLaisuat1 = new javax.swing.JTextField();
+        txtNgayTraLai = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -164,10 +164,10 @@ public class VayTienView extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel10.setText("NGÀY TRẢ LÃI HÀNG THÁNG:");
 
-        txtLaisuat1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        txtLaisuat1.addActionListener(new java.awt.event.ActionListener() {
+        txtNgayTraLai.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
+        txtNgayTraLai.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLaisuat1ActionPerformed(evt);
+                txtNgayTraLaiActionPerformed(evt);
             }
         });
 
@@ -198,7 +198,7 @@ public class VayTienView extends javax.swing.JFrame {
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel10)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtLaisuat1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(txtNgayTraLai, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(layout.createSequentialGroup()
                                                 .addComponent(jLabel4)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -248,7 +248,7 @@ public class VayTienView extends javax.swing.JFrame {
                     .addComponent(jLabel9)
                     .addComponent(txtLai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel10)
-                    .addComponent(txtLaisuat1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNgayTraLai, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThemVayTien, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,9 +296,9 @@ public class VayTienView extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnHuyVayTienActionPerformed
 
-    private void txtLaisuat1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLaisuat1ActionPerformed
+    private void txtNgayTraLaiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNgayTraLaiActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtLaisuat1ActionPerformed
+    }//GEN-LAST:event_txtNgayTraLaiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -355,7 +355,7 @@ public class VayTienView extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     public javax.swing.JTextField txtLai;
     public javax.swing.JTextField txtLaisuat;
-    public javax.swing.JTextField txtLaisuat1;
+    public javax.swing.JTextField txtNgayTraLai;
     public javax.swing.JTextField txtTen;
     public javax.swing.JTextField txtTien;
     // End of variables declaration//GEN-END:variables

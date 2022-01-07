@@ -96,6 +96,72 @@ public class AddVayTienController {
             }
         }
         );
+        
+        vayTienView.cboKyHan.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                tinhLaiHangThang();
+            }
+        });
+        vayTienView.txtTien.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+        }
+        );
+        vayTienView.txtLaisuat.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+        }
+        );
+
+    }
+    public void tinhLaiHangThang() throws NumberFormatException {
+        double laiXuat = 1;
+        double soTien = 1;
+        double kyHan = 1;
+        {
+
+            soTien = Double.parseDouble(vayTienView.txtTien.getText());
+            laiXuat = Double.parseDouble(vayTienView.txtLaisuat.getText());
+            kyHan = Double.parseDouble(vayTienView.cboKyHan.getSelectedItem().toString());
+
+            if (soTien > -1 && laiXuat > -1) {
+                vayTienView.txtLai.setEditable(true);
+                double laihangthang;
+                laihangthang = (soTien * (laiXuat / 12)) / 100;
+
+                vayTienView.txtLai.setText(String.valueOf(Math.round(laihangthang)));
+
+                vayTienView.txtLai.setEditable(false);
+
+            }
+
+        }
 
     }
 }

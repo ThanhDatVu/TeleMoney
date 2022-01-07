@@ -12,8 +12,12 @@ import Model.UserModel;
 import View.GuiTienView;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import javax.swing.JOptionPane;
 import java.sql.Timestamp;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 public class AddGuiTienController {
 
@@ -30,7 +34,7 @@ public class AddGuiTienController {
         this.guiTienView = guiTienView;
         this.acc = acc;
         guiTienView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        soDu = stockDAO.getSoDu(acc);     
+        soDu = stockDAO.getSoDu(acc);
         setEventGuiTien();
         guiTienView.setVisible(true);
         //setData();
@@ -52,14 +56,9 @@ public class AddGuiTienController {
 //    
 //    
 //    }
-
     public void setEventGuiTien() {
         System.out.println("Tao event");
-        
-        
-        
-        
-        
+
         guiTienView.btnThemGuiTien.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,7 +69,7 @@ public class AddGuiTienController {
                 } else if (x <= 0) {
                     JOptionPane.showMessageDialog(null, "Nhập sai");
                 } else {
-                    int opt = JOptionPane.showConfirmDialog(guiTienView, "Xác nhận gửi " + guiTienView.cboBank.getSelectedItem().toString()+ " "
+                    int opt = JOptionPane.showConfirmDialog(guiTienView, "Xác nhận gửi " + guiTienView.cboBank.getSelectedItem().toString() + " "
                             + " số tiền " + guiTienView.txtTien.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
                     if (opt == 0) {
                         //String ten, String bank, double tiengoc, double laisuat, int kyhan, Timestamp ngaygui
@@ -90,6 +89,73 @@ public class AddGuiTienController {
             }
         }
         );
+
+        guiTienView.cboKyHan.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                tinhLaiHangThang();
+            }
+        });
+        guiTienView.txtTien.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+        }
+        );
+        guiTienView.txtLaisuat.getDocument().addDocumentListener(new DocumentListener() {
+            @Override
+            public void changedUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+            @Override
+            public void removeUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+            @Override
+            public void insertUpdate(DocumentEvent e) {
+                tinhLaiHangThang();
+            }
+
+        }
+        );
+
+    }
+
+    public void tinhLaiHangThang() throws NumberFormatException {
+        double laiXuat = 1;
+        double soTien = 1;
+        double kyHan = 1;
+        {
+
+            soTien = Double.parseDouble(guiTienView.txtTien.getText());
+            laiXuat = Double.parseDouble(guiTienView.txtLaisuat.getText());
+            kyHan = Double.parseDouble(guiTienView.cboKyHan.getSelectedItem().toString());
+
+            if (soTien > -1 && laiXuat > -1) {
+                guiTienView.txtLai.setEditable(true);
+                double laihangthang;
+                laihangthang = (soTien * (laiXuat / 12)) / 100;
+
+                guiTienView.txtLai.setText(String.valueOf(Math.round(laihangthang)));
+
+                guiTienView.txtLai.setEditable(false);
+
+            }
+
+        }
 
     }
 }
