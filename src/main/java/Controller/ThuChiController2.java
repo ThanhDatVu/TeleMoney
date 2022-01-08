@@ -101,7 +101,6 @@ public class ThuChiController2 {
 
         System.out.println("setVector xong");
 
-        
     }
 //    
 //    

@@ -4,8 +4,6 @@ package View;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
-
 import Controller.AddTraGopController;
 import DAO.GuiTienDAO;
 import Model.UserModel;
@@ -24,6 +22,7 @@ public class TraGopView extends javax.swing.JFrame {
     UserModel acc;
     GuiTienDAO guiTienDAO;
     AddTraGopController addTraGopController = null;
+
     public TraGopView() {
         initComponents();
     }
@@ -245,7 +244,7 @@ public class TraGopView extends javax.swing.JFrame {
 
     private void btnThemTraGopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemTraGopActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnThemTraGopActionPerformed
 
     private void btnThemTraGopMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemTraGopMouseClicked

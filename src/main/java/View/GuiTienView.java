@@ -4,8 +4,6 @@ package View;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
-
 import Controller.AddGuiTienController;
 import DAO.GuiTienDAO;
 import Model.GuiTienModel;
@@ -17,6 +15,7 @@ import javax.swing.JLabel;
  * @author xiaomi
  */
 public class GuiTienView extends javax.swing.JFrame {
+
     GuiTienModel guiTienModel;
     AddGuiTienController addGuiTienController = null;
     /**
@@ -25,6 +24,7 @@ public class GuiTienView extends javax.swing.JFrame {
     public MasterTeleMoneyView master;
     UserModel acc;
     GuiTienDAO guiTienDAO;
+
     public GuiTienView() {
         initComponents();
     }
@@ -34,7 +34,7 @@ public class GuiTienView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         this.master = master;
         this.acc = acc;
-        this.addGuiTienController = new AddGuiTienController(this, acc);     
+        this.addGuiTienController = new AddGuiTienController(this, acc);
     }
 
     /**
@@ -275,7 +275,7 @@ public class GuiTienView extends javax.swing.JFrame {
 
     private void btnThemGuiTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemGuiTienActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnThemGuiTienActionPerformed
 
     private void btnThemGuiTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemGuiTienMouseClicked

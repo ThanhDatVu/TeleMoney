@@ -32,32 +32,26 @@ public class MuaStockView extends javax.swing.JFrame {
     StockDAO stockDAO;
     float giaNow;
     UserModel acc;
-    
+
     MuaStockController muaStockController;
-    
+
     public MuaStockView() {
         stockDAO = new StockDAO();
-        
+
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
-   
-
-    
-
-   
-
     public MuaStockView(MasterTeleMoneyView master, MyStockBuyModel stockBuy, UserModel acc) {
         this.acc = acc;
         this.myStock = stockBuy;
         this.owner = master;
-        initComponents();               
+        initComponents();
         setLocationRelativeTo(null);
-        muaStockController = new MuaStockController(this , myStock ,acc);
-        stockDAO = new StockDAO();                       
-        this.setTitle("Mua thêm " + stockBuy.getSymbol());                
+        muaStockController = new MuaStockController(this, myStock, acc);
+        stockDAO = new StockDAO();
+        this.setTitle("Mua thêm " + stockBuy.getSymbol());
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
@@ -347,7 +341,7 @@ public class MuaStockView extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(MuaStockView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -384,7 +378,4 @@ public class MuaStockView extends javax.swing.JFrame {
 
     }
 
-   
-
-   
 }

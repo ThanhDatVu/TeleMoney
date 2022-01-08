@@ -114,10 +114,8 @@ public class NhanvienDAO {
 
     }
 
-    
-
     public void delete(NhanvienModel nv) {
-       String sql = "DELETE FROM NHANVIEN WHERE MANV = ? and HOTEN = ? and LUONG = ?";;
+        String sql = "DELETE FROM NHANVIEN WHERE MANV = ? and HOTEN = ? and LUONG = ?";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -125,14 +123,13 @@ public class NhanvienDAO {
 
             ps.setString(2, nv.getHoTen());
             ps.setString(3, nv.getLuong());
-            
 
             int executeUpdate = ps.executeUpdate();
-            
+
             System.out.println("Xoá");
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }
 
 }

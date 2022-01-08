@@ -21,9 +21,10 @@ import java.util.ArrayList;
  * @author xiaomi
  */
 public class VayTienDAO {
+
     private Connection con;
     private UserModel userModel;
-    
+
     public VayTienDAO() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -35,8 +36,8 @@ public class VayTienDAO {
             System.out.println(e);
         }
     }
-    
-    public void add(VayTienModel vayTien, UserModel acc){
+
+    public void add(VayTienModel vayTien, UserModel acc) {
         String sql = "INSERT INTO `vay` (`uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngayvay`, `ngaytralai`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -48,7 +49,7 @@ public class VayTienDAO {
             ps.setDouble(6, vayTien.getKyhan());
             ps.setTimestamp(7, vayTien.getNgayvay());
             ps.setInt(8, vayTien.getNgaytralai());
-            
+
             int executeUpdate = ps.executeUpdate();
             System.out.println(vayTien.toString());
             System.out.println("thêm thành công");
@@ -56,7 +57,7 @@ public class VayTienDAO {
             e.printStackTrace();
         }
     }
-    
+
     public ArrayList<VayTienModel> getAll(UserModel user) {
         String sql = "select * from vay where uid=?";
         int x = user.getId();
@@ -81,18 +82,18 @@ public class VayTienDAO {
         }
         return vayTienModels;
     }
-    
+
     public void delete(VayTienModel vayTienModel, UserModel acc) {
-       String sql = "DELETE FROM vay WHERE uid = ?, ten = ?, tiengoc=?";;
+        String sql = "DELETE FROM vay WHERE uid = ?, ten = ?, tiengoc=?";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, acc.getId());
             ps.setString(2, vayTienModel.getTen());
             ps.setDouble(3, vayTienModel.getTiengoc());
-            int executeUpdate = ps.executeUpdate();           
+            int executeUpdate = ps.executeUpdate();
             System.out.println("Xoá");
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }
 }

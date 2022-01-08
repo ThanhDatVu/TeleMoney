@@ -44,6 +44,7 @@ import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
 public class ShowChiController {
+
     DecimalFormat df = new DecimalFormat("0");
     ShowChiView showChiView;
     UserModel acc;
@@ -54,7 +55,7 @@ public class ShowChiController {
     double soDu;
 
     public ShowChiController(ShowChiView showChiView, UserModel acc) {
-        
+
         chiDAO = new ChiDAO();
         this.showChiView = showChiView;
         this.acc = acc;
@@ -95,7 +96,6 @@ public class ShowChiController {
 
     }
 
-
     public void setEventTrans() {
         System.out.println("Tao event");
 
@@ -103,8 +103,8 @@ public class ShowChiController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    LocalDateTime time =  LocalDateTime.now();
-                    File myNewFile = new File("D:\\Project\\document\\Thong ke cac khoan chi tieu_"+time.getDayOfMonth()+" "+time.getMonth()+".xlsx");
+                    LocalDateTime time = LocalDateTime.now();
+                    File myNewFile = new File("D:\\Project\\document\\Thong ke cac khoan chi tieu_" + time.getDayOfMonth() + " " + time.getMonth() + ".xlsx");
                     Path path = Paths.get(myNewFile.getAbsolutePath());
                     writeToExcell(showChiView.tableChi, path);//viết vào file
 

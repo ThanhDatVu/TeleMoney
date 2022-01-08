@@ -9,14 +9,13 @@ import javax.swing.table.DefaultTableModel;
 @SuppressWarnings("serial")
 public class ChiTableModel extends DefaultTableModel {
 
-    public static final Object[] TABLE_HEADER = {"ID","Tên khoản chi", "Danh mục", "Số tiền","Ngày"};
+    public static final Object[] TABLE_HEADER = {"ID", "Tên khoản chi", "Danh mục", "Số tiền", "Ngày"};
 
-    public static final Object[][] DATA = {
-       
-    };
+    public static final Object[][] DATA = {};
+
     public ChiTableModel() {
         super(DATA, TABLE_HEADER);
-        
+
     }
-    
+
 }

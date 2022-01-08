@@ -259,7 +259,7 @@ public class VayNoController {
                 }
             }
         });
-        
+
         master.tableVayTien.addKeyListener(new KeyListener() {
             @Override
             public void keyTyped(KeyEvent e) {
@@ -382,7 +382,7 @@ public class VayNoController {
             public void mouseExited(MouseEvent e) {
             }
         });
-        
+
         master.tableVayTien.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -410,7 +410,7 @@ public class VayNoController {
             public void mouseExited(MouseEvent e) {
             }
         });
-        
+
     }
 
     public void searchTableContents(String searchString, JTable table, Vector OGVector) {

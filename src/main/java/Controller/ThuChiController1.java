@@ -321,11 +321,11 @@ public class ThuChiController1 {
                 suaThuView.setVisible(true);
             }
         });
-        
+
         master.btnShowChi.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 ShowChiView suaChiView = new ShowChiView(master, acc);
                 suaChiView.setVisible(true);
             }
@@ -333,12 +333,12 @@ public class ThuChiController1 {
         master.btnShowThu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 ShowThuView suaThuView = new ShowThuView(master, acc);
                 suaThuView.setVisible(true);
             }
         });
-        
+
         System.out.println("Tao xong event tab thuchi");
     }
 

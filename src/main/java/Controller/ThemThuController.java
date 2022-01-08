@@ -32,7 +32,7 @@ public class ThemThuController {
         this.themThuView = themThuView;
         this.acc = acc;
         themThuView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        soDu = stockDAO.getSoDu(acc);     
+        soDu = stockDAO.getSoDu(acc);
         setEventThemThu();
         themThuView.setVisible(true);
         //setData();
@@ -54,7 +54,6 @@ public class ThemThuController {
 //    
 //    
 //    }
-
     public void setEventThemThu() {
         System.out.println("Tao event");
         themThuView.btnDongY.addActionListener(new ActionListener() {

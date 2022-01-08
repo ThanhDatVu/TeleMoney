@@ -24,8 +24,8 @@ public class ChartTest extends javax.swing.JFrame {
         Goals.add(5, 3.0);
         XYDataset xyDataset = new XYSeriesCollection(Goals);
         JFreeChart chart = ChartFactory.createXYLineChart(
-            "Goals Scored Over Time", "Fixture Number", "Goals",
-            xyDataset, PlotOrientation.VERTICAL, true, true, false);
+                "Goals Scored Over Time", "Fixture Number", "Goals",
+                xyDataset, PlotOrientation.VERTICAL, true, true, false);
         ChartPanel cp = new ChartPanel(chart) {
 
             @Override

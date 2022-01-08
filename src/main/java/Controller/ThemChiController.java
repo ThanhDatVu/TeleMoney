@@ -31,14 +31,12 @@ public class ThemChiController {
         stockDAO = new StockDAO();
         this.themChiView = themChiView;
         this.acc = acc;
-        soDu = stockDAO.getSoDu(acc);     
+        soDu = stockDAO.getSoDu(acc);
         setEventThemChi();
         //setData();
         //setTableButton();
 
     }
-
-
 
     public void setEventThemChi() {
         System.out.println("Tao event");

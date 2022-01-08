@@ -43,7 +43,7 @@ public class AddVayTienController {
         this.vayTienView = vayTienView;
         this.acc = acc;
         vayTienView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        soDu = stockDAO.getSoDu(acc);     
+        soDu = stockDAO.getSoDu(acc);
         setEventVayTien();
         vayTienView.setVisible(true);
         //setData();
@@ -65,7 +65,6 @@ public class AddVayTienController {
 //    
 //    
 //    }
-
     public void setEventVayTien() {
         System.out.println("Tao event");
         vayTienView.btnThemVayTien.addActionListener(new ActionListener() {
@@ -76,7 +75,7 @@ public class AddVayTienController {
                 if (x <= 0) {
                     JOptionPane.showMessageDialog(null, "Nhập sai");
                 } else {
-                    int opt = JOptionPane.showConfirmDialog(vayTienView, "Xác nhận vay " + vayTienView.cboBank.getSelectedItem().toString()+ " "
+                    int opt = JOptionPane.showConfirmDialog(vayTienView, "Xác nhận vay " + vayTienView.cboBank.getSelectedItem().toString() + " "
                             + " số tiền " + vayTienView.txtTien.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
                     if (opt == 0) {
                         //String ten, String bank, double tiengoc, double laisuat, int kyhan, Timestamp ngayvay
@@ -96,7 +95,7 @@ public class AddVayTienController {
             }
         }
         );
-        
+
         vayTienView.cboKyHan.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 tinhLaiHangThang();
@@ -140,6 +139,7 @@ public class AddVayTienController {
         );
 
     }
+
     public void tinhLaiHangThang() throws NumberFormatException {
         double laiXuat = 1;
         double soTien = 1;

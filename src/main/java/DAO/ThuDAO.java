@@ -35,8 +35,6 @@ public class ThuDAO {
         }
     }
 
-    
-
     public ArrayList<ThuModel> getAll(UserModel user) {
         String sql = "select * from thu where uid=?";
         int x = user.getId();
@@ -53,7 +51,7 @@ public class ThuDAO {
                 thuModel.setAmountThu(rs.getDouble("amountthu"));
                 thuModel.setMucThu(rs.getString("mucthu"));
                 thuModel.setTimestampThu(rs.getTimestamp("datethu"));
-                
+
                 thuModels.add(thuModel);
             }
         } catch (Exception e) {
@@ -101,10 +99,8 @@ public class ThuDAO {
 
     }
 
-    
-
     public void delete(ThuModel thu) {
-       String sql = "DELETE FROM thu WHERE namethu = ? and mucthu = ? and amountthu = ? and timethu = ?";;
+        String sql = "DELETE FROM thu WHERE namethu = ? and mucthu = ? and amountthu = ? and timethu = ?";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -112,30 +108,28 @@ public class ThuDAO {
             ps.setString(2, thu.getMucThu());
             ps.setDouble(3, thu.getAmountThu());
             ps.setTimestamp(4, thu.getTimestampThu());
-            
 
             int executeUpdate = ps.executeUpdate();
-            
+
             System.out.println("Xoá thành công");
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }
+
     public void delete(int thuID) {
-       String sql = "DELETE FROM thu WHERE ID = ?";;
+        String sql = "DELETE FROM thu WHERE ID = ?";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, thuID);
-            
-            
 
             int executeUpdate = ps.executeUpdate();
-            
+
             System.out.println("Xoá thành công");
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }
 
     public ThuModel getByID(int id) {
@@ -152,8 +146,7 @@ public class ThuDAO {
                 thuModel.setAmountThu(rs.getDouble("amountthu"));
                 thuModel.setMucThu(rs.getString("mucthu"));
                 thuModel.setTimestampThu(rs.getTimestamp("datethu"));
-                
-                
+
             }
         } catch (Exception e) {
         }

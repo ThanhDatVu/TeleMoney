@@ -17,6 +17,7 @@ import java.sql.ResultSet;
  * @author dat26
  */
 public class LoginDAO {
+
     private Connection con;
 
     public LoginDAO() {
@@ -30,14 +31,14 @@ public class LoginDAO {
             System.out.println(e);
         }
     }
-    
+
     public UserModel login(String tenDangNhap, String matKhau) {
         String sql = "select * from USER where USERNAME LIKE ? and PASSWORD LIKE ?";
-                        
+
         UserModel user = null;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            ps.setString(1, tenDangNhap );
+            ps.setString(1, tenDangNhap);
             ps.setString(2, matKhau);
             ResultSet rs = ps.executeQuery();
             if (rs.next()) {
@@ -45,12 +46,12 @@ public class LoginDAO {
                 user.setUsername(rs.getString("USERNAME"));
                 user.setPassword(rs.getString("PASSWORD"));
                 user.setId(rs.getInt("ID"));
-                
+
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         return user;
     }
-    
+
 }

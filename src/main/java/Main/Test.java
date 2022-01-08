@@ -61,7 +61,6 @@ public class Test {
 //        myStock.setTime();
 //        System.out.println(myStock.get24hchange());
 //        System.out.println(get24hchange("AAPL"));
-        
 
         // new DangNhapController(viewlogin).setEventLogin();
     }

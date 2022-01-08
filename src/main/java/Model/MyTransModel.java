@@ -14,7 +14,8 @@ import lib.ButtonColumn;
  *
  */
 @SuppressWarnings("serial")
-public class MyTransModel{
+public class MyTransModel {
+
     private String symbol;
     private int soLuong;
     private float giaGiaoDich;
@@ -71,13 +72,5 @@ public class MyTransModel{
     public void setTime(Timestamp time) {
         this.time = time;
     }
-    
-    
 
-    
-    
-    
-    
-    
-    
 }

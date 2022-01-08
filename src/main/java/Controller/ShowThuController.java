@@ -44,6 +44,7 @@ import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
 public class ShowThuController {
+
     DecimalFormat df = new DecimalFormat("0");
     ShowThuView showThuView;
     UserModel acc;
@@ -54,7 +55,7 @@ public class ShowThuController {
     double soDu;
 
     public ShowThuController(ShowThuView showThuView, UserModel acc) {
-        
+
         chiDAO = new ThuDAO();
         this.showThuView = showThuView;
         this.acc = acc;
@@ -95,7 +96,6 @@ public class ShowThuController {
 
     }
 
-
     public void setEventTrans() {
         System.out.println("Tao event");
 
@@ -103,8 +103,8 @@ public class ShowThuController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    LocalDateTime time =  LocalDateTime.now();
-                    File myNewFile = new File("D:\\Project\\document\\Thong ke cac khoan thu nhap_"+time.getDayOfMonth()+" "+time.getMonth()+".xlsx");
+                    LocalDateTime time = LocalDateTime.now();
+                    File myNewFile = new File("D:\\Project\\document\\Thong ke cac khoan thu nhap_" + time.getDayOfMonth() + " " + time.getMonth() + ".xlsx");
                     Path path = Paths.get(myNewFile.getAbsolutePath());
                     writeToExcell(showThuView.tableThu, path);//viết vào file
 

@@ -33,9 +33,7 @@ public class ChiDAO {
         }
     }
 
-    
-
-   public ArrayList<ChiModel> getAll(UserModel user) {
+    public ArrayList<ChiModel> getAll(UserModel user) {
         String sql = "select * from chi where uid=?";
         int x = user.getId();
         ResultSet rs;
@@ -51,13 +49,14 @@ public class ChiDAO {
                 chiModel.setAmountChi(rs.getDouble("amountchi"));
                 chiModel.setMucChi(rs.getString("mucchi"));
                 chiModel.setTimestampChi(rs.getTimestamp("datechi"));
-                
+
                 chiModels.add(chiModel);
             }
         } catch (Exception e) {
         }
         return chiModels;
     }
+
     public void add(ChiModel chi, UserModel user) {
         String sql = "INSERT INTO chi (namechi, mucchi, amountchi, datechi, uid) VALUES (?,?,?,?,?)";
 
@@ -87,7 +86,7 @@ public class ChiDAO {
             ps.setDouble(3, chi2.getAmountChi());
             ps.setTimestamp(4, chi2.getTimestampChi());
             ps.setInt(5, chi.getIdChi());
-            
+
             int executeUpdate = ps.executeUpdate();
             System.out.println(chi2.toString());
             System.out.println("Sửa thành công");
@@ -97,10 +96,8 @@ public class ChiDAO {
 
     }
 
-    
-
     public void delete(ChiModel chi) {
-       String sql = "DELETE FROM chi WHERE namechi = ? and mucchi = ? and amountchi = ? and datechi = ?";;
+        String sql = "DELETE FROM chi WHERE namechi = ? and mucchi = ? and amountchi = ? and datechi = ?";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -108,31 +105,28 @@ public class ChiDAO {
             ps.setString(2, chi.getMucChi());
             ps.setDouble(3, chi.getAmountChi());
             ps.setTimestamp(4, chi.getTimestampChi());
-            
 
             int executeUpdate = ps.executeUpdate();
-            
+
             System.out.println("Xoá thành công");
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }
 
     public void delete(int chiID) {
-       String sql = "DELETE FROM chi WHERE ID = ?";;
+        String sql = "DELETE FROM chi WHERE ID = ?";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, chiID);
-            
-            
 
             int executeUpdate = ps.executeUpdate();
-            
+
             System.out.println("Xoá thành công");
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }
 
     public ChiModel getByID(int id) {
@@ -149,8 +143,7 @@ public class ChiDAO {
                 chiModel.setAmountChi(rs.getDouble("amountchi"));
                 chiModel.setMucChi(rs.getString("mucchi"));
                 chiModel.setTimestampChi(rs.getTimestamp("datechi"));
-                
-                
+
             }
         } catch (Exception e) {
         }

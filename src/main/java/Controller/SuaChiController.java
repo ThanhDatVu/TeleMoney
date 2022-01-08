@@ -21,24 +21,25 @@ public class SuaChiController {
     private ChiModel chiModel;
     private ChiDAO chiDAO = null;
     MasterTeleMoneyView owner;
+
     public SuaChiController() {
-    
+
     }
 //    
 
     public SuaChiController(SuaChiView SuaChiView) {
-        
-         //To change body of generated methods, choose Tools | Templates.
+
+        //To change body of generated methods, choose Tools | Templates.
         viewSuaChi = SuaChiView;
         setEventSuaChi();
         viewSuaChi.setVisible(true);
         chiDAO = new ChiDAO();
         owner = viewSuaChi.owner;
-         
+
     }
 
     public void setEventSuaChi() {
-         viewSuaChi.btnDongYSuaChi.addActionListener((ActionEvent e) -> {
+        viewSuaChi.btnDongYSuaChi.addActionListener((ActionEvent e) -> {
             try {
                 viewSuaChi.dispose();
                 viewSuaChi.setchi();
@@ -52,6 +53,6 @@ public class SuaChiController {
                 ex.printStackTrace();
             }
         });
-    
-}
+
+    }
 }

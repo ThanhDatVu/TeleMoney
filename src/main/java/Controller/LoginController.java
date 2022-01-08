@@ -70,12 +70,12 @@ public class LoginController {
                             JOptionPane.showMessageDialog(null, "Tai khoan hoac mat khau sai");
                             return;
 
-                        }else{
+                        } else {
                             MasterTeleMoneyView master = new MasterTeleMoneyView(check);
                             master.setVisible(true);
                             loginView.dispose();
                         }
-                        
+
                     }
 
                 } catch (Exception ex) {

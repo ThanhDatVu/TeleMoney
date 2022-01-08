@@ -15,14 +15,14 @@ import lib.ButtonColumn;
 @SuppressWarnings("serial")
 public class NhanvienTableModel extends DefaultTableModel {
 
-    public static final Object[] TABLE_HEADER = {"Mã Nhân viên", "Họ và Tên", "Lương","",""};
+    public static final Object[] TABLE_HEADER = {"Mã Nhân viên", "Họ và Tên", "Lương", "", ""};
 
     public static final Object[][] DATA = {
-        {"AT912837", "Vũ Thị Bưởi", "28000000", "Xoá","Sửa"},};
+        {"AT912837", "Vũ Thị Bưởi", "28000000", "Xoá", "Sửa"},};
 
     public NhanvienTableModel() {
         super(DATA, TABLE_HEADER);
-        
+
     }
-    
+
 }

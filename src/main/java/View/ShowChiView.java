@@ -20,16 +20,18 @@ public class ShowChiView extends javax.swing.JFrame {
     ShowChiController showChiController;
     MasterTeleMoneyView master;
     UserModel acc;
+
     public ShowChiView() {
         initComponents();
     }
+
     public ShowChiView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
         this.master = master;
         this.acc = acc;
         showChiController = new ShowChiController(this, acc);
-        
+
     }
 
     /**

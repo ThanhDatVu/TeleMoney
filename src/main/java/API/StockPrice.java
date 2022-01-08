@@ -48,10 +48,10 @@ public class StockPrice {
         System.out.println(google.getHistory().get(0).getAdjClose());
         System.out.println(google.getHistory().get(1));
         System.out.println(google.getHistory().get(1).getAdjClose());
-        
-        Float change24h = 10000*(1-(google.getHistory().get(1).getAdjClose().floatValue()/google.getHistory().get(0).getAdjClose().floatValue()));
+
+        Float change24h = 10000 * (1 - (google.getHistory().get(1).getAdjClose().floatValue() / google.getHistory().get(0).getAdjClose().floatValue()));
         System.out.println(change24h);
-        Float rounded =(float) Math.round(change24h);
-        System.out.println(rounded/100 + "%");
+        Float rounded = (float) Math.round(change24h);
+        System.out.println(rounded / 100 + "%");
     }
 }

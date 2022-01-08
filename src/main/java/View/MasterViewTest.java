@@ -18,7 +18,7 @@ public class MasterViewTest extends javax.swing.JFrame {
     public MasterViewTest() {
         initComponents();
         setLocationRelativeTo(null);
-        
+
     }
 
     /**

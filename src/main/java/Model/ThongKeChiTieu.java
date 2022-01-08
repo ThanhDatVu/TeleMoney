@@ -9,6 +9,7 @@ package Model;
  * @author dat26
  */
 public class ThongKeChiTieu {
+
     double anUong;
     double diChuyen;
     double tienNha;
@@ -19,7 +20,5 @@ public class ThongKeChiTieu {
     double sucKhoe;
     double giaiTri;
     double khac;
- 
-
 
 }

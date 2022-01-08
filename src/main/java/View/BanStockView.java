@@ -32,32 +32,26 @@ public class BanStockView extends javax.swing.JFrame {
     StockDAO stockDAO;
     float giaNow;
     UserModel acc;
-    
+
     BanStockController banStockController;
-    
+
     public BanStockView() {
         stockDAO = new StockDAO();
-        
+
         initComponents();
         setLocationRelativeTo(null);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
-   
-
-    
-
-   
-
     public BanStockView(MasterTeleMoneyView master, MyStockBuyModel stockBuy, UserModel acc) {
         this.acc = acc;
         this.myStock = stockBuy;
         this.owner = master;
-        initComponents();               
+        initComponents();
         setLocationRelativeTo(null);
-        banStockController = new BanStockController(this , myStock ,acc);
-        stockDAO = new StockDAO();                       
-        this.setTitle("Ban thêm " + stockBuy.getSymbol());                
+        banStockController = new BanStockController(this, myStock, acc);
+        stockDAO = new StockDAO();
+        this.setTitle("Ban thêm " + stockBuy.getSymbol());
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
@@ -371,7 +365,7 @@ public class BanStockView extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(BanStockView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        
+
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -410,7 +404,4 @@ public class BanStockView extends javax.swing.JFrame {
 
     }
 
-   
-
-   
 }

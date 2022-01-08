@@ -15,18 +15,13 @@ import lib.ButtonColumn;
 @SuppressWarnings("serial")
 public class VayTienTableModel extends DefaultTableModel {
 
-    public static final Object[] TABLE_HEADER = {"ID","Tên", "Ngân hàng", "Số tiền (VNĐ)","Lãi suất (%)", "Kỳ hạn (tháng)","Ngày vay"};
+    public static final Object[] TABLE_HEADER = {"ID", "Tên", "Ngân hàng", "Số tiền (VNĐ)", "Lãi suất (%)", "Kỳ hạn (tháng)", "Ngày vay"};
 
-    public static final Object[][] DATA = {
-    };
+    public static final Object[][] DATA = {};
 
     public VayTienTableModel() {
         super(DATA, TABLE_HEADER);
-        
+
     }
-    
-    
-    
-    
-    
+
 }

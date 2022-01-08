@@ -23,24 +23,25 @@ public class SuaThuController {
     private ThuModel thuModel;
     private ThuDAO thuDAO = null;
     MasterTeleMoneyView owner;
+
     public SuaThuController() {
-    
+
     }
 //    
 
     public SuaThuController(SuaThuView SuaThuView) {
-        
-         //To change body of generated methods, choose Tools | Templates.
+
+        //To change body of generated methods, choose Tools | Templates.
         viewSuaThu = SuaThuView;
         setEventSuaThu();
         viewSuaThu.setVisible(true);
         thuDAO = new ThuDAO();
         owner = viewSuaThu.owner;
-         
+
     }
 
     public void setEventSuaThu() {
-         viewSuaThu.btnDongY.addActionListener((ActionEvent e) -> {
+        viewSuaThu.btnDongY.addActionListener((ActionEvent e) -> {
             try {
                 viewSuaThu.dispose();
                 viewSuaThu.setthu();
@@ -54,6 +55,6 @@ public class SuaThuController {
                 ex.printStackTrace();
             }
         });
-    
-}
+
+    }
 }

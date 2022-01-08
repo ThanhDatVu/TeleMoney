@@ -11,6 +11,7 @@ import java.sql.Timestamp;
  * @author xiaomi
  */
 public class VayTienModel {
+
     int id;
     private String ten;
     private String bank;
@@ -96,6 +97,5 @@ public class VayTienModel {
     public void setNgayvay(Timestamp ngayvay) {
         this.ngayvay = ngayvay;
     }
-    
-    
+
 }

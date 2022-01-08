@@ -63,17 +63,18 @@ public class StockDAO {
         }
         return myStockList;
     }
+
     public void updateMyStock(String symbol, MyStockBuyModel myNewStock) {
         //To change body of generated methods, choose Tools | Templates.
         String sql = "UPDATE MYSTOCK SET  SOLUONG = ?,GIABANDAU = ?, TONGBANDAU = ? WHERE SYMBOL = ?;";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            ps.setInt(1,myNewStock.getSoLuong() );
+            ps.setInt(1, myNewStock.getSoLuong());
 
-            ps.setFloat(2, myNewStock.getGiaBanDau() );
-            ps.setFloat(3, myNewStock.getSoLuong()*myNewStock.getGiaBanDau());
-            ps.setString(4,symbol );
+            ps.setFloat(2, myNewStock.getGiaBanDau());
+            ps.setFloat(3, myNewStock.getSoLuong() * myNewStock.getGiaBanDau());
+            ps.setString(4, symbol);
 
             int executeUpdate = ps.executeUpdate();
             System.out.println("mơi" + myNewStock.toString());
@@ -83,14 +84,15 @@ public class StockDAO {
         }
 
     }
+
     public void updateSoDu(float soDuMoi, UserModel user) {
         //To change body of generated methods, choose Tools | Templates.
         String sql = "UPDATE TONG SET  SODU =  ? WHERE UID = ?;";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            ps.setFloat(1, soDuMoi );
-            ps.setInt(2, user.getId() );
+            ps.setFloat(1, soDuMoi);
+            ps.setInt(2, user.getId());
 
             int executeUpdate = ps.executeUpdate();
             System.out.println("mơi" + user.toString());
@@ -100,6 +102,7 @@ public class StockDAO {
         }
 
     }
+
     public MyStockBuyModel getStockBySymbol(String s) {
         String sql = "select * from mystock where SYMBOL LIKE ?";
 
@@ -163,23 +166,22 @@ public class StockDAO {
             e.printStackTrace();
         }
     }
+
     public void delete(MyStockBuyModel myStock) {
-       String sql = "DELETE FROM MYSTOCK WHERE SYMBOL = ?";;
+        String sql = "DELETE FROM MYSTOCK WHERE SYMBOL = ?";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setString(1, myStock.getSymbol());
 
-            
-            
-
             int executeUpdate = ps.executeUpdate();
-            
+
             System.out.println("Xoá");
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }
+
     public ArrayList<MyStockBuyModel> getAllStockSymbol() {
         String sql = "select * from STOCK";
         ResultSet rs;
@@ -214,8 +216,6 @@ public class StockDAO {
             ps.setInt(4, myStock.getSoLuong());
             ps.setTimestamp(5, myStock.getTime());
             ps.setString(6, type);
-            
-            
 
             int executeUpdate = ps.executeUpdate();
             //System.out.println(myStock.toString());
@@ -224,6 +224,7 @@ public class StockDAO {
             e.printStackTrace();
         }
     }
+
     public ArrayList<MyTransModel> getAllTrans() {
         String sql = "select * from STOCKTRANS";
         ResultSet rs;

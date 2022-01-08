@@ -94,7 +94,6 @@ public class MyTransController {
 
     }
 
-
     public void setEventTrans() {
         System.out.println("Tao event");
 

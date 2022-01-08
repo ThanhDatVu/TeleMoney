@@ -12,9 +12,9 @@ import java.sql.Time;
  * @author dat26
  */
 public class ThuModel {
+
     int idThu;
 
-    
     String nameThu;
     String mucThu;
     Double amountThu;
@@ -28,6 +28,7 @@ public class ThuModel {
         return "ThuModel{" + "Ten khoan thu=" + nameThu + ", Danh muc=" + mucThu + ", So tien=" + amountThu + ","
                 + " Ngay=" + timeThu + "}";
     }
+
     public int getIdThu() {
         return idThu;
     }
@@ -43,6 +44,7 @@ public class ThuModel {
     public void setTimeThu(Timestamp timeThu) {
         this.timeThu = timeThu;
     }
+
     public ThuModel(String nameThu, String mucThu, Double amountThu, Timestamp timeThu) {
         this.nameThu = nameThu;
         this.mucThu = mucThu;
@@ -82,10 +84,4 @@ public class ThuModel {
         this.timeThu = timeThu;
     }
 
-   
-    
-
-   
-    
-    
 }

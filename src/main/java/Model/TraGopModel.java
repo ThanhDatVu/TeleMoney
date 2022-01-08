@@ -11,6 +11,7 @@ import java.sql.Timestamp;
  * @author xiaomi
  */
 public class TraGopModel {
+
     int id;
     private String ten;
     private String bank;
@@ -20,9 +21,9 @@ public class TraGopModel {
     private Timestamp time;
     private double tratruoc;
     private int ngaytragop;
-    
-    public TraGopModel(){
-        
+
+    public TraGopModel() {
+
     }
 
     public TraGopModel(String ten, String bank, double tongtien, double tienhangthang, int sothang, Timestamp time, double tratruoc, int ngaytragop) {
@@ -108,5 +109,4 @@ public class TraGopModel {
         this.tratruoc = tratruoc;
     }
 
-  
 }

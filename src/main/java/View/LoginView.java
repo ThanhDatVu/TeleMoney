@@ -269,7 +269,6 @@ public class LoginView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-
     private void btn_loginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_loginActionPerformed
         // TODO add your handling code here:
         //put your sql/your statements here to check for password and email if correct
@@ -277,7 +276,6 @@ public class LoginView extends javax.swing.JFrame {
         //also validate -
 
         // lets add timeout
-
     }//GEN-LAST:event_btn_loginActionPerformed
 
     private void txt_emailFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txt_emailFocusGained

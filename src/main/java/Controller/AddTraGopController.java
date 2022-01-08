@@ -42,7 +42,7 @@ public class AddTraGopController {
         this.traGopView = traGopView;
         this.acc = acc;
         traGopView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        soDu = stockDAO.getSoDu(acc);     
+        soDu = stockDAO.getSoDu(acc);
         setEventTraGop();
         traGopView.setVisible(true);
         //setData();
@@ -64,7 +64,6 @@ public class AddTraGopController {
 //    
 //    
 //    }
-
     public void setEventTraGop() {
         System.out.println("Tao event");
         traGopView.btnThemTraGop.addActionListener(new ActionListener() {
@@ -87,7 +86,7 @@ public class AddTraGopController {
                         double a = Double.parseDouble(traGopView.txtTien.getText());
                         int b = Integer.parseInt(traGopView.cboThang.getSelectedItem().toString());
                         double c = Double.parseDouble(traGopView.txtTraTruoc.getText());
-                        traGopModel.setTienhangthang(((a-c)/b));
+                        traGopModel.setTienhangthang(((a - c) / b));
                         traGopModel.setSothang(b);
                         traGopModel.setTratruoc(c);
                         Timestamp time = new Timestamp(System.currentTimeMillis());

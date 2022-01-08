@@ -4,8 +4,6 @@ package View;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-
-
 import Controller.AddVayTienController;
 import DAO.GuiTienDAO;
 import DAO.VayTienDAO;
@@ -25,6 +23,7 @@ public class VayTienView extends javax.swing.JFrame {
     UserModel acc;
     VayTienDAO vayTienDAO;
     AddVayTienController addVayTienController = null;
+
     public VayTienView() {
         initComponents();
     }
@@ -273,7 +272,7 @@ public class VayTienView extends javax.swing.JFrame {
 
     private void btnThemVayTienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemVayTienActionPerformed
         // TODO add your handling code here:
-        
+
     }//GEN-LAST:event_btnThemVayTienActionPerformed
 
     private void btnThemVayTienMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemVayTienMouseClicked

@@ -129,5 +129,5 @@ public class MyStockBuyModel {
     public String toString() {
         return "MyStockBuyModel{" + "symbol=" + symbol + ", name=" + name + ", soLuong=" + soLuong + ", tongBanDau=" + tongBanDau + ", giaBanDau=" + giaBanDau + ", time=" + time + '}';
     }
-    
+
 }

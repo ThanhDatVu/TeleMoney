@@ -20,14 +20,15 @@ public class SuaChiView extends javax.swing.JFrame {
     /**
      * Creates new form SuaChiView
      */
-    public UserModel acc ;
+    public UserModel acc;
     public MasterTeleMoneyView owner;
     public ChiModel chi;
     public ChiModel chi2;
     SuaChiController suaChiController;
+
     public SuaChiView() {
         initComponents();
-       
+
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 
@@ -35,7 +36,7 @@ public class SuaChiView extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         setText(chi);
-        this.acc=acc;
+        this.acc = acc;
         this.chi = chi;
         owner = main;
         this.setTitle("Sửa khoản chi" + chi.getIdChi());
@@ -262,12 +263,11 @@ public class SuaChiView extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private void setText(ChiModel chi){
+private void setText(ChiModel chi) {
         tenSuaChi.setText(chi.getNameChi());
         danhMucSuaChi.setSelectedItem(chi.getMucChi());
         tienSuaChi.setText(String.valueOf(chi.getAmountChi()));
-        
-    
+
     }
     private void btnSuanhanvienActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSuanhanvienActionPerformed
 
@@ -294,15 +294,16 @@ private void setText(ChiModel chi){
         // TODO add your handling code here:
 
     }//GEN-LAST:event_btnThoatSuaChiActionPerformed
-public void setchi(){
+    public void setchi() {
         chi2 = new ChiModel();
         chi2.setNameChi(tenSuaChi.getText());
         chi2.setMucChi(danhMucSuaChi.getSelectedItem().toString());
         chi2.setAmountChi(Double.valueOf(tienSuaChi.getText()));
         Timestamp time = new Timestamp(System.currentTimeMillis());
         chi2.setTimestampChi(time);
-        
+
     }
+
     /**
      * @param args the command line arguments
      */

@@ -49,6 +49,7 @@ import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
 public class StockController {
+
     DecimalFormat df = new DecimalFormat("0.00");
     private MasterTeleMoneyView master;
     private UserModel acc;
@@ -57,6 +58,7 @@ public class StockController {
     BigDecimal usd;
     MyStockBuyTableModel stockModel = new MyStockBuyTableModel();
     Vector stockTableData;
+
     public StockController(MasterTeleMoneyView master, UserModel acc) {
         try {
             System.out.println("Tao controller stock");
@@ -68,10 +70,10 @@ public class StockController {
             setTableButton();
             master.setVisible(true);
             stockDAO = new StockDAO();
-            
+
             MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();
             setDataTable();
-            
+
             //setTableButton();
         } catch (IOException ex) {
             Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
@@ -90,8 +92,8 @@ public class StockController {
         dataSet.setValue("BITCOIN 29%", 29);
         dataSet.setValue("APPLE 36%", 36);
         dataSet.setValue("Tesla 25%", 25);
-        dataSet.setValue("DOGECOIN 15%",15 );
-       
+        dataSet.setValue("DOGECOIN 15%", 15);
+
         // based on the dataset we create the chart
         JFreeChart pieChart = ChartFactory.createPieChart3D("chart", dataSet, true, true, false);
         PiePlot plot = (PiePlot) pieChart.getPlot();
@@ -101,39 +103,37 @@ public class StockController {
         // Adding chart into a chart panel
         ChartPanel chartPanel = new ChartPanel(pieChart);
         chartPanel.setVisible(true);
-        
-       
-        
+
         TableColumn col = master.tableDanhMuc.getColumnModel().getColumn(4);
         col.setCellRenderer(new MyRenderer(Color.red, Color.green));
         MyStockBuyTableModel tableModel = (MyStockBuyTableModel) master.tableDanhMuc.getModel();
         ArrayList<MyStockBuyModel> myStockList = new ArrayList<>();
         myStockList = stockDAO.getAll();
         tableModel.setRowCount(0);
-        for (int i = 0; i < myStockList.size(); i++)
-        if(myStockList.get(i).getSoLuong()>0 ){
-            stock = YahooFinance.get(myStockList.get(i).getSymbol());
-            long giaTriHienTai = (long) ((Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0);
-            tableModel.addRow(new Object[]{
-                myStockList.get(i).getSymbol(),
-                myStockList.get(i).getSoLuong(),
-                myStockList.get(i).getGiaBanDau(),
-                (Math.round(stock.getQuote().getPrice().floatValue() * 100.0)) / 100.0,
-                myStockList.get(i).get24hchange(),
-                (Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0,
-                df.format(((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) > -1)
-                    && ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) < 1) 
-                       ? 0 : ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())))),
-                    
-                "Mua thêm",
-                "Bán"
+        for (int i = 0; i < myStockList.size(); i++) {
+            if (myStockList.get(i).getSoLuong() > 0) {
+                stock = YahooFinance.get(myStockList.get(i).getSymbol());
+                long giaTriHienTai = (long) ((Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0);
+                tableModel.addRow(new Object[]{
+                    myStockList.get(i).getSymbol(),
+                    myStockList.get(i).getSoLuong(),
+                    myStockList.get(i).getGiaBanDau(),
+                    (Math.round(stock.getQuote().getPrice().floatValue() * 100.0)) / 100.0,
+                    myStockList.get(i).get24hchange(),
+                    (Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0,
+                    df.format(((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) > -1)
+                    && ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) < 1)
+                    ? 0 : ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())))),
+                    "Mua thêm",
+                    "Bán"
 
-            });
-            stockTableData = (Vector) ((DefaultTableModel) master.tableDanhMuc.getModel()).getDataVector().clone();
+                });
+                stockTableData = (Vector) ((DefaultTableModel) master.tableDanhMuc.getModel()).getDataVector().clone();
 
-        }else{
-            //TO DO xoas
-            stockDAO.delete(myStockList.get(i));
+            } else {
+                //TO DO xoas
+                stockDAO.delete(myStockList.get(i));
+            }
         }
 
     }
@@ -202,16 +202,15 @@ public class StockController {
             }
 
             private void search() {
-                searchTableContents(master.txtLocDauTu.getText(), master.tableDanhMuc ,stockTableData );
+                searchTableContents(master.txtLocDauTu.getText(), master.tableDanhMuc, stockTableData);
             }
         });
-        
-        
+
         master.btnShowTrans.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-               MyTransView myTransView = new MyTransView(master, acc);
-               myTransView.setVisible(true);
-            } 
+                MyTransView myTransView = new MyTransView(master, acc);
+                myTransView.setVisible(true);
+            }
         });
     }
 
@@ -230,7 +229,7 @@ public class StockController {
                 stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
                 stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
                 //System.out.println("alo" + table.getValueAt(modelRow, 3));
-                MuaStockView muaStockView = new MuaStockView(master, stockBuy,acc);
+                MuaStockView muaStockView = new MuaStockView(master, stockBuy, acc);
                 muaStockView.setVisible(true);
                 //stockDAO.delete(stockBuy);
                 //((DefaultTableModel) table.getModel()).removeRow(modelRow);
@@ -247,8 +246,8 @@ public class StockController {
                 MyStockBuyModel stockBuy = new MyStockBuyModel();
                 stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
                 stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
-                stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
-                BanStockView banStockView = new BanStockView(master, stockBuy,acc);
+                stockBuy.setGiaBanDau((float) (table.getValueAt(modelRow, 2)));
+                BanStockView banStockView = new BanStockView(master, stockBuy, acc);
             }
         };
 
@@ -263,6 +262,7 @@ public class StockController {
         btnBan.setMnemonic(KeyEvent.VK_D);
         System.out.println("Tao xong nut jtable");
     }
+
     class MyRenderer extends DefaultTableCellRenderer {
 
         Color red, green;
@@ -291,6 +291,7 @@ public class StockController {
             return cell;
         }
     }
+
     public void searchTableContents(String searchString, JTable table, Vector OGVector) {
         DefaultTableModel currtableModel = (DefaultTableModel) table.getModel();
         //To empty the table before search
@@ -308,5 +309,5 @@ public class StockController {
 
         }
     }
-    
+
 }

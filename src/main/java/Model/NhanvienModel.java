@@ -9,6 +9,7 @@ package Model;
  * @author dat26
  */
 public class NhanvienModel {
+
     String maNV;
     String hoTen;
     String luong;
@@ -50,7 +51,5 @@ public class NhanvienModel {
     public void setLuong(String luong) {
         this.luong = luong;
     }
-    
-    
-    
+
 }

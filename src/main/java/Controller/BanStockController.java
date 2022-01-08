@@ -95,11 +95,11 @@ public class BanStockController {
             stock = YahooFinance.get(myStock.getSymbol());
             BigDecimal giaTriHienTai = stock.getQuote().getPrice();
             banStockView.textGiaNow.setText(giaTriHienTai.toString());
-            
+
             banStockView.textGiaNow.setEditable(false);
             banStockView.txtSymbol.setEditable(false);
             banStockView.textSoLuongBanDau.setEditable(false);
-            
+
             banStockView.textGiaBanTB.setText(giaTriHienTai.toString());
         } catch (IOException ex) {
             Logger.getLogger(BanStockController.class.getName()).log(Level.SEVERE, null, ex);
@@ -210,7 +210,7 @@ public class BanStockController {
         banStockView.btnThemStock.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 double tongBanVND = Double.parseDouble(banStockView.txtTongBanVND.getText());
                 if (Integer.parseInt(banStockView.textSoLuongBanRa.getText()) > myStock.getSoLuong()) {
                     JOptionPane.showMessageDialog(null, "Vượt quá số lượng hiện có");
@@ -219,7 +219,7 @@ public class BanStockController {
                             + banStockView.txtSymbol.getText() + " với tổng giá trị "
                             + banStockView.txtTongBanVND.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_CANCEL_OPTION);
                     if (opt == 0) {
-                        float giaCuoi=0;
+                        float giaCuoi = 0;
                         float giaMoi, giaCu;
                         int soMoi, soCu;
                         giaCu = myStock.getGiaBanDau();
@@ -231,18 +231,17 @@ public class BanStockController {
                         myTrans.setTongBanDau(Float.parseFloat(banStockView.txtTongBanUSD.getText()));
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         myTrans.setTime(time);
-                        System.out.println("trans "+ myTrans.toString());
+                        System.out.println("trans " + myTrans.toString());
                         stockDAO.addTrans(myTrans, acc, "ban");
                         giaMoi = myTrans.getGiaBanDau();
                         soMoi = myTrans.getSoLuong();
                         giaCuoi = giaCu;
                         myStock.setGiaBanDau(giaCuoi);
                         System.out.println("gia moi la: " + giaCuoi);
-                        myStock.setSoLuong(soCu-soMoi);
+                        myStock.setSoLuong(soCu - soMoi);
                         stockDAO.updateMyStock(myStock.getSymbol(), myStock);
                         System.out.println("mýTOCK moi " + myStock.toString());
                         banStockView.owner.soDuKhaDung = banStockView.owner.soDuKhaDung + Float.parseFloat(banStockView.txtTongBanVND.getText());
-                        banStockView.owner.refreshTabDauTu();
                         banStockView.owner.refreshTabDauTu();
                         banStockView.dispose();
                     }

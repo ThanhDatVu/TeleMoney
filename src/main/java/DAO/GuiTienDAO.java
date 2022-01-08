@@ -20,9 +20,10 @@ import java.util.ArrayList;
  * @author xiaomi
  */
 public class GuiTienDAO {
+
     private Connection con;
     private UserModel userModel;
-    
+
     public GuiTienDAO() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -34,8 +35,8 @@ public class GuiTienDAO {
             System.out.println(e);
         }
     }
-    
-    public void add(GuiTienModel guiTien, UserModel userModel){
+
+    public void add(GuiTienModel guiTien, UserModel userModel) {
         String sql = "INSERT INTO `chovay` (`uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngaychovay`, `ngaythulai`) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -47,7 +48,7 @@ public class GuiTienDAO {
             ps.setDouble(6, guiTien.getKyhan());
             ps.setTimestamp(7, guiTien.getNgaygui());
             ps.setInt(8, guiTien.getNgaythulai());
-            
+
             int executeUpdate = ps.executeUpdate();
             System.out.println(guiTien.toString());
             System.out.println("thêm thành công");
@@ -55,7 +56,7 @@ public class GuiTienDAO {
             e.printStackTrace();
         }
     }
-    
+
     public ArrayList<GuiTienModel> getAll(UserModel user) {
         String sql = "select * from chovay where uid=?";
         int x = user.getId();
@@ -80,18 +81,18 @@ public class GuiTienDAO {
         }
         return guiTienModels;
     }
-    
+
     public void delete(GuiTienModel guiTienModel, UserModel acc) {
-       String sql = "DELETE FROM chovay WHERE uid = ?, ten = ?, tiengoc=?";;
+        String sql = "DELETE FROM chovay WHERE uid = ?, ten = ?, tiengoc=?";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, acc.getId());
             ps.setString(2, guiTienModel.getTen());
             ps.setDouble(3, guiTienModel.getTiengoc());
-            int executeUpdate = ps.executeUpdate();           
+            int executeUpdate = ps.executeUpdate();
             System.out.println("Xoá");
         } catch (Exception e) {
             e.printStackTrace();
-        } 
+        }
     }
 }

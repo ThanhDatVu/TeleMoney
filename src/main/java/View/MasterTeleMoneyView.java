@@ -57,7 +57,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
      */
     DecimalFormat df = new DecimalFormat("0");
     StockDAO stockDAO = new StockDAO();
-    
+
     UserModel user;
     CardLayout cardLayout;
     TableColumn col;
@@ -77,11 +77,10 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         ChartTest();
         cardLayout = (CardLayout) (pnlCards.getLayout());
         setLocationRelativeTo(null);
-        
+
 //        col = tableDanhMuc.getColumnModel().getColumn(2);
 //        //define the renderer
 //        col.setCellRenderer(new MasterTeleMoneyView.MyRenderer(Color.red, Color.green));
-
     }
 
     public MasterTeleMoneyView(UserModel user) throws IOException {
@@ -91,12 +90,11 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         this.cardLayout = (CardLayout) (pnlCards.getLayout());
         this.stockController = new StockController(this, user);
         this.vayNoController = new VayNoController(this, user);
-        
-        
+
         this.thuChiController1 = new ThuChiController1(this, user);
         this.thuChiController2 = new ThuChiController2(this, user);
         this.thongKeController = new ThongKeController(this, user);
-        
+
         this.setTitle("TELEMONEY");
         setUsername();
         soDuKhaDung = stockDAO.getSoDu(user);
@@ -106,16 +104,17 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         setSumText();
         pack();
         System.out.println("user ID " + user.getId());
-        
-        
+
     }
 
     private void myInitComponent() throws IOException {
-        
+
     }
+
     public void ChartTest() {
-        
+
     }
+
     private void setUsername() {
         txtUsername.setText(user.getUsername());
     }
@@ -129,6 +128,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+
     public void refreshTabThuChi() {
         try {
             setTiGiaSoDu();
@@ -136,17 +136,17 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         } catch (IOException ex) {
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
-    }public void refreshTabVayNo() {
+    }
+
+    public void refreshTabVayNo() {
         try {
             setTiGiaSoDu();
-            
+
             vayNoController.setDataTable();
         } catch (IOException ex) {
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -1239,26 +1239,25 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             labelVND.setText("1 USD = 22835 VND");
             Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         labelSoDauTu.setText(String.valueOf(df.format(soDuKhaDung)) + " VND");
         labelSoDuThongKe.setText(String.valueOf(df.format(soDuKhaDung)) + " VND");
         labelSoDuChiTieu.setText("Số dư khả dựng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
         labelSoDuVayNo.setText("Số dư khả dựng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
-        stockDAO.updateSoDu((float)soDuKhaDung, user);
+        stockDAO.updateSoDu((float) soDuKhaDung, user);
     }
 
-    public void setSumText() {       
+    public void setSumText() {
         double total = 0, totalReturn = 0;
         int prow = 5;
 
-        System.out.println(tableDanhMuc.getValueAt(0, prow).toString());
         for (int i = 0; i <= tableDanhMuc.getRowCount() - 1; i++) {
             total = total + Double.parseDouble(tableDanhMuc.getValueAt(i, 5).toString());
             totalReturn = totalReturn + Double.parseDouble(tableDanhMuc.getValueAt(i, 6).toString());
 
         }
-        System.out.println(total);
-        System.out.println(totalReturn);
+        System.out.println("total stock:" + total);
+        System.out.println("total return:" + totalReturn);
         labelTotalStock.setText(String.valueOf(Math.round(total)) + " USD");
         labelReturn2.setText(String.valueOf(Math.round(total)) + " USD");
         labelTotalReturn.setText(String.valueOf(Math.round(totalReturn)) + " USD");

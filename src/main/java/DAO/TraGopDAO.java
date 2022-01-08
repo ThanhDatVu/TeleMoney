@@ -21,9 +21,10 @@ import java.util.ArrayList;
  * @author xiaomi
  */
 public class TraGopDAO {
+
     private Connection con;
     private UserModel userModel;
-    
+
     public TraGopDAO() {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -35,8 +36,8 @@ public class TraGopDAO {
             System.out.println(e);
         }
     }
-    
-    public void add(TraGopModel traGop, UserModel acc){
+
+    public void add(TraGopModel traGop, UserModel acc) {
         String sql = "INSERT INTO `tragop` (`uid`, `name`, `namecongty`, `tongtien`, `sothang`, `tienhangthang`, `time`, `tratruoc`, `ngaytragop`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -49,7 +50,7 @@ public class TraGopDAO {
             ps.setTimestamp(7, traGop.getTime());
             ps.setDouble(8, traGop.getTratruoc());
             ps.setInt(8, traGop.getNgaytragop());
-            
+
             int executeUpdate = ps.executeUpdate();
             System.out.println(traGop.toString());
             System.out.println("thêm thành công");
@@ -57,7 +58,7 @@ public class TraGopDAO {
             e.printStackTrace();
         }
     }
-    
+
     public ArrayList<TraGopModel> getAll(UserModel user) {
         String sql = "select * from tragop where uid=?";
         int x = user.getId();

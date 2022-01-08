@@ -11,6 +11,7 @@ import java.sql.Timestamp;
  * @author dat26
  */
 public class ChiModel {
+
     int idChi;
     String nameChi;
     String mucChi;
@@ -81,5 +82,4 @@ public class ChiModel {
         this.timeChi = timeChi;
     }
 
-    
 }

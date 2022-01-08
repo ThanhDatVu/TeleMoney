@@ -15,18 +15,13 @@ import lib.ButtonColumn;
 @SuppressWarnings("serial")
 public class GuiTienTableModel extends DefaultTableModel {
 
-    public static final Object[] TABLE_HEADER = {"ID","Tên", "Ngân hàng", "Số tiền (VNĐ)","Lãi suất (%)", "Kỳ hạn (tháng)","Ngày gửi"};
+    public static final Object[] TABLE_HEADER = {"ID", "Tên", "Ngân hàng", "Số tiền (VNĐ)", "Lãi suất (%)", "Kỳ hạn (tháng)", "Ngày gửi"};
 
-    public static final Object[][] DATA = {
-    };
+    public static final Object[][] DATA = {};
 
     public GuiTienTableModel() {
         super(DATA, TABLE_HEADER);
-        
+
     }
-    
-    
-    
-    
-    
+
 }

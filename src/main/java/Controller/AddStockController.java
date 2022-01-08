@@ -155,25 +155,25 @@ public class AddStockController {
             public void warn() throws NumberFormatException {
                 double giaMuaTB;
                 double soLuong;
-                if (master.textSoLuong.getText() == null || master.textGiaMuaTB.getText() == null ||
-                        master.textSoLuong.getText() == "" || master.textGiaMuaTB.getText() == "" ||
-                        master.textSoLuong.getText() == "0" || master.textGiaMuaTB.getText() == "0") {
+                if (master.textSoLuong.getText() == null || master.textGiaMuaTB.getText() == null
+                        || master.textSoLuong.getText() == "" || master.textGiaMuaTB.getText() == ""
+                        || master.textSoLuong.getText() == "0" || master.textGiaMuaTB.getText() == "0") {
                     giaMuaTB = 0;
                     soLuong = 0;
                     System.out.println("00000");
                 } else {
                     System.out.println("gia mua tb" + master.textGiaMuaTB.getText());
                     soLuong = Double.parseDouble(master.textSoLuong.getText());
-                    
+
                     giaMuaTB = Double.parseDouble(master.textGiaMuaTB.getText());
-                    
+
                 }
                 if (soLuong > 0 && giaMuaTB > 0) {
                     master.txtTongMuaUSD.setEditable(true);
                     master.txtTongMuaVND.setEditable(true);
-                    BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong)).setScale(2,RoundingMode.HALF_UP);
+                    BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong)).setScale(2, RoundingMode.HALF_UP);
                     master.txtTongMuaUSD.setText(String.valueOf(bigDecimal.toString()));
-                    bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong * usd.doubleValue())).setScale(2,RoundingMode.HALF_UP);
+                    bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong * usd.doubleValue())).setScale(2, RoundingMode.HALF_UP);
                     master.txtTongMuaVND.setText(bigDecimal.toString());
 
                     master.txtTongMuaUSD.setEditable(false);
@@ -211,9 +211,9 @@ public class AddStockController {
                     if (soLuong > -1 && giaMuaTB > -1) {
                         master.txtTongMuaUSD.setEditable(true);
                         master.txtTongMuaVND.setEditable(true);
-                        BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong)).setScale(2,RoundingMode.HALF_UP);
+                        BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong)).setScale(2, RoundingMode.HALF_UP);
                         master.txtTongMuaUSD.setText(String.valueOf(bigDecimal.toString()));
-                        bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong * usd.doubleValue())).setScale(2,RoundingMode.HALF_UP);
+                        bigDecimal = new BigDecimal(String.valueOf(giaMuaTB * soLuong * usd.doubleValue())).setScale(2, RoundingMode.HALF_UP);
                         master.txtTongMuaVND.setText(bigDecimal.toString());
 
                         master.txtTongMuaUSD.setEditable(false);
@@ -248,7 +248,7 @@ public class AddStockController {
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         myStock.setTime(time);
                         stockDAO.add(myStock);
-                        stockDAO.addTrans(myStock,acc,"mua");
+                        stockDAO.addTrans(myStock, acc, "mua");
                         System.out.println("mới" + myStock.toString());
                         master.owner.soDuKhaDung = master.owner.soDuKhaDung - Float.parseFloat(master.txtTongMuaVND.getText());
                         master.owner.refreshTabDauTu();

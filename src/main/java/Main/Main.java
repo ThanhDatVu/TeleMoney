@@ -25,10 +25,10 @@ public class Main {
      */
     public static void main(String[] args) {
         FlatLightLaf.setup();
-       
+
         LoginController loginController = new LoginController();
 //         NhanvienController nvController = new NhanvienController();
-        
+
         // new DangNhapController(viewlogin).setEventLogin();
     }
 

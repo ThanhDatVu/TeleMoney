@@ -33,7 +33,7 @@ public class AddStockView extends javax.swing.JFrame {
     UserModel acc;
     ArrayList<MyStockBuyModel> stList;
     AddStockController addStockController;
-    
+
     public AddStockView() {
         stockDAO = new StockDAO();
         this.stList = stockDAO.getAllStockSymbol();
@@ -43,9 +43,9 @@ public class AddStockView extends javax.swing.JFrame {
     }
 
     public AddStockView(MasterTeleMoneyView main) throws IOException {
-        
+
         initComponents();
-        
+
         setLocationRelativeTo(null);
         stockDAO = new StockDAO();
         owner = main;
@@ -57,16 +57,15 @@ public class AddStockView extends javax.swing.JFrame {
     }
 
     public AddStockView(MasterTeleMoneyView main, UserModel acc) throws IOException {
-        
+
         initComponents();
-       // AutoCompletion.enable(comboStock);
-        
+        // AutoCompletion.enable(comboStock);
+
         setLocationRelativeTo(null);
         stockDAO = new StockDAO();
         this.stList = stockDAO.getAllStockSymbol();
         owner = main;
-        
-       
+
         this.setTitle("Thêm danh mục đầu tư ");
         this.acc = acc;
         addStockController = new AddStockController(this, acc);
@@ -414,5 +413,4 @@ public class AddStockView extends javax.swing.JFrame {
 
     }
 
-   
 }

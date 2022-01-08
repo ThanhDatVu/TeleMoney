@@ -15,19 +15,14 @@ import lib.ButtonColumn;
 @SuppressWarnings("serial")
 public class MyStockTransTableModel extends DefaultTableModel {
 
-    public static final Object[] TABLE_HEADER = {"Loại giao dịch", "Tên" , "Số lượng", "Giá giao dịch TB ($)","Thời gian"};
+    public static final Object[] TABLE_HEADER = {"Loại giao dịch", "Tên", "Số lượng", "Giá giao dịch TB ($)", "Thời gian"};
 
-    public static final Object[][] DATA = {
-       // {"APPL (Apple)", 100, 24000, 26000,+5,26000000,"Mua thêm", "Bán"},
+    public static final Object[][] DATA = { // {"APPL (Apple)", 100, 24000, 26000,+5,26000000,"Mua thêm", "Bán"},
     };
 
     public MyStockTransTableModel() {
         super(DATA, TABLE_HEADER);
-        
+
     }
-    
-    
-    
-    
-    
+
 }
