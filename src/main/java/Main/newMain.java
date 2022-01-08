@@ -7,6 +7,7 @@ package Main;
 import Controller.LoginController;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
+import View.LoginView;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -35,7 +36,7 @@ public class newMain {
         } catch (UnsupportedLookAndFeelException ex) {
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
-//        LoginController loginController = new LoginController();
+        LoginView login = new LoginView();
 //        LocalDateTime time;
 //        time = LocalDateTime.now();
 //       // MyStockBuyModel mystock = new MyStockBuyModel("abc", "abc company", 7 , (float) 8.9,time );

@@ -5,6 +5,7 @@
  */
 package View;
 
+import Controller.LoginController;
 import Model.UserModel;
 import java.awt.Frame;
 import java.awt.event.ActionListener;
@@ -23,9 +24,12 @@ public class LoginView extends javax.swing.JFrame {
     /**
      * Creates new form Home17
      */
-    public LoginView() {
+    LoginController loginController;
 
+    public LoginView() {
         initComponents();
+        loginController = new LoginController(this);
+
         this.setLocationRelativeTo(null);
 
     }

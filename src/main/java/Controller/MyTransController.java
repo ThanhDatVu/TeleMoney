@@ -25,6 +25,7 @@ import java.math.BigDecimal;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -101,8 +102,9 @@ public class MyTransController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 try {
-                    String stringPath = "D:\\Project\\document\\MyTrans.xlsx";
-                    Path path = Paths.get(stringPath);
+                    LocalDateTime time = LocalDateTime.now();
+                    File myNewFile = new File("D:\\Project\\document\\Thong ke cac giao dich dau tu_" + time.getDayOfMonth() + " " + time.getMonth() + ".xlsx");
+                    Path path = Paths.get(myNewFile.getAbsolutePath());
                     writeToExcell(myTransView.tableTrans, path);//viết vào file
 
                     File file = new File("D:\\Project\\document\\");

@@ -30,12 +30,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPane1" alignment="0" pref="1238" max="32767" attributes="0"/>
+          <Component id="jSplitPane1" alignment="0" pref="1250" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jSplitPane1" alignment="0" pref="983" max="32767" attributes="0"/>
+          <Component id="jSplitPane1" alignment="0" pref="801" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -53,6 +53,9 @@
               <Dimension value="[199, 200]"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
           <Constraints>
             <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout" value="org.netbeans.modules.form.compat2.layouts.support.JSplitPaneSupportLayout$JSplitPaneConstraintsDescription">
               <JSplitPaneConstraints position="bottom"/>
@@ -138,7 +141,7 @@
                                   <Component id="labelSoDuChiTieu" min="-2" pref="294" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="760" max="32767" attributes="0"/>
+                          <EmptySpace pref="732" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jScrollPane6" alignment="0" max="32767" attributes="0"/>
                   </Group>
@@ -178,7 +181,7 @@
                           <Component id="jScrollPane6" min="-2" pref="149" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnShowChi" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="1174" max="32767" attributes="0"/>
+                          <EmptySpace pref="152" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -473,9 +476,8 @@
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace min="26" pref="26" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Component id="labelRefresh" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace pref="388" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                   <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="355" pref="355" max="-2" attributes="0"/>
                               </Group>
@@ -512,9 +514,9 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
                           <Component id="btnThemStock" min="-2" pref="221" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="btnShowTrans" min="-2" pref="221" max="-2" attributes="0"/>
-                          <EmptySpace max="32767" attributes="0"/>
+                          <EmptySpace pref="101" max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel5" max="32767" attributes="0"/>
                               <Component id="jLabel14" max="32767" attributes="0"/>
@@ -537,10 +539,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="3" attributes="0">
-                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="labelRefresh" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
+                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -550,7 +549,7 @@
                               <Component id="labelVND" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace pref="982" max="32767" attributes="0"/>
+                          <EmptySpace max="32767" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="txtLocDauTu" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="btnLoc" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -670,19 +669,6 @@
                     <Property name="text" type="java.lang.String" value="VND"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JLabel" name="labelRefresh">
-                  <Properties>
-                    <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-                      <Image iconType="3" name="/refresh_30px.png"/>
-                    </Property>
-                  </Properties>
-                  <Events>
-                    <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelRefreshMousePressed"/>
-                  </Events>
-                  <AuxValues>
-                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
-                  </AuxValues>
-                </Component>
                 <Component class="javax.swing.JButton" name="btnThemStock">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -690,9 +676,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Th&#xea;m danh m&#x1ee5;c &#x111;&#x1ea7;u t&#x1b0;"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnThemStockActionPerformed"/>
-                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
                 <Component class="javax.swing.JLabel" name="jLabel5">
                   <Properties>
@@ -749,17 +735,11 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="Xem l&#x1ecb;ch s&#x1eed; giao d&#x1ecb;ch"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnShowTransActionPerformed"/>
-                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
                 </Component>
                 <Component class="javax.swing.JTextField" name="txtLocDauTu">
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLocDauTuActionPerformed"/>
-                  </Events>
                   <AuxValues>
                     <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                   </AuxValues>
@@ -796,7 +776,7 @@
                                   <Component id="jScrollPane2" min="-2" pref="245" max="-2" attributes="0"/>
                               </Group>
                           </Group>
-                          <EmptySpace pref="506" max="32767" attributes="0"/>
+                          <EmptySpace pref="478" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -810,7 +790,7 @@
                           </Group>
                           <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
                           <Component id="btnDangXuat" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="1490" max="32767" attributes="0"/>
+                          <EmptySpace pref="468" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
@@ -849,9 +829,9 @@
                     </Property>
                     <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng xu&#x1ea5;t"/>
                   </Properties>
-                  <Events>
-                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnDangXuatActionPerformed"/>
-                  </Events>
+                  <AuxValues>
+                    <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                  </AuxValues>
                 </Component>
               </SubComponents>
             </Container>
@@ -1070,9 +1050,6 @@
                         </Property>
                         <Property name="text" type="java.lang.String" value="Th&#xea;m"/>
                       </Properties>
-                      <Events>
-                        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="btnThemTKMouseClicked"/>
-                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
@@ -1167,9 +1144,6 @@
                           <Font name="Segoe UI Semilight" size="11" style="0"/>
                         </Property>
                       </Properties>
-                      <Events>
-                        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtLocVayActionPerformed"/>
-                      </Events>
                       <AuxValues>
                         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                       </AuxValues>
@@ -1329,11 +1303,11 @@
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" attributes="0">
                               <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="pnlThongKeText" min="-2" max="-2" attributes="0"/>
-                                  <Component id="pnlThongKeChiTieu" alignment="0" min="-2" pref="982" max="-2" attributes="0"/>
-                                  <Component id="pnlThongKeDauTu" alignment="0" min="-2" pref="982" max="-2" attributes="0"/>
-                                  <Component id="pnlThongKeVayNo" alignment="0" min="-2" pref="982" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                  <Component id="pnlThongKeChiTieu" alignment="0" pref="982" max="32767" attributes="0"/>
+                                  <Component id="pnlThongKeDauTu" alignment="0" pref="982" max="32767" attributes="0"/>
+                                  <Component id="pnlThongKeVayNo" alignment="0" pref="982" max="32767" attributes="0"/>
+                                  <Component id="pnlThongKeText" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace pref="97" max="32767" attributes="0"/>
                           </Group>
@@ -1408,9 +1382,9 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel22" alignment="0" pref="141" max="32767" attributes="0"/>
+                                              <Component id="jLabel22" alignment="0" max="32767" attributes="0"/>
                                               <Component id="jLabel20" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel21" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="jLabel21" alignment="0" pref="141" max="32767" attributes="0"/>
                                               <Component id="labelSoDuThongKe" alignment="1" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -1437,13 +1411,8 @@
                                           <Component id="jLabel24" min="-2" pref="123" max="-2" attributes="0"/>
                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                       </Group>
-                                      <Group type="102" attributes="0">
-                                          <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="labelReturn2" min="-2" pref="130" max="-2" attributes="0"/>
-                                              <Component id="labelTotalReturn2" min="-2" pref="117" max="-2" attributes="0"/>
-                                          </Group>
-                                          <EmptySpace pref="80" max="32767" attributes="0"/>
-                                      </Group>
+                                      <Component id="labelReturn2" min="-2" pref="130" max="-2" attributes="0"/>
+                                      <Component id="labelTotalReturn2" min="-2" pref="117" max="-2" attributes="0"/>
                                   </Group>
                                   <EmptySpace max="-2" attributes="0"/>
                               </Group>
@@ -1701,7 +1670,7 @@
                       <Component id="labelMenuDauTu" min="-2" pref="52" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="labelMenuThongKe" min="-2" pref="50" max="-2" attributes="0"/>
-                      <EmptySpace pref="1325" max="32767" attributes="0"/>
+                      <EmptySpace pref="303" max="32767" attributes="0"/>
                       <Component id="labelMenuTaiKhoan" min="-2" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                   </Group>
@@ -1723,9 +1692,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; VAY N&#x1ee2;"/>
               </Properties>
-              <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelMenuVayNoMousePressed"/>
-              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="labelMenuDauTu">
               <Properties>
@@ -1741,9 +1710,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; &#x110;&#x1ea6;U T&#x1af;"/>
               </Properties>
-              <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelMenuDauTuMousePressed"/>
-              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="labelMenuThongKe">
               <Properties>
@@ -1759,9 +1728,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="TH&#x1ed0;NG K&#xca; CHUNG"/>
               </Properties>
-              <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelMenuThongKeMousePressed"/>
-              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="labelMenuTaiKhoan">
               <Properties>
@@ -1776,9 +1745,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="T&#xc0;I KHO&#x1ea2;N"/>
               </Properties>
-              <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelMenuTaiKhoanMousePressed"/>
-              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="labelLogo">
               <Properties>
@@ -1810,9 +1779,9 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="QU&#x1ea2;N L&#xdd; CHI TI&#xca;U"/>
               </Properties>
-              <Events>
-                <EventHandler event="mousePressed" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="labelMenuChiTieuMousePressed"/>
-              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
             </Component>
           </SubComponents>
         </Container>

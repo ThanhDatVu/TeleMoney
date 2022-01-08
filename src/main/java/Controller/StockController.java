@@ -9,6 +9,7 @@ import DAO.StockDAO;
 import Model.MyStockBuyModel;
 import Model.MyStockBuyTableModel;
 import Model.UserModel;
+import View.AddStockView;
 import View.BanStockView;
 import View.MasterTeleMoneyView;
 import View.MuaStockView;
@@ -119,7 +120,7 @@ public class StockController {
                     myStockList.get(i).getSoLuong(),
                     myStockList.get(i).getGiaBanDau(),
                     (Math.round(stock.getQuote().getPrice().floatValue() * 100.0)) / 100.0,
-                    myStockList.get(i).get24hchange(),
+                    stock.getQuote().getChangeInPercent(),
                     (Math.round(stock.getQuote().getPrice().floatValue() * myStockList.get(i).getSoLuong() * 100.0)) / 100.0,
                     df.format(((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) > -1)
                     && ((giaTriHienTai - (myStockList.get(i).getSoLuong() * myStockList.get(i).getGiaBanDau())) < 1)
@@ -173,20 +174,7 @@ public class StockController {
                 }
             }
         });
-        master.labelRefresh.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(final MouseEvent e) {
-                if (e.getClickCount() == 1) {
-                    try {
-                        setDataTable();
-                        master.setSumText();
-                        System.out.println("refresh clicked");
-                    } catch (IOException ex) {
-                        Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                }
-            }
-        });
+
         System.out.println("Tao xong event tab dautu");
         master.txtLocDauTu.getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent documentEvent) {
@@ -210,6 +198,16 @@ public class StockController {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MyTransView myTransView = new MyTransView(master, acc);
                 myTransView.setVisible(true);
+            }
+        });
+        master.btnThemStock.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                try {
+                    AddStockView addStock = new AddStockView(master, acc);
+                    addStock.setVisible(true);
+                } catch (IOException ex) {
+                    Logger.getLogger(StockController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

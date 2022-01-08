@@ -6,6 +6,7 @@ package View;
 
 import javax.swing.table.DefaultTableModel;
 import Controller.LoginController;
+import Controller.MasterController;
 import Controller.StockController;
 import Controller.ThongKeController;
 import Controller.VayNoController;
@@ -58,15 +59,16 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     DecimalFormat df = new DecimalFormat("0");
     StockDAO stockDAO = new StockDAO();
 
-    UserModel user;
-    CardLayout cardLayout;
+    public UserModel user;
+    public CardLayout cardLayout;
     TableColumn col;
-    StockController stockController;
-    ThuChiController1 thuChiController1;
-    ThuChiController2 thuChiController2;
-    VayNoController vayNoController;
-    ThongKeController thongKeController;
-    Float Usd;
+    public MasterController masterController;
+    public StockController stockController;
+    public ThuChiController1 thuChiController1;
+    public ThuChiController2 thuChiController2;
+    public VayNoController vayNoController;
+    public ThongKeController thongKeController;
+    public Float Usd;
     public double soDuKhaDung, tongTaiSan;
 
     public MasterTeleMoneyView() throws IOException {
@@ -88,6 +90,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         this.user = user;
         initComponents();
         this.cardLayout = (CardLayout) (pnlCards.getLayout());
+        this.masterController = new MasterController(this, user);
         this.stockController = new StockController(this, user);
         this.vayNoController = new VayNoController(this, user);
 
@@ -191,7 +194,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         labelVND = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        labelRefresh = new javax.swing.JLabel();
         btnThemStock = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         labelTotalStock = new javax.swing.JLabel();
@@ -383,7 +385,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addGroup(pnlChiTieuLayout.createSequentialGroup()
                         .addGap(37, 37, 37)
                         .addComponent(labelSoDuChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(760, Short.MAX_VALUE))
+                .addContainerGap(732, Short.MAX_VALUE))
             .addComponent(jScrollPane6)
         );
         pnlChiTieuLayout.setVerticalGroup(
@@ -419,7 +421,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnShowChi)
-                .addContainerGap(1174, Short.MAX_VALUE))
+                .addContainerGap(152, Short.MAX_VALUE))
         );
 
         pnlCards.add(pnlChiTieu, "cardChiTieu");
@@ -455,20 +457,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel6.setText("VND");
 
-        labelRefresh.setIcon(new javax.swing.ImageIcon(getClass().getResource("/refresh_30px.png"))); // NOI18N
-        labelRefresh.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                labelRefreshMousePressed(evt);
-            }
-        });
-
         btnThemStock.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnThemStock.setText("Thêm danh mục đầu tư");
-        btnThemStock.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnThemStockActionPerformed(evt);
-            }
-        });
 
         jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel5.setText("Tổng giá trị các danh mục : ");
@@ -490,17 +480,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         btnShowTrans.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnShowTrans.setText("Xem lịch sử giao dịch");
-        btnShowTrans.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnShowTransActionPerformed(evt);
-            }
-        });
-
-        txtLocDauTu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLocDauTuActionPerformed(evt);
-            }
-        });
 
         btnLoc.setText("Lọc");
 
@@ -513,8 +492,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDauTuLayout.createSequentialGroup()
-                        .addComponent(labelRefresh)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 388, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jLabel10)
                         .addGap(355, 355, 355))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDauTuLayout.createSequentialGroup()
@@ -542,9 +520,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDauTuLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(btnThemStock, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addComponent(btnShowTrans, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 101, Short.MAX_VALUE)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -562,9 +540,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDauTuLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel10)
-                    .addComponent(labelRefresh))
+                .addComponent(jLabel10)
                 .addGap(18, 18, 18)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
@@ -573,7 +549,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addComponent(jLabel4)
                     .addComponent(labelVND)
                     .addComponent(jLabel6))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 982, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtLocDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnLoc))
@@ -608,11 +584,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         btnDangXuat.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         btnDangXuat.setText("Đăng xuất");
-        btnDangXuat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnDangXuatActionPerformed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlTaiKhoanLayout = new javax.swing.GroupLayout(pnlTaiKhoan);
         pnlTaiKhoan.setLayout(pnlTaiKhoanLayout);
@@ -626,7 +597,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(506, Short.MAX_VALUE))
+                .addContainerGap(478, Short.MAX_VALUE))
         );
         pnlTaiKhoanLayout.setVerticalGroup(
             pnlTaiKhoanLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -637,7 +608,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(31, 31, 31)
                 .addComponent(btnDangXuat)
-                .addContainerGap(1490, Short.MAX_VALUE))
+                .addContainerGap(468, Short.MAX_VALUE))
         );
 
         pnlCards.add(pnlTaiKhoan, "cardTaiKhoan");
@@ -674,11 +645,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         btnThemTK.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnThemTK.setText("Thêm");
-        btnThemTK.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btnThemTKMouseClicked(evt);
-            }
-        });
 
         btnXoaTK.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnXoaTK.setText("Xoá");
@@ -704,11 +670,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         txtLocTK.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
 
         txtLocVay.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
-        txtLocVay.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtLocVayActionPerformed(evt);
-            }
-        });
 
         labelSoDuVayNo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         labelSoDuVayNo.setText("Số dư khả dụng: ");
@@ -944,9 +905,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                             .addComponent(jLabel11))
                         .addGap(43, 43, 43)
                         .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
                             .addComponent(labelSoDuThongKe, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(jLabel13))
                 .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -965,11 +926,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addGroup(pnlThongKeTextLayout.createSequentialGroup()
                         .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(pnlThongKeTextLayout.createSequentialGroup()
-                        .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelReturn2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(labelTotalReturn2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 80, Short.MAX_VALUE)))
+                    .addComponent(labelReturn2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(labelTotalReturn2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap())
         );
         pnlThongKeTextLayout.setVerticalGroup(
@@ -1014,11 +972,11 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
             pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlThongKeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(pnlThongKeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlThongKeChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(pnlThongKeVayNo, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(pnlThongKeChiTieu, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
+                    .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
+                    .addComponent(pnlThongKeVayNo, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
+                    .addComponent(pnlThongKeText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(97, Short.MAX_VALUE))
         );
         pnlThongKeLayout.setVerticalGroup(
@@ -1049,43 +1007,23 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelMenuVayNo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMenuVayNo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/borrow_money_30px.png"))); // NOI18N
         labelMenuVayNo.setText("QUẢN LÝ VAY NỢ");
-        labelMenuVayNo.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                labelMenuVayNoMousePressed(evt);
-            }
-        });
 
         labelMenuDauTu.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         labelMenuDauTu.setForeground(new java.awt.Color(255, 255, 255));
         labelMenuDauTu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMenuDauTu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/invest_30px.png"))); // NOI18N
         labelMenuDauTu.setText("QUẢN LÝ ĐẦU TƯ");
-        labelMenuDauTu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                labelMenuDauTuMousePressed(evt);
-            }
-        });
 
         labelMenuThongKe.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         labelMenuThongKe.setForeground(new java.awt.Color(255, 255, 255));
         labelMenuThongKe.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMenuThongKe.setIcon(new javax.swing.ImageIcon(getClass().getResource("/chart_30px.png"))); // NOI18N
         labelMenuThongKe.setText("THỐNG KÊ CHUNG");
-        labelMenuThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                labelMenuThongKeMousePressed(evt);
-            }
-        });
 
         labelMenuTaiKhoan.setFont(new java.awt.Font("Segoe UI Black", 0, 12)); // NOI18N
         labelMenuTaiKhoan.setForeground(new java.awt.Color(255, 255, 255));
         labelMenuTaiKhoan.setIcon(new javax.swing.ImageIcon(getClass().getResource("/acc_30px.png"))); // NOI18N
         labelMenuTaiKhoan.setText("TÀI KHOẢN");
-        labelMenuTaiKhoan.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                labelMenuTaiKhoanMousePressed(evt);
-            }
-        });
 
         labelLogo.setFont(new java.awt.Font("Tw Cen MT Condensed Extra Bold", 0, 24)); // NOI18N
         labelLogo.setForeground(new java.awt.Color(255, 255, 255));
@@ -1097,11 +1035,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelMenuChiTieu.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         labelMenuChiTieu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/buying_30px.png"))); // NOI18N
         labelMenuChiTieu.setText("QUẢN LÝ CHI TIÊU");
-        labelMenuChiTieu.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                labelMenuChiTieuMousePressed(evt);
-            }
-        });
 
         javax.swing.GroupLayout pnlLeftNavLayout = new javax.swing.GroupLayout(pnlLeftNav);
         pnlLeftNav.setLayout(pnlLeftNavLayout);
@@ -1142,7 +1075,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addComponent(labelMenuDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(labelMenuThongKe, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1325, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 303, Short.MAX_VALUE)
                 .addComponent(labelMenuTaiKhoan)
                 .addGap(43, 43, 43))
         );
@@ -1153,83 +1086,15 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1238, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1250, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 983, Short.MAX_VALUE)
+            .addComponent(jSplitPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 801, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void labelMenuVayNoMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuVayNoMousePressed
-        // TODO add your handling code here:
-        cardLayout.show(pnlCards, "cardVayNo");
-    }//GEN-LAST:event_labelMenuVayNoMousePressed
-
-    private void labelMenuDauTuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuDauTuMousePressed
-        // TODO add your handling code here:
-        cardLayout.show(pnlCards, "cardDauTu");
-    }//GEN-LAST:event_labelMenuDauTuMousePressed
-
-    private void labelMenuThongKeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuThongKeMousePressed
-        // TODO add your handling code here:
-        // cardLayout.show(pnlCards, "cardThongKe");
-        cardLayout.show(pnlCards, "cardThongKe");
-    }//GEN-LAST:event_labelMenuThongKeMousePressed
-
-    private void labelMenuTaiKhoanMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuTaiKhoanMousePressed
-        // TODO add your handling code here:
-        cardLayout.show(pnlCards, "cardTaiKhoan");
-    }//GEN-LAST:event_labelMenuTaiKhoanMousePressed
-
-    private void labelMenuChiTieuMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelMenuChiTieuMousePressed
-        // TODO add your handling code here:
-        cardLayout.show(pnlCards, "cardChiTieu");
-    }//GEN-LAST:event_labelMenuChiTieuMousePressed
-
-    private void btnDangXuatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDangXuatActionPerformed
-        // TODO add your handling code here:
-        this.dispose();
-        LoginController loginController = new LoginController();
-    }//GEN-LAST:event_btnDangXuatActionPerformed
-
-    private void labelRefreshMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_labelRefreshMousePressed
-        // TODO add your handling code here:
-//        try{
-//        stockController.setDataTable();
-//        }catch(IOException e){
-//            
-//        }
-    }//GEN-LAST:event_labelRefreshMousePressed
-
-    private void btnThemStockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnThemStockActionPerformed
-        try {
-            // TODO add your handling code here:
-            AddStockView addStock = new AddStockView(this, user);
-            addStock.setVisible(true);
-        } catch (IOException ex) {
-            Logger.getLogger(MasterTeleMoneyView.class.getName()).log(Level.SEVERE, null, ex);
-        }
-
-    }//GEN-LAST:event_btnThemStockActionPerformed
-
-    private void btnThemTKMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnThemTKMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnThemTKMouseClicked
-
-    private void txtLocVayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocVayActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLocVayActionPerformed
-
-    private void btnShowTransActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnShowTransActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btnShowTransActionPerformed
-
-    private void txtLocDauTuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLocDauTuActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtLocDauTuActionPerformed
 
     public void setTiGiaSoDu() {
         try {
@@ -1306,59 +1171,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         });
     }
 
-//    public void setTableButton() {
-//        System.out.println("Tao nut jtable");
-//        //Action muaStock
-//        MasterTeleMoneyView thisview = this;
-//        System.out.println(thisview.getTitle());
-//        Action muaThem = new AbstractAction() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                int opt = JOptionPane.showConfirmDialog(thisview, "Bạn có muốn xoá nhân viên này không", "Delete", JOptionPane.YES_NO_CANCEL_OPTION);
-//                if (opt == 0) {
-//                }
-//                JTable table = (JTable) e.getSource();
-//                int modelRow = Integer.valueOf(e.getActionCommand());
-//                System.out.println(modelRow);
-//                MyStockBuyModel stockBuy = new MyStockBuyModel();
-//                stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
-//                stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
-//                stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
-//                MuaStockView muaStockView = new MuaStockView(thisview, stockBuy);
-//                muaStockView.setVisible(true);
-//                //stockDAO.delete(stockBuy);
-//                //((DefaultTableModel) table.getModel()).removeRow(modelRow);
-//
-//            }
-//        };
-//        //Action banStock
-//        Action banStock;
-//        banStock = new AbstractAction() {
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                JTable table = (JTable) e.getSource();
-//                int modelRow = Integer.valueOf(e.getActionCommand());
-//                System.out.println(modelRow);
-//                MyStockBuyModel stockBuy = new MyStockBuyModel();
-//                stockBuy.setSymbol((String) table.getValueAt(modelRow, 0));
-//                stockBuy.setSoLuong((int) table.getValueAt(modelRow, 1));
-//                stockBuy.setGiaBanDau((float) table.getValueAt(modelRow, 2));
-//                MuaStockView muaStockView = new MuaStockView(thisview, stockBuy);
-//            }
-//        };
-//
-//        ButtonColumn btnMua = new ButtonColumn(tableDanhMuc, muaThem, 7);
-//
-//        btnMua.setMnemonic(KeyEvent.VK_F1);
-//
-//        btnMua.setToolTipText(
-//                "Mua thêm cổ phiếu");
-//        ButtonColumn btnBan = new ButtonColumn(tableDanhMuc, banStock, 8, Color.BLUE);
-//
-//        btnBan.setMnemonic(KeyEvent.VK_F1);
-//    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDangXuat;
+    public javax.swing.JButton btnDangXuat;
     private javax.swing.JButton btnLoc;
     public javax.swing.JButton btnLocTG;
     public javax.swing.JButton btnLocTK;
@@ -1372,7 +1186,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public javax.swing.JButton btnSuaChi;
     public javax.swing.JButton btnSuaThu;
     public javax.swing.JButton btnThemChi;
-    private javax.swing.JButton btnThemStock;
+    public javax.swing.JButton btnThemStock;
     public javax.swing.JButton btnThemTG;
     public javax.swing.JButton btnThemTK;
     public javax.swing.JButton btnThemThu;
@@ -1424,12 +1238,11 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPaneVayNo;
     private javax.swing.JSplitPane jSplitPane1;
     private javax.swing.JLabel labelLogo;
-    private javax.swing.JLabel labelMenuChiTieu;
-    private javax.swing.JLabel labelMenuDauTu;
-    private javax.swing.JLabel labelMenuTaiKhoan;
-    private javax.swing.JLabel labelMenuThongKe;
-    private javax.swing.JLabel labelMenuVayNo;
-    public javax.swing.JLabel labelRefresh;
+    public javax.swing.JLabel labelMenuChiTieu;
+    public javax.swing.JLabel labelMenuDauTu;
+    public javax.swing.JLabel labelMenuTaiKhoan;
+    public javax.swing.JLabel labelMenuThongKe;
+    public javax.swing.JLabel labelMenuVayNo;
     public javax.swing.JLabel labelReturn2;
     public javax.swing.JLabel labelSoDauTu;
     public javax.swing.JLabel labelSoDuChiTieu;
@@ -1442,7 +1255,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JLabel labelTotalStockVND;
     public javax.swing.JLabel labelUSD;
     public javax.swing.JLabel labelVND;
-    private javax.swing.JPanel pnlCards;
+    public javax.swing.JPanel pnlCards;
     private javax.swing.JPanel pnlChiTieu;
     private javax.swing.JPanel pnlDauTu;
     private javax.swing.JPanel pnlLeftNav;

@@ -20,15 +20,14 @@ public class StockPrice {
 
     public void take() throws IOException {
         // Stock stock = YahooFinance.get("USDVND=X");
-        Stock stock = YahooFinance.get("AAPL");
+        Stock stock = YahooFinance.get("GOOG");
 
         BigDecimal price = stock.getQuote().getPrice();
         BigDecimal change = stock.getQuote().getChangeInPercent();
         BigDecimal peg = stock.getStats().getPeg();
         BigDecimal dividend = stock.getDividend().getAnnualYieldPercent();
 
-        stock.print();
-        System.out.println(price);
+        System.out.println(change);
     }
 
     public Stock get(String s) throws IOException {

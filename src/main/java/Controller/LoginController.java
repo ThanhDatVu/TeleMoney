@@ -36,6 +36,16 @@ public class LoginController {
         loginDAO = new LoginDAO();
 
     }
+
+    public LoginController(LoginView loginView) {
+
+        this.loginView = loginView;
+        setEventLogin();
+
+        loginView.setVisible(true);
+        loginDAO = new LoginDAO();
+
+    }
 //    public void setButton(){
 //    Action delete = new AbstractAction() {
 //        public void actionPerformed(ActionEvent e) {

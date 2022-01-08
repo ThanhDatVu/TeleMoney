@@ -7,6 +7,7 @@ package Main;
 import Controller.LoginController;
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
+import View.LoginView;
 import com.formdev.flatlaf.FlatLightLaf;
 import java.time.LocalDateTime;
 import java.util.logging.Level;
@@ -26,10 +27,7 @@ public class Main {
     public static void main(String[] args) {
         FlatLightLaf.setup();
 
-        LoginController loginController = new LoginController();
-//         NhanvienController nvController = new NhanvienController();
-
-        // new DangNhapController(viewlogin).setEventLogin();
+        LoginView login = new LoginView();
     }
 
 }
