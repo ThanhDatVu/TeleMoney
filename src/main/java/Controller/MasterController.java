@@ -76,20 +76,16 @@ public class MasterController {
 
         master.labelMenuThongKe.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                try {
-                    master.cardLayout.show(master.pnlCards, "cardThongKe");
-                    master.thongKeController = new ThongKeController(master, acc);
-                } catch (IOException ex) {
-                    Logger.getLogger(MasterController.class.getName()).log(Level.SEVERE, null, ex);
-                }
+                master.cardLayout.show(master.pnlCards, "cardThongKe");
+                master.thongKeController.setChart();
             }
         });
         master.labelMenuChiTieu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 try {
                     master.cardLayout.show(master.pnlCards, "cardChiTieu");
-                    master.thuChiController1 = new ThuChiController1(master, acc);
-                    master.thuChiController2 = new ThuChiController2(master, acc);
+                    master.thuChiController1.setDataTable();
+                    master.thuChiController2.setVector();
                 } catch (IOException ex) {
                     Logger.getLogger(MasterController.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -97,15 +93,19 @@ public class MasterController {
         });
         master.labelMenuDauTu.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
-                master.cardLayout.show(master.pnlCards, "cardDauTu");
-                master.stockController = new StockController(master, acc);
+                try {
+                    master.cardLayout.show(master.pnlCards, "cardDauTu");
+                    master.stockController.setDataTable();
+                } catch (IOException ex) {
+                    Logger.getLogger(MasterController.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         master.labelMenuVayNo.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mousePressed(java.awt.event.MouseEvent evt) {
                 try {
                     master.cardLayout.show(master.pnlCards, "cardVayNo");
-                    master.vayNoController = new VayNoController(master, acc);
+                    master.vayNoController.setDataTable();
                 } catch (IOException ex) {
                     Logger.getLogger(MasterController.class.getName()).log(Level.SEVERE, null, ex);
                 }

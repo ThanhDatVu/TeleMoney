@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 05, 2022 at 10:48 PM
+-- Generation Time: Jan 09, 2022 at 11:35 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -42,7 +42,6 @@ CREATE TABLE `chi` (
 
 INSERT INTO `chi` (`id`, `uid`, `namechi`, `amountchi`, `mucchi`, `datechi`) VALUES
 (1, 1, 'Mua đồ ăn tại Big C', 50000, 'Ăn uống', '2022-01-05 21:41:51'),
-(2, 1, 'Đi ăn lẩu', 800000, 'Ăn uống', '2022-01-02 08:22:01'),
 (3, 1, 'TIền nhà tháng 12', 3500000, 'Tiền nhà', '2022-01-02 07:42:41'),
 (5, 1, 'Sửa xe', 2400000, 'Di chuyển', '2022-01-02 07:57:07'),
 (6, 1, 'Tiền điện tháng 12', 300000, 'Tiền điện, nước', '2022-01-02 07:57:45');
@@ -75,7 +74,26 @@ INSERT INTO `chovay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`,
 (4, 1, 'Vay sửa nhà', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 20000000, 2, 1, '2022-01-02 08:22:50', 0),
 (5, 1, 'Vay chữa bệnh', 'Ngân Hàng Kĩ Thương Việt Nam (Techcombank)', 5000000, 3, 36, '2022-01-02 08:23:33', 0),
 (6, 1, 'Vay mua điện thoại', 'MBBank', 1000000, 5, 12, '2021-12-31 08:22:09', 0),
-(7, 1, 'gửi tiết kiệm', 'Ngân Hàng Đầu tư và Phát triển Việt Nam (BIDV)', 100000000, 8, 12, '2022-01-05 21:45:13', 0);
+(7, 1, 'gửi tiết kiệm', 'Ngân Hàng Đầu tư và Phát triển Việt Nam (BIDV)', 100000000, 8, 12, '2022-01-05 21:45:13', 0),
+(8, 1, 'uyiy', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 50000000, 10, 12, '2022-01-07 19:42:38', 0),
+(9, 1, 'gửi tiết kiệm A', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 200000000, 9, 12, '2022-01-08 05:20:51', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `chovaytrans`
+--
+
+CREATE TABLE `chovaytrans` (
+  `id` int(50) NOT NULL,
+  `chovayid` int(50) NOT NULL,
+  `status` varchar(100) NOT NULL DEFAULT 'chưa thanh toán',
+  `uid` int(50) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `bank` varchar(100) NOT NULL,
+  `sotien` double NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -97,15 +115,16 @@ CREATE TABLE `mystock` (
 --
 
 INSERT INTO `mystock` (`symbol`, `name`, `soluong`, `tongbandau`, `giabandau`, `time`) VALUES
-('AAPL', 'Apple', 51, 10039.4, 196.851, '2021-12-28 22:01:30'),
-('BTC-USD', 'Bitcoin', 2, 82000, 41000, '2021-12-28 21:55:16'),
+('AAPL', 'Apple', 30, 5905.53, 196.851, '2021-12-28 22:01:30'),
+('BTC-USD', 'Bitcoin', 6, 274000, 45666.7, '2021-12-28 21:55:16'),
 ('COIN', 'Coinbase', 10, 1250, 125, '2021-12-28 22:01:30'),
 ('MSFT', 'Microsoft Corporation', 34, 8500, 250, '2021-12-28 22:29:06'),
 ('TSLA', 'TESLA', 35, 30345, 867, '2021-12-28 20:28:01'),
 ('GOOGL', 'Alphabet Inc. Class A', 2, 5755.02, 2877.51, '2022-01-02 07:00:50'),
 ('MDT', 'Medtronic Plc', 5, 517.25, 103.45, '2022-01-02 07:47:44'),
 ('SLB', 'Schlumberger NV', 10, 299.5, 29.95, '2022-01-02 14:32:21'),
-('CL', 'Colgate-Palmolive Company', 205, 18960.1, 92.4884, '2022-01-02 15:30:19');
+('CL', 'Colgate-Palmolive Company', 5, 462.442, 92.4884, '2022-01-02 15:30:19'),
+('HD', 'Home Depot Inc.', 10, 3936.1, 393.61, '2022-01-08 12:18:54');
 
 -- --------------------------------------------------------
 
@@ -690,7 +709,13 @@ INSERT INTO `stocktrans` (`id`, `uid`, `symbol`, `giagiaodich`, `soluong`, `time
 (12, 1, 'CL', 86, 10, '2022-01-02 08:33:11', 'ban'),
 (13, 1, 'TSLA', 2000, 15, '2022-01-02 13:10:13', 'ban'),
 (14, 1, 'CL', 85.34, 100, '2022-01-03 14:24:18', 'mua'),
-(15, 1, 'CL', 100, 100, '2022-01-03 14:24:47', 'mua');
+(15, 1, 'CL', 100, 100, '2022-01-03 14:24:47', 'mua'),
+(16, 1, 'CL', 85, 100, '2022-01-07 19:26:21', 'ban'),
+(17, 1, 'HD', 393.61, 10, '2022-01-08 05:18:54', 'mua'),
+(18, 1, 'AAPL', 170, 21, '2022-01-08 05:26:59', 'ban'),
+(19, 1, 'CL', 85, 100, '2022-01-08 05:30:48', 'ban'),
+(20, 1, 'BTC-USD', 42000, 1, '2022-01-09 22:32:11', 'mua'),
+(21, 1, 'BTC-USD', 50000, 3, '2022-01-09 22:32:36', 'mua');
 
 -- --------------------------------------------------------
 
@@ -732,7 +757,7 @@ CREATE TABLE `tong` (
 --
 
 INSERT INTO `tong` (`uid`, `sodu`, `tongtaisan`) VALUES
-(1, 181711488, 1300076832);
+(1, 1320081790, 1300076832);
 
 -- --------------------------------------------------------
 
@@ -760,6 +785,23 @@ CREATE TABLE `tragop` (
 INSERT INTO `tragop` (`id`, `uid`, `name`, `namecongty`, `tongtien`, `sothang`, `tienhangthang`, `time`, `tratruoc`, `ngaytragop`) VALUES
 (1, 1, 'Tra gop xe may', 'FE Credit', 10000000, 8, 1000000, '2022-01-02 08:24:49', 2000000, 0),
 (2, 1, 'Trả góp laptop', 'HD Saison', 200000000, 2, 50000000, '2022-01-02 08:25:27', 100000000, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tragoptrans`
+--
+
+CREATE TABLE `tragoptrans` (
+  `id` int(50) NOT NULL,
+  `tragopid` int(50) NOT NULL,
+  `status` varchar(100) NOT NULL DEFAULT 'chưa thanh toán',
+  `uid` int(50) NOT NULL,
+  `name` varchar(100) NOT NULL,
+  `namecongty` varchar(100) NOT NULL,
+  `sotien` double NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -804,8 +846,49 @@ CREATE TABLE `vay` (
 --
 
 INSERT INTO `vay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngayvay`, `ngaytralai`) VALUES
-(1, 1, 'Vay mua nhà', 'DBBANK', 1000000, 5, 24, '2022-01-02 08:28:26', 0),
-(2, 1, 'Vay mua xe\r\n', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 100000000, 3, 1, '2022-01-02 08:28:36', 0);
+(21, 1, 'Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 100000000, 9, 6, '2022-01-09 22:07:02', 25),
+(22, 1, 'Vay mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 50000000, 9, 1, '2022-01-09 22:29:18', 25),
+(23, 1, 'Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 500000000, 9, 9, '2022-01-09 22:31:02', 25);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `vaytrans`
+--
+
+CREATE TABLE `vaytrans` (
+  `id` int(50) NOT NULL,
+  `vayid` int(50) NOT NULL,
+  `uid` int(50) NOT NULL,
+  `status` varchar(100) NOT NULL DEFAULT 'chưa thanh toán',
+  `name` varchar(100) NOT NULL,
+  `bank` varchar(100) NOT NULL,
+  `sotien` double NOT NULL,
+  `time` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `vaytrans`
+--
+
+INSERT INTO `vaytrans` (`id`, `vayid`, `uid`, `status`, `name`, `bank`, `sotien`, `time`) VALUES
+(57, 21, 1, 'chưa thanh toán', 'Trả lãi lần 1 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-01-24 22:07:02'),
+(58, 21, 1, 'chưa thanh toán', 'Trả lãi lần 2 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-02-24 22:07:02'),
+(59, 21, 1, 'chưa thanh toán', 'Trả lãi lần 3 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-03-24 22:07:02'),
+(60, 21, 1, 'chưa thanh toán', 'Trả lãi lần 4 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-04-24 22:07:02'),
+(61, 21, 1, 'chưa thanh toán', 'Trả lãi lần 5 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-05-24 22:07:02'),
+(62, 21, 1, 'chưa thanh toán', 'Trả lãi lần 6 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-06-24 22:07:02'),
+(63, 22, 1, 'chưa thanh toán', 'Trả lãi lần 1 Vay mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 375000, '2022-01-24 22:29:18'),
+(64, 23, 1, 'chưa thanh toán', 'Trả lãi lần 1 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-01-24 22:31:02'),
+(65, 23, 1, 'chưa thanh toán', 'Trả lãi lần 2 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-02-24 22:31:02'),
+(66, 23, 1, 'chưa thanh toán', 'Trả lãi lần 3 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-03-24 22:31:02'),
+(67, 23, 1, 'chưa thanh toán', 'Trả lãi lần 4 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-04-24 22:31:02'),
+(68, 23, 1, 'chưa thanh toán', 'Trả lãi lần 5 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-05-24 22:31:02'),
+(69, 23, 1, 'chưa thanh toán', 'Trả lãi lần 6 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-06-24 22:31:02'),
+(70, 23, 1, 'chưa thanh toán', 'Trả lãi lần 7 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-07-24 22:31:02'),
+(71, 23, 1, 'chưa thanh toán', 'Trả lãi lần 8 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-08-24 22:31:02'),
+(72, 23, 1, 'chưa thanh toán', 'Trả lãi lần 9 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-09-24 22:31:02'),
+(73, 23, 1, 'chưa thanh toán', 'Trả tiền gốc  Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 500000000, '2022-10-24 22:31:02');
 
 --
 -- Indexes for dumped tables
@@ -821,6 +904,12 @@ ALTER TABLE `chi`
 -- Indexes for table `chovay`
 --
 ALTER TABLE `chovay`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `chovaytrans`
+--
+ALTER TABLE `chovaytrans`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -848,9 +937,21 @@ ALTER TABLE `tragop`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `tragoptrans`
+--
+ALTER TABLE `tragoptrans`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `vay`
 --
 ALTER TABLE `vay`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `vaytrans`
+--
+ALTER TABLE `vaytrans`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -867,13 +968,19 @@ ALTER TABLE `chi`
 -- AUTO_INCREMENT for table `chovay`
 --
 ALTER TABLE `chovay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+--
+-- AUTO_INCREMENT for table `chovaytrans`
+--
+ALTER TABLE `chovaytrans`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `stocktrans`
 --
 ALTER TABLE `stocktrans`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `thu`
@@ -894,10 +1001,22 @@ ALTER TABLE `tragop`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
+-- AUTO_INCREMENT for table `tragoptrans`
+--
+ALTER TABLE `tragoptrans`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `vay`
 --
 ALTER TABLE `vay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+
+--
+-- AUTO_INCREMENT for table `vaytrans`
+--
+ALTER TABLE `vaytrans`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=74;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

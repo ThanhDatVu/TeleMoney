@@ -20,6 +20,8 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static javax.swing.WindowConstants.DISPOSE_ON_CLOSE;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -195,5 +197,15 @@ public class ThongKeController {
 //    
 //    
 //    
+
+    public void setChart() {
+        try {
+            setChartChiTieu();
+            setChartVayNo();
+            setChartDauTu();
+        } catch (IOException ex) {
+            Logger.getLogger(ThongKeController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
 }

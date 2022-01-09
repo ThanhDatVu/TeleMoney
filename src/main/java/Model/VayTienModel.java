@@ -98,4 +98,9 @@ public class VayTienModel {
         this.ngayvay = ngayvay;
     }
 
+    @Override
+    public String toString() {
+        return "VayTienModel{" + "id=" + id + ", ten=" + ten + ", bank=" + bank + ", tiengoc=" + tiengoc + ", laisuat=" + laisuat + ", kyhan=" + kyhan + ", ngayvay=" + ngayvay + ", ngaytralai=" + ngaytralai + '}';
+    }
+
 }

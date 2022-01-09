@@ -11,6 +11,7 @@ import Model.GuiTienModel;
 import Model.MyStockBuyModel;
 import Model.UserModel;
 import Model.VayTienModel;
+import Model.VayTienTransModel;
 import View.VayTienView;
 import View.VayTienView;
 import View.VayTienView;
@@ -20,6 +21,7 @@ import javax.swing.JOptionPane;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -84,9 +86,13 @@ public class AddVayTienController {
                         vayTienModel.setTiengoc(Double.parseDouble(vayTienView.txtTien.getText()));
                         vayTienModel.setLaisuat(Double.parseDouble(vayTienView.txtLaisuat.getText()));
                         vayTienModel.setKyhan(Integer.parseInt(vayTienView.cboKyHan.getSelectedItem().toString()));
+                        vayTienModel.setNgaytralai(Integer.parseInt(vayTienView.txtNgayTraLai.getText().toString()));
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         vayTienModel.setNgayvay(time);
                         vayTienDAO.add(vayTienModel, acc);
+                        int idVayTien = vayTienDAO.getIDByName(vayTienModel, acc);
+                        themGiaoDich(vayTienModel, acc, idVayTien);
+
                         vayTienView.master.soDuKhaDung = vayTienView.master.soDuKhaDung + Double.parseDouble(vayTienView.txtTien.getText());
                         vayTienView.master.refreshTabVayNo();
                         vayTienView.dispose();
@@ -163,5 +169,44 @@ public class AddVayTienController {
 
         }
 
+    }
+
+    public void themGiaoDich(VayTienModel vayTienModel, UserModel user, int vayTienID) {
+        vayTienModel.getNgayvay().setDate(vayTienModel.getNgaytralai());
+
+        LocalDateTime localDateTime = vayTienModel.getNgayvay().toLocalDateTime();
+        for (int i = 1; i <= vayTienModel.getKyhan(); i++) {
+            VayTienTransModel vayTienTransModel = new VayTienTransModel();
+            vayTienTransModel.setVayTienID(vayTienID);
+            vayTienTransModel.setTen("Trả lãi lần " + i + " " + vayTienModel.getTen());
+            vayTienTransModel.setSotien(Float.parseFloat(vayTienView.txtLai.getText()));
+            vayTienTransModel.setBank(vayTienModel.getBank());
+
+            LocalDateTime newDate = localDateTime.plusMonths(i - 1);
+
+            System.out.println("tháng" + newDate.toString());
+            Timestamp timeStamp = Timestamp.valueOf(newDate);
+            vayTienTransModel.setTime(timeStamp);
+            vayTienDAO.addTrans(vayTienTransModel, user);
+        }
+        VayTienTransModel traGoc = new VayTienTransModel();
+        traGoc.setVayTienID(vayTienID);
+        traGoc.setTen("Trả tiền gốc  " + vayTienModel.getTen());
+        traGoc.setSotien(vayTienModel.getTiengoc());
+        traGoc.setBank(vayTienModel.getBank());
+        LocalDateTime newDate = localDateTime.plusMonths(vayTienModel.getKyhan());
+
+        System.out.println("tháng" + newDate.toString());
+        Timestamp timeStamp = Timestamp.valueOf(newDate);
+        traGoc.setTime(timeStamp);
+        vayTienDAO.addTrans(traGoc, user);
+
+    }
+
+    public boolean check() {
+        if (true) {
+
+        }
+        return true;
     }
 }

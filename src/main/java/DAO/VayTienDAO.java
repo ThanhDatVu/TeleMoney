@@ -8,6 +8,7 @@ import Model.GuiTienModel;
 import Model.MyStockBuyModel;
 import Model.UserModel;
 import Model.VayTienModel;
+import Model.VayTienTransModel;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -93,6 +94,50 @@ public class VayTienDAO {
             int executeUpdate = ps.executeUpdate();
             System.out.println("Xoá");
         } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public int getIDByName(VayTienModel vayTienModel, UserModel acc) {
+        String sql = "select * from vay where uid LIKE ? and ten LIKE ?";
+        int x = acc.getId();
+        ResultSet rs;
+        int id = 0;
+        ArrayList<VayTienModel> vayTienModels = new ArrayList<>();
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            
+            ps.setInt(1, x);
+            ps.setString(2, vayTienModel.getTen());
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+               
+                id = (rs.getInt("id"));
+               
+            }
+        } catch (Exception e) {
+        }
+        return id;
+    }
+
+    public void addTrans(VayTienTransModel vayTien, UserModel user) {
+         String sql = "INSERT INTO `vaytrans` ( `vayid`, `uid`, `name`, `bank`, `sotien`, `time`) VALUES ( ?, ?, ?, ?, ?, ?)";;
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, vayTien.getVayTienID());
+            ps.setInt(2, user.getId());
+            ps.setString(3, vayTien.getTen());
+            ps.setString(4, vayTien.getBank());
+            ps.setDouble(5, vayTien.getSotien());
+            ps.setTimestamp(6, vayTien.getTime());
+            
+            
+
+            int executeUpdate = ps.executeUpdate();
+            
+        } catch (Exception e) {
+            System.out.println("thêm vay tiền trans thất bại");
             e.printStackTrace();
         }
     }
