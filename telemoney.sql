@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 09, 2022 at 11:35 PM
+-- Generation Time: Jan 10, 2022 at 12:03 AM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -672,7 +672,31 @@ INSERT INTO `stock` (`Company`, `Symbol`, `Price`) VALUES
 ('Under Armour Inc. Class C', 'UA', '17.61'),
 ('News Corporation Class B', 'NWS', '22.75'),
 ('BITCOIN', 'BTC-USD', '9999.99'),
-('BITCOIN', 'BIT-USD', '45987.00');
+('BITCOIN', 'BIT-USD', '45987.00'),
+('ETH-USD', 'Ethereum U', '3184.96'),
+('USDT-USD', 'Tether USD', '1.00'),
+('BNB-USD', 'Binance Co', '440.88'),
+('SOL-USD', 'Solana USD', '141.64'),
+('USDC-USD', 'USD Coin U', '1.00'),
+('HEX-USD', 'HEX USD', '0.24'),
+('ADA-USD', 'Cardano US', '1.19'),
+('XRP-USD', 'XRP USD', '0.76'),
+('LUNA1-USD', 'Terra USD', '75.26'),
+('DOT-USD', 'Polkadot U', '24.81'),
+('AVAX-USD', 'Avalanche ', '89.74'),
+('DOGE-USD', 'Dogecoin U', '0.15'),
+('SHIB-USD', 'SHIBA INU ', '0.00'),
+('MATIC-USD', 'Polygon US', '2.11'),
+('BUSD-USD', 'Binance US', '1.00'),
+('LINK-USD', 'Chainlink ', '27.87'),
+('CRO-USD', 'Crypto.com', '0.47'),
+('WBTC-USD', 'Wrapped Bi', '43341.29'),
+('UST-USD', 'TerraUSD U', '1.00'),
+('UNI1-USD', 'Uniswap US', '15.91'),
+('NEAR-USD', 'NEAR Proto', '16.18'),
+('DAI-USD', 'Dai USD', '1.00'),
+('LTC-USD', 'Litecoin U', '132.21'),
+('ALGO-USD', 'Algorand U', '1.41');
 
 -- --------------------------------------------------------
 

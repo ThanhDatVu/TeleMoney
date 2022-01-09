@@ -1,6 +1,5 @@
 package View;
 
-
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -13,6 +12,7 @@ import java.net.URL;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -33,31 +33,33 @@ import org.jfree.data.xy.OHLCDataItem;
 import org.jfree.data.xy.OHLCDataset;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
+import yahoofinance.histquotes.HistoricalQuote;
+import yahoofinance.histquotes.Interval;
 
 public class Demo {
 
-    public Demo(String symbol) {
+    public Demo(String symbol, int month) {
 
         try {
 
             // 1. Download MSFT quotes from Yahoo Finance and store them as OHLCDataItem
             List<OHLCDataItem> dataItems = new ArrayList<OHLCDataItem>();
-            Stock stock = YahooFinance.get(symbol);
+            Calendar from = Calendar.getInstance();
+            Calendar to = Calendar.getInstance();
+            from.add(Calendar.MONTH, -month);
+            Stock stock = YahooFinance.get(symbol, from, to, Interval.DAILY);
+            System.out.println(stock.getHistory(from, to, Interval.WEEKLY).size());
+            List<HistoricalQuote> quoteList = stock.getHistory(from, to, Interval.DAILY);
             try {
 
-                while (true) {
-                    Date date = null;
-                    double open = 0;
-                    double high
-                            = 0;
-                    double low
-                            = 0;
-                    double close
-                            = 0;
-                    double volume
-                            = 0;
-                    double adjClose
-                            = 0;
+                for (int i = 0; i < quoteList.size(); i++) {
+                    Date date = quoteList.get(i).getDate().getTime();
+                    double open = quoteList.get(i).getOpen().doubleValue();
+                    double high = quoteList.get(i).getHigh().doubleValue();
+                    double low = quoteList.get(i).getLow().doubleValue();
+                    double close = quoteList.get(i).getClose().doubleValue();
+                    double volume = quoteList.get(i).getVolume().doubleValue();
+                    double adjClose = quoteList.get(i).getAdjClose().doubleValue();
 // adjust data:
                     open = open * adjClose / close;
                     high = high * adjClose / close;
@@ -73,9 +75,9 @@ public class Demo {
             Collections.reverse(dataItems); // Data from Yahoo is from newest to oldest. Reverse so it is oldest to newest.
             //Convert the list into an array
             OHLCDataItem[] data = dataItems.toArray(new OHLCDataItem[dataItems.size()]);
-            OHLCDataset dataset = new DefaultOHLCDataset("MSFT", data);
+            OHLCDataset dataset = new DefaultOHLCDataset(symbol, data);
             // 2. Create chart
-            JFreeChart chart = ChartFactory.createCandlestickChart("MSFT", "Time", "Price", dataset, false);
+            JFreeChart chart = ChartFactory.createCandlestickChart(symbol, "Thời gian", "Giá (USD)", dataset, false);
             // 3. Set chart background
             chart.setBackgroundPaint(Color.white);
             // 4. Set a few custom plot features
@@ -91,13 +93,14 @@ public class Demo {
             ((CandlestickRenderer) plot.getRenderer()).setDrawVolume(false);
             // 7. Create and display full-screen JFrame
             JFrame myFrame = new JFrame();
+            
             myFrame.setResizable(true);
             myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             myFrame.add(new ChartPanel(chart), BorderLayout.CENTER);
             Toolkit kit = Toolkit.getDefaultToolkit();
             Insets insets = kit.getScreenInsets(myFrame.getGraphicsConfiguration());
             Dimension screen = kit.getScreenSize();
-            myFrame.setSize((int) (screen.getWidth() - insets.left - insets.right), (int) (screen.getHeight() - insets.top - insets.bottom));
+            myFrame.setSize((int) (800), (int) (600));
             myFrame.setLocation((int) (insets.left), (int) (insets.top));
             myFrame.setVisible(true);
 
@@ -107,9 +110,7 @@ public class Demo {
     }
 
     public static void main(String args[]) {
-        Demo demo = new Demo("GOOG");
-        
+        Demo demo = new Demo("BTC-USD" , 12);
 
     }
 }
-
