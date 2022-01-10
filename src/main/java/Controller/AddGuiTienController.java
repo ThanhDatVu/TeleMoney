@@ -84,7 +84,7 @@ public class AddGuiTienController {
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         guiTienModel.setNgaygui(time);
                         guiTienDAO.add(guiTienModel, acc);
-                        int id  = guiTienDAO.getIDByName(guiTienModel, acc);;
+                        int id = guiTienDAO.getIDByName(guiTienModel, acc);;
                         themGiaoDich(guiTienModel, acc, id);
                         guiTienView.master.soDuKhaDung = guiTienView.master.soDuKhaDung - Double.parseDouble(guiTienView.txtTien.getText());
                         guiTienView.master.refreshTabVayNo();
@@ -148,7 +148,7 @@ public class AddGuiTienController {
             soTien = Double.parseDouble(guiTienView.txtTien.getText());
             laiXuat = Double.parseDouble(guiTienView.txtLaisuat.getText());
             kyHan = Double.parseDouble(guiTienView.cboKyHan.getSelectedItem().toString());
-            
+
             if (soTien > -1 && laiXuat > -1) {
                 guiTienView.txtLai.setEditable(true);
                 double laihangthang;
@@ -163,6 +163,7 @@ public class AddGuiTienController {
         }
 
     }
+
     public void themGiaoDich(GuiTienModel guiTienModel, UserModel user, int guiTienID) {
         guiTienModel.getNgaygui().setDate(guiTienModel.getNgaythulai());
 

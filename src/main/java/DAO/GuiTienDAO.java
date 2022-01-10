@@ -96,8 +96,9 @@ public class GuiTienDAO {
             e.printStackTrace();
         }
     }
+
     public void addTrans(GuiTienTransModel guiTien, UserModel user) {
-         String sql = "INSERT INTO `chovaytrans` ( `chovayid`, `uid`, `name`, `bank`, `sotien`, `time`) VALUES ( ?, ?, ?, ?, ?, ?)";;
+        String sql = "INSERT INTO `chovaytrans` ( `chovayid`, `uid`, `name`, `bank`, `sotien`, `time`) VALUES ( ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, guiTien.getGuiTienID());
@@ -106,11 +107,9 @@ public class GuiTienDAO {
             ps.setString(4, guiTien.getBank());
             ps.setDouble(5, guiTien.getSotien());
             ps.setTimestamp(6, guiTien.getTime());
-            
-            
 
             int executeUpdate = ps.executeUpdate();
-            
+
         } catch (Exception e) {
             System.out.println("thêm vay tiền trans thất bại");
             e.printStackTrace();
@@ -125,18 +124,45 @@ public class GuiTienDAO {
         ArrayList<GuiTienModel> guiTienModels = new ArrayList<>();
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            
+
             ps.setInt(1, x);
             ps.setString(2, guiTienModel.getTen());
-            
+
             rs = ps.executeQuery();
             while (rs.next()) {
-               
+
                 id = (rs.getInt("id"));
-               
+
             }
         } catch (Exception e) {
         }
         return id;
+    }
+
+    public ArrayList<GuiTienTransModel> getAllTrans(UserModel user) {
+        ArrayList<GuiTienTransModel> guiTienTransList = new ArrayList<>();
+        String sql = "select * from chovaytrans where uid=?";
+        int x = user.getId();
+        ResultSet rs;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, x);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                GuiTienTransModel guiTienTrans = new GuiTienTransModel();
+                guiTienTrans.setId(rs.getInt("id"));
+                guiTienTrans.setTen(rs.getString("name"));
+                guiTienTrans.setBank(rs.getString("bank"));
+                guiTienTrans.setStatus(rs.getString("status"));
+                guiTienTrans.setGuiTienID(rs.getInt("chovayid"));
+                guiTienTrans.setTime(rs.getTimestamp("time"));
+                guiTienTrans.setSotien(rs.getDouble("sotien"));
+                guiTienTransList.add(guiTienTrans);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return guiTienTransList;
     }
 }

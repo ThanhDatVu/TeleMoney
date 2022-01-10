@@ -12,21 +12,24 @@ import java.sql.Timestamp;
  */
 public class VayTienTransModel {
 
-    @Override
-    public String toString() {
-        return "VayTienTransModel{" + "id=" + id + ", vayTienID=" + vayTienID + ", ten=" + ten + ", bank=" + bank + ", sotien=" + sotien + ", time=" + time + '}';
-    }
-
     int id;
     int vayTienID;
     private String ten;
     private String bank;
+    private String status;
     private double sotien;
     private Timestamp time;
-    
 
     public VayTienTransModel() {
 
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public VayTienTransModel(int id, int traGopID, String ten, String bank, double sotien, Timestamp time) {
@@ -85,8 +88,9 @@ public class VayTienTransModel {
     public void setTime(Timestamp time) {
         this.time = time;
     }
-    
 
-    
-
+    @Override
+    public String toString() {
+        return "VayTienTransModel{" + "id=" + id + ", vayTienID=" + vayTienID + ", ten=" + ten + ", bank=" + bank + ", sotien=" + sotien + ", time=" + time + '}';
+    }
 }

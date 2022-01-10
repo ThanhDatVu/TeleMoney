@@ -21,6 +21,9 @@ import Model.VayTienTableModel;
 import View.GuiTienView;
 import View.MasterTeleMoneyView;
 import View.MuaStockView;
+import View.ShowGuiTienView;
+import View.ShowTraGopView;
+import View.ShowVayTienView;
 import View.TraGopView;
 import View.VayTienView;
 import java.awt.Color;
@@ -410,6 +413,33 @@ public class VayNoController {
             public void mouseExited(MouseEvent e) {
             }
         });
+        master.btnShowVay.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ShowVayTienView showVayTienView = new ShowVayTienView(master, acc);
+                showVayTienView.setVisible(true);
+            }
+        }
+        );
+        master.btnShowTK.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ShowGuiTienView showGuiTienView = new ShowGuiTienView(master, acc);
+                showGuiTienView.setVisible(true);
+            }
+        }
+        );
+        master.btnShowTG.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ShowTraGopView showTraGopView = new ShowTraGopView(master, acc);
+                showTraGopView.setVisible(true);
+            }
+        }
+        );
 
     }
 

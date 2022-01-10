@@ -78,7 +78,7 @@ public class ShowStockChartController {
             Calendar to = Calendar.getInstance();
             from.add(Calendar.MONTH, -month);
             Stock stock = YahooFinance.get(symbol, from, to, Interval.DAILY);
-           
+
             List<HistoricalQuote> quoteList = stock.getHistory(from, to, Interval.DAILY);
             try {
 
@@ -124,7 +124,7 @@ public class ShowStockChartController {
             ChartPanel chartPanel = new ChartPanel(chart);
             chartPanel.setBackground(Color.lightGray);
             showView.pnlChart.add(chartPanel, java.awt.BorderLayout.CENTER);
-            
+
 //add your elements
             showView.pnlChart.revalidate();
             showView.pnlChart.repaint();
@@ -139,7 +139,7 @@ public class ShowStockChartController {
         showView.comboStockList.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                
+
                 setChart(showView.comboStockList.getSelectedItem().toString(), Integer.parseInt(showView.comboThang.getSelectedItem().toString()));
 
             }

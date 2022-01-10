@@ -17,14 +17,14 @@ public class ShowStockChartView extends javax.swing.JFrame {
      */
     public String symbol;
     public int month;
-    
+
     ShowStockChartController controller;
 
     public ShowStockChartView() {
         initComponents();
         controller = new ShowStockChartController(this);
         setLocationRelativeTo(null);
-        
+
     }
 
     public ShowStockChartView(String symbol, int month) {

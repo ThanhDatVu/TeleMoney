@@ -95,7 +95,7 @@ public class AddTraGopController {
                         traGopModel.setTime(time);
                         traGopModel.setNgaytragop(Integer.parseInt(traGopView.txtNgayTraGop.getText().toString()));
                         traGopDAO.add(traGopModel, acc);
-                        int id  = traGopDAO.getIDByName(traGopModel, acc);;
+                        int id = traGopDAO.getIDByName(traGopModel, acc);;
                         themGiaoDich(traGopModel, acc, id);
                         traGopView.master.soDuKhaDung = traGopView.master.soDuKhaDung - Double.parseDouble(traGopView.txtTraTruoc.getText());
                         traGopView.master.refreshTabVayNo();
@@ -107,6 +107,7 @@ public class AddTraGopController {
         );
 
     }
+
     public void themGiaoDich(TraGopModel traGopModel, UserModel user, int traGopID) {
         traGopModel.getTime().setDate(traGopModel.getNgaytragop());
 
@@ -125,7 +126,6 @@ public class AddTraGopController {
             traGopTransModel.setTime(timeStamp);
             traGopDAO.addTrans(traGopTransModel, user);
         }
-        
 
     }
 }

@@ -6,8 +6,10 @@ package Main;
 
 import Controller.LoginController;
 import DAO.ChiDAO;
+import DAO.TraGopDAO;
 import DAO.StockDAO;
 import Model.ChiModel;
+import Model.TraGopTransModel;
 import Model.MyStockBuyModel;
 import Model.UserModel;
 import View.TableSearch;
@@ -51,17 +53,20 @@ public class Test {
 //        ThuController nvController = new ThuController();
 //        MyStockBuyModel myStock = new MyStockBuyModel();
 //        myStock.setSymbol("AAPL");
+        UserModel user = new UserModel();
+        user.setId(1);
+        TraGopDAO guiTienDAO = new TraGopDAO();
+        ArrayList<TraGopTransModel> transList = guiTienDAO.getAllTrans(user);
+        System.out.println(transList.size());
+        for (int i = 0; i < transList.size(); i++) {
+            TraGopTransModel get = transList.get(i);
+            System.out.println(get.toString());
 
-        ChiDAO chiDAO = new ChiDAO();
-        UserModel acc = new UserModel();
-        acc.setId(1);
-        ArrayList<ChiModel> chiModels = new ArrayList<>();
-        chiModels = chiDAO.getAll(acc);
-        System.out.println(chiModels.size());
-//        myStock.setTime();
-//        System.out.println(myStock.get24hchange());
-//        System.out.println(get24hchange("AAPL"));
+        }
 
+        //        myStock.setTime();
+        //        System.out.println(myStock.get24hchange());
+        //        System.out.println(get24hchange("AAPL"));
         // new DangNhapController(viewlogin).setEventLogin();
     }
 

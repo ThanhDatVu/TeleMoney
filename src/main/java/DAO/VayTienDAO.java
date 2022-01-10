@@ -4,7 +4,7 @@
  */
 package DAO;
 
-import Model.GuiTienModel;
+import Model.VayTienModel;
 import Model.MyStockBuyModel;
 import Model.UserModel;
 import Model.VayTienModel;
@@ -106,15 +106,15 @@ public class VayTienDAO {
         ArrayList<VayTienModel> vayTienModels = new ArrayList<>();
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            
+
             ps.setInt(1, x);
             ps.setString(2, vayTienModel.getTen());
-            
+
             rs = ps.executeQuery();
             while (rs.next()) {
-               
+
                 id = (rs.getInt("id"));
-               
+
             }
         } catch (Exception e) {
         }
@@ -122,7 +122,7 @@ public class VayTienDAO {
     }
 
     public void addTrans(VayTienTransModel vayTien, UserModel user) {
-         String sql = "INSERT INTO `vaytrans` ( `vayid`, `uid`, `name`, `bank`, `sotien`, `time`) VALUES ( ?, ?, ?, ?, ?, ?)";;
+        String sql = "INSERT INTO `vaytrans` ( `vayid`, `uid`, `name`, `bank`, `sotien`, `time`) VALUES ( ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, vayTien.getVayTienID());
@@ -131,14 +131,39 @@ public class VayTienDAO {
             ps.setString(4, vayTien.getBank());
             ps.setDouble(5, vayTien.getSotien());
             ps.setTimestamp(6, vayTien.getTime());
-            
-            
 
             int executeUpdate = ps.executeUpdate();
-            
+
         } catch (Exception e) {
             System.out.println("thêm vay tiền trans thất bại");
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<VayTienTransModel> getAllTrans(UserModel user) {
+        ArrayList<VayTienTransModel> vayTienTransList = new ArrayList<>();
+        String sql = "select * from vaytrans where uid=?";
+        int x = user.getId();
+        ResultSet rs;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, x);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                VayTienTransModel vayTienTrans = new VayTienTransModel();
+                vayTienTrans.setId(rs.getInt("id"));
+                vayTienTrans.setTen(rs.getString("name"));
+                vayTienTrans.setBank(rs.getString("bank"));
+                vayTienTrans.setStatus(rs.getString("status"));
+                vayTienTrans.setVayTienID(rs.getInt("vayid"));
+                vayTienTrans.setTime(rs.getTimestamp("time"));
+                vayTienTrans.setSotien(rs.getDouble("sotien"));
+                vayTienTransList.add(vayTienTrans);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return vayTienTransList;
     }
 }

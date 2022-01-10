@@ -16,9 +16,9 @@ public class TraGopTransModel {
     int traGopID;
     private String ten;
     private String bank;
+    private String status;
     private double sotien;
     private Timestamp time;
-    
 
     public TraGopTransModel() {
 
@@ -31,6 +31,14 @@ public class TraGopTransModel {
         this.bank = bank;
         this.sotien = sotien;
         this.time = time;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getId() {
@@ -80,8 +88,10 @@ public class TraGopTransModel {
     public void setTime(Timestamp time) {
         this.time = time;
     }
-    
 
-    
+    @Override
+    public String toString() {
+        return "TraGopTransModel{" + "id=" + id + ", traGopID=" + traGopID + ", ten=" + ten + ", bank=" + bank + ", status=" + status + ", sotien=" + sotien + ", time=" + time + '}';
+    }
 
 }

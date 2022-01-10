@@ -94,7 +94,7 @@ public class AddStockController {
             master.comboStock.addItem(stockList.get(i).getSymbol() + " - " + stockList.get(i).getName());
 
         }
-        
+
     }
 //    public void setButton(){
 //    Action delete = new AbstractAction() {

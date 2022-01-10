@@ -4,7 +4,7 @@
  */
 package DAO;
 
-import Model.GuiTienModel;
+import Model.TraGopModel;
 import Model.MyStockBuyModel;
 import Model.TraGopModel;
 import Model.TraGopTransModel;
@@ -88,7 +88,7 @@ public class TraGopDAO {
     }
 
     public void addTrans(TraGopTransModel traGop, UserModel user) {
-         String sql = "INSERT INTO `tragoptrans` ( `tragopid`, `uid`, `name`, `namecongty`, `sotien`, `time`) VALUES ( ?, ?, ?, ?, ?, ?)";;
+        String sql = "INSERT INTO `tragoptrans` ( `tragopid`, `uid`, `name`, `namecongty`, `sotien`, `time`) VALUES ( ?, ?, ?, ?, ?, ?)";;
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setInt(1, traGop.getTraGopID());
@@ -97,11 +97,9 @@ public class TraGopDAO {
             ps.setString(4, traGop.getBank());
             ps.setDouble(5, traGop.getSotien());
             ps.setTimestamp(6, traGop.getTime());
-            
-            
 
             int executeUpdate = ps.executeUpdate();
-            
+
         } catch (Exception e) {
             System.out.println("thêm trả góp trans thất bại");
             e.printStackTrace();
@@ -116,19 +114,46 @@ public class TraGopDAO {
         ArrayList<TraGopModel> traGopModels = new ArrayList<>();
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
-            
+
             ps.setInt(1, x);
             ps.setString(2, traGopModel.getTen());
-            
+
             rs = ps.executeQuery();
             while (rs.next()) {
-               
+
                 id = (rs.getInt("id"));
-               
+
             }
         } catch (Exception e) {
             System.out.println("Không tìm thấy khoản trả góp");
         }
         return id;
+    }
+
+    public ArrayList<TraGopTransModel> getAllTrans(UserModel user) {
+        ArrayList<TraGopTransModel> traGopTransList = new ArrayList<>();
+        String sql = "select * from tragoptrans where uid=?";
+        int x = user.getId();
+        ResultSet rs;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, x);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                TraGopTransModel traGopTrans = new TraGopTransModel();
+                traGopTrans.setId(rs.getInt("id"));
+                traGopTrans.setTen(rs.getString("name"));
+                traGopTrans.setBank(rs.getString("namecongty"));
+                traGopTrans.setStatus(rs.getString("status"));
+                traGopTrans.setTraGopID(rs.getInt("tragopid"));
+                traGopTrans.setTime(rs.getTimestamp("time"));
+                traGopTrans.setSotien(rs.getDouble("sotien"));
+                traGopTransList.add(traGopTrans);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return traGopTransList;
     }
 }

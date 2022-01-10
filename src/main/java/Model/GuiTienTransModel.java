@@ -16,9 +16,9 @@ public class GuiTienTransModel {
     int guiTienID;
     private String ten;
     private String bank;
+    private String status;
     private double sotien;
     private Timestamp time;
-    
 
     public GuiTienTransModel() {
 
@@ -31,6 +31,14 @@ public class GuiTienTransModel {
         this.bank = bank;
         this.sotien = sotien;
         this.time = time;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getId() {
@@ -80,8 +88,10 @@ public class GuiTienTransModel {
     public void setTime(Timestamp time) {
         this.time = time;
     }
-    
 
-    
+    @Override
+    public String toString() {
+        return "GuiTienTransModel{" + "id=" + id + ", guiTienID=" + guiTienID + ", ten=" + ten + ", bank=" + bank + ", status=" + status + ", sotien=" + sotien + ", time=" + time + '}';
+    }
 
 }
