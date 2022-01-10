@@ -8,6 +8,7 @@ package Controller;
 import DAO.GuiTienDAO;
 import DAO.StockDAO;
 import Model.GuiTienModel;
+import Model.GuiTienTransModel;
 import Model.UserModel;
 import View.GuiTienView;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import javax.swing.JOptionPane;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
@@ -78,9 +80,12 @@ public class AddGuiTienController {
                         guiTienModel.setTiengoc(Double.parseDouble(guiTienView.txtTien.getText()));
                         guiTienModel.setLaisuat(Double.parseDouble(guiTienView.txtLaisuat.getText()));
                         guiTienModel.setKyhan(Integer.parseInt(guiTienView.cboKyHan.getSelectedItem().toString()));
+                        guiTienModel.setNgaythulai(Integer.parseInt(guiTienView.txtNgayNhanLai.getText().toString()));
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         guiTienModel.setNgaygui(time);
                         guiTienDAO.add(guiTienModel, acc);
+                        int id  = guiTienDAO.getIDByName(guiTienModel, acc);;
+                        themGiaoDich(guiTienModel, acc, id);
                         guiTienView.master.soDuKhaDung = guiTienView.master.soDuKhaDung - Double.parseDouble(guiTienView.txtTien.getText());
                         guiTienView.master.refreshTabVayNo();
                         guiTienView.dispose();
@@ -143,7 +148,7 @@ public class AddGuiTienController {
             soTien = Double.parseDouble(guiTienView.txtTien.getText());
             laiXuat = Double.parseDouble(guiTienView.txtLaisuat.getText());
             kyHan = Double.parseDouble(guiTienView.cboKyHan.getSelectedItem().toString());
-
+            
             if (soTien > -1 && laiXuat > -1) {
                 guiTienView.txtLai.setEditable(true);
                 double laihangthang;
@@ -156,6 +161,37 @@ public class AddGuiTienController {
             }
 
         }
+
+    }
+    public void themGiaoDich(GuiTienModel guiTienModel, UserModel user, int guiTienID) {
+        guiTienModel.getNgaygui().setDate(guiTienModel.getNgaythulai());
+
+        LocalDateTime localDateTime = guiTienModel.getNgaygui().toLocalDateTime();
+        for (int i = 1; i <= guiTienModel.getKyhan(); i++) {
+            GuiTienTransModel guiTienTransModel = new GuiTienTransModel();
+            guiTienTransModel.setGuiTienID(guiTienID);
+            guiTienTransModel.setTen("Nhận lãi lần " + i + " - " + guiTienModel.getTen());
+            guiTienTransModel.setSotien(Float.parseFloat(guiTienView.txtLai.getText()));
+            guiTienTransModel.setBank(guiTienModel.getBank());
+
+            LocalDateTime newDate = localDateTime.plusMonths(i - 1);
+
+            System.out.println("tháng" + newDate.toString());
+            Timestamp timeStamp = Timestamp.valueOf(newDate);
+            guiTienTransModel.setTime(timeStamp);
+            guiTienDAO.addTrans(guiTienTransModel, user);
+        }
+        GuiTienTransModel traGoc = new GuiTienTransModel();
+        traGoc.setGuiTienID(guiTienID);
+        traGoc.setTen("Nhận tiền gốc  " + guiTienModel.getTen());
+        traGoc.setSotien(guiTienModel.getTiengoc());
+        traGoc.setBank(guiTienModel.getBank());
+        LocalDateTime newDate = localDateTime.plusMonths(guiTienModel.getKyhan());
+
+        System.out.println("tháng" + newDate.toString());
+        Timestamp timeStamp = Timestamp.valueOf(newDate);
+        traGoc.setTime(timeStamp);
+        guiTienDAO.addTrans(traGoc, user);
 
     }
 }

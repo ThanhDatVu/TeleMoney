@@ -41,11 +41,11 @@ public class GuiTienTransModel {
         this.id = id;
     }
 
-    public int getTraGopID() {
+    public int getGuiTienID() {
         return guiTienID;
     }
 
-    public void setTraGopID(int traGopID) {
+    public void setGuiTienID(int traGopID) {
         this.guiTienID = traGopID;
     }
 

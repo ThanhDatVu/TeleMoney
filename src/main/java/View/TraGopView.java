@@ -52,12 +52,12 @@ public class TraGopView extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         cboThang = new javax.swing.JComboBox<>();
         btnThemTraGop = new javax.swing.JButton();
-        txtTien = new javax.swing.JTextField();
+        txtTongTien = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         txtTraTruoc = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        txtTienThang = new javax.swing.JTextField();
+        txtTienHangThang = new javax.swing.JTextField();
         btnHuyTraGop = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -107,7 +107,7 @@ public class TraGopView extends javax.swing.JFrame {
             }
         });
 
-        txtTien.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
+        txtTongTien.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
         jLabel8.setText("THÊM KHOẢN TRẢ GÓP");
@@ -120,7 +120,7 @@ public class TraGopView extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         jLabel10.setText("TIỀN HÀNG THÁNG");
 
-        txtTienThang.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
+        txtTienHangThang.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
 
         btnHuyTraGop.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         btnHuyTraGop.setText("Cancel");
@@ -175,7 +175,7 @@ public class TraGopView extends javax.swing.JFrame {
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(txtTien, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, Short.MAX_VALUE)
                                 .addComponent(jLabel9)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -195,7 +195,7 @@ public class TraGopView extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel10)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtTienThang, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtTienHangThang, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -216,11 +216,11 @@ public class TraGopView extends javax.swing.JFrame {
                     .addComponent(jLabel3)
                     .addComponent(jLabel9)
                     .addComponent(txtTraTruoc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtTongTien, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(21, 21, 21)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(txtTienThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtTienHangThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7)
                     .addComponent(cboThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
@@ -321,8 +321,8 @@ public class TraGopView extends javax.swing.JFrame {
     public javax.swing.JTextField txtBank;
     public javax.swing.JTextField txtNgayTraGop;
     public javax.swing.JTextField txtTen;
-    public javax.swing.JTextField txtTien;
-    public javax.swing.JTextField txtTienThang;
+    public javax.swing.JTextField txtTienHangThang;
+    public javax.swing.JTextField txtTongTien;
     public javax.swing.JTextField txtTraTruoc;
     // End of variables declaration//GEN-END:variables
 }

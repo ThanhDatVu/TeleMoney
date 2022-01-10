@@ -308,8 +308,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         btnXoaChi.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnXoaChi.setText("Xóa");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel17.setText("CHI");
+        jLabel17.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel17.setText("CÁC KHOẢN CHI TIÊU");
 
         btnShowThu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnShowThu.setText("Show");
@@ -330,8 +330,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelSoDuChiTieu.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         labelSoDuChiTieu.setText("Số dư khả dụng");
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel19.setText("THU");
+        jLabel19.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
+        jLabel19.setText("CÁC KHOẢN THU NHẬP");
 
         javax.swing.GroupLayout pnlChiTieuLayout = new javax.swing.GroupLayout(pnlChiTieu);
         pnlChiTieu.setLayout(pnlChiTieuLayout);
@@ -362,18 +362,6 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addGap(39, 39, 39)
                         .addComponent(textChi, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(61, 61, 61))))
-            .addGroup(pnlChiTieuLayout.createSequentialGroup()
-                .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
-                        .addGap(463, 463, 463)
-                        .addComponent(jLabel16))
-                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
-                        .addGap(484, 484, 484)
-                        .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
-                        .addGap(488, 488, 488)
-                        .addComponent(jLabel17)))
-                .addGap(0, 0, Short.MAX_VALUE))
             .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(pnlChiTieuLayout.createSequentialGroup()
                 .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -388,17 +376,28 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addComponent(labelSoDuChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 294, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(732, Short.MAX_VALUE))
             .addComponent(jScrollPane6)
+            .addGroup(pnlChiTieuLayout.createSequentialGroup()
+                .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
+                        .addGap(419, 419, 419)
+                        .addComponent(jLabel17))
+                    .addGroup(pnlChiTieuLayout.createSequentialGroup()
+                        .addGap(415, 415, 415)
+                        .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel16))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         pnlChiTieuLayout.setVerticalGroup(
             pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlChiTieuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel16)
-                .addGap(13, 13, 13)
-                .addComponent(labelSoDuChiTieu)
-                .addGap(15, 15, 15)
-                .addComponent(jLabel19)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(labelSoDuChiTieu)
+                .addGap(22, 22, 22)
+                .addComponent(jLabel19)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThemThu)
                     .addComponent(btnSuaThu)
@@ -409,9 +408,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnShowThu)
-                .addGap(12, 12, 12)
+                .addGap(17, 17, 17)
                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(pnlChiTieuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnThemChi)
                     .addComponent(btnSuaChi)
@@ -422,18 +421,18 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.PREFERRED_SIZE, 149, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnShowChi)
-                .addContainerGap(152, Short.MAX_VALUE))
+                .addContainerGap(157, Short.MAX_VALUE))
         );
 
         pnlCards.add(pnlChiTieu, "cardChiTieu");
 
         pnlDauTu.setBackground(new java.awt.Color(255, 255, 255));
 
-        jLabel10.setFont(new java.awt.Font("Segoe UI Semibold", 0, 18)); // NOI18N
+        jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel10.setText("QUẢN LÝ CÁC DANH MỤC ĐẦU TƯ");
 
         jLabel12.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
-        jLabel12.setText("SỐ DƯ KHẢ DỤNG: ");
+        jLabel12.setText("Số dư khả dụng: ");
 
         labelSoDauTu.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         labelSoDauTu.setText("350.000.000VND");
@@ -496,32 +495,26 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                 .addGap(26, 26, 26)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlDauTuLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jLabel10)
-                        .addGap(355, 355, 355))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDauTuLayout.createSequentialGroup()
-                        .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(pnlDauTuLayout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(labelSoDauTu)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelUSD, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
-                            .addGroup(pnlDauTuLayout.createSequentialGroup()
-                                .addComponent(btnShowStockChart, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(38, 38, 38)))
-                        .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(txtLocDauTu)
-                            .addGroup(pnlDauTuLayout.createSequentialGroup()
-                                .addComponent(labelVND, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel6)))
-                        .addGap(22, 22, 22))))
+                        .addComponent(jLabel12)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(labelSoDauTu)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(labelUSD, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addGroup(pnlDauTuLayout.createSequentialGroup()
+                        .addComponent(btnShowStockChart, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnLoc, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38)))
+                .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(txtLocDauTu)
+                    .addGroup(pnlDauTuLayout.createSequentialGroup()
+                        .addComponent(labelVND, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel6)))
+                .addGap(22, 22, 22))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlDauTuLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(btnThemStock, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -540,13 +533,17 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addComponent(labelTotalStockVND)
                     .addComponent(labelTotalReturnVND))
                 .addGap(90, 90, 90))
+            .addGroup(pnlDauTuLayout.createSequentialGroup()
+                .addGap(364, 364, 364)
+                .addComponent(jLabel10)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         pnlDauTuLayout.setVerticalGroup(
             pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlDauTuLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel10)
                 .addGap(18, 18, 18)
+                .addComponent(jLabel10)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnlDauTuLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(labelSoDauTu)
@@ -653,25 +650,25 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         btnThemTK.setText("Thêm");
 
         btnXoaTK.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
-        btnXoaTK.setText("Xoá");
+        btnXoaTK.setText("Xem");
 
         btnThemVay.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnThemVay.setText("Thêm");
 
         btnXoaVay.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
-        btnXoaVay.setText("Xoá");
+        btnXoaVay.setText("Xem");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         jLabel3.setText("VAY TIỀN");
 
         btnShowTK.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
-        btnShowTK.setText("Show giao dịch");
+        btnShowTK.setText("Xem toàn bộ giao dịch đã thực hiện");
 
         btnLocTK.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
-        btnLocTK.setText("Lọc");
+        btnLocTK.setText("Tìm kiếm");
 
         btnLocVay.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
-        btnLocVay.setText("Lọc");
+        btnLocVay.setText("Tìm kiếm");
 
         txtLocTK.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
 
@@ -680,7 +677,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelSoDuVayNo.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         labelSoDuVayNo.setText("Số dư khả dụng: ");
 
-        jLabel9.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel9.setText("QUẢN LÝ VAY NỢ");
 
         tableTraGop.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
@@ -698,21 +696,21 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jScrollPane7.setViewportView(tableTraGop);
 
         btnXoaTG.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
-        btnXoaTG.setText("Xoá");
+        btnXoaTG.setText("Xem");
 
         btnThemTG.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
         btnThemTG.setText("Thêm");
 
         btnLocTG.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
-        btnLocTG.setText("Lọc");
+        btnLocTG.setText("Tìm kiếm");
 
         txtLocTG.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
 
         btnShowTG.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
-        btnShowTG.setText("Show giao dịch");
+        btnShowTG.setText("Xem toàn bộ giao dịch đã thực hiện");
 
         btnShowVay.setFont(new java.awt.Font("Segoe UI Semibold", 0, 11)); // NOI18N
-        btnShowVay.setText("Show giao dịch");
+        btnShowVay.setText("Xem toàn bộ giao dịch đã thực hiện");
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 1, 14)); // NOI18N
         jLabel8.setText("GỬI TIỀN");
@@ -742,7 +740,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addComponent(btnThemTK, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btnXoaTK, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 556, Short.MAX_VALUE)
                         .addComponent(btnLocTK, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(42, 42, 42)
                         .addComponent(txtLocTK, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -773,29 +771,25 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
             .addComponent(jScrollPane4)
-            .addGroup(pnlVayNoLayout.createSequentialGroup()
-                .addGroup(pnlVayNoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(pnlVayNoLayout.createSequentialGroup()
-                        .addGap(464, 464, 464)
-                        .addComponent(jLabel3))
-                    .addGroup(pnlVayNoLayout.createSequentialGroup()
-                        .addGap(418, 418, 418)
-                        .addComponent(jLabel9)))
-                .addGap(0, 504, Short.MAX_VALUE))
             .addComponent(jScrollPane7)
+            .addGroup(pnlVayNoLayout.createSequentialGroup()
+                .addGap(464, 464, 464)
+                .addComponent(jLabel3)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         pnlVayNoLayout.setVerticalGroup(
             pnlVayNoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlVayNoLayout.createSequentialGroup()
-                .addGroup(pnlVayNoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addContainerGap(23, Short.MAX_VALUE)
+                .addComponent(jLabel9)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(pnlVayNoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(pnlVayNoLayout.createSequentialGroup()
-                        .addGap(70, 70, 70)
                         .addComponent(labelSoDuVayNo)
                         .addGap(51, 51, 51))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlVayNoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel9)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(36, 36, 36)
                         .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)))
                 .addGroup(pnlVayNoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1114,8 +1108,8 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
 
         labelSoDauTu.setText(String.valueOf(df.format(soDuKhaDung)) + " VND");
         labelSoDuThongKe.setText(String.valueOf(df.format(soDuKhaDung)) + " VND");
-        labelSoDuChiTieu.setText("Số dư khả dựng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
-        labelSoDuVayNo.setText("Số dư khả dựng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
+        labelSoDuChiTieu.setText("Số dư khả dụng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
+        labelSoDuVayNo.setText("Số dư khả dụng : " + String.valueOf(df.format(soDuKhaDung)) + " VND");
         stockDAO.updateSoDu((float) soDuKhaDung, user);
     }
 

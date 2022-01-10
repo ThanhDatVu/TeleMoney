@@ -7,6 +7,7 @@ package DAO;
 import Model.GuiTienModel;
 import Model.MyStockBuyModel;
 import Model.TraGopModel;
+import Model.TraGopTransModel;
 import Model.UserModel;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -49,7 +50,7 @@ public class TraGopDAO {
             ps.setDouble(6, traGop.getTienhangthang());
             ps.setTimestamp(7, traGop.getTime());
             ps.setDouble(8, traGop.getTratruoc());
-            ps.setInt(8, traGop.getNgaytragop());
+            ps.setInt(9, traGop.getNgaytragop());
 
             int executeUpdate = ps.executeUpdate();
             System.out.println(traGop.toString());
@@ -84,5 +85,50 @@ public class TraGopDAO {
         } catch (Exception e) {
         }
         return traGopModels;
+    }
+
+    public void addTrans(TraGopTransModel traGop, UserModel user) {
+         String sql = "INSERT INTO `tragoptrans` ( `tragopid`, `uid`, `name`, `namecongty`, `sotien`, `time`) VALUES ( ?, ?, ?, ?, ?, ?)";;
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, traGop.getTraGopID());
+            ps.setInt(2, user.getId());
+            ps.setString(3, traGop.getTen());
+            ps.setString(4, traGop.getBank());
+            ps.setDouble(5, traGop.getSotien());
+            ps.setTimestamp(6, traGop.getTime());
+            
+            
+
+            int executeUpdate = ps.executeUpdate();
+            
+        } catch (Exception e) {
+            System.out.println("thêm trả góp trans thất bại");
+            e.printStackTrace();
+        }
+    }
+
+    public int getIDByName(TraGopModel traGopModel, UserModel acc) {
+        String sql = "select * from tragop where uid LIKE ? and name LIKE ?";
+        int x = acc.getId();
+        ResultSet rs;
+        int id = 0;
+        ArrayList<TraGopModel> traGopModels = new ArrayList<>();
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            
+            ps.setInt(1, x);
+            ps.setString(2, traGopModel.getTen());
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+               
+                id = (rs.getInt("id"));
+               
+            }
+        } catch (Exception e) {
+            System.out.println("Không tìm thấy khoản trả góp");
+        }
+        return id;
     }
 }

@@ -11,6 +11,8 @@ import Model.GuiTienModel;
 import Model.MyStockBuyModel;
 import Model.TraGopModel;
 import Model.UserModel;
+import Model.TraGopModel;
+import Model.TraGopTransModel;
 import View.TraGopView;
 import View.TraGopView;
 import java.awt.event.ActionEvent;
@@ -19,6 +21,7 @@ import javax.swing.JOptionPane;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,28 +73,30 @@ public class AddTraGopController {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                double x = Double.parseDouble(traGopView.txtTien.getText());
+                double x = Double.parseDouble(traGopView.txtTongTien.getText());
                 if (x > soDu) {
                     JOptionPane.showMessageDialog(null, "Vượt quá số dư khả dụng");
                 } else if (x <= 0) {
                     JOptionPane.showMessageDialog(null, "Nhập sai");
                 } else {
-                    int opt = JOptionPane.showConfirmDialog(traGopView, "Xác nhận gửi " + " "
-                            + " số tiền " + traGopView.txtTien.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+                    int opt = JOptionPane.showConfirmDialog(traGopView, "Xác nhận thêm khoản trả góp " + traGopView.txtTen.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
                     if (opt == 0) {
                         //String ten, String bank, double tongtien, double tienhangthang, int sothang, Timestamp time, double tratruoc
                         traGopModel.setTen(traGopView.txtTen.getText());
                         traGopModel.setBank(traGopView.txtBank.getText());
-                        traGopModel.setTongtien(Double.parseDouble(traGopView.txtTien.getText()));
-                        double a = Double.parseDouble(traGopView.txtTien.getText());
+                        traGopModel.setTongtien(Double.parseDouble(traGopView.txtTongTien.getText()));
+                        double a = Double.parseDouble(traGopView.txtTongTien.getText());
                         int b = Integer.parseInt(traGopView.cboThang.getSelectedItem().toString());
                         double c = Double.parseDouble(traGopView.txtTraTruoc.getText());
-                        traGopModel.setTienhangthang(((a - c) / b));
+                        traGopModel.setTienhangthang(Integer.parseInt(traGopView.txtTienHangThang.getText().toString()));
                         traGopModel.setSothang(b);
                         traGopModel.setTratruoc(c);
                         Timestamp time = new Timestamp(System.currentTimeMillis());
                         traGopModel.setTime(time);
+                        traGopModel.setNgaytragop(Integer.parseInt(traGopView.txtNgayTraGop.getText().toString()));
                         traGopDAO.add(traGopModel, acc);
+                        int id  = traGopDAO.getIDByName(traGopModel, acc);;
+                        themGiaoDich(traGopModel, acc, id);
                         traGopView.master.soDuKhaDung = traGopView.master.soDuKhaDung - Double.parseDouble(traGopView.txtTraTruoc.getText());
                         traGopView.master.refreshTabVayNo();
                         traGopView.dispose();
@@ -100,6 +105,27 @@ public class AddTraGopController {
             }
         }
         );
+
+    }
+    public void themGiaoDich(TraGopModel traGopModel, UserModel user, int traGopID) {
+        traGopModel.getTime().setDate(traGopModel.getNgaytragop());
+
+        LocalDateTime localDateTime = traGopModel.getTime().toLocalDateTime();
+        for (int i = 1; i <= traGopModel.getSothang(); i++) {
+            TraGopTransModel traGopTransModel = new TraGopTransModel();
+            traGopTransModel.setTraGopID(traGopID);
+            traGopTransModel.setTen("Trả gops lần " + i + " - " + traGopModel.getTen());
+            traGopTransModel.setSotien(Float.parseFloat(traGopView.txtTienHangThang.getText()));
+            traGopTransModel.setBank(traGopModel.getBank());
+
+            LocalDateTime newDate = localDateTime.plusMonths(i - 1);
+
+            System.out.println("tháng" + newDate.toString());
+            Timestamp timeStamp = Timestamp.valueOf(newDate);
+            traGopTransModel.setTime(timeStamp);
+            traGopDAO.addTrans(traGopTransModel, user);
+        }
+        
 
     }
 }

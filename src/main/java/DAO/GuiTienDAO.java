@@ -5,6 +5,7 @@
 package DAO;
 
 import Model.GuiTienModel;
+import Model.GuiTienTransModel;
 import Model.MyStockBuyModel;
 import Model.UserModel;
 import java.sql.Connection;
@@ -94,5 +95,48 @@ public class GuiTienDAO {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public void addTrans(GuiTienTransModel guiTien, UserModel user) {
+         String sql = "INSERT INTO `chovaytrans` ( `chovayid`, `uid`, `name`, `bank`, `sotien`, `time`) VALUES ( ?, ?, ?, ?, ?, ?)";;
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, guiTien.getGuiTienID());
+            ps.setInt(2, user.getId());
+            ps.setString(3, guiTien.getTen());
+            ps.setString(4, guiTien.getBank());
+            ps.setDouble(5, guiTien.getSotien());
+            ps.setTimestamp(6, guiTien.getTime());
+            
+            
+
+            int executeUpdate = ps.executeUpdate();
+            
+        } catch (Exception e) {
+            System.out.println("thêm vay tiền trans thất bại");
+            e.printStackTrace();
+        }
+    }
+
+    public int getIDByName(GuiTienModel guiTienModel, UserModel acc) {
+        String sql = "select * from chovay where uid LIKE ? and ten LIKE ?";
+        int x = acc.getId();
+        ResultSet rs;
+        int id = 0;
+        ArrayList<GuiTienModel> guiTienModels = new ArrayList<>();
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            
+            ps.setInt(1, x);
+            ps.setString(2, guiTienModel.getTen());
+            
+            rs = ps.executeQuery();
+            while (rs.next()) {
+               
+                id = (rs.getInt("id"));
+               
+            }
+        } catch (Exception e) {
+        }
+        return id;
     }
 }

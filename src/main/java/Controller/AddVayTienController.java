@@ -178,7 +178,7 @@ public class AddVayTienController {
         for (int i = 1; i <= vayTienModel.getKyhan(); i++) {
             VayTienTransModel vayTienTransModel = new VayTienTransModel();
             vayTienTransModel.setVayTienID(vayTienID);
-            vayTienTransModel.setTen("Trả lãi lần " + i + " " + vayTienModel.getTen());
+            vayTienTransModel.setTen("Trả lãi lần " + i + " - " + vayTienModel.getTen());
             vayTienTransModel.setSotien(Float.parseFloat(vayTienView.txtLai.getText()));
             vayTienTransModel.setBank(vayTienModel.getBank());
 
