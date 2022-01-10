@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2022 at 12:03 AM
+-- Generation Time: Jan 10, 2022 at 03:54 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -102,6 +102,8 @@ CREATE TABLE `chovaytrans` (
 --
 
 CREATE TABLE `mystock` (
+  `id` int(50) NOT NULL,
+  `uid` int(11) NOT NULL DEFAULT 1,
   `symbol` text NOT NULL,
   `name` text NOT NULL,
   `soluong` int(65) NOT NULL,
@@ -114,17 +116,18 @@ CREATE TABLE `mystock` (
 -- Dumping data for table `mystock`
 --
 
-INSERT INTO `mystock` (`symbol`, `name`, `soluong`, `tongbandau`, `giabandau`, `time`) VALUES
-('AAPL', 'Apple', 30, 5905.53, 196.851, '2021-12-28 22:01:30'),
-('BTC-USD', 'Bitcoin', 6, 274000, 45666.7, '2021-12-28 21:55:16'),
-('COIN', 'Coinbase', 10, 1250, 125, '2021-12-28 22:01:30'),
-('MSFT', 'Microsoft Corporation', 34, 8500, 250, '2021-12-28 22:29:06'),
-('TSLA', 'TESLA', 35, 30345, 867, '2021-12-28 20:28:01'),
-('GOOGL', 'Alphabet Inc. Class A', 2, 5755.02, 2877.51, '2022-01-02 07:00:50'),
-('MDT', 'Medtronic Plc', 5, 517.25, 103.45, '2022-01-02 07:47:44'),
-('SLB', 'Schlumberger NV', 10, 299.5, 29.95, '2022-01-02 14:32:21'),
-('CL', 'Colgate-Palmolive Company', 5, 462.442, 92.4884, '2022-01-02 15:30:19'),
-('HD', 'Home Depot Inc.', 10, 3936.1, 393.61, '2022-01-08 12:18:54');
+INSERT INTO `mystock` (`id`, `uid`, `symbol`, `name`, `soluong`, `tongbandau`, `giabandau`, `time`) VALUES
+(1, 1, 'AAPL', 'Apple', 30, 5905.53, 196.851, '2021-12-28 22:01:30'),
+(2, 1, 'BTC-USD', 'Bitcoin', 6, 274000, 45666.7, '2021-12-28 21:55:16'),
+(3, 1, 'COIN', 'Coinbase', 10, 1250, 125, '2021-12-28 22:01:30'),
+(4, 1, 'MSFT', 'Microsoft Corporation', 34, 8500, 250, '2021-12-28 22:29:06'),
+(5, 1, 'TSLA', 'TESLA', 35, 30345, 867, '2021-12-28 20:28:01'),
+(6, 1, 'GOOGL', 'Alphabet Inc. Class A', 2, 5755.02, 2877.51, '2022-01-02 07:00:50'),
+(7, 1, 'MDT', 'Medtronic Plc', 5, 517.25, 103.45, '2022-01-02 07:47:44'),
+(8, 1, 'SLB', 'Schlumberger NV', 10, 299.5, 29.95, '2022-01-02 14:32:21'),
+(9, 1, 'CL', 'Colgate-Palmolive Company', 5, 462.442, 92.4884, '2022-01-02 15:30:19'),
+(10, 1, 'HD', 'Home Depot Inc.', 10, 3936.1, 393.61, '2022-01-08 12:18:54'),
+(11, 1, 'TSLA', 'Tesla Inc', 10, 10269.6, 1026.96, '2022-01-10 08:07:00');
 
 -- --------------------------------------------------------
 
@@ -672,30 +675,30 @@ INSERT INTO `stock` (`Company`, `Symbol`, `Price`) VALUES
 ('Under Armour Inc. Class C', 'UA', '17.61'),
 ('News Corporation Class B', 'NWS', '22.75'),
 ('BITCOIN', 'BTC-USD', '9999.99'),
-('Ethereum U','ETH-USD',  '3184.96'),
-( 'Tether USD', 'USDT-USD','1.00'),
-( 'Binance Co','BNB-USD', '440.88'),
-( 'Solana USD','SOL-USD', '141.64'),
-( 'USD Coin U','USDC-USD', '1.00'),
-( 'HEX USD','HEX-USD', '0.24'),
-( 'Cardano US','ADA-USD', '1.19'),
-( 'XRP USD','XRP-USD', '0.76'),
-('Terra USD','LUNA1-USD',  '75.26'),
-( 'Polkadot','DOT-USD', '24.81'),
-( 'Avalanche ', 'AVAX-USD','89.74'),
-( 'Dogecoin', 'DOGE-USD','0.15'),
-( 'SHIBA INU ','SHIB-USD', '0.00'),
-( 'Polygon US', 'MATIC-USD','2.11'),
-( 'Binance US','BUSD-USD', '1.00'),
-( 'Chainlink ','LINK-USD', '27.87'),
-('Crypto.com','CRO-USD',  '0.47'),
-('Wrapped Bi','WBTC-USD',  '43341.29'),
-( 'TerraUSD U','UST-USD', '1.00'),
-( 'Uniswap US','UNI1-USD', '15.91'),
-( 'NEAR Proto','NEAR-USD', '16.18'),
-('Dai USD','DAI-USD',  '1.00'),
-('Litecoin U','LTC-USD',  '132.21'),
-( 'Algorand U','ALGO-USD', '1.41');
+('Ethereum U', 'ETH-USD', '3184.96'),
+('Tether USD', 'USDT-USD', '1.00'),
+('Binance Co', 'BNB-USD', '440.88'),
+('Solana USD', 'SOL-USD', '141.64'),
+('USD Coin U', 'USDC-USD', '1.00'),
+('HEX USD', 'HEX-USD', '0.24'),
+('Cardano US', 'ADA-USD', '1.19'),
+('XRP USD', 'XRP-USD', '0.76'),
+('Terra USD', 'LUNA1-USD', '75.26'),
+('Polkadot', 'DOT-USD', '24.81'),
+('Avalanche ', 'AVAX-USD', '89.74'),
+('Dogecoin', 'DOGE-USD', '0.15'),
+('SHIBA INU ', 'SHIB-USD', '0.00'),
+('Polygon US', 'MATIC-USD', '2.11'),
+('Binance US', 'BUSD-USD', '1.00'),
+('Chainlink ', 'LINK-USD', '27.87'),
+('Crypto.com', 'CRO-USD', '0.47'),
+('Wrapped Bi', 'WBTC-USD', '43341.29'),
+('TerraUSD U', 'UST-USD', '1.00'),
+('Uniswap US', 'UNI1-USD', '15.91'),
+('NEAR Proto', 'NEAR-USD', '16.18'),
+('Dai USD', 'DAI-USD', '1.00'),
+('Litecoin U', 'LTC-USD', '132.21'),
+('Algorand U', 'ALGO-USD', '1.41');
 
 -- --------------------------------------------------------
 
@@ -738,7 +741,8 @@ INSERT INTO `stocktrans` (`id`, `uid`, `symbol`, `giagiaodich`, `soluong`, `time
 (18, 1, 'AAPL', 170, 21, '2022-01-08 05:26:59', 'ban'),
 (19, 1, 'CL', 85, 100, '2022-01-08 05:30:48', 'ban'),
 (20, 1, 'BTC-USD', 42000, 1, '2022-01-09 22:32:11', 'mua'),
-(21, 1, 'BTC-USD', 50000, 3, '2022-01-09 22:32:36', 'mua');
+(21, 1, 'BTC-USD', 50000, 3, '2022-01-09 22:32:36', 'mua'),
+(22, 1, 'TSLA', 1026.96, 10, '2022-01-10 01:07:00', 'mua');
 
 -- --------------------------------------------------------
 
@@ -780,7 +784,7 @@ CREATE TABLE `tong` (
 --
 
 INSERT INTO `tong` (`uid`, `sodu`, `tongtaisan`) VALUES
-(1, 1320081790, 1300076832);
+(1, 1087146750, 1300076832);
 
 -- --------------------------------------------------------
 
@@ -936,6 +940,12 @@ ALTER TABLE `chovaytrans`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mystock`
+--
+ALTER TABLE `mystock`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `stocktrans`
 --
 ALTER TABLE `stocktrans`
@@ -1000,10 +1010,16 @@ ALTER TABLE `chovaytrans`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT for table `mystock`
+--
+ALTER TABLE `mystock`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+
+--
 -- AUTO_INCREMENT for table `stocktrans`
 --
 ALTER TABLE `stocktrans`
-  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `id` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `thu`
