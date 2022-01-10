@@ -196,6 +196,7 @@ public class AddStockView extends javax.swing.JFrame {
 
         comboStock.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
         comboStock.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "" }));
+        comboStock.setSelectedIndex(-1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -21,6 +21,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
+import lib.AutoCompletion;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 
@@ -93,7 +94,7 @@ public class AddStockController {
             master.comboStock.addItem(stockList.get(i).getSymbol() + " - " + stockList.get(i).getName());
 
         }
-
+        
     }
 //    public void setButton(){
 //    Action delete = new AbstractAction() {

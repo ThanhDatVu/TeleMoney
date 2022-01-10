@@ -6,7 +6,7 @@ package Controller;
 
 import DAO.StockDAO;
 import Model.MyStockBuyModel;
-import View.ShowStockChart;
+import View.ShowStockChartView;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -19,6 +19,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import lib.AutoCompletion;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -41,11 +42,11 @@ import yahoofinance.histquotes.Interval;
  */
 public class ShowStockChartController {
 
-    ShowStockChart showView;
+    ShowStockChartView showView;
     StockDAO stockDAO;
     ArrayList<MyStockBuyModel> stockList = new ArrayList<>();
 
-    public ShowStockChartController(ShowStockChart showView) {
+    public ShowStockChartController(ShowStockChartView showView) {
         this.showView = showView;
 
         stockDAO = new StockDAO();
@@ -64,6 +65,7 @@ public class ShowStockChartController {
             showView.comboStockList.addItem(stockList.get(i).getSymbol());
 
         }
+        AutoCompletion.enable(showView.comboStockList);
 
     }
 
@@ -76,8 +78,7 @@ public class ShowStockChartController {
             Calendar to = Calendar.getInstance();
             from.add(Calendar.MONTH, -month);
             Stock stock = YahooFinance.get(symbol, from, to, Interval.DAILY);
-            stock.print();
-            System.out.println(stock.getHistory(from, to, Interval.WEEKLY).size());
+           
             List<HistoricalQuote> quoteList = stock.getHistory(from, to, Interval.DAILY);
             try {
 
@@ -122,7 +123,7 @@ public class ShowStockChartController {
             ((CandlestickRenderer) plot.getRenderer()).setDrawVolume(true);
             ChartPanel chartPanel = new ChartPanel(chart);
             chartPanel.setBackground(Color.lightGray);
-            showView.pnlChart.add(chartPanel, java.awt.BorderLayout.WEST);
+            showView.pnlChart.add(chartPanel, java.awt.BorderLayout.CENTER);
             
 //add your elements
             showView.pnlChart.revalidate();
