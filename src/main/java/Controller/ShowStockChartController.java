@@ -1,25 +1,24 @@
-package View;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package Controller;
 
-import java.awt.BorderLayout;
+import DAO.StockDAO;
+import Model.MyStockBuyModel;
+import View.ShowStockChart;
 import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Insets;
-import java.awt.Toolkit;
-import java.io.BufferedReader;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
-import java.util.StringTokenizer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JFrame;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
@@ -36,18 +35,48 @@ import yahoofinance.YahooFinance;
 import yahoofinance.histquotes.HistoricalQuote;
 import yahoofinance.histquotes.Interval;
 
-public class Demo {
+/**
+ *
+ * @author dat26
+ */
+public class ShowStockChartController {
 
-    public Demo(String symbol, int month) {
+    ShowStockChart showView;
+    StockDAO stockDAO;
+    ArrayList<MyStockBuyModel> stockList = new ArrayList<>();
 
+    public ShowStockChartController(ShowStockChart showView) {
+        this.showView = showView;
+
+        stockDAO = new StockDAO();
+        setChart(showView.symbol, showView.month);
+        setData();
+        setEventStock();
+
+    }
+
+    public void setData() {
+        stockList = stockDAO.getAllStockSymbol();
+
+        for (int i = 0; i < stockList.size(); i++) {
+//            stock = YahooFinance.get(stockList.get(i).getSymbol());
+//            long giaTriHienTai = (long) ((Math.round(stock.getQuote().getPrice().floatValue() * stockList.get(i).getSoLuong() * 100.0)) / 100.0);
+            showView.comboStockList.addItem(stockList.get(i).getSymbol());
+
+        }
+
+    }
+
+    private void setChart(String symbol, int month) {
+        showView.pnlChart.removeAll();
         try {
-
             // 1. Download MSFT quotes from Yahoo Finance and store them as OHLCDataItem
             List<OHLCDataItem> dataItems = new ArrayList<OHLCDataItem>();
             Calendar from = Calendar.getInstance();
             Calendar to = Calendar.getInstance();
             from.add(Calendar.MONTH, -month);
             Stock stock = YahooFinance.get(symbol, from, to, Interval.DAILY);
+            stock.print();
             System.out.println(stock.getHistory(from, to, Interval.WEEKLY).size());
             List<HistoricalQuote> quoteList = stock.getHistory(from, to, Interval.DAILY);
             try {
@@ -90,27 +119,37 @@ public class Demo {
             // 5. Skip week-ends on the date axis
             ((DateAxis) plot.getDomainAxis()).setTimeline(SegmentedTimeline.newMondayThroughFridayTimeline());
             // 6. No volume drawn
-            ((CandlestickRenderer) plot.getRenderer()).setDrawVolume(false);
-            // 7. Create and display full-screen JFrame
-            JFrame myFrame = new JFrame();
+            ((CandlestickRenderer) plot.getRenderer()).setDrawVolume(true);
+            ChartPanel chartPanel = new ChartPanel(chart);
+            chartPanel.setBackground(Color.lightGray);
+            showView.pnlChart.add(chartPanel, java.awt.BorderLayout.WEST);
             
-            myFrame.setResizable(true);
-            myFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            myFrame.add(new ChartPanel(chart), BorderLayout.CENTER);
-            Toolkit kit = Toolkit.getDefaultToolkit();
-            Insets insets = kit.getScreenInsets(myFrame.getGraphicsConfiguration());
-            Dimension screen = kit.getScreenSize();
-            myFrame.setSize((int) (800), (int) (600));
-            myFrame.setLocation((int) (insets.left), (int) (insets.top));
-            myFrame.setVisible(true);
-
+//add your elements
+            showView.pnlChart.revalidate();
+            showView.pnlChart.repaint();
         } catch (IOException ex) {
-            Logger.getLogger(Demo.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ShowStockChartController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public static void main(String args[]) {
-        Demo demo = new Demo("BTC-USD" , 12);
+    public void setEventStock() {
+        System.out.println("Tao event");
+
+        showView.comboStockList.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                
+                setChart(showView.comboStockList.getSelectedItem().toString(), Integer.parseInt(showView.comboThang.getSelectedItem().toString()));
+
+            }
+        });
+        showView.comboThang.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                setChart(showView.comboStockList.getSelectedItem().toString(), Integer.parseInt(showView.comboThang.getSelectedItem().toString()));
+
+            }
+        });
 
     }
 }

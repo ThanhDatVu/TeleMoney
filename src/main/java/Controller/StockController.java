@@ -14,6 +14,8 @@ import View.BanStockView;
 import View.MasterTeleMoneyView;
 import View.MuaStockView;
 import View.MyTransView;
+import View.ShowStockChart;
+import View.StockChart;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.JOptionPane;
@@ -198,6 +200,12 @@ public class StockController {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 MyTransView myTransView = new MyTransView(master, acc);
                 myTransView.setVisible(true);
+            }
+        });
+        master.btnShowStockChart.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ShowStockChart stockChart = new ShowStockChart("BTC-USD", 12);
+                stockChart.setVisible(true);
             }
         });
         master.btnThemStock.addActionListener(new java.awt.event.ActionListener() {
