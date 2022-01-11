@@ -33,6 +33,14 @@ public class ShowVayTienView extends javax.swing.JFrame {
         showVayTienController = new ShowVayTienController(this, acc);
 
     }
+    public ShowVayTienView(MasterTeleMoneyView master, UserModel acc, int vayTienID) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.master = master;
+        this.acc = acc;
+        showVayTienController = new ShowVayTienController(this, acc, vayTienID);
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,7 +79,7 @@ public class ShowVayTienView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1000, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(btnSave)

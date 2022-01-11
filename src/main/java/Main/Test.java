@@ -6,10 +6,10 @@ package Main;
 
 import Controller.LoginController;
 import DAO.ChiDAO;
-import DAO.TraGopDAO;
+import DAO.GuiTienDAO;
 import DAO.StockDAO;
 import Model.ChiModel;
-import Model.TraGopTransModel;
+import Model.GuiTienTransModel;
 import Model.MyStockBuyModel;
 import Model.UserModel;
 import View.TableSearch;
@@ -55,11 +55,11 @@ public class Test {
 //        myStock.setSymbol("AAPL");
         UserModel user = new UserModel();
         user.setId(1);
-        TraGopDAO guiTienDAO = new TraGopDAO();
-        ArrayList<TraGopTransModel> transList = guiTienDAO.getAllTrans(user);
+        GuiTienDAO guiTienDAO = new GuiTienDAO();
+        ArrayList<GuiTienTransModel> transList = guiTienDAO.getTrans(user,10);
         System.out.println(transList.size());
         for (int i = 0; i < transList.size(); i++) {
-            TraGopTransModel get = transList.get(i);
+            GuiTienTransModel get = transList.get(i);
             System.out.println(get.toString());
 
         }

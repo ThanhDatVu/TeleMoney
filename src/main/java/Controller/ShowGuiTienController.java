@@ -70,11 +70,25 @@ public class ShowGuiTienController {
         //setTableButton();
 
     }
+    public ShowGuiTienController(ShowGuiTienView showGuiTienView, UserModel acc, int guiTienID) {
+
+        guiTienDAO = new GuiTienDAO();
+        this.showGuiTienView = showGuiTienView;
+        this.acc = acc;
+        this.showGuiTienView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        this.showGuiTienView.tableChi.setModel(thisModel);
+
+        setEventTrans();
+        this.showGuiTienView.setVisible(true);
+        setDataChiTiet(guiTienID);
+        
+
+    }
 
     public void enable() {
         setEventTrans();
 
-        //setTableButton();
+      
     }
 
     public void setData() {//thêm dũ liệu vào bảng
@@ -82,6 +96,25 @@ public class ShowGuiTienController {
         ArrayList<GuiTienTransModel> guiTienTranList = new ArrayList<>();
 
         guiTienTranList = guiTienDAO.getAllTrans(acc);
+
+        guiTienTransTableModel.setRowCount(0);
+        for (int i = 0; i < guiTienTranList.size(); i++) {
+            guiTienTransTableModel.addRow(new Object[]{
+                //                {"ID",  "Tên","Ngân hàng", "Số tiền", "Thời gian", "Trạng thái"};
+                guiTienTranList.get(i).getId(),
+                guiTienTranList.get(i).getTen(),
+                guiTienTranList.get(i).getBank(),
+                df.format(guiTienTranList.get(i).getSotien()),
+                guiTienTranList.get(i).getTime(),
+                guiTienTranList.get(i).getStatus(),});
+        }
+
+    }
+    public void setDataChiTiet(int guiTienID) {//thêm dũ liệu vào bảng
+        GuiTienTransTableModel guiTienTransTableModel = (GuiTienTransTableModel) showGuiTienView.tableChi.getModel();
+        ArrayList<GuiTienTransModel> guiTienTranList = new ArrayList<>();
+
+        guiTienTranList = guiTienDAO.getTrans(acc,guiTienID);
 
         guiTienTransTableModel.setRowCount(0);
         for (int i = 0; i < guiTienTranList.size(); i++) {

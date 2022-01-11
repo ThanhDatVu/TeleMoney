@@ -71,6 +71,18 @@ public class ShowTraGopController {
 
     }
 
+    public ShowTraGopController(ShowTraGopView showTraGopView, UserModel acc, int traGopID) {
+        vayTienDAO = new TraGopDAO();
+        this.showTraGopView = showTraGopView;
+        this.acc = acc;
+        this.showTraGopView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        this.showTraGopView.tableChi.setModel(thisModel);
+
+        setEventTrans();
+        this.showTraGopView.setVisible(true);
+        setDataChiTiet(traGopID);
+    }
+
     public void enable() {
         setEventTrans();
 
@@ -82,6 +94,25 @@ public class ShowTraGopController {
         ArrayList<TraGopTransModel> vayTienTranList = new ArrayList<>();
 
         vayTienTranList = vayTienDAO.getAllTrans(acc);
+
+        vayTienTransTableModel.setRowCount(0);
+        for (int i = 0; i < vayTienTranList.size(); i++) {
+            vayTienTransTableModel.addRow(new Object[]{
+                //                {"ID",  "Tên","Ngân hàng", "Số tiền", "Thời gian", "Trạng thái"};
+                vayTienTranList.get(i).getId(),
+                vayTienTranList.get(i).getTen(),
+                vayTienTranList.get(i).getBank(),
+                vayTienTranList.get(i).getSotien(),
+                vayTienTranList.get(i).getTime(),
+                vayTienTranList.get(i).getStatus(),});
+        }
+
+    }
+    public void setDataChiTiet(int traGopID) {//thêm dũ liệu vào bảng
+        TraGopTransTableModel vayTienTransTableModel = (TraGopTransTableModel) showTraGopView.tableChi.getModel();
+        ArrayList<TraGopTransModel> vayTienTranList = new ArrayList<>();
+
+        vayTienTranList = vayTienDAO.getTrans(acc,traGopID);
 
         vayTienTransTableModel.setRowCount(0);
         for (int i = 0; i < vayTienTranList.size(); i++) {

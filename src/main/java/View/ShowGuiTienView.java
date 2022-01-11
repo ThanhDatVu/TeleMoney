@@ -33,6 +33,14 @@ public class ShowGuiTienView extends javax.swing.JFrame {
         showGuiTienController = new ShowGuiTienController(this, acc);
 
     }
+    public ShowGuiTienView(MasterTeleMoneyView master, UserModel acc, int guiTienID) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.master = master;
+        this.acc = acc;
+        showGuiTienController = new ShowGuiTienController(this, acc, guiTienID);
+
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,7 +79,7 @@ public class ShowGuiTienView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 998, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(btnSave)

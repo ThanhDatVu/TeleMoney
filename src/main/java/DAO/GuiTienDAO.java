@@ -165,4 +165,31 @@ public class GuiTienDAO {
         }
         return guiTienTransList;
     }
+    public ArrayList<GuiTienTransModel> getTrans(UserModel user, int guiTienID) {
+        ArrayList<GuiTienTransModel> guiTienTransList = new ArrayList<>();
+        String sql = "select * from chovaytrans where uid=? and chovayid = ?";
+        int x = user.getId();
+        ResultSet rs;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, x);
+            ps.setInt(2, guiTienID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                GuiTienTransModel guiTienTrans = new GuiTienTransModel();
+                guiTienTrans.setId(rs.getInt("id"));
+                guiTienTrans.setTen(rs.getString("name"));
+                guiTienTrans.setBank(rs.getString("bank"));
+                guiTienTrans.setStatus(rs.getString("status"));
+                guiTienTrans.setGuiTienID(rs.getInt("chovayid"));
+                guiTienTrans.setTime(rs.getTimestamp("time"));
+                guiTienTrans.setSotien(rs.getDouble("sotien"));
+                guiTienTransList.add(guiTienTrans);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return guiTienTransList;
+    }
 }

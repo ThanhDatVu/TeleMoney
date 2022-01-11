@@ -156,4 +156,31 @@ public class TraGopDAO {
         }
         return traGopTransList;
     }
+    public ArrayList<TraGopTransModel> getTrans(UserModel user,  int traGopID) {
+        ArrayList<TraGopTransModel> traGopTransList = new ArrayList<>();
+        String sql = "select * from tragoptrans where uid=? and tragopid = ?";
+        int x = user.getId();
+        ResultSet rs;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, x);
+            ps.setInt(2, traGopID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                TraGopTransModel traGopTrans = new TraGopTransModel();
+                traGopTrans.setId(rs.getInt("id"));
+                traGopTrans.setTen(rs.getString("name"));
+                traGopTrans.setBank(rs.getString("namecongty"));
+                traGopTrans.setStatus(rs.getString("status"));
+                traGopTrans.setTraGopID(rs.getInt("tragopid"));
+                traGopTrans.setTime(rs.getTimestamp("time"));
+                traGopTrans.setSotien(rs.getDouble("sotien"));
+                traGopTransList.add(traGopTrans);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return traGopTransList;
+    }
 }

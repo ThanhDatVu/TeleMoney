@@ -70,6 +70,7 @@ public class ThongKeController {
     }
 
     public void setChartChiTieu() throws IOException {
+        master.pnlThongKeChiTieu.removeAll();
         ArrayList<ChiModel> chiList = new ArrayList<>();
         chiList = chiDAO.getAll(acc);
         float tong = 0;
@@ -152,10 +153,12 @@ public class ThongKeController {
         ChartPanel chartPanel = new ChartPanel(pieChart);
         chartPanel.setBackground(Color.lightGray);
         master.pnlThongKeChiTieu.add(chartPanel, java.awt.BorderLayout.WEST);
-
+        master.pnlThongKeChiTieu.revalidate();
+        master.pnlThongKeChiTieu.repaint();
     }
 
     public void setChartVayNo() throws IOException {
+        master.pnlThongKeVayNo.removeAll();
         DefaultCategoryDataset dataSet = new DefaultCategoryDataset();
         dataSet.addValue(1.0, "Cho vay", "");
         dataSet.addValue(3.0, "Nợ", "");
@@ -166,10 +169,12 @@ public class ThongKeController {
         ChartPanel chartPanel = new ChartPanel(barChart);
 
         master.pnlThongKeVayNo.add(chartPanel, java.awt.BorderLayout.WEST);
-
+        master.pnlThongKeVayNo.revalidate();
+        master.pnlThongKeVayNo.repaint();
     }
 
     public void setChartDauTu() throws IOException {
+        master.pnlThongKeDauTu.removeAll();
         ArrayList<MyStockBuyModel> stockList = new ArrayList<>();
         stockList = stockDAO.getAll();
         float tong = 0;
@@ -192,7 +197,9 @@ public class ThongKeController {
         ChartPanel chartPanel = new ChartPanel(pieChart);
 
         master.pnlThongKeDauTu.add(chartPanel, java.awt.BorderLayout.WEST);
-
+        master.pnlThongKeDauTu.revalidate();
+        master.pnlThongKeDauTu.repaint();
+        
     }
 //    
 //    

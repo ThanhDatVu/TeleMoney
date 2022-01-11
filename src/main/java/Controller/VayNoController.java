@@ -337,8 +337,8 @@ public class VayNoController {
                 tableSelect = master.tableGuiTien.getSelectedRow();
                 System.out.println("dang chon dong  " + tableSelect);
                 if (tableSelect != -1) {
-                    master.btnXoaChi.setEnabled(true);
-                    master.btnSuaChi.setEnabled(true);
+                    master.btnXoaTK.setEnabled(true);
+                    
                 }
             }
 
@@ -364,8 +364,8 @@ public class VayNoController {
                 tableSelect = master.tableTraGop.getSelectedRow();
                 System.out.println("dang chon dong tra gop " + tableSelect);
                 if (tableSelect != -1) {
-                    master.btnXoaChi.setEnabled(true);
-                    master.btnSuaChi.setEnabled(true);
+                    master.btnXoaTG.setEnabled(true);
+                    
                 }
             }
 
@@ -392,8 +392,8 @@ public class VayNoController {
                 tableSelect = master.tableVayTien.getSelectedRow();
                 System.out.println("dang chon dong vay tien " + tableSelect);
                 if (tableSelect != -1) {
-                    master.btnXoaChi.setEnabled(true);
-                    master.btnSuaChi.setEnabled(true);
+                    master.btnXoaVay.setEnabled(true);
+                    
                 }
             }
 
@@ -437,6 +437,36 @@ public class VayNoController {
             public void actionPerformed(ActionEvent e) {
                 ShowTraGopView showTraGopView = new ShowTraGopView(master, acc);
                 showTraGopView.setVisible(true);
+            }
+        }
+        );
+        master.btnXoaTG.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int xemTraGopID = (int) master.tableTraGop.getValueAt(tableSelect, 0);
+                ShowTraGopView showTraGopView = new ShowTraGopView(master, acc,xemTraGopID);
+                showTraGopView.setVisible(true);
+            }
+        }
+        );
+        master.btnXoaTK.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int xemTraGopID = (int) master.tableGuiTien.getValueAt(tableSelect, 0);
+                ShowGuiTienView showGuiTienView = new ShowGuiTienView(master, acc,xemTraGopID);
+                showGuiTienView.setVisible(true);
+            }
+        }
+        );
+        master.btnXoaVay.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                int xemTraGopID = (int) master.tableVayTien.getValueAt(tableSelect, 0);
+                ShowVayTienView showVayTienView = new ShowVayTienView(master, acc,xemTraGopID);
+                showVayTienView.setVisible(true);
             }
         }
         );

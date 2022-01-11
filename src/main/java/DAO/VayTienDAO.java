@@ -166,4 +166,31 @@ public class VayTienDAO {
         }
         return vayTienTransList;
     }
+    public ArrayList<VayTienTransModel> getTrans(UserModel user, int vayTienID) {
+        ArrayList<VayTienTransModel> vayTienTransList = new ArrayList<>();
+        String sql = "select * from vaytrans where uid=? and vayid = ?";
+        int x = user.getId();
+        ResultSet rs;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, x);
+            ps.setInt(2, vayTienID);
+            rs = ps.executeQuery();
+            while (rs.next()) {
+                VayTienTransModel vayTienTrans = new VayTienTransModel();
+                vayTienTrans.setId(rs.getInt("id"));
+                vayTienTrans.setTen(rs.getString("name"));
+                vayTienTrans.setBank(rs.getString("bank"));
+                vayTienTrans.setStatus(rs.getString("status"));
+                vayTienTrans.setVayTienID(rs.getInt("vayid"));
+                vayTienTrans.setTime(rs.getTimestamp("time"));
+                vayTienTrans.setSotien(rs.getDouble("sotien"));
+                vayTienTransList.add(vayTienTrans);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return vayTienTransList;
+    }
 }

@@ -20,7 +20,7 @@ public class ShowTraGopView extends javax.swing.JFrame {
     ShowTraGopController showTraGopController;
     MasterTeleMoneyView master;
     UserModel acc;
-
+    int traGopID;
     public ShowTraGopView() {
         initComponents();
     }
@@ -31,6 +31,14 @@ public class ShowTraGopView extends javax.swing.JFrame {
         this.master = master;
         this.acc = acc;
         showTraGopController = new ShowTraGopController(this, acc);
+
+    }
+    public ShowTraGopView(MasterTeleMoneyView master, UserModel acc, int traGopID) {
+        initComponents();
+        setLocationRelativeTo(null);
+        this.master = master;
+        this.acc = acc;
+        showTraGopController = new ShowTraGopController(this, acc, traGopID);
 
     }
 
@@ -71,7 +79,7 @@ public class ShowTraGopView extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 699, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1002, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(75, 75, 75)
                 .addComponent(btnSave)
