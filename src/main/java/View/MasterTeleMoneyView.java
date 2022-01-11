@@ -260,11 +260,12 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         labelReturn2 = new javax.swing.JLabel();
         jLabel30 = new javax.swing.JLabel();
         labelTotalReturn2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        comboNam = new javax.swing.JComboBox<>();
+        comboThang = new javax.swing.JComboBox<>();
         jLabel31 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        btnLocTheoThang = new javax.swing.JButton();
+        pnlThongKeThuNhap = new javax.swing.JPanel();
         pnlLeftNav = new javax.swing.JPanel();
         labelMenuVayNo = new javax.swing.JLabel();
         labelMenuDauTu = new javax.swing.JLabel();
@@ -840,13 +841,18 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         pnlThongKe.setBackground(new java.awt.Color(255, 255, 255));
 
         pnlThongKeChiTieu.setBackground(new java.awt.Color(255, 255, 255));
+        pnlThongKeChiTieu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         pnlThongKeChiTieu.setLayout(new java.awt.BorderLayout());
 
         pnlThongKeVayNo.setBackground(new java.awt.Color(255, 255, 255));
+        pnlThongKeVayNo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         pnlThongKeVayNo.setLayout(new java.awt.BorderLayout());
 
         pnlThongKeDauTu.setBackground(new java.awt.Color(255, 255, 255));
+        pnlThongKeDauTu.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
         pnlThongKeDauTu.setLayout(new java.awt.BorderLayout());
+
+        pnlThongKeText.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel7.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
         jLabel7.setText("Số dư khả dụng: ");
@@ -933,7 +939,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                             .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelReturn2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(labelTotalReturn2, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 125, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         pnlThongKeTextLayout.setVerticalGroup(
@@ -969,15 +975,15 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
                     .addGroup(pnlThongKeTextLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel15)
                         .addComponent(jLabel22)))
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2021", "2022", "2023", "2024", "2025" }));
-        jComboBox1.setSelectedIndex(1);
+        comboNam.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        comboNam.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "2021", "2022", "2023", "2024", "2025" }));
+        comboNam.setSelectedIndex(1);
 
-        jComboBox2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
+        comboThang.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        comboThang.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12" }));
 
         jLabel31.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
         jLabel31.setText("Năm");
@@ -985,58 +991,72 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         jLabel32.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
         jLabel32.setText("Tháng");
 
-        jButton2.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
-        jButton2.setText("Lọc theo thời gian");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        btnLocTheoThang.setFont(new java.awt.Font("Segoe UI Semilight", 0, 14)); // NOI18N
+        btnLocTheoThang.setText("Lọc theo thời gian");
+        btnLocTheoThang.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                btnLocTheoThangActionPerformed(evt);
             }
         });
+
+        pnlThongKeThuNhap.setBackground(new java.awt.Color(255, 255, 255));
+        pnlThongKeThuNhap.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        pnlThongKeThuNhap.setLayout(new java.awt.BorderLayout());
 
         javax.swing.GroupLayout pnlThongKeLayout = new javax.swing.GroupLayout(pnlThongKe);
         pnlThongKe.setLayout(pnlThongKeLayout);
         pnlThongKeLayout.setHorizontalGroup(
             pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThongKeLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel32)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jLabel31)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
-                .addComponent(jButton2)
-                .addGap(313, 313, 313))
             .addGroup(pnlThongKeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(pnlThongKeChiTieu, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
-                    .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
-                    .addComponent(pnlThongKeVayNo, javax.swing.GroupLayout.DEFAULT_SIZE, 982, Short.MAX_VALUE)
-                    .addComponent(pnlThongKeText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(97, Short.MAX_VALUE))
+                .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(pnlThongKeLayout.createSequentialGroup()
+                        .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(pnlThongKeChiTieu, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
+                            .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE)
+                            .addComponent(pnlThongKeVayNo, javax.swing.GroupLayout.DEFAULT_SIZE, 984, Short.MAX_VALUE))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(pnlThongKeLayout.createSequentialGroup()
+                        .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnlThongKeLayout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 353, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel32)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(comboThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel31)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(comboNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(btnLocTheoThang)
+                                .addGap(218, 218, 218))
+                            .addComponent(pnlThongKeText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(152, 152, 152))
+                    .addGroup(pnlThongKeLayout.createSequentialGroup()
+                        .addComponent(pnlThongKeThuNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 982, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         pnlThongKeLayout.setVerticalGroup(
             pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnlThongKeLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(pnlThongKeText, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(35, 35, 35)
+                .addComponent(pnlThongKeText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addGroup(pnlThongKeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboNam, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(comboThang, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel31)
                     .addComponent(jLabel32)
-                    .addComponent(jButton2))
-                .addGap(53, 53, 53)
+                    .addComponent(btnLocTheoThang))
+                .addGap(18, 18, 18)
+                .addComponent(pnlThongKeThuNhap, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
                 .addComponent(pnlThongKeChiTieu, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40)
+                .addGap(18, 18, 18)
                 .addComponent(pnlThongKeVayNo, javax.swing.GroupLayout.PREFERRED_SIZE, 433, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(pnlThongKeDauTu, javax.swing.GroupLayout.PREFERRED_SIZE, 449, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128))
+                .addGap(335, 335, 335))
         );
 
         jScrollPaneThongKe.setViewportView(pnlThongKe);
@@ -1142,9 +1162,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void btnLocTheoThangActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocTheoThangActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btnLocTheoThangActionPerformed
 
     public void setTiGiaSoDu() {
         try {
@@ -1226,6 +1246,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     private javax.swing.JButton btnLoc;
     public javax.swing.JButton btnLocTG;
     public javax.swing.JButton btnLocTK;
+    public javax.swing.JButton btnLocTheoThang;
     public javax.swing.JButton btnLocVay;
     public javax.swing.JButton btnShowChi;
     public javax.swing.JButton btnShowStockChart;
@@ -1249,10 +1270,9 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public javax.swing.JButton btnXoaTK;
     public javax.swing.JButton btnXoaThu;
     public javax.swing.JButton btnXoaVay;
+    public javax.swing.JComboBox<String> comboNam;
+    public javax.swing.JComboBox<String> comboThang;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -1320,6 +1340,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
     public javax.swing.JPanel pnlThongKeChiTieu;
     public javax.swing.JPanel pnlThongKeDauTu;
     private javax.swing.JPanel pnlThongKeText;
+    public javax.swing.JPanel pnlThongKeThuNhap;
     public javax.swing.JPanel pnlThongKeVayNo;
     private javax.swing.JPanel pnlVayNo;
     public javax.swing.JTable tableDanhMuc;

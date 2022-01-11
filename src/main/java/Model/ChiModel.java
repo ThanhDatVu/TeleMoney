@@ -23,7 +23,7 @@ public class ChiModel {
 
     @Override
     public String toString() {
-        return "NhanvienModel{" + "Ten khoan chi=" + nameChi + ", Danh muc=" + mucChi + ", So tien=" + amountChi + ","
+        return "ChiModel{" + "Ten khoan chi=" + nameChi + ", Danh muc=" + mucChi + ", So tien=" + amountChi + ","
                 + " Ngay=" + timeChi + "}";
     }
 

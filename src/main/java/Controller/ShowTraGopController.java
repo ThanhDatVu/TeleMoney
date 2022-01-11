@@ -50,15 +50,15 @@ public class ShowTraGopController {
     DecimalFormat df = new DecimalFormat("0");
     ShowTraGopView showTraGopView;
     UserModel acc;
-    TraGopDAO vayTienDAO = null;
-    TraGopModel vayTienModel;
+    TraGopDAO traGopDAO = null;
+    TraGopModel traGopModel;
     TraGopTransTableModel thisModel = new TraGopTransTableModel();
     ArrayList<TraGopModel> stockList = new ArrayList<>();
     double soDu;
 
     public ShowTraGopController(ShowTraGopView showTraGopView, UserModel acc) {
 
-        vayTienDAO = new TraGopDAO();
+        traGopDAO = new TraGopDAO();
         this.showTraGopView = showTraGopView;
         this.acc = acc;
         this.showTraGopView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -72,7 +72,7 @@ public class ShowTraGopController {
     }
 
     public ShowTraGopController(ShowTraGopView showTraGopView, UserModel acc, int traGopID) {
-        vayTienDAO = new TraGopDAO();
+        traGopDAO = new TraGopDAO();
         this.showTraGopView = showTraGopView;
         this.acc = acc;
         this.showTraGopView.setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -90,40 +90,40 @@ public class ShowTraGopController {
     }
 
     public void setData() {//thêm dũ liệu vào bảng
-        TraGopTransTableModel vayTienTransTableModel = (TraGopTransTableModel) showTraGopView.tableChi.getModel();
-        ArrayList<TraGopTransModel> vayTienTranList = new ArrayList<>();
+        TraGopTransTableModel traGopTransTableModel = (TraGopTransTableModel) showTraGopView.tableChi.getModel();
+        ArrayList<TraGopTransModel> traGopTranList = new ArrayList<>();
 
-        vayTienTranList = vayTienDAO.getAllTrans(acc);
+        traGopTranList = traGopDAO.getAllTrans(acc);
 
-        vayTienTransTableModel.setRowCount(0);
-        for (int i = 0; i < vayTienTranList.size(); i++) {
-            vayTienTransTableModel.addRow(new Object[]{
+        traGopTransTableModel.setRowCount(0);
+        for (int i = 0; i < traGopTranList.size(); i++) {
+            traGopTransTableModel.addRow(new Object[]{
                 //                {"ID",  "Tên","Ngân hàng", "Số tiền", "Thời gian", "Trạng thái"};
-                vayTienTranList.get(i).getId(),
-                vayTienTranList.get(i).getTen(),
-                vayTienTranList.get(i).getBank(),
-                vayTienTranList.get(i).getSotien(),
-                vayTienTranList.get(i).getTime(),
-                vayTienTranList.get(i).getStatus(),});
+                traGopTranList.get(i).getId(),
+                traGopTranList.get(i).getTen(),
+                traGopTranList.get(i).getBank(),
+                traGopTranList.get(i).getSotien(),
+                traGopTranList.get(i).getTime(),
+                traGopTranList.get(i).getStatus(),});
         }
 
     }
     public void setDataChiTiet(int traGopID) {//thêm dũ liệu vào bảng
-        TraGopTransTableModel vayTienTransTableModel = (TraGopTransTableModel) showTraGopView.tableChi.getModel();
-        ArrayList<TraGopTransModel> vayTienTranList = new ArrayList<>();
+        TraGopTransTableModel traGopTransTableModel = (TraGopTransTableModel) showTraGopView.tableChi.getModel();
+        ArrayList<TraGopTransModel> traGopTranList = new ArrayList<>();
 
-        vayTienTranList = vayTienDAO.getTrans(acc,traGopID);
+        traGopTranList = traGopDAO.getTrans(acc,traGopID);
 
-        vayTienTransTableModel.setRowCount(0);
-        for (int i = 0; i < vayTienTranList.size(); i++) {
-            vayTienTransTableModel.addRow(new Object[]{
+        traGopTransTableModel.setRowCount(0);
+        for (int i = 0; i < traGopTranList.size(); i++) {
+            traGopTransTableModel.addRow(new Object[]{
                 //                {"ID",  "Tên","Ngân hàng", "Số tiền", "Thời gian", "Trạng thái"};
-                vayTienTranList.get(i).getId(),
-                vayTienTranList.get(i).getTen(),
-                vayTienTranList.get(i).getBank(),
-                vayTienTranList.get(i).getSotien(),
-                vayTienTranList.get(i).getTime(),
-                vayTienTranList.get(i).getStatus(),});
+                traGopTranList.get(i).getId(),
+                traGopTranList.get(i).getTen(),
+                traGopTranList.get(i).getBank(),
+                traGopTranList.get(i).getSotien(),
+                traGopTranList.get(i).getTime(),
+                traGopTranList.get(i).getStatus(),});
         }
 
     }

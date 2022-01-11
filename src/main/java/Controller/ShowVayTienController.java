@@ -80,7 +80,7 @@ public class ShowVayTienController {
 
         setEventTrans();
         this.showVayTienView.setVisible(true);
-        setData();
+        setDataChiTiet(vayTienID);
         //setTableButton();
 
     }
