@@ -171,6 +171,7 @@ public class ThongKeController {
         pieChart.setBackgroundPaint(Color.white);
         ChartPanel chartPanel = new ChartPanel(pieChart);
         chartPanel.setBackground(Color.lightGray);
+        master.labelChiTieuThang.setText(dfvn.format(tong)+ " VND");
         master.pnlThongKeChiTieu.add(chartPanel, java.awt.BorderLayout.WEST);
         master.pnlThongKeChiTieu.revalidate();
         master.pnlThongKeChiTieu.repaint();
@@ -217,6 +218,7 @@ public class ThongKeController {
         pieChart.setBackgroundPaint(Color.white);
         ChartPanel chartPanel = new ChartPanel(pieChart);
         chartPanel.setBackground(Color.lightGray);
+        master.labelThuNhapThang.setText(dfvn.format(tong)+ " VND");
         master.pnlThongKeThuNhap.add(chartPanel, java.awt.BorderLayout.WEST);
         master.pnlThongKeThuNhap.revalidate();
         master.pnlThongKeThuNhap.repaint();
@@ -273,6 +275,7 @@ public class ThongKeController {
         pieChart.setBackgroundPaint(Color.white);
         ChartPanel chartPanel = new ChartPanel(pieChart);
         chartPanel.setBackground(Color.lightGray);
+        master.labelThuNhapThang.setText(dfvn.format(tong)+ " VND");
         master.pnlThongKeThuNhap.add(chartPanel, java.awt.BorderLayout.WEST);
         master.pnlThongKeThuNhap.revalidate();
         master.pnlThongKeThuNhap.repaint();
@@ -372,6 +375,7 @@ public class ThongKeController {
         pieChart.setBackgroundPaint(Color.white);
         ChartPanel chartPanel = new ChartPanel(pieChart);
         chartPanel.setBackground(Color.lightGray);
+        master.labelChiTieuThang.setText(dfvn.format(tong)+ " VND");
         master.pnlThongKeChiTieu.add(chartPanel, java.awt.BorderLayout.WEST);
         master.pnlThongKeChiTieu.revalidate();
         master.pnlThongKeChiTieu.repaint();
@@ -412,6 +416,9 @@ public class ThongKeController {
 
             }
         }
+        master.labelTongTaiSan.setText(dfvn.format(guiTienTotal - vayTienTotal - traGopTotal + master.soDuKhaDung)+ " VND");
+        master.labelTongNo.setText(dfvn.format(vayTienTotal + traGopTotal)+ " VND");
+        master.labelTongChoVay.setText(dfvn.format(guiTienTotal)+ " VND");
         guiTienTotal = guiTienTotal / 1000000;
         vayTienTotal = vayTienTotal / 1000000;
         traGopTotal = traGopTotal / 1000000;
@@ -433,7 +440,7 @@ public class ThongKeController {
         NumberAxis rangeAxis = (NumberAxis) plot.getRangeAxis();
         rangeAxis.setUpperMargin(0.15);
         ChartPanel chartPanel = new ChartPanel(barChart);
-
+        
         master.pnlThongKeVayNo.add(chartPanel, java.awt.BorderLayout.WEST);
         master.pnlThongKeVayNo.revalidate();
         master.pnlThongKeVayNo.repaint();

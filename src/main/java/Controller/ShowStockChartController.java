@@ -25,7 +25,6 @@ import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.axis.DateAxis;
 import org.jfree.chart.axis.NumberAxis;
-import org.jfree.chart.axis.SegmentedTimeline;
 import org.jfree.chart.plot.XYPlot;
 import org.jfree.chart.renderer.xy.CandlestickRenderer;
 import org.jfree.data.xy.DefaultOHLCDataset;
@@ -117,8 +116,6 @@ public class ShowStockChartController {
             plot.setDomainGridlinePaint(Color.lightGray);
             plot.setRangeGridlinePaint(Color.lightGray);
             ((NumberAxis) plot.getRangeAxis()).setAutoRangeIncludesZero(false);
-            // 5. Skip week-ends on the date axis
-            ((DateAxis) plot.getDomainAxis()).setTimeline(SegmentedTimeline.newMondayThroughFridayTimeline());
             // 6. No volume drawn
             ((CandlestickRenderer) plot.getRenderer()).setDrawVolume(true);
             ChartPanel chartPanel = new ChartPanel(chart);

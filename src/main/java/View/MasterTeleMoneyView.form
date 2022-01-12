@@ -1465,9 +1465,9 @@
                                           </Group>
                                           <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                              <Component id="jLabel22" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel20" alignment="0" max="32767" attributes="0"/>
-                                              <Component id="jLabel21" alignment="0" pref="141" max="32767" attributes="0"/>
+                                              <Component id="labelTongChoVay" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="labelTongNo" alignment="0" max="32767" attributes="0"/>
+                                              <Component id="labelTongTaiSan" alignment="0" pref="141" max="32767" attributes="0"/>
                                               <Component id="labelSoDuThongKe" alignment="1" max="32767" attributes="0"/>
                                           </Group>
                                       </Group>
@@ -1489,10 +1489,10 @@
                                   </Group>
                                   <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jLabel27" max="32767" attributes="0"/>
+                                      <Component id="labelThuNhapThang" max="32767" attributes="0"/>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jLabel24" min="-2" pref="123" max="-2" attributes="0"/>
+                                              <Component id="labelChiTieuThang" min="-2" pref="123" max="-2" attributes="0"/>
                                               <Component id="labelReturn2" min="-2" pref="130" max="-2" attributes="0"/>
                                               <Component id="labelTotalReturn2" min="-2" pref="117" max="-2" attributes="0"/>
                                           </Group>
@@ -1510,7 +1510,7 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                           <Component id="jLabel25" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel24" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelChiTieuThang" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -1521,17 +1521,17 @@
                                   <Group type="103" groupAlignment="0" attributes="0">
                                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                                           <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelThuNhapThang" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelTongTaiSan" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="3" attributes="0">
                                       <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jLabel20" alignment="3" min="-2" max="-2" attributes="0"/>
+                                      <Component id="labelTongNo" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
                                       <Component id="labelReturn2" alignment="3" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -1543,7 +1543,7 @@
                                       </Group>
                                       <Group type="103" groupAlignment="3" attributes="0">
                                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
+                                          <Component id="labelTongChoVay" alignment="3" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <EmptySpace max="32767" attributes="0"/>
@@ -1584,29 +1584,38 @@
                             <Property name="text" type="java.lang.String" value="T&#x1ed5;ng s&#x1ed1; cho vay: "/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel20">
+                        <Component class="javax.swing.JLabel" name="labelTongNo">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI Semilight" size="14" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="110000000 VND"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel21">
+                        <Component class="javax.swing.JLabel" name="labelTongTaiSan">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI Semilight" size="14" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="890760000 VND"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel22">
+                        <Component class="javax.swing.JLabel" name="labelTongChoVay">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI Semilight" size="14" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="13722222 VND"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="labelSoDuThongKe">
                           <Properties>
@@ -1619,13 +1628,16 @@
                             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
                           </AuxValues>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel24">
+                        <Component class="javax.swing.JLabel" name="labelChiTieuThang">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI Semilight" size="14" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value=" 850000 VND"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel25">
                           <Properties>
@@ -1643,13 +1655,16 @@
                             <Property name="text" type="java.lang.String" value="Thu nh&#x1ead;p trong th&#xe1;ng: "/>
                           </Properties>
                         </Component>
-                        <Component class="javax.swing.JLabel" name="jLabel27">
+                        <Component class="javax.swing.JLabel" name="labelThuNhapThang">
                           <Properties>
                             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                               <Font name="Segoe UI Semilight" size="14" style="0"/>
                             </Property>
                             <Property name="text" type="java.lang.String" value="13000000 VND"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                         <Component class="javax.swing.JLabel" name="jLabel28">
                           <Properties>
@@ -1685,6 +1700,9 @@
                             </Property>
                             <Property name="text" type="java.lang.String" value="13000000 VND"/>
                           </Properties>
+                          <AuxValues>
+                            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+                          </AuxValues>
                         </Component>
                       </SubComponents>
                     </Container>
