@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 10, 2022 at 10:13 PM
+-- Generation Time: Jan 12, 2022 at 09:59 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -68,15 +68,8 @@ CREATE TABLE `chovay` (
 --
 
 INSERT INTO `chovay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngaychovay`, `ngaythulai`) VALUES
-(1, 1, 'Vay mua lap', 'MBBank', 1000000, 5, 12, '2022-01-02 08:23:44', 0),
-(2, 1, 'Vay mua xe', 'ACB', 2000000, 4, 24, '2022-01-02 08:22:31', 0),
-(4, 1, 'Vay sửa nhà', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 20000000, 2, 1, '2022-01-02 08:22:50', 0),
-(5, 1, 'Vay chữa bệnh', 'Ngân Hàng Kĩ Thương Việt Nam (Techcombank)', 5000000, 3, 36, '2022-01-02 08:23:33', 0),
-(6, 1, 'Vay mua điện thoại', 'MBBank', 1000000, 5, 12, '2021-12-31 08:22:09', 0),
-(7, 1, 'gửi tiết kiệm', 'Ngân Hàng Đầu tư và Phát triển Việt Nam (BIDV)', 100000000, 8, 12, '2022-01-05 21:45:13', 0),
-(8, 1, 'uyiy', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 50000000, 10, 12, '2022-01-07 19:42:38', 0),
-(9, 1, 'gửi tiết kiệm A', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 200000000, 9, 12, '2022-01-08 05:20:51', 0),
-(10, 1, 'gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 100000000, 9, 12, '2022-01-10 19:08:25', 15);
+(10, 1, 'gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 100000000, 9, 12, '2022-01-10 19:08:25', 15),
+(11, 1, 'Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 300000000, 10, 12, '2022-01-12 18:53:03', 25);
 
 -- --------------------------------------------------------
 
@@ -100,7 +93,7 @@ CREATE TABLE `chovaytrans` (
 --
 
 INSERT INTO `chovaytrans` (`id`, `chovayid`, `status`, `uid`, `name`, `bank`, `sotien`, `time`) VALUES
-(1, 10, 'chưa thanh toán', 1, 'Nhân lãi lần 1 gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 750000, '2022-01-14 19:08:25'),
+(1, 10, 'đã thanh toán', 1, 'Nhân lãi lần 1 gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 750000, '2022-01-12 20:28:32'),
 (2, 10, 'chưa thanh toán', 1, 'Nhân lãi lần 2 gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 750000, '2022-02-14 19:08:25'),
 (3, 10, 'chưa thanh toán', 1, 'Nhân lãi lần 3 gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 750000, '2022-03-14 19:08:25'),
 (4, 10, 'chưa thanh toán', 1, 'Nhân lãi lần 4 gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 750000, '2022-04-14 19:08:25'),
@@ -112,7 +105,20 @@ INSERT INTO `chovaytrans` (`id`, `chovayid`, `status`, `uid`, `name`, `bank`, `s
 (10, 10, 'chưa thanh toán', 1, 'Nhân lãi lần 10 gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 750000, '2022-10-14 19:08:25'),
 (11, 10, 'chưa thanh toán', 1, 'Nhân lãi lần 11 gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 750000, '2022-11-14 19:08:25'),
 (12, 10, 'chưa thanh toán', 1, 'Nhân lãi lần 12 gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 750000, '2022-12-14 19:08:25'),
-(13, 10, 'chưa thanh toán', 1, 'Nhận tiền gốc  gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 100000000, '2023-01-14 19:08:25');
+(13, 10, 'chưa thanh toán', 1, 'Nhận tiền gốc  gửi tiền tháng 9', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 100000000, '2023-01-14 19:08:25'),
+(14, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 1 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-01-24 18:53:03'),
+(15, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 2 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-02-24 18:53:03'),
+(16, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 3 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-03-24 18:53:03'),
+(17, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 4 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-04-24 18:53:03'),
+(18, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 5 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-05-24 18:53:03'),
+(19, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 6 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-06-24 18:53:03'),
+(20, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 7 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-07-24 18:53:03'),
+(21, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 8 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-08-24 18:53:03'),
+(22, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 9 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-09-24 18:53:03'),
+(23, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 10 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-10-24 18:53:03'),
+(24, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 11 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-11-24 18:53:03'),
+(25, 11, 'chưa thanh toán', 1, 'Nhận lãi lần 12 - Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 2500000, '2022-12-24 18:53:03'),
+(26, 11, 'chưa thanh toán', 1, 'Nhận tiền gốc  Gửi tiền tiết kiệm Vietcombank', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 300000000, '2023-01-24 18:53:03');
 
 -- --------------------------------------------------------
 
@@ -786,7 +792,9 @@ CREATE TABLE `thu` (
 
 INSERT INTO `thu` (`id`, `uid`, `namethu`, `amountthu`, `mucthu`, `datethu`) VALUES
 (3, 1, 'Lương tháng 10', 8000000, 'Lương chính', '2022-01-05 21:01:27'),
-(7, 1, 'Lương tháng 9', 15000000, 'Lương chính', '2022-01-02 12:45:31');
+(7, 1, 'Lương tháng 9', 15000000, 'Lương chính', '2022-01-02 12:45:31'),
+(9, 1, 'Thưởng dự án Java', 2000000, 'Thưởng ', '2022-01-11 19:14:23'),
+(10, 1, 'Nhặt được tiền', 200000, 'Khoản thu khác', '2022-01-11 19:14:46');
 
 -- --------------------------------------------------------
 
@@ -805,7 +813,7 @@ CREATE TABLE `tong` (
 --
 
 INSERT INTO `tong` (`uid`, `sodu`, `tongtaisan`) VALUES
-(1, 1755294460, 1300076832);
+(1, 1588244350, 1300076832);
 
 -- --------------------------------------------------------
 
@@ -831,10 +839,7 @@ CREATE TABLE `tragop` (
 --
 
 INSERT INTO `tragop` (`id`, `uid`, `name`, `namecongty`, `tongtien`, `sothang`, `tienhangthang`, `time`, `tratruoc`, `ngaytragop`) VALUES
-(1, 1, 'Tra gop xe may', 'FE Credit', 10000000, 8, 1000000, '2022-01-02 08:24:49', 2000000, 0),
-(2, 1, 'Trả góp laptop', 'HD Saison', 200000000, 2, 50000000, '2022-01-02 08:25:27', 100000000, 0),
-(3, 1, 'Trả góp mua xe máy SH', 'FE Credit', 80000000, 12, 4500000, '2022-01-10 19:17:34', 30000000, 0),
-(4, 1, 'Trả góp mua Macbook', 'FE Credit', 40000000, 12, 2300000, '2022-01-10 19:26:26', 15000000, 25);
+(9, 1, 'Trả góp điện thoại ', 'FE Credit', 30000000, 12, 2000000, '2022-01-12 19:16:58', 10000000, 26);
 
 -- --------------------------------------------------------
 
@@ -858,42 +863,19 @@ CREATE TABLE `tragoptrans` (
 --
 
 INSERT INTO `tragoptrans` (`id`, `tragopid`, `status`, `uid`, `name`, `namecongty`, `sotien`, `time`) VALUES
-(1, 0, 'chưa thanh toán', 1, 'Trả gops lần 1 - Trả góp mua laptop asus', 'Saison HD', 3500000, '2021-12-30 19:11:41'),
-(2, 0, 'chưa thanh toán', 1, 'Trả gops lần 2 - Trả góp mua laptop asus', 'Saison HD', 3500000, '2022-01-30 19:11:41'),
-(3, 0, 'chưa thanh toán', 1, 'Trả gops lần 3 - Trả góp mua laptop asus', 'Saison HD', 3500000, '2022-02-27 19:11:41'),
-(4, 0, 'chưa thanh toán', 1, 'Trả gops lần 4 - Trả góp mua laptop asus', 'Saison HD', 3500000, '2022-03-30 19:11:41'),
-(5, 0, 'chưa thanh toán', 1, 'Trả gops lần 5 - Trả góp mua laptop asus', 'Saison HD', 3500000, '2022-04-29 19:11:41'),
-(6, 0, 'chưa thanh toán', 1, 'Trả gops lần 6 - Trả góp mua laptop asus', 'Saison HD', 3500000, '2022-05-30 19:11:41'),
-(7, 0, 'chưa thanh toán', 1, 'Trả gops lần 1 - Trả góp mua laptop Asus', 'FE Credit', 3000000, '2021-12-30 19:13:50'),
-(8, 0, 'chưa thanh toán', 1, 'Trả gops lần 2 - Trả góp mua laptop Asus', 'FE Credit', 3000000, '2022-01-30 19:13:50'),
-(9, 0, 'chưa thanh toán', 1, 'Trả gops lần 3 - Trả góp mua laptop Asus', 'FE Credit', 3000000, '2022-02-27 19:13:50'),
-(10, 0, 'chưa thanh toán', 1, 'Trả gops lần 4 - Trả góp mua laptop Asus', 'FE Credit', 3000000, '2022-03-30 19:13:50'),
-(11, 0, 'chưa thanh toán', 1, 'Trả gops lần 5 - Trả góp mua laptop Asus', 'FE Credit', 3000000, '2022-04-29 19:13:50'),
-(12, 0, 'chưa thanh toán', 1, 'Trả gops lần 6 - Trả góp mua laptop Asus', 'FE Credit', 3000000, '2022-05-30 19:13:50'),
-(13, 0, 'chưa thanh toán', 1, 'Trả gops lần 1 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2021-12-30 19:17:34'),
-(14, 0, 'chưa thanh toán', 1, 'Trả gops lần 2 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2022-01-30 19:17:34'),
-(15, 0, 'chưa thanh toán', 1, 'Trả gops lần 3 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2022-02-27 19:17:34'),
-(16, 0, 'chưa thanh toán', 1, 'Trả gops lần 4 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2022-03-30 19:17:34'),
-(17, 0, 'chưa thanh toán', 1, 'Trả gops lần 5 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2022-04-29 19:17:34'),
-(18, 0, 'chưa thanh toán', 1, 'Trả gops lần 6 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2022-05-30 19:17:34'),
-(19, 0, 'chưa thanh toán', 1, 'Trả gops lần 7 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2022-06-29 19:17:34'),
-(20, 0, 'chưa thanh toán', 1, 'Trả gops lần 8 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2022-07-30 19:17:34'),
-(21, 0, 'chưa thanh toán', 1, 'Trả gops lần 9 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2022-08-30 19:17:34'),
-(22, 0, 'chưa thanh toán', 1, 'Trả gops lần 10 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2022-09-29 19:17:34'),
-(23, 0, 'chưa thanh toán', 1, 'Trả gops lần 11 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2022-10-30 19:17:34'),
-(24, 0, 'chưa thanh toán', 1, 'Trả gops lần 12 - Trả góp mua xe máy SH', 'FE Credit', 4500000, '2022-11-29 19:17:34'),
-(25, 4, 'chưa thanh toán', 1, 'Trả gops lần 1 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-01-24 19:26:26'),
-(26, 4, 'chưa thanh toán', 1, 'Trả gops lần 2 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-02-24 19:26:26'),
-(27, 4, 'chưa thanh toán', 1, 'Trả gops lần 3 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-03-24 19:26:26'),
-(28, 4, 'chưa thanh toán', 1, 'Trả gops lần 4 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-04-24 19:26:26'),
-(29, 4, 'chưa thanh toán', 1, 'Trả gops lần 5 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-05-24 19:26:26'),
-(30, 4, 'chưa thanh toán', 1, 'Trả gops lần 6 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-06-24 19:26:26'),
-(31, 4, 'chưa thanh toán', 1, 'Trả gops lần 7 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-07-24 19:26:26'),
-(32, 4, 'chưa thanh toán', 1, 'Trả gops lần 8 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-08-24 19:26:26'),
-(33, 4, 'chưa thanh toán', 1, 'Trả gops lần 9 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-09-24 19:26:26'),
-(34, 4, 'chưa thanh toán', 1, 'Trả gops lần 10 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-10-24 19:26:26'),
-(35, 4, 'chưa thanh toán', 1, 'Trả gops lần 11 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-11-24 19:26:26'),
-(36, 4, 'chưa thanh toán', 1, 'Trả gops lần 12 - Trả góp mua Macbook', 'FE Credit', 2300000, '2022-12-24 19:26:26');
+(87, 9, 'đã thanh toán', 1, 'Trả trước 10000000 - Trả góp điện thoại ', 'FE Credit', 10000000, '2022-01-12 19:17:41'),
+(88, 9, 'đã thanh toán', 1, 'Trả góp lần 1 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-01-12 19:54:52'),
+(89, 9, 'chưa thanh toán', 1, 'Trả góp lần 2 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-02-25 19:16:58'),
+(90, 9, 'chưa thanh toán', 1, 'Trả góp lần 3 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-03-25 19:16:58'),
+(91, 9, 'chưa thanh toán', 1, 'Trả góp lần 4 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-04-25 19:16:58'),
+(92, 9, 'chưa thanh toán', 1, 'Trả góp lần 5 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-05-25 19:16:58'),
+(93, 9, 'chưa thanh toán', 1, 'Trả góp lần 6 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-06-25 19:16:58'),
+(94, 9, 'chưa thanh toán', 1, 'Trả góp lần 7 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-07-25 19:16:58'),
+(95, 9, 'chưa thanh toán', 1, 'Trả góp lần 8 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-08-25 19:16:58'),
+(96, 9, 'chưa thanh toán', 1, 'Trả góp lần 9 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-09-25 19:16:58'),
+(97, 9, 'chưa thanh toán', 1, 'Trả góp lần 10 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-10-25 19:16:58'),
+(98, 9, 'chưa thanh toán', 1, 'Trả góp lần 11 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-11-25 19:16:58'),
+(99, 9, 'chưa thanh toán', 1, 'Trả góp lần 12 - Trả góp điện thoại ', 'FE Credit', 2000000, '2022-12-25 19:16:58');
 
 -- --------------------------------------------------------
 
@@ -938,10 +920,7 @@ CREATE TABLE `vay` (
 --
 
 INSERT INTO `vay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `ngayvay`, `ngaytralai`) VALUES
-(21, 1, 'Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 100000000, 9, 6, '2022-01-09 22:07:02', 25),
-(22, 1, 'Vay mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 50000000, 9, 1, '2022-01-09 22:29:18', 25),
-(23, 1, 'Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 500000000, 9, 9, '2022-01-09 22:31:02', 25),
-(24, 1, 'alo', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 900000000, 9, 1, '2022-01-10 15:07:05', 25);
+(25, 1, 'Vay tiền mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 200000000, 9.6, 9, '2022-01-12 18:54:58', 15);
 
 -- --------------------------------------------------------
 
@@ -965,25 +944,16 @@ CREATE TABLE `vaytrans` (
 --
 
 INSERT INTO `vaytrans` (`id`, `vayid`, `uid`, `status`, `name`, `bank`, `sotien`, `time`) VALUES
-(57, 21, 1, 'chưa thanh toán', 'Trả lãi lần 1 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-01-24 22:07:02'),
-(58, 21, 1, 'chưa thanh toán', 'Trả lãi lần 2 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-02-24 22:07:02'),
-(59, 21, 1, 'chưa thanh toán', 'Trả lãi lần 3 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-03-24 22:07:02'),
-(60, 21, 1, 'chưa thanh toán', 'Trả lãi lần 4 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-04-24 22:07:02'),
-(61, 21, 1, 'chưa thanh toán', 'Trả lãi lần 5 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-05-24 22:07:02'),
-(62, 21, 1, 'chưa thanh toán', 'Trả lãi lần 6 Vay mua nhà', 'Ngân Hàng Quân đội (MBBank)', 750000, '2022-06-24 22:07:02'),
-(63, 22, 1, 'chưa thanh toán', 'Trả lãi lần 1 Vay mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 375000, '2022-01-24 22:29:18'),
-(64, 23, 1, 'chưa thanh toán', 'Trả lãi lần 1 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-01-24 22:31:02'),
-(65, 23, 1, 'chưa thanh toán', 'Trả lãi lần 2 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-02-24 22:31:02'),
-(66, 23, 1, 'chưa thanh toán', 'Trả lãi lần 3 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-03-24 22:31:02'),
-(67, 23, 1, 'chưa thanh toán', 'Trả lãi lần 4 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-04-24 22:31:02'),
-(68, 23, 1, 'chưa thanh toán', 'Trả lãi lần 5 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-05-24 22:31:02'),
-(69, 23, 1, 'chưa thanh toán', 'Trả lãi lần 6 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-06-24 22:31:02'),
-(70, 23, 1, 'chưa thanh toán', 'Trả lãi lần 7 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-07-24 22:31:02'),
-(71, 23, 1, 'chưa thanh toán', 'Trả lãi lần 8 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-08-24 22:31:02'),
-(72, 23, 1, 'chưa thanh toán', 'Trả lãi lần 9 Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 3750000, '2022-09-24 22:31:02'),
-(73, 23, 1, 'chưa thanh toán', 'Trả tiền gốc  Vay mua xe hơi', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 500000000, '2022-10-24 22:31:02'),
-(74, 24, 1, 'chưa thanh toán', 'Trả lãi lần 1 alo', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 6750000, '2022-01-25 15:07:05'),
-(75, 24, 1, 'chưa thanh toán', 'Trả tiền gốc  alo', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 900000000, '2022-02-25 15:07:05');
+(76, 25, 1, 'chưa thanh toán', 'Trả lãi lần 1 - Vay tiền mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 1600000, '2022-01-14 18:54:58'),
+(77, 25, 1, 'chưa thanh toán', 'Trả lãi lần 2 - Vay tiền mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 1600000, '2022-02-14 18:54:58'),
+(78, 25, 1, 'chưa thanh toán', 'Trả lãi lần 3 - Vay tiền mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 1600000, '2022-03-14 18:54:58'),
+(79, 25, 1, 'chưa thanh toán', 'Trả lãi lần 4 - Vay tiền mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 1600000, '2022-04-14 18:54:58'),
+(80, 25, 1, 'chưa thanh toán', 'Trả lãi lần 5 - Vay tiền mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 1600000, '2022-05-14 18:54:58'),
+(81, 25, 1, 'chưa thanh toán', 'Trả lãi lần 6 - Vay tiền mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 1600000, '2022-06-14 18:54:58'),
+(82, 25, 1, 'chưa thanh toán', 'Trả lãi lần 7 - Vay tiền mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 1600000, '2022-07-14 18:54:58'),
+(83, 25, 1, 'chưa thanh toán', 'Trả lãi lần 8 - Vay tiền mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 1600000, '2022-08-14 18:54:58'),
+(84, 25, 1, 'chưa thanh toán', 'Trả lãi lần 9 - Vay tiền mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 1600000, '2022-09-14 18:54:58'),
+(85, 25, 1, 'chưa thanh toán', 'Trả tiền gốc  Vay tiền mua xe', 'Ngân Hàng Thương Mại Ngoại Thương Việt Nam (Vietcombank)', 200000000, '2022-10-14 18:54:58');
 
 --
 -- Indexes for dumped tables
@@ -1069,13 +1039,13 @@ ALTER TABLE `chi`
 -- AUTO_INCREMENT for table `chovay`
 --
 ALTER TABLE `chovay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `chovaytrans`
 --
 ALTER TABLE `chovaytrans`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- AUTO_INCREMENT for table `mystock`
@@ -1093,7 +1063,7 @@ ALTER TABLE `stocktrans`
 -- AUTO_INCREMENT for table `thu`
 --
 ALTER TABLE `thu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `tong`
@@ -1105,25 +1075,25 @@ ALTER TABLE `tong`
 -- AUTO_INCREMENT for table `tragop`
 --
 ALTER TABLE `tragop`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `tragoptrans`
 --
 ALTER TABLE `tragoptrans`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
 -- AUTO_INCREMENT for table `vay`
 --
 ALTER TABLE `vay`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `vaytrans`
 --
 ALTER TABLE `vaytrans`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=76;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
