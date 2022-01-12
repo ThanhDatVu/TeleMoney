@@ -28,14 +28,17 @@ public class ShowVayTienView extends javax.swing.JFrame {
     public ShowVayTienView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Hiển thị tất cả những giao dịch vay tiền thành công");
         this.master = master;
         this.acc = acc;
         showVayTienController = new ShowVayTienController(this, acc);
 
     }
+
     public ShowVayTienView(MasterTeleMoneyView master, UserModel acc, int vayTienID) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Hiển thị tất cả những giao dịch vay tiền thành công");
         this.master = master;
         this.acc = acc;
         showVayTienController = new ShowVayTienController(this, acc, vayTienID);

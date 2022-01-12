@@ -28,6 +28,7 @@ public class ShowThuView extends javax.swing.JFrame {
     public ShowThuView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Hiển thị tất cả những khoản thu nhập cá nhân");
         this.master = master;
         this.acc = acc;
         showThuController = new ShowThuController(this, acc);

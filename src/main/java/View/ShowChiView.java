@@ -28,6 +28,7 @@ public class ShowChiView extends javax.swing.JFrame {
     public ShowChiView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Hiển thị các khoản chi tiêu");
         this.master = master;
         this.acc = acc;
         showChiController = new ShowChiController(this, acc);

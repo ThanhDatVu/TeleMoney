@@ -93,8 +93,9 @@ public class GuiTienTransModel {
     public String toString() {
         return "GuiTienTransModel{" + "id=" + id + ", guiTienID=" + guiTienID + ", ten=" + ten + ", bank=" + bank + ", status=" + status + ", sotien=" + sotien + ", time=" + time + '}';
     }
-     public String toReadableString() {
-       return " " + ten + ", tại ngân hàng " + bank + ", với số tiền " + sotien + "VND, vào ngày " + time.toLocalDateTime().toLocalDate().toString() + " ";
+
+    public String toReadableString() {
+        return " " + ten + ", tại ngân hàng " + bank + ", với số tiền " + sotien + "VND, vào ngày " + time.toLocalDateTime().toLocalDate().toString() + " ";
     }
 
 }

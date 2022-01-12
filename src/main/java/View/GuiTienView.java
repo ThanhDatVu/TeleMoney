@@ -32,6 +32,7 @@ public class GuiTienView extends javax.swing.JFrame {
     public GuiTienView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Thêm khoản gửi tiền");
         this.master = master;
         this.acc = acc;
         this.addGuiTienController = new AddGuiTienController(this, acc);

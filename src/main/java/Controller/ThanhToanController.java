@@ -57,31 +57,61 @@ public class ThanhToanController {
     }
 
     public void setDataTraGop(TraGopTransModel traGop) {//thêm dũ liệu vào bảng
-        thanhToanView.labelThongBao.setText("<html><p style=\"width:300px\">" + "Bạn có một giao dịch trả góp đến hạn thanh toán " + traGop.toReadableString() + "</p></html>");
+        thanhToanView.labelThongBao.setText("<html><p style=\"width:300px\">" + "Bạn có một giao dịch trả góp đến hạn thanh toán: " + traGop.toReadableString() + "</p></html>");
         thanhToanView.btnThanhToan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 traGopDAO.thanhToan(traGop);
+                thanhToanView.masterTeleMoneyView.soDuKhaDung -= traGop.getSotien();
+                thanhToanView.masterTeleMoneyView.refreshTabVayNo();
+                thanhToanView.dispose();
+            }
+        });
+        thanhToanView.btnHuy.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                thanhToanView.dispose();
             }
         });
     }
 
     public void setDataGuiTien(GuiTienTransModel guiTien) {//thêm dũ liệu vào bảng
-        thanhToanView.labelThongBao.setText("<html><p style=\"width:300px\">" + "Bạn có một giao dịch nhận lãi đến hạn thanh toán " + guiTien.toReadableString() + "</p></html>");
+        thanhToanView.labelThongBao.setText("<html><p style=\"width:300px\">" + "Bạn có một giao dịch nhận lãi đến hạn thanh toán: " + guiTien.toReadableString() + "</p></html>");
         thanhToanView.btnThanhToan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 guiTienDAO.thanhToan(guiTien);
+                thanhToanView.masterTeleMoneyView.soDuKhaDung += guiTien.getSotien();
+                thanhToanView.masterTeleMoneyView.refreshTabVayNo();
+                thanhToanView.dispose();
+            }
+        });
+        thanhToanView.btnHuy.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                thanhToanView.dispose();
             }
         });
     }
 
     public void setDataVayTien(VayTienTransModel vayTien) {//thêm dũ liệu vào bảng
-        thanhToanView.labelThongBao.setText("<html><p style=\"width:300px\">" + "Bạn có một giao dịch trả lãi đến hạn thanh toán " + vayTien.toReadableString() + "</p></html>");
+        thanhToanView.labelThongBao.setText("<html><p style=\"width:300px\">" + "Bạn có một giao dịch trả lãi đến hạn thanh toán: " + vayTien.toReadableString() + "</p></html>");
         thanhToanView.btnThanhToan.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 vayTienDAO.thanhToan(vayTien);
+                thanhToanView.masterTeleMoneyView.soDuKhaDung -= vayTien.getSotien();
+                thanhToanView.masterTeleMoneyView.refreshTabVayNo();
+                thanhToanView.dispose();
+            }
+        });
+        thanhToanView.btnHuy.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+
+                thanhToanView.dispose();
             }
         });
     }

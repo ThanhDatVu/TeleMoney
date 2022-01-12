@@ -51,7 +51,7 @@ public class BanStockView extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         banStockController = new BanStockController(this, myStock, acc);
         stockDAO = new StockDAO();
-        this.setTitle("Ban thêm " + stockBuy.getSymbol());
+        this.setTitle("Bán bớt " + stockBuy.getSymbol());
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }
 

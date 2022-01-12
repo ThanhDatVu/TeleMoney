@@ -29,7 +29,7 @@ public class LoginView extends javax.swing.JFrame {
     public LoginView() {
         initComponents();
         loginController = new LoginController(this);
-
+        this.setTitle("TELEMONEY - Đăng nhập");
         this.setLocationRelativeTo(null);
 
     }

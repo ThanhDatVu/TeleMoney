@@ -93,6 +93,7 @@ public class VayTienTransModel {
     public String toString() {
         return "VayTienTransModel{" + "id=" + id + ", vayTienID=" + vayTienID + ", ten=" + ten + ", bank=" + bank + ", sotien=" + sotien + ", time=" + time + '}';
     }
+
     public String toReadableString() {
         return " " + ten + ", tại ngân hàng " + bank + ", với số tiền " + sotien + "VND, vào ngày " + time.toLocalDateTime().toLocalDate().toString() + " ";
     }

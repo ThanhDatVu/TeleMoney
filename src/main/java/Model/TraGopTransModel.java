@@ -93,7 +93,8 @@ public class TraGopTransModel {
     public String toString() {
         return "TraGopTransModel{" + "id=" + id + ", traGopID=" + traGopID + ", ten=" + ten + ", bank=" + bank + ", status=" + status + ", sotien=" + sotien + ", time=" + time + '}';
     }
-     public String toReadableString() {
+
+    public String toReadableString() {
         return " " + ten + ", tại ngân hàng " + bank + ", với số tiền " + sotien + "VND, vào ngày " + time.toLocalDateTime().toLocalDate().toString() + " ";
     }
 

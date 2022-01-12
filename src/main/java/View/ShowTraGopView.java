@@ -21,6 +21,7 @@ public class ShowTraGopView extends javax.swing.JFrame {
     MasterTeleMoneyView master;
     UserModel acc;
     int traGopID;
+
     public ShowTraGopView() {
         initComponents();
     }
@@ -28,14 +29,17 @@ public class ShowTraGopView extends javax.swing.JFrame {
     public ShowTraGopView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Hiển thị tất cả những giao dịch trả góp thành công");
         this.master = master;
         this.acc = acc;
         showTraGopController = new ShowTraGopController(this, acc);
 
     }
+
     public ShowTraGopView(MasterTeleMoneyView master, UserModel acc, int traGopID) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Hiển thị chi tiết khoản trả góp");
         this.master = master;
         this.acc = acc;
         showTraGopController = new ShowTraGopController(this, acc, traGopID);

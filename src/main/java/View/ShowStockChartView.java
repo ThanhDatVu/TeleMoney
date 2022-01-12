@@ -31,6 +31,7 @@ public class ShowStockChartView extends javax.swing.JFrame {
         this.symbol = symbol;
         this.month = month;
         initComponents();
+        this.setTitle("Biểu đồ giá");
         controller = new ShowStockChartController(this);
         setLocationRelativeTo(null);
     }

@@ -105,6 +105,7 @@ public class TraGopDAO {
             e.printStackTrace();
         }
     }
+
     public void addDoneTrans(TraGopTransModel traGop, UserModel user) {
         String sql = "INSERT INTO `tragoptrans` ( `tragopid`, `uid`, `name`, `namecongty`, `sotien`, `time`, `status`) VALUES ( ?, ?, ?, ?, ?, ?, ?)";;
         try {
@@ -175,7 +176,8 @@ public class TraGopDAO {
         }
         return traGopTransList;
     }
-    public ArrayList<TraGopTransModel> getTrans(UserModel user,  int traGopID) {
+
+    public ArrayList<TraGopTransModel> getTrans(UserModel user, int traGopID) {
         ArrayList<TraGopTransModel> traGopTransList = new ArrayList<>();
         String sql = "select * from tragoptrans where uid=? and tragopid = ?";
         int x = user.getId();
@@ -204,15 +206,13 @@ public class TraGopDAO {
     }
 
     public void thanhToan(TraGopTransModel traGop) {
-        
+
         String sql = "UPDATE tragoptrans SET status = ? WHERE id = ?;";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setString(1, "đã thanh toán");
             ps.setInt(2, traGop.getId());
-
-           
 
             int executeUpdate = ps.executeUpdate();
             System.out.println(traGop.toString());
@@ -221,6 +221,5 @@ public class TraGopDAO {
             e.printStackTrace();
         }
 
-    
     }
 }

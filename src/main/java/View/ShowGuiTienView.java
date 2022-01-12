@@ -28,14 +28,17 @@ public class ShowGuiTienView extends javax.swing.JFrame {
     public ShowGuiTienView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Hiển thị tất cả những giao dịch gửi tiền thành công");
         this.master = master;
         this.acc = acc;
         showGuiTienController = new ShowGuiTienController(this, acc);
 
     }
+
     public ShowGuiTienView(MasterTeleMoneyView master, UserModel acc, int guiTienID) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Hiển thị chi tiết khoản gửi tiền");
         this.master = master;
         this.acc = acc;
         showGuiTienController = new ShowGuiTienController(this, acc, guiTienID);

@@ -224,7 +224,7 @@ public class ThongKeController {
 
     public void setChartThuNhap(int thang, int nam) throws IOException {
         master.pnlThongKeThuNhap.removeAll();
-         ArrayList<ThuModel> thuList1 = new ArrayList<>();
+        ArrayList<ThuModel> thuList1 = new ArrayList<>();
         ArrayList<ThuModel> thuList = new ArrayList<>();
         thuList1 = thuDAO.getAll(acc);
         for (int i = 0; i < thuList1.size(); i++) {

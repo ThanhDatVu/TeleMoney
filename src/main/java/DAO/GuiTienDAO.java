@@ -166,6 +166,7 @@ public class GuiTienDAO {
         }
         return guiTienTransList;
     }
+
     public ArrayList<GuiTienTransModel> getTrans(UserModel user, int guiTienID) {
         ArrayList<GuiTienTransModel> guiTienTransList = new ArrayList<>();
         String sql = "select * from chovaytrans where uid=? and chovayid = ?";
@@ -194,8 +195,6 @@ public class GuiTienDAO {
         return guiTienTransList;
     }
 
-    
-
     public void thanhToan(GuiTienTransModel guiTien) {
         String sql = "UPDATE chovaytrans SET status = ? WHERE id = ?;";;
 
@@ -204,8 +203,6 @@ public class GuiTienDAO {
             ps.setString(1, "đã thanh toán");
             ps.setInt(2, guiTien.getId());
 
-           
-
             int executeUpdate = ps.executeUpdate();
             System.out.println(guiTien.toString());
             System.out.println("Thanh toán thành công");
@@ -213,7 +210,6 @@ public class GuiTienDAO {
             e.printStackTrace();
         }
 
-    
     }
-    
+
 }

@@ -30,6 +30,7 @@ public class TraGopView extends javax.swing.JFrame {
     public TraGopView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Thêm khoản Trả góp");
         this.master = master;
         this.acc = acc;
         this.addTraGopController = new AddTraGopController(this, acc);
@@ -109,7 +110,7 @@ public class TraGopView extends javax.swing.JFrame {
 
         txtTongTien.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("THÊM KHOẢN TRẢ GÓP");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N
@@ -228,7 +229,7 @@ public class TraGopView extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
                     .addComponent(txtNgayTraGop, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnHuyTraGop, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
                     .addComponent(btnThemTraGop, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))

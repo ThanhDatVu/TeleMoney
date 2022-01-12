@@ -97,22 +97,25 @@ public class ShowTraGopController {
 
         traGopTransTableModel.setRowCount(0);
         for (int i = 0; i < traGopTranList.size(); i++) {
-            traGopTransTableModel.addRow(new Object[]{
-                //                {"ID",  "Tên","Ngân hàng", "Số tiền", "Thời gian", "Trạng thái"};
-                traGopTranList.get(i).getId(),
-                traGopTranList.get(i).getTen(),
-                traGopTranList.get(i).getBank(),
-                traGopTranList.get(i).getSotien(),
-                traGopTranList.get(i).getTime(),
-                traGopTranList.get(i).getStatus(),});
+            if (traGopTranList.get(i).getStatus().equalsIgnoreCase("đã thanh toán")) {
+                traGopTransTableModel.addRow(new Object[]{
+                    //                {"ID",  "Tên","Ngân hàng", "Số tiền", "Thời gian", "Trạng thái"};
+                    traGopTranList.get(i).getId(),
+                    traGopTranList.get(i).getTen(),
+                    traGopTranList.get(i).getBank(),
+                    df.format(traGopTranList.get(i).getSotien()),
+                    traGopTranList.get(i).getTime(),
+                    traGopTranList.get(i).getStatus(),});
+            }
         }
 
     }
+
     public void setDataChiTiet(int traGopID) {//thêm dũ liệu vào bảng
         TraGopTransTableModel traGopTransTableModel = (TraGopTransTableModel) showTraGopView.tableChi.getModel();
         ArrayList<TraGopTransModel> traGopTranList = new ArrayList<>();
 
-        traGopTranList = traGopDAO.getTrans(acc,traGopID);
+        traGopTranList = traGopDAO.getTrans(acc, traGopID);
 
         traGopTransTableModel.setRowCount(0);
         for (int i = 0; i < traGopTranList.size(); i++) {
@@ -121,7 +124,7 @@ public class ShowTraGopController {
                 traGopTranList.get(i).getId(),
                 traGopTranList.get(i).getTen(),
                 traGopTranList.get(i).getBank(),
-                traGopTranList.get(i).getSotien(),
+                df.format(traGopTranList.get(i).getSotien()),
                 traGopTranList.get(i).getTime(),
                 traGopTranList.get(i).getStatus(),});
         }

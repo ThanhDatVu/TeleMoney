@@ -166,6 +166,7 @@ public class VayTienDAO {
         }
         return vayTienTransList;
     }
+
     public ArrayList<VayTienTransModel> getTrans(UserModel user, int vayTienID) {
         ArrayList<VayTienTransModel> vayTienTransList = new ArrayList<>();
         String sql = "select * from vaytrans where uid=? and vayid = ?";
@@ -201,8 +202,6 @@ public class VayTienDAO {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
             ps.setString(1, "đã thanh toán");
             ps.setInt(2, vayTien.getId());
-
-           
 
             int executeUpdate = ps.executeUpdate();
             System.out.println(vayTien.toString());

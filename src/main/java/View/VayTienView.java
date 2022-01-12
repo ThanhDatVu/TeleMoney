@@ -31,6 +31,7 @@ public class VayTienView extends javax.swing.JFrame {
     public VayTienView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Thêm khoản vay");
         this.master = master;
         this.acc = acc;
         this.addVayTienController = new AddVayTienController(this, acc);
@@ -124,7 +125,7 @@ public class VayTienView extends javax.swing.JFrame {
             }
         });
 
-        jLabel8.setFont(new java.awt.Font("Segoe UI Black", 1, 18)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel8.setText("THÊM KHOẢN VAY");
 
         jLabel9.setFont(new java.awt.Font("Segoe UI Semilight", 0, 11)); // NOI18N

@@ -27,6 +27,7 @@ public class MyTransView extends javax.swing.JFrame {
     public MyTransView(MasterTeleMoneyView master, UserModel acc) {
         initComponents();
         setLocationRelativeTo(null);
+        this.setTitle("Hiển giao dịch mua bán các tài sản đầu tư");
         this.master = master;
         this.acc = acc;
         this.myTransController = new MyTransController(this, acc);

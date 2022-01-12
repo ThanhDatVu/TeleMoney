@@ -51,7 +51,7 @@ public class AddStockView extends javax.swing.JFrame {
         owner = main;
         this.stList = stockDAO.getAllStockSymbol();
         System.out.print(this.myStock);
-        this.setTitle("Mua thêm ");
+        this.setTitle("Mua thêm danh mục đầu tư ");
         addStockController = new AddStockController(this);
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     }

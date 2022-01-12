@@ -506,28 +506,31 @@ public class VayNoController {
     }
 
     public void checkThanhToan() {
+        int check = 0;
         ArrayList<TraGopTransModel> traGopTranList = new ArrayList<>();
         traGopTranList = traGopDAO.getAllTrans(acc);
         for (int i = 0; i < traGopTranList.size(); i++) {
             TraGopTransModel traGop = traGopTranList.get(i);
-          
+
             if (traGop.getTime().toLocalDateTime().toLocalDate().isBefore(LocalDate.now())
                     || traGop.getTime().toLocalDateTime().toLocalDate().isEqual(LocalDate.now())) {
                 if (traGop.getStatus().equalsIgnoreCase("chưa thanh toán")) {
                     ThanhToanView thanhToanView = new ThanhToanView(master, traGop);
+                    check += 1;
                 }
             }
         }
-        
+
         ArrayList<VayTienTransModel> vayTienTranList = new ArrayList<>();
         vayTienTranList = vayTienDAO.getAllTrans(acc);
         for (int i = 0; i < vayTienTranList.size(); i++) {
             VayTienTransModel vayTien = vayTienTranList.get(i);
-            
+
             if (vayTien.getTime().toLocalDateTime().toLocalDate().isBefore(LocalDate.now())
                     || vayTien.getTime().toLocalDateTime().toLocalDate().isEqual(LocalDate.now())) {
                 if (vayTien.getStatus().equalsIgnoreCase("chưa thanh toán")) {
                     ThanhToanView thanhToanView = new ThanhToanView(master, vayTien);
+                    check += 1;
                 }
             }
         }
@@ -535,14 +538,17 @@ public class VayNoController {
         guiTienTranList = guiTienDAO.getAllTrans(acc);
         for (int i = 0; i < guiTienTranList.size(); i++) {
             GuiTienTransModel guiTien = guiTienTranList.get(i);
-         
+
             if (guiTien.getTime().toLocalDateTime().toLocalDate().isBefore(LocalDate.now())
                     || guiTien.getTime().toLocalDateTime().toLocalDate().isEqual(LocalDate.now())) {
                 if (guiTien.getStatus().equalsIgnoreCase("chưa thanh toán")) {
                     ThanhToanView thanhToanView = new ThanhToanView(master, guiTien);
+                    check += 1;
                 }
             }
         }
-
+        if (check == 0) {
+            JOptionPane.showMessageDialog(master, "Không có giao dịch nào đến hạn thanh toán.");
+        }
     }
 }

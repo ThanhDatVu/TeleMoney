@@ -12,7 +12,7 @@ import Model.ChiModel;
 import Model.GuiTienTransModel;
 import Model.MyStockBuyModel;
 import Model.UserModel;
-import View.TableSearch;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -56,7 +56,7 @@ public class Test {
         UserModel user = new UserModel();
         user.setId(1);
         GuiTienDAO guiTienDAO = new GuiTienDAO();
-        ArrayList<GuiTienTransModel> transList = guiTienDAO.getTrans(user,10);
+        ArrayList<GuiTienTransModel> transList = guiTienDAO.getTrans(user, 10);
         System.out.println(transList.size());
         for (int i = 0; i < transList.size(); i++) {
             GuiTienTransModel get = transList.get(i);

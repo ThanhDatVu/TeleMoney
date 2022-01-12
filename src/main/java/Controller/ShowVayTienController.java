@@ -70,6 +70,7 @@ public class ShowVayTienController {
         //setTableButton();
 
     }
+
     public ShowVayTienController(ShowVayTienView showVayTienView, UserModel acc, int vayTienID) {
 
         vayTienDAO = new VayTienDAO();
@@ -99,22 +100,25 @@ public class ShowVayTienController {
 
         vayTienTransTableModel.setRowCount(0);
         for (int i = 0; i < vayTienTranList.size(); i++) {
-            vayTienTransTableModel.addRow(new Object[]{
-                //                {"ID",  "Tên","Ngân hàng", "Số tiền", "Thời gian", "Trạng thái"};
-                vayTienTranList.get(i).getId(),
-                vayTienTranList.get(i).getTen(),
-                vayTienTranList.get(i).getBank(),
-                df.format(vayTienTranList.get(i).getSotien()),
-                vayTienTranList.get(i).getTime(),
-                vayTienTranList.get(i).getStatus(),});
+            if (vayTienTranList.get(i).getStatus().equalsIgnoreCase("đã thanh toán")) {
+                vayTienTransTableModel.addRow(new Object[]{
+                    //                {"ID",  "Tên","Ngân hàng", "Số tiền", "Thời gian", "Trạng thái"};
+                    vayTienTranList.get(i).getId(),
+                    vayTienTranList.get(i).getTen(),
+                    vayTienTranList.get(i).getBank(),
+                    df.format(vayTienTranList.get(i).getSotien()),
+                    vayTienTranList.get(i).getTime(),
+                    vayTienTranList.get(i).getStatus(),});
+            }
         }
 
     }
+
     public void setDataChiTiet(int vayTienID) {//thêm dũ liệu vào bảng
         VayTienTransTableModel vayTienTransTableModel = (VayTienTransTableModel) showVayTienView.tableChi.getModel();
         ArrayList<VayTienTransModel> vayTienTranList = new ArrayList<>();
 
-        vayTienTranList = vayTienDAO.getTrans(acc,vayTienID);
+        vayTienTranList = vayTienDAO.getTrans(acc, vayTienID);
 
         vayTienTransTableModel.setRowCount(0);
         for (int i = 0; i < vayTienTranList.size(); i++) {
