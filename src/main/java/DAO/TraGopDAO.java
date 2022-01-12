@@ -105,6 +105,25 @@ public class TraGopDAO {
             e.printStackTrace();
         }
     }
+    public void addDoneTrans(TraGopTransModel traGop, UserModel user) {
+        String sql = "INSERT INTO `tragoptrans` ( `tragopid`, `uid`, `name`, `namecongty`, `sotien`, `time`, `status`) VALUES ( ?, ?, ?, ?, ?, ?, ?)";;
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setInt(1, traGop.getTraGopID());
+            ps.setInt(2, user.getId());
+            ps.setString(3, traGop.getTen());
+            ps.setString(4, traGop.getBank());
+            ps.setDouble(5, traGop.getSotien());
+            ps.setTimestamp(6, traGop.getTime());
+            ps.setString(7, "đã thanh toán");
+
+            int executeUpdate = ps.executeUpdate();
+
+        } catch (Exception e) {
+            System.out.println("thêm trả góp trans thất bại");
+            e.printStackTrace();
+        }
+    }
 
     public int getIDByName(TraGopModel traGopModel, UserModel acc) {
         String sql = "select * from tragop where uid LIKE ? and name LIKE ?";
@@ -182,5 +201,26 @@ public class TraGopDAO {
             e.printStackTrace();
         }
         return traGopTransList;
+    }
+
+    public void thanhToan(TraGopTransModel traGop) {
+        
+        String sql = "UPDATE tragoptrans SET status = ? WHERE id = ?;";;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setString(1, "đã thanh toán");
+            ps.setInt(2, traGop.getId());
+
+           
+
+            int executeUpdate = ps.executeUpdate();
+            System.out.println(traGop.toString());
+            System.out.println("Thanh toán thành công");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    
     }
 }

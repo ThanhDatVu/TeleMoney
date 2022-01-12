@@ -11,19 +11,23 @@ import DAO.TraGopDAO;
 import DAO.VayTienDAO;
 import Model.GuiTienModel;
 import Model.GuiTienTableModel;
+import Model.GuiTienTransModel;
 import Model.MyStockBuyModel;
 import Model.MyStockBuyTableModel;
 import Model.TraGopModel;
 import Model.TraGopTableModel;
+import Model.TraGopTransModel;
 import Model.UserModel;
 import Model.VayTienModel;
 import Model.VayTienTableModel;
+import Model.VayTienTransModel;
 import View.GuiTienView;
 import View.MasterTeleMoneyView;
 import View.MuaStockView;
 import View.ShowGuiTienView;
 import View.ShowTraGopView;
 import View.ShowVayTienView;
+import View.ThanhToanView;
 import View.TraGopView;
 import View.VayTienView;
 import java.awt.Color;
@@ -39,6 +43,8 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.sql.Timestamp;
 import java.text.DecimalFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Vector;
 import java.util.logging.Level;
@@ -337,8 +343,8 @@ public class VayNoController {
                 tableSelect = master.tableGuiTien.getSelectedRow();
                 System.out.println("dang chon dong  " + tableSelect);
                 if (tableSelect != -1) {
-                    master.btnXoaTK.setEnabled(true);
-                    
+                    master.btnXemChiTietGuiTien.setEnabled(true);
+
                 }
             }
 
@@ -364,8 +370,8 @@ public class VayNoController {
                 tableSelect = master.tableTraGop.getSelectedRow();
                 System.out.println("dang chon dong tra gop " + tableSelect);
                 if (tableSelect != -1) {
-                    master.btnXoaTG.setEnabled(true);
-                    
+                    master.btnXemChiTietTraGop.setEnabled(true);
+
                 }
             }
 
@@ -392,8 +398,8 @@ public class VayNoController {
                 tableSelect = master.tableVayTien.getSelectedRow();
                 System.out.println("dang chon dong vay tien " + tableSelect);
                 if (tableSelect != -1) {
-                    master.btnXoaVay.setEnabled(true);
-                    
+                    master.btnXemChiTietVayTien.setEnabled(true);
+
                 }
             }
 
@@ -440,33 +446,41 @@ public class VayNoController {
             }
         }
         );
-        master.btnXoaTG.addActionListener(
+        master.btnXemChiTietTraGop.addActionListener(
                 new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int xemTraGopID = (int) master.tableTraGop.getValueAt(tableSelect, 0);
-                ShowTraGopView showTraGopView = new ShowTraGopView(master, acc,xemTraGopID);
+                ShowTraGopView showTraGopView = new ShowTraGopView(master, acc, xemTraGopID);
                 showTraGopView.setVisible(true);
             }
         }
         );
-        master.btnXoaTK.addActionListener(
+        master.btnXemChiTietGuiTien.addActionListener(
                 new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int xemTraGopID = (int) master.tableGuiTien.getValueAt(tableSelect, 0);
-                ShowGuiTienView showGuiTienView = new ShowGuiTienView(master, acc,xemTraGopID);
+                ShowGuiTienView showGuiTienView = new ShowGuiTienView(master, acc, xemTraGopID);
                 showGuiTienView.setVisible(true);
             }
         }
         );
-        master.btnXoaVay.addActionListener(
+        master.btnXemChiTietVayTien.addActionListener(
                 new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int xemTraGopID = (int) master.tableVayTien.getValueAt(tableSelect, 0);
-                ShowVayTienView showVayTienView = new ShowVayTienView(master, acc,xemTraGopID);
+                ShowVayTienView showVayTienView = new ShowVayTienView(master, acc, xemTraGopID);
                 showVayTienView.setVisible(true);
+            }
+        }
+        );
+        master.btnCheckThanhToan.addActionListener(
+                new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                checkThanhToan();
             }
         }
         );
@@ -489,5 +503,46 @@ public class VayNoController {
             }
 
         }
+    }
+
+    public void checkThanhToan() {
+        ArrayList<TraGopTransModel> traGopTranList = new ArrayList<>();
+        traGopTranList = traGopDAO.getAllTrans(acc);
+        for (int i = 0; i < traGopTranList.size(); i++) {
+            TraGopTransModel traGop = traGopTranList.get(i);
+          
+            if (traGop.getTime().toLocalDateTime().toLocalDate().isBefore(LocalDate.now())
+                    || traGop.getTime().toLocalDateTime().toLocalDate().isEqual(LocalDate.now())) {
+                if (traGop.getStatus().equalsIgnoreCase("chưa thanh toán")) {
+                    ThanhToanView thanhToanView = new ThanhToanView(master, traGop);
+                }
+            }
+        }
+        
+        ArrayList<VayTienTransModel> vayTienTranList = new ArrayList<>();
+        vayTienTranList = vayTienDAO.getAllTrans(acc);
+        for (int i = 0; i < vayTienTranList.size(); i++) {
+            VayTienTransModel vayTien = vayTienTranList.get(i);
+            
+            if (vayTien.getTime().toLocalDateTime().toLocalDate().isBefore(LocalDate.now())
+                    || vayTien.getTime().toLocalDateTime().toLocalDate().isEqual(LocalDate.now())) {
+                if (vayTien.getStatus().equalsIgnoreCase("chưa thanh toán")) {
+                    ThanhToanView thanhToanView = new ThanhToanView(master, vayTien);
+                }
+            }
+        }
+        ArrayList<GuiTienTransModel> guiTienTranList = new ArrayList<>();
+        guiTienTranList = guiTienDAO.getAllTrans(acc);
+        for (int i = 0; i < guiTienTranList.size(); i++) {
+            GuiTienTransModel guiTien = guiTienTranList.get(i);
+         
+            if (guiTien.getTime().toLocalDateTime().toLocalDate().isBefore(LocalDate.now())
+                    || guiTien.getTime().toLocalDateTime().toLocalDate().isEqual(LocalDate.now())) {
+                if (guiTien.getStatus().equalsIgnoreCase("chưa thanh toán")) {
+                    ThanhToanView thanhToanView = new ThanhToanView(master, guiTien);
+                }
+            }
+        }
+
     }
 }

@@ -7,6 +7,7 @@ package DAO;
 import Model.GuiTienModel;
 import Model.GuiTienTransModel;
 import Model.MyStockBuyModel;
+import Model.TraGopTransModel;
 import Model.UserModel;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -192,4 +193,27 @@ public class GuiTienDAO {
         }
         return guiTienTransList;
     }
+
+    
+
+    public void thanhToan(GuiTienTransModel guiTien) {
+        String sql = "UPDATE chovaytrans SET status = ? WHERE id = ?;";;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setString(1, "đã thanh toán");
+            ps.setInt(2, guiTien.getId());
+
+           
+
+            int executeUpdate = ps.executeUpdate();
+            System.out.println(guiTien.toString());
+            System.out.println("Thanh toán thành công");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    
+    }
+    
 }

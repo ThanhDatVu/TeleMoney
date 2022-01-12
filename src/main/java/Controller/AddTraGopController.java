@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.text.DecimalFormat;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.logging.Level;
@@ -32,6 +33,7 @@ import yahoofinance.YahooFinance;
 
 public class AddTraGopController {
 
+    DecimalFormat df = new DecimalFormat("0");
     TraGopView traGopView;
     UserModel acc;
     TraGopDAO traGopDAO = null;
@@ -79,7 +81,7 @@ public class AddTraGopController {
                 } else if (x <= 0) {
                     JOptionPane.showMessageDialog(null, "Nhập sai");
                 } else {
-                    int opt = JOptionPane.showConfirmDialog(traGopView, "Xác nhận thêm khoản trả góp " + traGopView.txtTen.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
+                    int opt = JOptionPane.showConfirmDialog(traGopView, "Xác nhận thêm khoản trả góp " + traGopView.txtTen.getText() + " ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
                     if (opt == 0) {
                         //String ten, String bank, double tongtien, double tienhangthang, int sothang, Timestamp time, double tratruoc
                         traGopModel.setTen(traGopView.txtTen.getText());
@@ -98,6 +100,7 @@ public class AddTraGopController {
                         int id = traGopDAO.getIDByName(traGopModel, acc);;
                         themGiaoDich(traGopModel, acc, id);
                         traGopView.master.soDuKhaDung = traGopView.master.soDuKhaDung - Double.parseDouble(traGopView.txtTraTruoc.getText());
+
                         traGopView.master.refreshTabVayNo();
                         traGopView.dispose();
                     }
@@ -112,10 +115,18 @@ public class AddTraGopController {
         traGopModel.getTime().setDate(traGopModel.getNgaytragop());
 
         LocalDateTime localDateTime = traGopModel.getTime().toLocalDateTime();
+        TraGopTransModel traTruocTrans = new TraGopTransModel();
+        traTruocTrans.setTraGopID(traGopID);
+        traTruocTrans.setTen("Trả trước " + df.format(traGopModel.getTratruoc()) + " - " + traGopModel.getTen());
+        traTruocTrans.setSotien(traGopModel.getTratruoc());
+        traTruocTrans.setBank(traGopModel.getBank());
+
+        traTruocTrans.setTime(Timestamp.valueOf(LocalDateTime.now()));
+        traGopDAO.addDoneTrans(traTruocTrans, user);
         for (int i = 1; i <= traGopModel.getSothang(); i++) {
             TraGopTransModel traGopTransModel = new TraGopTransModel();
             traGopTransModel.setTraGopID(traGopID);
-            traGopTransModel.setTen("Trả gops lần " + i + " - " + traGopModel.getTen());
+            traGopTransModel.setTen("Trả góp lần " + df.format(i) + " - " + traGopModel.getTen());
             traGopTransModel.setSotien(Float.parseFloat(traGopView.txtTienHangThang.getText()));
             traGopTransModel.setBank(traGopModel.getBank());
 

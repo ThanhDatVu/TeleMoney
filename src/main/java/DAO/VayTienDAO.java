@@ -193,4 +193,22 @@ public class VayTienDAO {
         }
         return vayTienTransList;
     }
+
+    public void thanhToan(VayTienTransModel vayTien) {
+        String sql = "UPDATE vaytrans SET status = ? WHERE id = ?;";;
+
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setString(1, "đã thanh toán");
+            ps.setInt(2, vayTien.getId());
+
+           
+
+            int executeUpdate = ps.executeUpdate();
+            System.out.println(vayTien.toString());
+            System.out.println("Thanh toán thành công");
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }
