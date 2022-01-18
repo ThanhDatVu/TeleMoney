@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 12, 2022 at 09:59 PM
+-- Generation Time: Jan 18, 2022 at 02:24 PM
 -- Server version: 10.4.21-MariaDB
 -- PHP Version: 8.0.10
 
@@ -79,9 +79,9 @@ INSERT INTO `chovay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`,
 
 CREATE TABLE `chovaytrans` (
   `id` int(50) NOT NULL,
-  `chovayid` int(50) NOT NULL,
+  `chovayid` int(11) NOT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'chưa thanh toán',
-  `uid` int(50) NOT NULL,
+  `uid` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `bank` varchar(100) NOT NULL,
   `sotien` double NOT NULL,
@@ -127,9 +127,9 @@ INSERT INTO `chovaytrans` (`id`, `chovayid`, `status`, `uid`, `name`, `bank`, `s
 --
 
 CREATE TABLE `mystock` (
-  `id` int(50) NOT NULL,
+  `id` int(11) NOT NULL,
   `uid` int(11) NOT NULL DEFAULT 1,
-  `symbol` text NOT NULL,
+  `symbol` varchar(100) NOT NULL,
   `name` text NOT NULL,
   `soluong` int(65) NOT NULL,
   `tongbandau` float NOT NULL,
@@ -146,7 +146,6 @@ INSERT INTO `mystock` (`id`, `uid`, `symbol`, `name`, `soluong`, `tongbandau`, `
 (2, 1, 'BTC-USD', 'Bitcoin', 6, 274000, 45666.7, '2021-12-28 21:55:16'),
 (3, 1, 'COIN', 'Coinbase', 10, 1250, 125, '2021-12-28 22:01:30'),
 (4, 1, 'MSFT', 'Microsoft Corporation', 34, 8500, 250, '2021-12-28 22:29:06'),
-(5, 1, 'TSLA', 'TESLA', 35, 30345, 867, '2021-12-28 20:28:01'),
 (6, 1, 'GOOGL', 'Alphabet Inc. Class A', 2, 5755.02, 2877.51, '2022-01-02 07:00:50'),
 (7, 1, 'MDT', 'Medtronic Plc', 5, 517.25, 103.45, '2022-01-02 07:47:44'),
 (8, 1, 'SLB', 'Schlumberger NV', 10, 299.5, 29.95, '2022-01-02 14:32:21'),
@@ -154,29 +153,6 @@ INSERT INTO `mystock` (`id`, `uid`, `symbol`, `name`, `soluong`, `tongbandau`, `
 (10, 1, 'HD', 'Home Depot Inc.', 10, 3936.1, 393.61, '2022-01-08 12:18:54'),
 (11, 1, 'TSLA', 'Tesla Inc', 10, 10269.6, 1026.96, '2022-01-10 08:07:00'),
 (12, 1, 'FB', 'Meta Platforms Inc. Class A', 10, 3166, 316.6, '2022-01-10 23:02:31');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `nhanvien`
---
-
-CREATE TABLE `nhanvien` (
-  `MANV` varchar(50) DEFAULT NULL,
-  `HOTEN` varchar(50) DEFAULT NULL,
-  `LUONG` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `nhanvien`
---
-
-INSERT INTO `nhanvien` (`MANV`, `HOTEN`, `LUONG`) VALUES
-('AT1289736', 'Hoha haha', '78000000'),
-('AT981723', 'Hutao', '87000132'),
-('YU987123', 'okokokok', '78000000'),
-('KJ90879', 'Baka Mitai', '2300000'),
-('123', 'ajhsg', '-878234');
 
 -- --------------------------------------------------------
 
@@ -799,25 +775,6 @@ INSERT INTO `thu` (`id`, `uid`, `namethu`, `amountthu`, `mucthu`, `datethu`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tong`
---
-
-CREATE TABLE `tong` (
-  `uid` int(5) NOT NULL,
-  `sodu` double NOT NULL,
-  `tongtaisan` double NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COMMENT='tong';
-
---
--- Dumping data for table `tong`
---
-
-INSERT INTO `tong` (`uid`, `sodu`, `tongtaisan`) VALUES
-(1, 1588244350, 1300076832);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `tragop`
 --
 
@@ -849,9 +806,9 @@ INSERT INTO `tragop` (`id`, `uid`, `name`, `namecongty`, `tongtien`, `sothang`, 
 
 CREATE TABLE `tragoptrans` (
   `id` int(50) NOT NULL,
-  `tragopid` int(50) NOT NULL,
+  `tragopid` int(11) NOT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'chưa thanh toán',
-  `uid` int(50) NOT NULL,
+  `uid` int(11) NOT NULL,
   `name` varchar(100) NOT NULL,
   `namecongty` varchar(100) NOT NULL,
   `sotien` double NOT NULL,
@@ -884,18 +841,19 @@ INSERT INTO `tragoptrans` (`id`, `tragopid`, `status`, `uid`, `name`, `namecongt
 --
 
 CREATE TABLE `user` (
-  `ID` varchar(50) NOT NULL,
+  `ID` int(11) NOT NULL,
   `USERNAME` varchar(50) NOT NULL,
-  `PASSWORD` varchar(50) NOT NULL
+  `PASSWORD` varchar(50) NOT NULL,
+  `sodu` double NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`ID`, `USERNAME`, `PASSWORD`) VALUES
-('1', 'Admin', 'Vuthanhdat'),
-('2', 'Baka', 'Mitai');
+INSERT INTO `user` (`ID`, `USERNAME`, `PASSWORD`, `sodu`) VALUES
+(1, 'Admin', 'Vuthanhdat', 1588244350),
+(2, 'Baka', 'Mitai', 0);
 
 -- --------------------------------------------------------
 
@@ -930,8 +888,8 @@ INSERT INTO `vay` (`id`, `uid`, `ten`, `bank`, `tiengoc`, `laisuat`, `kyhan`, `n
 
 CREATE TABLE `vaytrans` (
   `id` int(50) NOT NULL,
-  `vayid` int(50) NOT NULL,
-  `uid` int(50) NOT NULL,
+  `vayid` int(11) NOT NULL,
+  `uid` int(11) NOT NULL,
   `status` varchar(100) NOT NULL DEFAULT 'chưa thanh toán',
   `name` varchar(100) NOT NULL,
   `bank` varchar(100) NOT NULL,
@@ -963,67 +921,83 @@ INSERT INTO `vaytrans` (`id`, `vayid`, `uid`, `status`, `name`, `bank`, `sotien`
 -- Indexes for table `chi`
 --
 ALTER TABLE `chi`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `chovay`
 --
 ALTER TABLE `chovay`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `chovaytrans`
 --
 ALTER TABLE `chovaytrans`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `chovayid` (`chovayid`),
+  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `mystock`
 --
 ALTER TABLE `mystock`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`),
+  ADD KEY `symbol` (`symbol`);
 
 --
 -- Indexes for table `stocktrans`
 --
 ALTER TABLE `stocktrans`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`),
+  ADD KEY `id` (`id`),
+  ADD KEY `id_2` (`id`),
+  ADD KEY `symbol` (`symbol`);
 
 --
 -- Indexes for table `thu`
 --
 ALTER TABLE `thu`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `tong`
---
-ALTER TABLE `tong`
-  ADD PRIMARY KEY (`uid`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `tragop`
 --
 ALTER TABLE `tragop`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `tragoptrans`
 --
 ALTER TABLE `tragoptrans`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `tragopid` (`tragopid`),
+  ADD KEY `uid` (`uid`);
+
+--
+-- Indexes for table `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`ID`);
 
 --
 -- Indexes for table `vay`
 --
 ALTER TABLE `vay`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `uid` (`uid`);
 
 --
 -- Indexes for table `vaytrans`
 --
 ALTER TABLE `vaytrans`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `vayid` (`vayid`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -1051,7 +1025,7 @@ ALTER TABLE `chovaytrans`
 -- AUTO_INCREMENT for table `mystock`
 --
 ALTER TABLE `mystock`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `stocktrans`
@@ -1066,12 +1040,6 @@ ALTER TABLE `thu`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `tong`
---
-ALTER TABLE `tong`
-  MODIFY `uid` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT for table `tragop`
 --
 ALTER TABLE `tragop`
@@ -1084,6 +1052,12 @@ ALTER TABLE `tragoptrans`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
 
 --
+-- AUTO_INCREMENT for table `user`
+--
+ALTER TABLE `user`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `vay`
 --
 ALTER TABLE `vay`
@@ -1094,6 +1068,70 @@ ALTER TABLE `vay`
 --
 ALTER TABLE `vaytrans`
   MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `chi`
+--
+ALTER TABLE `chi`
+  ADD CONSTRAINT `chi_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`ID`);
+
+--
+-- Constraints for table `chovay`
+--
+ALTER TABLE `chovay`
+  ADD CONSTRAINT `chovay_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`ID`);
+
+--
+-- Constraints for table `chovaytrans`
+--
+ALTER TABLE `chovaytrans`
+  ADD CONSTRAINT `chovaytrans_ibfk_1` FOREIGN KEY (`chovayid`) REFERENCES `chovay` (`id`);
+
+--
+-- Constraints for table `mystock`
+--
+ALTER TABLE `mystock`
+  ADD CONSTRAINT `mystock_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `stocktrans`
+--
+ALTER TABLE `stocktrans`
+  ADD CONSTRAINT `stocktrans_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`ID`);
+
+--
+-- Constraints for table `thu`
+--
+ALTER TABLE `thu`
+  ADD CONSTRAINT `thu_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tragop`
+--
+ALTER TABLE `tragop`
+  ADD CONSTRAINT `tragop_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `tragoptrans`
+--
+ALTER TABLE `tragoptrans`
+  ADD CONSTRAINT `tragoptrans_ibfk_1` FOREIGN KEY (`tragopid`) REFERENCES `tragop` (`id`);
+
+--
+-- Constraints for table `vay`
+--
+ALTER TABLE `vay`
+  ADD CONSTRAINT `vay_ibfk_1` FOREIGN KEY (`uid`) REFERENCES `user` (`ID`) ON DELETE CASCADE ON UPDATE NO ACTION;
+
+--
+-- Constraints for table `vaytrans`
+--
+ALTER TABLE `vaytrans`
+  ADD CONSTRAINT `vaytrans_ibfk_1` FOREIGN KEY (`vayid`) REFERENCES `vay` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -87,7 +87,7 @@ public class StockDAO {
 
     public void updateSoDu(float soDuMoi, UserModel user) {
         //To change body of generated methods, choose Tools | Templates.
-        String sql = "UPDATE TONG SET  SODU =  ? WHERE UID = ?;";;
+        String sql = "UPDATE USER SET  SODU =  ? WHERE ID = ?;";;
 
         try {
             PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
@@ -131,7 +131,7 @@ public class StockDAO {
 
     public double getSoDu(UserModel user) {
         int id = user.getId();
-        String sql = "select * from tong where UID LIKE ?";
+        String sql = "select * from user where ID LIKE ?";
         double soDu = 0;
         MyStockBuyModel myStock = null;
         try {
@@ -248,7 +248,7 @@ public class StockDAO {
 
     public double getTongTaiSan(UserModel user) {
         int id = user.getId();
-        String sql = "select * from tong where UID LIKE ?";
+        String sql = "select * from user where ID LIKE ?";
         double tongTaiSan = 0;
         MyStockBuyModel myStock = null;
         try {
