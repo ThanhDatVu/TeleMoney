@@ -63,12 +63,7 @@ public class AddGuiTienController {
             @Override
             public void actionPerformed(ActionEvent e) {
 
-                double x = Double.parseDouble(guiTienView.txtTien.getText());
-                if (x > soDu) {
-                    JOptionPane.showMessageDialog(null, "Vượt quá số dư khả dụng");
-                } else if (x <= 0) {
-                    JOptionPane.showMessageDialog(null, "Nhập sai");
-                } else {
+                if (check()) {
                     int opt = JOptionPane.showConfirmDialog(guiTienView, "Xác nhận gửi " + guiTienView.cboBank.getSelectedItem().toString() + " "
                             + " số tiền " + guiTienView.txtTien.getText() + " VND ?", "Xác nhận", JOptionPane.YES_NO_OPTION);
                     if (opt == 0) {
@@ -142,20 +137,24 @@ public class AddGuiTienController {
         double soTien = 1;
         double kyHan = 1;
         {
+            if(!guiTienView.txtTien.getText().equals("")||
+                    !guiTienView.txtLaisuat.getText().equals("")||
+                    !guiTienView.cboKyHan.getSelectedItem().toString().equals("")||
+                    !guiTienView.txtTien.getText().equals("0")||
+                    !guiTienView.txtLaisuat.getText().equals("0")||
+                    !guiTienView.cboKyHan.getSelectedItem().toString().equals("")
+                    ){
+                soTien = Double.parseDouble(guiTienView.txtTien.getText());
+                laiXuat = Double.parseDouble(guiTienView.txtLaisuat.getText());
+                kyHan = Double.parseDouble(guiTienView.cboKyHan.getSelectedItem().toString());
+                if (soTien > -1 && laiXuat > -1) {
+                    guiTienView.txtLai.setEditable(true);
+                    double laihangthang;
+                    laihangthang = (soTien * (laiXuat / 12)) / 100;
+                    guiTienView.txtLai.setText(String.valueOf(Math.round(laihangthang)));
+                    guiTienView.txtLai.setEditable(false);
 
-            soTien = Double.parseDouble(guiTienView.txtTien.getText());
-            laiXuat = Double.parseDouble(guiTienView.txtLaisuat.getText());
-            kyHan = Double.parseDouble(guiTienView.cboKyHan.getSelectedItem().toString());
-
-            if (soTien > -1 && laiXuat > -1) {
-                guiTienView.txtLai.setEditable(true);
-                double laihangthang;
-                laihangthang = (soTien * (laiXuat / 12)) / 100;
-
-                guiTienView.txtLai.setText(String.valueOf(Math.round(laihangthang)));
-
-                guiTienView.txtLai.setEditable(false);
-
+                }
             }
 
         }
@@ -191,6 +190,28 @@ public class AddGuiTienController {
         Timestamp timeStamp = Timestamp.valueOf(newDate);
         traGoc.setTime(timeStamp);
         guiTienDAO.addTrans(traGoc, user);
+
+    }
+
+    public boolean check() {
+        if (guiTienView.txtTen.getText().equals("")
+                || guiTienView.txtLaisuat.getText().equals("")
+                || guiTienView.txtNgayNhanLai.getText().equals("")
+                || guiTienView.txtTien.getText().equals("")
+                || guiTienView.txtLai.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "Nhập đầy đủ thông tin");
+            return false;
+
+        }
+        double x = Double.parseDouble(guiTienView.txtTien.getText());
+        if (x > soDu) {
+            JOptionPane.showMessageDialog(null, "Vượt quá số dư khả dụng");
+            return false;
+        } else if (x <= 0) {
+            JOptionPane.showMessageDialog(null, "Nhập sai");
+            return false;
+        }
+        return true;
 
     }
 }

@@ -101,7 +101,7 @@ public class MasterTeleMoneyView extends javax.swing.JFrame {
         this.setTitle("TELEMONEY");
         setUsername();
         soDuKhaDung = stockDAO.getSoDu(user);
-        tongTaiSan = stockDAO.getTongTaiSan(user);
+        
         setTiGiaSoDu();
         setLocationRelativeTo(null);
         setSumText();

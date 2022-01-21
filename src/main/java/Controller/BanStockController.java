@@ -138,29 +138,7 @@ public class BanStockController {
                 warn();
             }
 
-            public void warn() throws NumberFormatException {
-                double giaBanTB;
-                double soLuong;
-                if (banStockView.textSoLuongBanRa.getText() == null || banStockView.textGiaBanTB.getText() == null) {
-                    giaBanTB = 0;
-                    soLuong = 0;
-                } else {
-
-                    soLuong = Double.parseDouble(banStockView.textSoLuongBanRa.getText());
-                    giaBanTB = Double.parseDouble(banStockView.textGiaBanTB.getText());
-                }
-                if (soLuong > -1 && giaBanTB > -1) {
-                    banStockView.txtTongBanUSD.setEditable(true);
-                    banStockView.txtTongBanVND.setEditable(true);
-                    BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaBanTB * soLuong)).setScale(2);
-                    banStockView.txtTongBanUSD.setText(String.valueOf(bigDecimal.toString()));
-                    bigDecimal = new BigDecimal(String.valueOf(giaBanTB * soLuong * usd.doubleValue())).setScale(2);
-                    banStockView.txtTongBanVND.setText(bigDecimal.toString());
-
-                    banStockView.txtTongBanUSD.setEditable(false);
-                    banStockView.txtTongBanVND.setEditable(false);
-                }
-            }
+            
         });
         banStockView.textSoLuongBanRa.getDocument().addDocumentListener(new DocumentListener() {
             @Override
@@ -178,32 +156,7 @@ public class BanStockController {
                 warn();
             }
 
-            public void warn() throws NumberFormatException {
-                double giaBanTB;
-                double soLuong;
-                if (banStockView.textSoLuongBanRa.getText() == null && banStockView.textGiaBanTB.getText() == null) {
-                    giaBanTB = 0;
-                    soLuong = 0;
-                } else {
-
-                    soLuong = Double.parseDouble(banStockView.textSoLuongBanRa.getText());
-                    giaBanTB = Double.parseDouble(banStockView.textGiaBanTB.getText());
-
-                    if (soLuong > -1 && giaBanTB > -1) {
-                        banStockView.txtTongBanUSD.setEditable(true);
-                        banStockView.txtTongBanVND.setEditable(true);
-                        BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaBanTB * soLuong)).setScale(2);
-                        banStockView.txtTongBanUSD.setText(String.valueOf(bigDecimal.toString()));
-                        bigDecimal = new BigDecimal(String.valueOf(giaBanTB * soLuong * usd.doubleValue())).setScale(2);
-                        banStockView.txtTongBanVND.setText(bigDecimal.toString());
-
-                        banStockView.txtTongBanUSD.setEditable(false);
-                        banStockView.txtTongBanVND.setEditable(false);
-                    }
-
-                }
-
-            }
+           
         }
         );
 
@@ -251,4 +204,31 @@ public class BanStockController {
         );
 
     }
+    public void warn() throws NumberFormatException {
+                double giaBanTB;
+                double soLuong;
+                if (banStockView.textSoLuongBanRa.getText().equals("")
+                        || banStockView.textGiaBanTB.getText().equals("")
+                        || banStockView.textSoLuongBanRa.getText().equals("0")
+                        || banStockView.textGiaBanTB.getText().equals("0")
+                        ) {
+                    giaBanTB = 0;
+                    soLuong = 0;
+                } else {
+
+                    soLuong = Double.parseDouble(banStockView.textSoLuongBanRa.getText());
+                    giaBanTB = Double.parseDouble(banStockView.textGiaBanTB.getText());
+                }
+                if (soLuong > 0 && giaBanTB > 0) {
+                    banStockView.txtTongBanUSD.setEditable(true);
+                    banStockView.txtTongBanVND.setEditable(true);
+                    BigDecimal bigDecimal = new BigDecimal(String.valueOf(giaBanTB * soLuong)).setScale(2);
+                    banStockView.txtTongBanUSD.setText(String.valueOf(bigDecimal.toString()));
+                    bigDecimal = new BigDecimal(String.valueOf(giaBanTB * soLuong * usd.doubleValue())).setScale(2);
+                    banStockView.txtTongBanVND.setText(bigDecimal.toString());
+
+                    banStockView.txtTongBanUSD.setEditable(false);
+                    banStockView.txtTongBanVND.setEditable(false);
+                }
+            }
 }

@@ -151,7 +151,13 @@ public class AddVayTienController {
         double soTien = 1;
         double kyHan = 1;
         {
-
+            if(!vayTienView.txtTien.getText().equals("")||
+                    !vayTienView.txtLaisuat.getText().equals("")||
+                    !vayTienView.cboKyHan.getSelectedItem().toString().equals("")||
+                    !vayTienView.txtTien.getText().equals("0")||
+                    !vayTienView.txtLaisuat.getText().equals("0")||
+                    !vayTienView.cboKyHan.getSelectedItem().toString().equals("")
+                    ){
             soTien = Double.parseDouble(vayTienView.txtTien.getText());
             laiXuat = Double.parseDouble(vayTienView.txtLaisuat.getText());
             kyHan = Double.parseDouble(vayTienView.cboKyHan.getSelectedItem().toString());
@@ -165,7 +171,7 @@ public class AddVayTienController {
 
                 vayTienView.txtLai.setEditable(false);
 
-            }
+            }}
 
         }
 

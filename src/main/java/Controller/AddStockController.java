@@ -157,8 +157,8 @@ public class AddStockController {
                 double giaMuaTB;
                 double soLuong;
                 if (master.textSoLuong.getText() == null || master.textGiaMuaTB.getText() == null
-                        || master.textSoLuong.getText() == "" || master.textGiaMuaTB.getText() == ""
-                        || master.textSoLuong.getText() == "0" || master.textGiaMuaTB.getText() == "0") {
+                        || master.textSoLuong.getText().equals("") || master.textGiaMuaTB.getText().equals("")
+                        || master.textSoLuong.getText().equals("0") || master.textGiaMuaTB.getText().equals("0")) {
                     giaMuaTB = 0;
                     soLuong = 0;
                     System.out.println("00000");
@@ -201,10 +201,13 @@ public class AddStockController {
             public void warn() throws NumberFormatException {
                 double giaMuaTB;
                 double soLuong;
-                if (master.textSoLuong.getText() == null && master.textGiaMuaTB.getText() == null) {
+                if (master.textSoLuong.getText() == null || master.textGiaMuaTB.getText() == null
+                        || master.textSoLuong.getText().equals("") || master.textGiaMuaTB.getText().equals("")
+                        || master.textSoLuong.getText().equals("0") || master.textGiaMuaTB.getText().equals("0")) {
                     giaMuaTB = 0;
                     soLuong = 0;
-                } else {
+                    System.out.println("00000");
+                }else {
 
                     soLuong = Double.parseDouble(master.textSoLuong.getText());
                     giaMuaTB = Double.parseDouble(master.textGiaMuaTB.getText());
