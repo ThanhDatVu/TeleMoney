@@ -14,28 +14,22 @@ import View.LoginView;
 import View.MasterTeleMoneyView;
 import View.SignUpView;
 
-public class LoginController {
+public class DangKyController {
 
-    private LoginView loginView;
+    private SignUpView signUpView;
     private UserModel user;
     private LoginDAO loginDAO = null;
 
-    public LoginController() {
-
-        loginView = new LoginView();
-        setEventLogin();
-
-        loginView.setVisible(true);
-        loginDAO = new LoginDAO();
+    public DangKyController() {
 
     }
 
-    public LoginController(LoginView loginView) {
+    public DangKyController(SignUpView signUpView) {
 
-        this.loginView = loginView;
+        this.signUpView = signUpView;
         setEventLogin();
 
-        loginView.setVisible(true);
+        this.signUpView.setVisible(true);
         loginDAO = new LoginDAO();
 
     }
@@ -56,28 +50,25 @@ public class LoginController {
 
     public void setEventLogin() {
 
-        loginView.addLoginListener(new ActionListener() {
+        signUpView.addSignUpListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
 
                 try {
 
-                    user = loginView.getUser();
+                    user = signUpView.getUser();
                     if (user.getPassword().equals("")
-                            || user.getUsername().equals("")) {
+                            || user.getUsername().equals("")
+                            || signUpView.txt_pwd1.getPassword().toString().equals("")) {
                         JOptionPane.showMessageDialog(null, "Ban chua nhap du thong tin");
+                    } else if (!user.getPassword().equals(signUpView.txt_pwd1.getPassword().toString())) {
+                        JOptionPane.showMessageDialog(null, "Mật khẩu chưa khớp");
                     } else {
-                        UserModel check = loginDAO.login(user.getUsername(), user.getPassword());
-                        if (check == null) {
-                            JOptionPane.showMessageDialog(null, "Tai khoan hoac mat khau sai");
-                            return;
-
-                        } else {
-                            MasterTeleMoneyView master = new MasterTeleMoneyView(check);
-                            master.setVisible(true);
-                            loginView.dispose();
-                        }
+                        loginDAO.dangky(user.getUsername(), user.getPassword());
+                        JOptionPane.showMessageDialog(null, "Đăng ký thành công");
+                        LoginView login = new LoginView();
+                        signUpView.dispose();
 
                     }
 
@@ -85,14 +76,13 @@ public class LoginController {
                 }
             }
         });
-        loginView.addSignUpListener(new ActionListener() {
+        signUpView.addHuyListener(new ActionListener() {
 
             @Override
             public void actionPerformed(ActionEvent e) {
-
-               SignUpView signUpView = new SignUpView();
-               signUpView.setVisible(true);
-               loginView.dispose();
+                 LoginView login = new LoginView();
+                 signUpView.dispose();
+                
             }
         });
 

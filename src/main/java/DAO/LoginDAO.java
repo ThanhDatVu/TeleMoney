@@ -54,4 +54,20 @@ public class LoginDAO {
         return user;
     }
 
+    public void dangky(String username, String password) {
+        String sql = "INSERT INTO `user`( `USERNAME`, `PASSWORD`,`sodu`) VALUES (?,?,0)";
+
+        UserModel user = null;
+        try {
+            PreparedStatement ps = (PreparedStatement) con.prepareStatement(sql);
+            ps.setString(1, username);
+            ps.setString(2, password);
+            ps.executeUpdate();
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
+
 }
